@@ -16,7 +16,6 @@ UI.registerHelper("getDaysInMonth", function (unixTime) {
   var startDay;
   var totalDays = moment.unix(unixTime).daysInMonth();
   var lastDayOfMonth = moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), totalDays]);
-  console.log(lastDayOfMonth);
   if(moment().isBefore(lastDayOfMonth) && moment().month() == lastDayOfMonth.month()) {
     startDay = moment().date();
     for (var j = 0; j< moment().day(); j ++) {
@@ -27,7 +26,7 @@ UI.registerHelper("getDaysInMonth", function (unixTime) {
   }
 
   for (var i = startDay; i <= totalDays; i++) {
-    result.push({ dayNumber : i});
+    result.push({ dayNumber : i, fullDate : moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), i])});
   }
   return result;
 });

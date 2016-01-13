@@ -30,6 +30,10 @@ Template.tripsCreate.events({
     event.preventDefault();
     // TODO this is only POC to see if we have access to the months somehow.
     console.log(Session.get("months")); 
+  },
+  "click .select-day" : function (event) {
+    event.preventDefault();
+    console.log("selected date", this.fullDate);
   }
 });
 
