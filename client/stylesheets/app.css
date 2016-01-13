@@ -21,13 +21,15 @@ body {
   }
 }
 .container-fluid {
-    padding: 60px;
+    padding: 6%;
 }
 
 .day-box {
   height: 108px;
   border: 1px solid #D6D5D4;
-  margin: 6%;
+  margin: 5%;
   font-size: 40px;
   font-weight: 100;
+  text-align: center;
+  padding-top: 25px;
 }

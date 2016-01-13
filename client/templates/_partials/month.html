@@ -10,11 +10,15 @@
     <div class="col-sm-1">Fri</div>
     <div class="col-sm-1">Sat</div>
     {{#each getDaysInMonth date}}
+      {{#if dayNumber}}
       <div class="col-sm-1 select-day">
         <div class="day-box">
           {{dayNumber}}
         </div>
       </div>
+      {{else}}
+      <div class="col-sm-1"></div>
+      {{/if}}
     {{/each}}
   </div>
 </template>
