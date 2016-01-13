@@ -34,6 +34,21 @@ body {
   padding-top: 25px;
 }
 
+.day-box:hover {
+  color: #DC3C00;
+  border-color: #DC3C00;
+  border-width: 6px;
+  padding-top: 20px;
+}
+
+/* TODO this is same as hover - find a DRY way to do this */
+.day-box-selected {
+  color: #DC3C00;
+  border-color: #DC3C00;
+  border-width: 6px;
+  padding-top: 20px; 
+}
+
 .month-header {
   text-align: center;
   color: #DC3C00;

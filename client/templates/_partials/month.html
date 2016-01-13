@@ -15,7 +15,7 @@
     {{#each getDaysInMonth date}}
       {{#if dayNumber}}
       <div class="col-sm-1 select-day">
-        <div class="day-box">
+        <div class="day-box {{#if equals selectedStartDate fullDate}} day-box-selected{{/if}}">
           {{dayNumber}}
         </div>
       </div>

@@ -30,7 +30,7 @@ UI.registerHelper("getDaysInMonth", function (unixTime) {
   }
 
   for (var i = startDay; i <= totalDays; i++) {
-    result.push({ dayNumber : i, fullDate : moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), i])});
+    result.push({ dayNumber : i, fullDate : moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), i]).unix()});
   }
   return result;
 });
