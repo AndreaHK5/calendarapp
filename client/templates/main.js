@@ -34,3 +34,11 @@ UI.registerHelper("getDaysInMonth", function (unixTime) {
   }
   return result;
 });
+
+
+// universal helpers
+Template.registerHelper('equals',
+  function(v1, v2) {
+      return (v1 === v2);
+  }
+);

@@ -15,8 +15,11 @@
     {{#each getDaysInMonth date}}
       {{#if dayNumber}}
       <div class="col-sm-1 select-day">
-        <div class="day-box {{#if equals selectedStartDate fullDate}} day-box-selected{{/if}}">
-          {{dayNumber}}
+        <div class="day-box {{#if isSelectedStartDate}} day-box-selected{{else}}day-box-unselected{{/if}}">
+          {{#if isSelectedStartDate}}
+            <div class="selected-date-tag">Start Date</div>
+          {{/if}}
+          {{dayNumber}}{{#if isSelectedStartDate}}<i class="fa fa-check day-selected-icon"></i>{{/if}}
         </div>
       </div>
       {{else}}

@@ -24,6 +24,11 @@ body {
     padding: 6%;
 }
 
+.month-header {
+  text-align: center;
+  color: #DC3C00;
+}
+
 .day-box {
   height: 108px;
   border: 1px solid #D6D5D4;
@@ -34,22 +39,32 @@ body {
   padding-top: 25px;
 }
 
-.day-box:hover {
+.day-box-unselected:hover {
   color: #DC3C00;
   border-color: #DC3C00;
-  border-width: 6px;
-  padding-top: 20px;
+  border-width: 3px;
+  padding-top: 23px;
 }
 
 /* TODO this is same as hover - find a DRY way to do this */
 .day-box-selected {
   color: #DC3C00;
   border-color: #DC3C00;
-  border-width: 6px;
-  padding-top: 20px; 
+  border-width: 3px;
+  padding-top: 6px; 
 }
 
-.month-header {
-  text-align: center;
-  color: #DC3C00;
+.selected-date-tag {
+  color: black;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.day-selected-icon {
+  color: #007234;
+  font-size: 20px;
+  margin-left: -20px;
+  left: 23px;
+  top: -7px;
+  position: relative;
 }

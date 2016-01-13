@@ -1,5 +1,5 @@
 Template.month.helpers({
-  selectedStartDate : function () {
-    return Session.get("startDate");
+  isSelectedStartDate : function () {
+    return Session.get("startDate") == this.fullDate;
   }
 })
