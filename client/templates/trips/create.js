@@ -25,6 +25,11 @@ Template.tripsCreate.events({
     var newDate = moment.unix(last.date).add(1, 'month').unix();
     months.push({date : newDate});
     Session.set("months", months);
+  },
+  "click .save-trip" : function (event) {
+    event.preventDefault();
+    // TODO this is only POC to see if we have access to the months somehow.
+    console.log(Session.get("months")); 
   }
 });
 
