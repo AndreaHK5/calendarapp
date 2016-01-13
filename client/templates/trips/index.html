@@ -1,3 +1,8 @@
 <template name="tripsIndex">
-  <h1>The trips will come up here.</h1>
+  <h1>Trips</h1>
+  {{#each trips}}
+    <div class="col-md-12">
+      {{date}}
+    </div>
+  {{/each}}
 </template>

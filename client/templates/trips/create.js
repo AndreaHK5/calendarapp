@@ -29,14 +29,12 @@ Template.tripsCreate.events({
   },
   "click .save-trip" : function (event) {
     event.preventDefault();
-    // TODO this is only POC to see if we have access to the months somehow.
+
     saveTrip(Session.get('startDate'), function (err,res) {
       if (err) {
-        //console.log(err);
-        sAlert.error(err);
+        console.error(err);
       } else {
-        //alert(name + " updated");
-        console.log("new trip added");
+        Router.go("tripsIndex");
       }
     });
   },

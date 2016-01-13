@@ -1,3 +1,3 @@
-Meteor.publish("all-trips", function(){
+Meteor.publish("trips", function(){
   return Trips.find();
 });
