@@ -41,6 +41,7 @@ Template.tripsCreate.events({
   "click .select-day" : function (event) {
     event.preventDefault();
     Session.set('startDate', this.fullDate.unix());
+    console.log("works");
   }
 });
 

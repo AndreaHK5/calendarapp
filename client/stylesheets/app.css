@@ -2,7 +2,7 @@ body {
   padding-top: 50px;
 }
 
-@media (min-width: 768px){
+@media (min-width: 500px){
   .seven-cols .col-md-1,
   .seven-cols .col-sm-1,
   .seven-cols .col-lg-1  {
@@ -11,11 +11,23 @@ body {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .seven-cols .col-md-1,
   .seven-cols .col-sm-1,
   .seven-cols .col-lg-1 {
     width: 14.285714285714285714285714285714%;
     *width: 14.285714285714285714285714285714%;
+    padding: 0;
   }
+}
+.container-fluid {
+    padding: 60px;
+}
+
+.day-box {
+  height: 108px;
+  border: 1px solid #D6D5D4;
+  margin: 6%;
+  font-size: 40px;
+  font-weight: 100;
 }

@@ -1,14 +1,12 @@
 <template name="tripsCreate">
-  <div class="container">
-    <div class="row">
-      <h1>Select Start Date</h1>
-        {{#each months}}
-          <div class="col-md-12">
-            {{> month date=date}}
-          </div>
-        {{/each}}    
-      <button class="btn btn-success add-month">Add more months</button>
-      <button class="btn btn-success save-trip">Save</button>
-    </div>
+  <div class="row">
+    <h1>Select Start Date</h1>
+      {{#each months}}
+        <div class="col-sm-12">
+          {{> month date=date}}
+        </div>
+      {{/each}}    
+    <button class="btn btn-success add-month">Add more months</button>
+    <button class="btn btn-success save-trip">Save</button>
   </div>
 </template> 

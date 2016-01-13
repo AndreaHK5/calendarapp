@@ -2,15 +2,19 @@
   {{getMonth date}}
   {{getYear date}}
   <div class="row seven-cols">
-    <div class="col-md-1">Sun</div>
-    <div class="col-md-1">Mon</div>
-    <div class="col-md-1">Tue</div>
-    <div class="col-md-1">Wed</div>
-    <div class="col-md-1">Thu</div>
-    <div class="col-md-1">Fri</div>
-    <div class="col-md-1">Sat</div>
+    <div class="col-sm-1">Sun</div>
+    <div class="col-sm-1">Mon</div>
+    <div class="col-sm-1">Tue</div>
+    <div class="col-sm-1">Wed</div>
+    <div class="col-sm-1">Thu</div>
+    <div class="col-sm-1">Fri</div>
+    <div class="col-sm-1">Sat</div>
     {{#each getDaysInMonth date}}
-      <button class="col-md-1 select-day">{{dayNumber}}</button>
+      <div class="col-sm-1 select-day">
+        <div class="day-box">
+          {{dayNumber}}
+        </div>
+      </div>
     {{/each}}
   </div>
 </template>
