@@ -1,6 +1,9 @@
 <template name="month">
-  {{getMonth date}}
-  {{getYear date}}
+  <div class="col-sm-12">
+    <h3 class="month-header">
+      {{getMonth date}} {{getYear date}}
+    </h3> 
+  </div>
   <div class="row seven-cols">
     <div class="col-sm-1">Sun</div>
     <div class="col-sm-1">Mon</div>

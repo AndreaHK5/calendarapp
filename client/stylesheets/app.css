@@ -33,3 +33,8 @@ body {
   text-align: center;
   padding-top: 25px;
 }
+
+.month-header {
+  text-align: center;
+  color: #DC3C00;
+}
