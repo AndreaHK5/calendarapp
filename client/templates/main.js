@@ -20,14 +20,14 @@ UI.registerHelper("getDaysInMonth", function (unixTime) {
   if(moment().isBefore(lastDayOfMonth) && moment().month() == lastDayOfMonth.month()) {
     startDay = moment().date();
     for (var j = 0; j< moment().day(); j ++) {
-      result.push({day: 99, show : false}) 
+      result.push({}) 
     }
   } else {
     startDay = 1;
   }
 
   for (var i = startDay; i <= totalDays; i++) {
-    result.push({ dayNumber : i , show: true});
+    result.push({ dayNumber : i});
   }
   return result;
 });
