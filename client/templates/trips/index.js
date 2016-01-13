@@ -1,0 +1,1 @@
+//Meteor.subscribe("all-trips") will go here

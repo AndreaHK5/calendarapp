@@ -23,6 +23,10 @@ UI.registerHelper("getDaysInMonth", function (unixTime) {
     }
   } else {
     startDay = 1;
+    var firstDayOfMonth = moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), 1])
+    for (var j = 0; j< firstDayOfMonth.day(); j ++) {
+      result.push({}) 
+    }
   }
 
   for (var i = startDay; i <= totalDays; i++) {

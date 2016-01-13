@@ -4,7 +4,8 @@
 Template.tripsCreate.onRendered(function () {
   // form is cleared at render. Move this code outside this handler in case we prefer 
   //the form to remain populated (logic will be required in order to wipe that) 
-  Session.set('months', getMonths());  
+  Session.set('months', getMonths());
+  Session.set('startDate', {});
 });
 
 Template.tripsCreate.helpers({
@@ -29,11 +30,19 @@ Template.tripsCreate.events({
   "click .save-trip" : function (event) {
     event.preventDefault();
     // TODO this is only POC to see if we have access to the months somehow.
-    console.log(Session.get("months")); 
+    saveTrip(Session.get('startDate'), function (err,res) {
+      if (err) {
+        //console.log(err);
+        sAlert.error(err);
+      } else {
+        //alert(name + " updated");
+        console.log("new trip added");
+      }
+    });
   },
   "click .select-day" : function (event) {
     event.preventDefault();
-    console.log("selected date", this.fullDate);
+    Session.set('startDate', this.fullDate.unix());
   }
 });
 
