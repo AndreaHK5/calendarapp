@@ -21,7 +21,7 @@ body {
   }
 }
 .container-fluid {
-    padding: 6%;
+    padding: 0 6%;
 }
 
 /*main navbar*/
@@ -34,7 +34,7 @@ body {
 }
 
 .day-box {
-  height: 108px;
+  height: 98px;
   border: 1px solid #D6D5D4;
   margin: 5%;
   font-size: 40px;

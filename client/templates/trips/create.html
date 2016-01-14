@@ -1,9 +1,8 @@
 <template name="tripsCreate">
-  <div class="row">
-    <h1>Select Start Date</h1>
+  <h1 id="banner">Select Start Date</h1>
+  <div class="navbar">
       <div class="col-sm-12">
         <div id="weekday-navbar" class="row seven-cols weekday-nav">
-
           <div class="col-sm-1">
             <div class="nav-day-header helper-text">Sun</div>
           </div>
@@ -23,12 +22,18 @@
             <div class="nav-day-header helper-text">Fri</div>
           </div>
           <div class="col-sm-1">
-            <div class="nav-day-header helper-text">Sat</div>
+            <div class="nav-day-header helper-text">
+              Sat
+              <span class="scroll-next-month">V</span>
+              <span class="scroll-prev-month">A</span>
+            </div>        
           </div>
         </div>  
       </div>
+    </div>
+    <div class="row">
     {{#each months}}
-      <div class="col-sm-12">
+      <div class="col-sm-12 hovering" id="{{date}}">
         {{> month date=date}}
       </div>
     {{/each}}    
