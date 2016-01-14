@@ -21,5 +21,9 @@ Template.tripsCreate.events({
         Router.go("tripsIndex");
       }
     });
+  },
+  "click .reset-trip" : function (event) {
+    Session.set("startDate", false);
+    Session.set("endDate", false);
   }
 });
