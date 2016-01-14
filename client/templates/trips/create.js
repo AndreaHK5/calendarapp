@@ -3,7 +3,7 @@ Template.tripsCreate.onRendered(function () {
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set('months', getMonths());
   Session.set('startDate', {});
-  Session.set('hoverMonth',{});
+  Session.set('hoverMonth', getTodayDate().unix());
 });
 
 Template.tripsCreate.helpers({
@@ -114,7 +114,7 @@ Template.tripsCreate.rendered = function () {
 };
 
 function getMonths() {
-  var now = moment();
+  var now = getTodayDate();
   var result = [];
   result.push({date : now.unix()});
   for (var i = 1; i < 3; i++) {
@@ -122,4 +122,9 @@ function getMonths() {
     result.push({date : newDate.unix()});
   };
   return result; 
+}
+
+
+function getTodayDate(){
+  return moment().startOf('day');
 }
