@@ -39,7 +39,6 @@ Template.tripsCreate.events({
   "click .select-day" : function (event) {
     event.preventDefault();
     Session.set('startDate', this.fullDate);
-    console.log("works");
   },
   // TODO scroll next month and scroll prev months are similar, DRY them with helper
   "click .scroll-next-month" : function () {
@@ -47,7 +46,6 @@ Template.tripsCreate.events({
     var monthAfter = moment.unix(Session.get("hoverMonth")).add(1, 'month').unix();
     var myDiv = $('#' + monthAfter);
     if (!myDiv.length) { return ;}
-    console.log($("#weekday-navbar").height());
     var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
     // TODO green sock here
     window.scrollTo(0, topY);

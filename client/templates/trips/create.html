@@ -1,36 +1,6 @@
 <template name="tripsCreate">
   <h1 id="banner">Select Start Date</h1>
-  <div class="navbar">
-      <div class="col-sm-12">
-        <div id="weekday-navbar" class="row seven-cols weekday-nav">
-          <div class="col-sm-1">
-            <div class="nav-day-header helper-text">Sun</div>
-          </div>
-          <div class="col-sm-1">
-            <div class="nav-day-header helper-text">Mon</div>
-          </div>
-          <div class="col-sm-1">
-            <div class="nav-day-header helper-text">Tue</div>
-          </div>
-          <div class="col-sm-1">
-            <div class="nav-day-header helper-text">Wed</div>
-          </div>
-          <div class="col-sm-1">
-            <div class="nav-day-header helper-text">Thu</div>
-          </div>
-          <div class="col-sm-1">
-            <div class="nav-day-header helper-text">Fri</div>
-          </div>
-          <div class="col-sm-1">
-            <div class="nav-day-header helper-text">
-              Sat
-              <span class="scroll-next-month">V</span>
-              <span class="scroll-prev-month">A</span>
-            </div>        
-          </div>
-        </div>  
-      </div>
-    </div>
+    {{> tripsCreateNav}}
     <div class="row">
     {{#each months}}
       <div class="col-sm-12 hovering" id="{{date}}">

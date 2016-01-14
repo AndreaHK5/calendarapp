@@ -24,6 +24,12 @@ body {
     padding: 0 6%;
 }
 
+/* general helpers*/
+.no-hor-pad {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /*main navbar*/
 
 /*calendar view*/
@@ -82,8 +88,12 @@ body {
   width: 91%;
   background-color: white;
   top: 51px;
+/*  position: absolute;
+  width: 100%;
+  left: 0;*/
 }
 
 .nav-day-header {
   margin: 10%;
 }
+
