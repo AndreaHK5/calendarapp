@@ -1,17 +1,10 @@
 <template name="tripsCreate">
-  <h1 id="banner">Select Start Date</h1>
-    {{> tripsCreateNav}}
-    <div class="row">
-    {{#each months}}
-      <div class="col-sm-12 hovering" id="{{date}}">
-        {{> calendarMonth date=date}}
-      </div>
-    {{/each}} 
-    <div class="col-sm-12">
-      <div class="add-month">SHOW MORE DATES</div>  
-    </div>
-    {{#if isTripValid}}
-      <button class="btn btn-success save-trip">Save</button>
-    {{/if}}
-  </div>
+  {{#if datesMissing}}
+    {{> calendar}}
+  {{else}}
+    <p>Confirm Trip Details</p>
+    <p>Leave on {{getFormattedDate getStartDate}}</p>
+    <p>Back on {{getFormattedDate getEndDate}}</p>
+    <button class="btn btn-success save-trip">Save</button>    
+  {{/if}}
 </template> 
