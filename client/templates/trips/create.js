@@ -24,6 +24,7 @@ Template.tripsCreate.events({
     var newDate = moment.unix(last.date).add(1, 'month').unix();
     months.push({date : newDate});
     Session.set("months", months);
+    updateNavigationArrows();
   },
   "click .save-trip" : function (event) {
     event.preventDefault();
@@ -50,31 +51,47 @@ Template.tripsCreate.events({
     // TODO green sock here
     window.scrollTo(0, topY);
     Session.set("hoverMonth", monthAfter);
+    updateNavigationArrows();
+
   },
     "click .scroll-prev-month" : function () {
     if (!Session.get("hoverMonth")) { return ; } 
-    var monthAfter = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
-    var myDiv = $('#' + monthAfter);
+    var monthBefore = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
+    var myDiv = $('#' + monthBefore);
     if (!myDiv.length) { return ;}
     var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height();
     // TODO green sock here
     window.scrollTo(0, topY);
-    Session.set("hoverMonth", monthAfter);
+    Session.set("hoverMonth", monthBefore);
+
+    updateNavigationArrows();
   },
   "mouseenter .hovering" : function (event) {
     Session.set("hoverMonth", this.date);
+    updateNavigationArrows();
   }
 });
 
+
+var updateNavigationArrows = function () {
+  // is there another month afterwards
+  var anotherMonthAfter = moment.unix(Session.get("hoverMonth")).add(1, 'month').unix();
+  var myDiv = $('#' + anotherMonthAfter);
+  (!myDiv.length) ? $(".scroll-next-month").addClass("scroll-arrow-inactive") : $(".scroll-next-month").removeClass("scroll-arrow-inactive");
+  // is there anohter month before
+  var anotherMonthBefore = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
+  var myDiv = $('#' + anotherMonthBefore);
+  (!myDiv.length) ? $(".scroll-prev-month").addClass("scroll-arrow-inactive") : $(".scroll-prev-month").removeClass("scroll-arrow-inactive");
+} 
+
 Template.tripsCreate.rendered = function () {
-  //Affix initialisation  
+  //Affix and Scrollspy initialisation for bootstrap
   $('#weekday-navbar').affix({
       offset: {
         // TODO find a cleaner way to get the top offset
           top: $(".navbar-fixed-top").outerHeight() + $("#banner").height() - parseInt($("#banner").css('marginTop').replace("px", ""))
       }
-  });
-  //Scrollspy initialisation  
+  }); 
   $('body').scrollspy({ target: '#myScrollspy' });
 };
 

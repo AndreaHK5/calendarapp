@@ -94,12 +94,23 @@ body {
 /*calendar navbar*/
 
 .scroll-next-month {
-  margin-left: 8px;
+  margin-left: 4px;
+  padding-left: 4px;
+  border-left: 1px solid #D6D5D4;
 }
 
 .affix {
   width: 91%;
   background-color: white;
   top: 51px;
+}
+
+.scroll-arrow {
+  color: #DC3C00;
+}
+
+.scroll-arrow-inactive {
+  color: #D6D5D4;
+  opacity: 90%;
 }
 
