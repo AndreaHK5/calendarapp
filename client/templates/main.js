@@ -8,6 +8,10 @@ UI.registerHelper("getYear", function (unixTime) {
   return moment.unix(unixTime).year();
 });
 
+UI.registerHelper("getFormattedDate", function (unixTime) {
+  return moment.unix(unixTime).format("dddd MMM DD YYYY");
+});
+
 // TODO - consider do this in the html?
 // consider this as a helper - this is very specialised for a single html
 // TODO improve this handler
