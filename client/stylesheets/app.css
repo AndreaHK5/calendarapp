@@ -30,6 +30,10 @@ body {
   padding-right: 0;
 }
 
+.fa-1d5x {
+  font-size: 150%;
+}
+
 /*main navbar*/
 
 /*calendar view*/
@@ -56,7 +60,6 @@ body {
   padding-top: 23px;
 }
 
-/* TODO this is same as hover - find a DRY way to do this */
 .day-box-selected {
   color: #DC3C00;
   border-color: #DC3C00;
@@ -84,16 +87,19 @@ body {
   z-index:9999
 }
 
+.nav-day-header {
+  margin: 10%;
+}
+
+/*calendar navbar*/
+
+.scroll-next-month {
+  margin-left: 8px;
+}
+
 .affix {
   width: 91%;
   background-color: white;
   top: 51px;
-/*  position: absolute;
-  width: 100%;
-  left: 0;*/
-}
-
-.nav-day-header {
-  margin: 10%;
 }
 
