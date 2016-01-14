@@ -13,8 +13,7 @@ UI.registerHelper("getFormattedDate", function (unixTime) {
 });
 
 // TODO - consider do this in the html?
-// consider this as a helper - this is very specialised for a single html
-// TODO improve this handler
+// consider this as a helper - this is very specialised for a single html in month
 UI.registerHelper("getDaysInMonth", function (unixTime) {
   var result = [];
   var startDay;

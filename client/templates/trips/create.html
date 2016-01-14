@@ -4,13 +4,12 @@
     <div class="row">
     {{#each months}}
       <div class="col-sm-12 hovering" id="{{date}}">
-        {{> month date=date}}
+        {{> calendarMonth date=date}}
       </div>
     {{/each}} 
     <div class="col-sm-12">
       <div class="add-month">SHOW MORE DATES</div>  
     </div>   
-    
     <button class="btn btn-success save-trip">Save</button>
   </div>
 </template> 

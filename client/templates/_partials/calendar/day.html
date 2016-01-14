@@ -1,0 +1,16 @@
+<template name="calendarDay"> 
+      {{#if dayNumber}}
+      <div class="col-sm-1 select-day">
+        <div class="day-box 
+            {{#if isSelectedStartDate}} day-box-selected{{else}}day-box-unselected{{/if}} 
+            {{#if isDateInTrip}} day-box-unselected-tripday{{/if}}">
+          {{#if isSelectedStartDate}}
+            <div class="helper-text">Start Date</div>
+          {{/if}}
+          {{dayNumber}}{{#if isSelectedStartDate}}<i class="fa fa-check day-selected-icon"></i>{{/if}}
+        </div>
+      </div>
+      {{else}}
+        <div class="col-sm-1"></div>
+      {{/if}}
+</template>

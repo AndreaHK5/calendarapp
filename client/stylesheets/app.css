@@ -53,7 +53,8 @@ body {
   padding-top: 25px;
 }
 
-.day-box-unselected:hover {
+.day-box-unselected:hover, 
+.day-box-unselected-tripday {
   color: #DC3C00;
   border-color: #DC3C00;
   border-width: 3px;
