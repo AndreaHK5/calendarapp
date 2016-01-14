@@ -1,11 +1,37 @@
 <template name="tripsCreate">
   <div class="row">
     <h1>Select Start Date</h1>
-      {{#each months}}
-        <div class="col-sm-12">
-          {{> month date=date}}
-        </div>
-      {{/each}}    
+      <div class="col-sm-12">
+        <div id="weekday-navbar" class="row seven-cols weekday-nav">
+
+          <div class="col-sm-1">
+            <div class="nav-day-header helper-text">Sun</div>
+          </div>
+          <div class="col-sm-1">
+            <div class="nav-day-header helper-text">Mon</div>
+          </div>
+          <div class="col-sm-1">
+            <div class="nav-day-header helper-text">Tue</div>
+          </div>
+          <div class="col-sm-1">
+            <div class="nav-day-header helper-text">Wed</div>
+          </div>
+          <div class="col-sm-1">
+            <div class="nav-day-header helper-text">Thu</div>
+          </div>
+          <div class="col-sm-1">
+            <div class="nav-day-header helper-text">Fri</div>
+          </div>
+          <div class="col-sm-1">
+            <div class="nav-day-header helper-text">Sat</div>
+          </div>
+        </div>  
+      </div>
+    {{#each months}}
+      <div class="col-sm-12">
+        {{> month date=date}}
+      </div>
+    {{/each}}    
     <button class="btn btn-success add-month">Add more months</button>
     <button class="btn btn-success save-trip">Save</button>
   </div>

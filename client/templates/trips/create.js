@@ -42,8 +42,36 @@ Template.tripsCreate.events({
     event.preventDefault();
     Session.set('startDate', this.fullDate);
     console.log("works");
+  },
+  "scroll" : function () {
+    //http://stackoverflow.com/questions/24111765/scroll-event-for-meteor
+    console.log("scrolling");
   }
 });
+
+
+// TODO delete this
+// $(document).ready(function(){
+//     $(window).bind('scroll', function() {
+//       var scrollTop     = $(window).scrollTop(),
+//         elementOffset = $('#weekday-navbar').offset().top,
+//         distance      = (elementOffset - scrollTop);
+//         var navHeight = $("#site-navbar").height();
+//         (distance < navHeight) ? $("#weekday-navbar").addClass("weekday-nav-sticky") : $("#weekday-navbar").removeClass("weekday-nav-sticky");
+//     });
+// });
+
+Template.tripsCreate.rendered = function () {
+  //Affix initialisation  
+  $('#weekday-navbar').affix({
+      offset: {
+          top: $('#weekday-navbar').offset().top
+      }
+  });
+  //Scrollspy initialisation  
+  $('body').scrollspy({ target: '#myScrollspy' });
+};
+
 
 // helper
 function getMonths() {

@@ -24,6 +24,10 @@ body {
     padding: 6%;
 }
 
+/*main navbar*/
+
+/*calendar view*/
+
 .month-header {
   text-align: center;
   color: #DC3C00;
@@ -54,7 +58,7 @@ body {
   padding-top: 6px; 
 }
 
-.selected-date-tag {
+.helper-text {
   color: black;
   font-size: 12px;
   font-weight: 400;
@@ -67,4 +71,19 @@ body {
   left: 23px;
   top: -7px;
   position: relative;
+}
+
+.weekday-nav {
+  border-bottom: 1px solid #D6D5D4;
+  z-index:9999
+}
+
+.affix {
+  width: 91%;
+  background-color: white;
+  top: 51px;
+}
+
+.nav-day-header {
+  margin: 10%;
 }
