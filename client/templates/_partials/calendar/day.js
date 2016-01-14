@@ -4,8 +4,11 @@ Template.calendarDay.helpers({
   },
   isDateInTrip : function (fullDate) {
     //check that start date is selected, end date not selected and that the current hovered date is greater that the date
+    
+    lastDay = Session.get("endDate") ? Session.get("endDate") :  Session.get("hoverDay")
+
     return Session.get("startDate")
-      && this.fullDate < Session.get("hoverDay")
+      && this.fullDate <= lastDay
       && this.fullDate > Session.get("startDate");
   }
 });

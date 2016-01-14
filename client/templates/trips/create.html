@@ -9,7 +9,9 @@
     {{/each}} 
     <div class="col-sm-12">
       <div class="add-month">SHOW MORE DATES</div>  
-    </div>   
-    <button class="btn btn-success save-trip">Save</button>
+    </div>
+    {{#if isTripValid}}
+      <button class="btn btn-success save-trip">Save</button>
+    {{/if}}
   </div>
 </template> 

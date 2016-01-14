@@ -9,6 +9,10 @@ Template.tripsCreate.onRendered(function () {
 Template.tripsCreate.helpers({
   months : function () {
     return Session.get("months");
+  },
+  isTripValid : function () {
+    return Session.get("startDate")
+      && Session.get("endDate");
   }
 });
 
@@ -20,7 +24,7 @@ Template.tripsCreate.events({
   "click .save-trip" : function (event) {
     event.preventDefault();
 
-    saveTrip(Session.get('startDate'), function (err,res) {
+    saveTrip(Session.get('startDate'), Session.get("endDate"), function (err,res) {
       if (err) {
         console.error(err);
       } else {
@@ -30,7 +34,15 @@ Template.tripsCreate.events({
   },
   "click .select-day" : function (event) {
     event.preventDefault();
-    Session.set('startDate', this.fullDate);
+    if (!Session.get("startDate")){
+      Session.set("startDate", this.fullDate);
+    } else {
+      // check that return date is correct
+      if (this.fullDate < Session.get("startDate")) { return; }
+      Session.set("endDate", this.fullDate);
+      console.log("ready to submit");
+    }
+
   },
   // TODO scroll next month and scroll prev months are similar, DRY them with helper
   "click .scroll-next-month" : function () {
