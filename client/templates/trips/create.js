@@ -14,7 +14,6 @@ Template.tripsCreate.helpers({
 Template.tripsCreate.events({
   "click .save-trip" : function (event) {
     event.preventDefault();
-
     saveTrip(Session.get('startDate'), Session.get("endDate"), function (err,res) {
       if (err) {
         console.error(err);

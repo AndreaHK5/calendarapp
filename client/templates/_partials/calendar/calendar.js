@@ -2,7 +2,7 @@ Template.calendar.onRendered(function () {
   // form is cleared at render. Move this code outside this handler in case we prefer 
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set('months', getMonths());
-  Session.set('startDate', undefined);
+  Session.set("startDate", undefined);
   Session.set('hoverMonth', getTodayDate().unix());
 });
 
@@ -29,7 +29,9 @@ Template.calendar.events({
       if (this.fullDate < Session.get("startDate")) { return; }
       Session.set("endDate", this.fullDate);
     }
-
+  },
+  "click .same-return-day" : function (event) {
+    Session.set("endDate", Session.get("startDate"));
   },
   // TODO scroll next month and scroll prev months are similar, DRY them with helper
   "click .scroll-next-month" : function () {

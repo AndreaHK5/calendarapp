@@ -53,6 +53,10 @@ body {
   padding-top: 25px;
 }
 
+.day-box:hover {
+  cursor: pointer;
+}
+
 .day-box-unselected:hover, 
 .day-box-unselected-tripday {
   color: #DC3C00;
@@ -69,6 +73,7 @@ body {
 }
 
 .helper-text {
+  height: 18px;
   color: black;
   font-size: 12px;
   font-weight: 400;
@@ -77,10 +82,7 @@ body {
 .day-selected-icon {
   color: #007234;
   font-size: 20px;
-  margin-left: -20px;
-  left: 23px;
-  top: -7px;
-  position: relative;
+  margin-bottom: 10px
 }
 
 .weekday-nav {
@@ -99,6 +101,32 @@ body {
   color: white;
   text-align: center;
   line-height: 35px;  
+}
+
+.remove-start-date {
+  padding-right: 3px;
+  font-size: 15px;
+  color: #404242;
+}
+
+.selected-icon {
+  margin-top: 15px;
+}
+
+.remove-day-message {
+  padding-top:3px;
+}
+
+.calendar-number {
+  height: 50px;
+}
+
+.same-return-day{
+  text-decoration: underline;
+}
+
+.same-return-day:hover{
+  font-weight: 500;
 }
 
 /*calendar navbar*/

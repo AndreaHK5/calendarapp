@@ -1,16 +1,55 @@
 <template name="calendarDay"> 
-      {{#if dayNumber}}
-      <div class="col-sm-1 select-day">
-        <div class="day-box 
-            {{#if isSelectedStartDate}} day-box-selected{{else}}day-box-unselected{{/if}} 
-            {{#if isDateInTrip}} day-box-unselected-tripday{{/if}}">
+  {{#if dayNumber}}
+  <div class="col-sm-1  
+      {{#if isStartDateAndHovered}}selected-and-hover-day{{else}}select-day{{/if}}">
+    <div class="row day-box 
+        {{#if isSelectedStartDate}}day-box-selected{{else}}day-box-unselected{{/if}} 
+        {{#if isDateInTrip}}day-box-unselected-tripday{{/if}}">
+        <div class="col-sm-8 col-sm-offset-2 no-hor-pad">
           {{#if isSelectedStartDate}}
-            <div class="helper-text">Start Date</div>
-          {{/if}}
-          {{dayNumber}}{{#if isSelectedStartDate}}<i class="fa fa-check day-selected-icon"></i>{{/if}}
+            {{#if isHoveredDate}} 
+                <div class="helper-text">
+                  {{#if hoverResetStartDate}} 
+                    <span class="remove-day-message">reset?</span>
+                  {{/if}}
+                </div>
+            {{else}}
+              <div class="helper-text">Start Date</div>
+            {{/if}}
+          {{/if}}          
         </div>
-      </div>
-      {{else}}
-        <div class="col-sm-1"></div>
-      {{/if}}
+        <div class="col-sm-2 no-hor-pad">
+          {{#if isSelectedStartDate}}
+            {{#if isHoveredDate}}
+                <i class="fa fa-times pull-right remove-start-date"></i>
+              {{/if}}
+          {{/if}} 
+        </div>
+        <div class="col-sm-8 col-md-offset-2 no-hor-pad">
+          <div class="calendar-number">
+            {{dayNumber}}
+          </div>          
+        </div>
+        <div class="col-sm-2 no-hor-pad selected-icon">
+          {{#if isSelectedStartDate}}
+            {{#if isStartDateAndHovered}}{{else}}
+              <i class="fa fa-check day-selected-icon pull-right"></i>
+            {{/if}}
+          {{/if}} 
+        </div>
+        <div class="col-sm-12 no-hor-pad">
+          <div class="helper-text same-return-day">
+            {{#if isSelectedStartDate}}
+              {{#if isHoveredDate}}
+                Same Return day?
+              {{/if}}            
+            {{/if}}            
+          </div>
+        </div>
+    </div>
+  </div>
+  {{else}}
+    <!-- if no day is provided -->
+    <div class="col-sm-1"></div>
+  {{/if}}
 </template>
