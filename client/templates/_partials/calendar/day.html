@@ -3,7 +3,11 @@
   <div class="col-sm-1  
       {{#if isStartDateAndHovered}}selected-and-hover-day{{else}}select-day{{/if}}">
     <div class="row day-box 
-        {{#if isSelectedStartDate}}day-box-selected{{else}}day-box-unselected{{/if}} 
+        {{#if isSelectedStartDate}}
+          day-box-selected
+        {{else}}
+          {{#if isBeforeStartSate}}{{else}}day-box-unselected{{/if}}
+        {{/if}} 
         {{#if isDateInTrip}}day-box-unselected-tripday{{/if}}">
         <div class="col-sm-8 col-sm-offset-2 no-hor-pad">
           {{#if isSelectedStartDate}}

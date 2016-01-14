@@ -19,18 +19,23 @@ Template.calendarDay.helpers({
   },
   hoverResetStartDate : function () {
     return Session.get("hoverResetStartDate");
+  },
+  isBeforeStartSate : function () {
+    if (!Session.get("startDate")){
+      return false;
+    } else {
+      return this.fullDate < Session.get("startDate");
+    }
   }
 });
 
 Template.calendarDay.events({
   "mouseenter .select-day" : function (event) {
     // style dates after start date is selected
-    if (! Session.get("startDate")) { return ; }
     Session.set("hoverDay", this.fullDate);
   },
   "mouseleave .selected-and-hover-day" : function (event) {
     // style dates after start date is selected
-    if (! Session.get("startDate")) { return ; }
     Session.set("hoverDay", false);
   },
   "click .remove-start-date" : function (event) {
