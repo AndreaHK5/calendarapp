@@ -91,6 +91,15 @@ body {
   margin: 10%;
 }
 
+.add-month {
+  height: 35px;
+  margin: 35px 5px;
+  background-color: #DC3C00;
+  color: white;
+  text-align: center;
+  line-height: 35px;  
+}
+
 /*calendar navbar*/
 
 .scroll-next-month {

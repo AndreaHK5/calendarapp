@@ -8,23 +8,14 @@ Template.tripsCreate.onRendered(function () {
 
 Template.tripsCreate.helpers({
   months : function () {
-    return Session.get("months");;
+    return Session.get("months");
   }
 });
 
 Template.tripsCreate.events({
   "click .add-month" : function (event) {
     event.preventDefault();
-    // TODO improve this method
-    var months = Session.get("months");
-    var last = 
-      _.max(months, 
-        function (month) { return month.date }
-      );
-    var newDate = moment.unix(last.date).add(1, 'month').unix();
-    months.push({date : newDate});
-    Session.set("months", months);
-    updateNavigationArrows();
+    addMonth();
   },
   "click .save-trip" : function (event) {
     event.preventDefault();
@@ -46,13 +37,15 @@ Template.tripsCreate.events({
     if (!Session.get("hoverMonth")) { return ; } 
     var monthAfter = moment.unix(Session.get("hoverMonth")).add(1, 'month').unix();
     var myDiv = $('#' + monthAfter);
-    if (!myDiv.length) { return ;}
-    var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
-    // TODO green sock here
-    window.scrollTo(0, topY);
-    Session.set("hoverMonth", monthAfter);
-    updateNavigationArrows();
-
+    if (!myDiv.length) { 
+      addMonth();
+    } else {
+      var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
+      // TODO green sock here
+      window.scrollTo(0, topY);
+      Session.set("hoverMonth", monthAfter);
+      updateNavigationArrows();      
+    }
   },
     "click .scroll-prev-month" : function () {
     if (!Session.get("hoverMonth")) { return ; } 
@@ -71,6 +64,31 @@ Template.tripsCreate.events({
     updateNavigationArrows();
   }
 });
+
+// helpers 
+// TODO how to make helpers not in global? IFFE an module load at top?
+
+function addMonth() {
+  var months = Session.get("months");
+  var last = 
+    _.max(months, 
+      function (month) { return month.date }
+    );
+  var newDate = moment.unix(last.date).add(1, 'month').unix();
+  months.push({date : newDate});
+  Session.set("months", months);
+  updateNavigationArrows();
+  // scroll to newly created month...
+  // TODO this is a terrible workaround, need a promise on the div creation (on rendered?)
+  setTimeout(function(){
+    var myDiv = $('#' + newDate);
+    var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
+    // TODO green sock here
+    window.scrollTo(0, topY);
+    Session.set("hoverMonth", newDate);
+    updateNavigationArrows();    
+  },500)
+}
 
 
 var updateNavigationArrows = function () {
@@ -95,8 +113,6 @@ Template.tripsCreate.rendered = function () {
   $('body').scrollspy({ target: '#myScrollspy' });
 };
 
-
-// helper
 function getMonths() {
   var now = moment();
   var result = [];
