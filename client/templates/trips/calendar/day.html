@@ -9,25 +9,27 @@
           {{#if isBeforeStartSate}}{{else}}day-box-unselected{{/if}}
         {{/if}} 
         {{#if isDateInTrip}}day-box-unselected-tripday{{/if}}">
-        <div class="col-sm-8 col-sm-offset-2 no-hor-pad">
-          {{#if isSelectedStartDate}}
-            {{#if isHoveredDate}} 
-                <div class="helper-text">
-                  {{#if hoverResetStartDate}} 
-                    <span class="remove-day-message">reset?</span>
-                  {{/if}}
-                </div>
-            {{else}}
-              <div class="helper-text">Start Date</div>
-            {{/if}}
-          {{/if}}          
-        </div>
-        <div class="col-sm-2 no-hor-pad">
-          {{#if isSelectedStartDate}}
-            {{#if isHoveredDate}}
-                <i class="fa fa-times pull-right remove-start-date"></i>
+        <div class="remove-start-date">
+          <div class="col-sm-8 col-sm-offset-2 no-hor-pad">
+            {{#if isSelectedStartDate}}
+              {{#if isHoveredDate}} 
+                  <div class="helper-text">
+                    {{#if hoverResetStartDate}} 
+                      <span class="remove-day-message">reset?</span>
+                    {{/if}}
+                  </div>
+              {{else}}
+                <div class="helper-text">Start Date</div>
               {{/if}}
-          {{/if}} 
+            {{/if}}          
+          </div>
+          <div class="col-sm-2 no-hor-pad">
+            {{#if isSelectedStartDate}}
+              {{#if isHoveredDate}}
+                  <i class="fa fa-times pull-right"></i>
+                {{/if}}
+            {{/if}} 
+          </div>
         </div>
         <div class="col-sm-8 col-md-offset-2 no-hor-pad">
           <div class="calendar-number">
