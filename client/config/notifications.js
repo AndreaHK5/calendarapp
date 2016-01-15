@@ -1,7 +1,7 @@
 Meteor.startup(function () {
 
   sAlert.config({
-    effect: '',
+    effect: 'stackslide',
     position: 'bottom',
     timeout: 3000,
     html: false,

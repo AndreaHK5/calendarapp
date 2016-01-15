@@ -4,9 +4,13 @@
 }
 
 .s-alert-info {
-    background-color: #f64b0a;
+    background-color: #F27749;
 }
 
 .s-alert-warning {
   background-color: #672179;
+}
+
+.s-alert-error {
+  background-color: #D41400;
 }

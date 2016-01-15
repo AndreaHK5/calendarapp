@@ -23,10 +23,14 @@ Template.calendar.events({
     event.preventDefault();
     if (!Session.get("startDate")){
       Session.set("startDate", this.fullDate);
-      sAlert.info("Leaving on " + moment.unix(this.fullDate).format("dddd MMM DD") + " it is. Let's pick the return now.");
+      sAlert.info(
+        "Leaving on " + moment.unix(this.fullDate).format("dddd MMM DD") + " it is. Let's pick the return now.");
     } else {
       // check that return date is correct
-      if (this.fullDate < Session.get("startDate")) { return; }
+      if (this.fullDate < Session.get("startDate")) { 
+        sAlert.error("Return in the past? Dr Who is interested now!");
+        return;
+      }
       Session.set("endDate", this.fullDate);
       sAlert.info("Back on " + moment.unix(this.fullDate).format("dddd MMM DD") + " sounds cool.");
 
