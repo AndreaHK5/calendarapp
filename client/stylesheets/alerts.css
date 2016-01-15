@@ -1,0 +1,12 @@
+/*sAlert css*/
+.s-alert-info, .s-alert-success, .s-alert-warning, .s-alert-error {
+    font-size: 20px;  
+}
+
+.s-alert-info {
+    background-color: #f64b0a;
+}
+
+.s-alert-warning {
+  background-color: #672179;
+}

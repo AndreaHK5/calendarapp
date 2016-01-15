@@ -41,6 +41,7 @@ Template.calendarDay.events({
   "click .remove-start-date" : function (event) {
     Session.set("startDate", false);
     Session.set("hoverResetStartDate", false);
+    sAlert.warning("Let's leave on another day then.")
   },
   "mouseenter .remove-start-date" : function (event) {
     Session.set("hoverResetStartDate", true);

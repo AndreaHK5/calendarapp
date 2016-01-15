@@ -23,10 +23,13 @@ Template.calendar.events({
     event.preventDefault();
     if (!Session.get("startDate")){
       Session.set("startDate", this.fullDate);
+      sAlert.info("Leaving on " + moment.unix(this.fullDate).format("dddd MMM DD"));
     } else {
       // check that return date is correct
       if (this.fullDate < Session.get("startDate")) { return; }
       Session.set("endDate", this.fullDate);
+      sAlert.info("Back on " + moment.unix(this.fullDate).format("dddd MMM DD"));
+
     }
   },
   "click .same-return-day" : function (event) {
@@ -34,7 +37,6 @@ Template.calendar.events({
   },
   // TODO scroll next month and scroll prev months are similar, DRY them with helper
   "click .scroll-next-month" : function () {
-    console.log("scroll next")
     if (!Session.get("hoverMonth")) { return ; } 
     var monthAfter = moment.unix(Session.get("hoverMonth")).add(1, 'month').unix();
     var myDiv = $('#' + monthAfter);

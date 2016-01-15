@@ -1,4 +1,4 @@
-// DateTime helpers
+// UI helpers
 
 UI.registerHelper("getMonth", function (unixTime) {
   return moment.unix(unixTime).format('MMMM');
@@ -8,8 +8,8 @@ UI.registerHelper("getYear", function (unixTime) {
   return moment.unix(unixTime).year();
 });
 
-UI.registerHelper("getFormattedDate", function (unixTime) {
-  return moment.unix(unixTime).format("dddd MMM DD");
+UI.registerHelper("getFormattedDate", function (unixDate) {
+  return formateDateHelper(unixDate);
 });
 
 // TODO - consider do this in the html?
@@ -45,3 +45,7 @@ Template.registerHelper('equals',
       return (v1 === v2);
   }
 );
+
+var formateDateHelper = function (unixDate) {
+  return moment.unix(unixDate).format("dddd MMM DD");
+}
