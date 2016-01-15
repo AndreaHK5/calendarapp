@@ -5,6 +5,11 @@ Template.tripsCreate.onRendered(function (){
 
 Template.tripsCreate.helpers({
   datesMissing : function () {
-    return !Session.get("startDate") || !Session.get("endDate");
+    return datesMissing();
   }
 });
+
+
+function datesMissing() {
+  return !Session.get("startDate") || !Session.get("endDate");
+} 

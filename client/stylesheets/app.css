@@ -169,6 +169,10 @@ body {
   padding-top: 5px;
 }
 
+#animationPlaceholder {
+  height: 500px;
+}
+
 /* jumbotron */
 .confirm-jumbo{
   text-align: center;
