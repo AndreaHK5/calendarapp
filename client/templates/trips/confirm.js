@@ -1,6 +1,6 @@
 Template.confirmTrips.onRendered(function(){
   var myDiv = $("#animationPlaceholder").height($(window).height() - $(".confirm-jumbo").height());
-  TweenLite.to(myDiv,1, {height: 0});
+  TweenLite.to(myDiv,0.8, {height: 0});
 });
 
 Template.confirmTrips.helpers({
