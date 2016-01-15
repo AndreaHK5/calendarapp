@@ -93,10 +93,6 @@ function addMonth() {
 
 
 var updateNavigationArrows = function () {
-  // is there another month afterwards
-  var anotherMonthAfter = moment.unix(Session.get("hoverMonth")).add(1, 'month').unix();
-  var myDiv = $('#' + anotherMonthAfter);
-  (!myDiv.length) ? $(".scroll-next-month").addClass("scroll-arrow-inactive") : $(".scroll-next-month").removeClass("scroll-arrow-inactive");
   // is there anohter month before
   var anotherMonthBefore = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
   var myDiv = $('#' + anotherMonthBefore);
