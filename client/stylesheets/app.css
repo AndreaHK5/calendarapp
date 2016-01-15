@@ -150,6 +150,25 @@ body {
   opacity: 90%;
 }
 
+.confirm-button {
+  width: 120px;
+  height: 36px;
+  border: 1px solid #DC3C00;
+  color: #DC3C00;
+  font-weight: 500;
+  padding-top: 7px;
+}
+
+.confirm-button:hover {
+  color: #ecf0f1;
+  background-color: #DC3C00; 
+}
+
+.confirm-jumbo:hover .confirm-button {
+  border: 3px solid #DC3C00;
+  padding-top: 5px;
+}
+
 /* jumbotron */
 .confirm-jumbo{
   text-align: center;
