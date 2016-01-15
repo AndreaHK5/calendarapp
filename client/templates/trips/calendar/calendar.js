@@ -44,8 +44,7 @@ Template.calendar.events({
       addMonth();
     } else {
       var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
-      // TODO green sock here
-      window.scrollTo(0, topY);
+      scrollVertical(topY);
       Session.set("hoverMonth", monthAfter);
       updateNavigationArrows();      
     }
@@ -56,8 +55,8 @@ Template.calendar.events({
     var myDiv = $('#' + monthBefore);
     if (!myDiv.length) { return ;}
     var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height();
-    // TODO green sock here
-    window.scrollTo(0, topY);
+    scrollVertical(topY);
+    // window.scrollTo(0, topY);
     Session.set("hoverMonth", monthBefore);
 
     updateNavigationArrows();
@@ -70,6 +69,10 @@ Template.calendar.events({
 
 // helpers 
 // TODO how to make helpers not in global? IFFE an module load at top?
+
+function scrollVertical(topY) {
+  TweenMax.to(window,1, {scrollTo:{y:topY}, ease:Power4.easeOut});
+} 
 
 function addMonth() {
   var months = Session.get("months");
@@ -86,11 +89,10 @@ function addMonth() {
   setTimeout(function(){
     var myDiv = $('#' + newDate);
     var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
-    // TODO green sock here
-    window.scrollTo(0, topY);
+    scrollVertical(topY);
     Session.set("hoverMonth", newDate);
     updateNavigationArrows();    
-  },500)
+  },100)
 }
 
 
