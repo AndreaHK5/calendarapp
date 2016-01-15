@@ -6,12 +6,6 @@ Template.tripsCreate.onRendered(function (){
 Template.tripsCreate.helpers({
   datesMissing : function () {
     return !Session.get("startDate") || !Session.get("endDate");
-  },
-  getStartDate : function () {
-    return Session.get("startDate");
-  },
-  getEndDate : function () {
-    return Session.get("endDate");
   }
 });
 

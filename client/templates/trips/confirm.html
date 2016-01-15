@@ -1,0 +1,12 @@
+<template name="confirmTrips">
+  <div class="jumbotron confirm-jumbo">
+    <h2>Dates</h2>
+    <p>{{getFormattedDate getStartDate}} <i class="fa fa-long-arrow-right"></i> {{getFormattedDate getEndDate}}</p>
+    <div class="col-sm-1 col-sm-offset-5">
+      <button class="btn btn-success reset-trip">Start Over</button>       
+    </div>
+    <div class="col-sm-1">
+      <a class="btn btn-success save-trip">Save</a> 
+    </div>
+  </div>
+</template>

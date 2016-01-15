@@ -1,9 +1,11 @@
 <template name="tripsIndex">
+  <div class="container-fluid">
   <h1>Trips</h1>
   {{#each trips}}
     <div class="col-md-12">
-      start day {{getFormattedDate startDate}}
-      end day {{getFormattedDate endDate}}
+      <p>{{getFormattedDate startDate}} <i class="fa fa-long-arrow-right"></i> {{getFormattedDate endDate}}</p>
     </div>
-  {{/each}}
+  {{/each}}    
+  </div>
+
 </template>

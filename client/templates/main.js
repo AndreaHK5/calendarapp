@@ -9,7 +9,7 @@ UI.registerHelper("getYear", function (unixTime) {
 });
 
 UI.registerHelper("getFormattedDate", function (unixTime) {
-  return moment.unix(unixTime).format("dddd MMM DD YYYY");
+  return moment.unix(unixTime).format("dddd MMM DD");
 });
 
 // TODO - consider do this in the html?
