@@ -8,7 +8,7 @@ Meteor.startup(function () {
     onRouteClose: true,
     stack : {
       spacing: 4,
-      limit: 3
+      limit: 2
     },
     offset: 0
   });

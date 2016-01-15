@@ -33,11 +33,11 @@ Template.calendar.events({
       }
       Session.set("endDate", this.fullDate);
       sAlert.info("Back on " + moment.unix(this.fullDate).format("dddd MMM DD") + " sounds cool.");
-
     }
   },
   "click .same-return-day" : function (event) {
     Session.set("endDate", Session.get("startDate"));
+    sAlert.info("One day gig on " + moment.unix(this.fullDate).format("dddd MMM DD") + " will be.");
   },
   // TODO scroll next month and scroll prev months are similar, DRY them with helper
   "click .scroll-next-month" : function () {
