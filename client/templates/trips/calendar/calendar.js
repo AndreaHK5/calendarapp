@@ -28,7 +28,7 @@ Template.calendar.events({
     } else {
       // check that return date is correct
       if (this.fullDate < Session.get("startDate")) { 
-        sAlert.error("Return in the past? Dr Who is interested now!");
+        sAlert.error("Return before going? Dr Who is interested now!");
         return;
       }
       Session.set("endDate", this.fullDate);
