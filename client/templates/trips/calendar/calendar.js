@@ -3,7 +3,7 @@ Template.calendar.onRendered(function () {
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set('months', getMonths());
   Session.set('hoverMonth', getTodayDate().unix());
-  TweenMax.set(, {opacity:0.2});
+  //TweenMax.set(, {opacity:0.2});
 });
 
 Template.calendar.helpers({
