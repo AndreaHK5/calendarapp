@@ -1,0 +1,14 @@
+.meteor/local
+node_modules/
+test/coverage/
+coverage/
+#semantic 
+client/semantic/site/
+client/semantic/definitions
+client/semantic/themes
+theme.config
+semantic.json
+semantic.less
+
+
+tasks/**/oauth.js
