@@ -1,21 +1,23 @@
-<template name="nav">     
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{{pathFor 'tripsIndex'}}">Calendar app</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="{{#if inTrips}}active{{/if}}"><a href="{{pathFor 'tripsIndex'}}">Trips</a></li>
-          <li class="{{#if inAddTrip}}active{{/if}}"><a href="{{pathFor 'tripsCreate'}}">Add</a></li>
-        </ul>
+<template name="nav">
+    <div class="computer tablet only row">
+      <div class="ui fixed menu inverted navbar">
+        <a class="brand item" href="{{pathFor 'tripsIndex'}}"> Calendar app</a>
+        <a class="item {{#if inTrips}}active{{/if}}"   href="{{pathFor 'tripsIndex'}}">Trips</a>
+        <a class="item {{#if inAddTrip}}active{{/if}}" href="{{pathFor 'tripsCreate'}}">Add</a>
       </div>
     </div>
-  </nav>
+    <div class="mobile only row">
+      <div class="ui fixed menu inverted navbar">
+        <a class="brand item" href="{{pathFor 'tripsIndex'}}"> Calendar app</a>
+        <div class="right menu open">
+          <a class="menu item">
+            <i class="sidebar icon"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ui vertical menu navbar" style="display: none;">
+        <a class="item {{#if inTrips}}active{{/if}}"   href="{{pathFor 'tripsIndex'}}">Trips</a>
+        <a class="item {{#if inAddTrip}}active{{/if}}" href="{{pathFor 'tripsCreate'}}">Add</a> 
+      </div>
+    </div>
 </template>

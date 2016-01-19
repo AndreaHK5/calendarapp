@@ -4,7 +4,8 @@ test/coverage/
 coverage/
 tasks/**/oauth.js
 
-#semantic 
+#semantic
+# refer to https://github.com/Semantic-Org/Semantic-UI-Meteor for exluded files
 client/semantic/site/
 client/semantic/definitions
 client/semantic/themes
