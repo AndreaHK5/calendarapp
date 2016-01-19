@@ -22,7 +22,7 @@ Template.confirmTrips.events({
     setTimeout(function() {
       Session.set("startDate", false);
       Session.set("endDate", false);      
-    }, time);
+    }, time - 200);
     sAlert.warning("Let's pick new dates!");
   },
   "click .save-trip" : function (event) {
