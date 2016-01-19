@@ -2,6 +2,8 @@
 node_modules/
 test/coverage/
 coverage/
+tasks/**/oauth.js
+
 #semantic 
 client/semantic/site/
 client/semantic/definitions
@@ -9,6 +11,6 @@ client/semantic/themes
 theme.config
 semantic.json
 semantic.less
+theme.import.less
 
 
-tasks/**/oauth.js
