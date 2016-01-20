@@ -5,13 +5,13 @@
   {{else}}
     <h1 id="banner">Select Start Date</h1>
   {{/if}}
-  <div id="calendar-container" class="row"  >
+  <div id="calendar-container" >
     {{#each months}}
-      <div class="col-sm-12 hovering" id="{{date}}">
+      <div class="hovering" id="{{date}}">
         {{> calendarMonth date=date}}
       </div>
     {{/each}} 
-    <div class="col-sm-12">
+    <div class="row">
       <div class="add-month">SHOW MORE DATES</div>  
     </div>
   </div>

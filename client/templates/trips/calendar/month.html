@@ -1,12 +1,10 @@
 <template name="calendarMonth">
-  <div class="col-sm-12">
-    <h3 class="month-header">
-      {{getMonth date}} {{getYear date}}
-    </h3> 
-  </div>
-  <div class="row seven-cols">
+  <h3 class="month-header">
+    {{getMonth date}} {{getYear date}}
+  </h3> 
+  <div class="ui seven column grid">
     {{#each getDaysInMonth date}}
-      {{> calendarDay}}
+        {{> calendarDay}}        
     {{/each}}
   </div>
 </template>
