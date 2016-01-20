@@ -53,14 +53,19 @@ body {
 .selected-and-hover-day .day-box-top .message {
   padding-top: 2px;
   position: absolute;
-  right: 2em;
+  right: 2.5em;
   display: inline-block;
 }
+
+.selected-and-hover-day .day-box-top .message:hover {
+  font-weight: 700;  
+}
+
 
 .day-box-top .remove-day-icon {
   width: 20px;
   position: absolute;
-  right: 0.25em;
+  right: 0.5em;
 }
 
 .day-box-mid {
