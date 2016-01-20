@@ -5,9 +5,9 @@
   {{else}}
     <h1 id="banner">Select Start Date</h1>
   {{/if}}
-  <div id="calendar-container" >
+  <div id="calendar-container" class="ui grid">
     {{#each months}}
-      <div class="hovering" id="{{date}}">
+      <div class="sixteen wide column hovering" id="{{date}}">
         {{> calendarMonth date=date}}
       </div>
     {{/each}} 
