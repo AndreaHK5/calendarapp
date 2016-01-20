@@ -2,12 +2,6 @@ body {
   padding-top: 50px;
 }
 
-/* general helpers*/
-.no-hor-pad {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 /*calendar view*/
 
 .month-header {
@@ -19,10 +13,12 @@ body {
   height: 98px;
   border: 1px solid #D6D5D4;
   margin: 5%;
-  font-size: 40px;
-  font-weight: 100;
-  text-align: center;
-  padding-top: 25px;
+}
+
+.day-box-selected {
+  color: #DC3C00;
+  border-color: #DC3C00;
+  border-width: 3px;
 }
 
 .day-box:hover {
@@ -34,14 +30,44 @@ body {
   color: #DC3C00;
   border-color: #DC3C00;
   border-width: 3px;
-  padding-top: 23px;
 }
 
-.day-box-selected {
-  color: #DC3C00;
-  border-color: #DC3C00;
-  border-width: 3px;
-  padding-top: 6px; 
+.day-box-top {
+  margin: 2px 2px 0 2px;
+  height: 30px;
+  line-height: 10px;
+}
+
+.day-box-unselected-tripday .day-box-top,
+.day-box-selected > .day-box-top,
+.day-box-top-hovered {
+  margin: 0px 0px;
+}
+
+.day-box-top .message {
+  padding-top: 4px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.selected-and-hover-day .day-box-top .message {
+  padding-top: 2px;
+  position: absolute;
+  right: 2em;
+  display: inline-block;
+}
+
+.day-box-top .remove-day-icon {
+  width: 20px;
+  position: absolute;
+  right: 0.25em;
+}
+
+.day-box-mid {
+  height: 32px;
+  font-size: 30px;
+  font-weight: 100;
+  text-align: center;
 }
 
 .helper-text {
@@ -69,27 +95,21 @@ body {
 .remove-start-date {
   padding-right: 3px;
   font-size: 15px;
-  color: #404242;
 }
 
 .selected-icon {
   margin-top: 15px;
 }
 
-.remove-day-message {
-  padding-top:3px;
-}
-
-.calendar-number {
-  height: 50px;
-}
-
-.same-return-day{
+.same-return-day {
+  padding-top: 4px;
+  text-align: center;
+  font-size: 12px;
   text-decoration: underline;
 }
 
-.same-return-day:hover{
-  font-weight: 500;
+.same-return-day:hover {
+  font-weight: 700;
 }
 
 /*calendar navbar*/

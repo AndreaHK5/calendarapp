@@ -2,7 +2,7 @@
   <h3 class="month-header">
     {{getMonth date}} {{getYear date}}
   </h3> 
-  <div class="ui seven column grid">
+  <div class="ui seven column grid day-container">
     {{#each getDaysInMonth date}}
         {{> calendarDay}}        
     {{/each}}

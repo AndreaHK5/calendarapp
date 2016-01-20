@@ -1,8 +1,6 @@
 <template name="tripsCreate">
   {{#if datesMissing}}
-    <div class="container-fluid">
       {{> calendar}}
-    </div>
   {{else}}
     {{> confirmTrips}}
   {{/if}}

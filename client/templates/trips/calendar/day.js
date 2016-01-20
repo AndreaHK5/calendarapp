@@ -1,3 +1,17 @@
+Template.calendarDay.onRendered(function(){
+  $(".day-box").hover(
+    function(){
+      console.log(this);      
+      $(this).find(".day-box-top").addClass("day-box-top-hovered");
+    },
+    function(){
+      $(this).find(".day-box-top").removeClass("day-box-top-hovered");
+    }
+  )
+
+});
+
+
 Template.calendarDay.helpers({
   isSelectedStartDate : function () {
     return Session.get("startDate") == this.fullDate;
