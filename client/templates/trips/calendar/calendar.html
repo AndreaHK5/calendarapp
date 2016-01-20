@@ -1,11 +1,11 @@
 <template name="calendar">
+  {{> tripsCreateNav}}
   {{#if startDateSelected}} 
     <h1 id="banner">Select End Date</h1>
   {{else}}
     <h1 id="banner">Select Start Date</h1>
   {{/if}}
-  {{> tripsCreateNav}}
-  <div class="row"  >
+  <div id="calendar-container" class="row"  >
     {{#each months}}
       <div class="col-sm-12 hovering" id="{{date}}">
         {{> calendarMonth date=date}}

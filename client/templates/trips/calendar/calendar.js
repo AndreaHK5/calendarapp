@@ -48,7 +48,7 @@ Template.calendar.events({
     if (!myDiv.length) { 
       addMonth();
     } else {
-      var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
+      var topY = myDiv.offset().top - $("#site-navbar").height() - $("#weekday-navbar").height();
       scrollVertical(topY);
       Session.set("hoverMonth", monthAfter);
       updateNavigationArrows();      
@@ -59,7 +59,7 @@ Template.calendar.events({
     var monthBefore = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
     var myDiv = $('#' + monthBefore);
     if (!myDiv.length) { return ;}
-    var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height();
+    var topY = myDiv.offset().top - $("#site-navbar").height() - $("#weekday-navbar").height();
     scrollVertical(topY);
     // window.scrollTo(0, topY);
     Session.set("hoverMonth", monthBefore);
@@ -93,7 +93,7 @@ function addMonth() {
   // TODO this is a terrible workaround, need a promise on the div creation (on rendered?)
   setTimeout(function(){
     var myDiv = $('#' + newDate);
-    var topY = myDiv.offset().top - $(".navbar-fixed-top").height() - $("#weekday-navbar").height() ;
+    var topY = myDiv.offset().top - $("#site-navbar").height() - $("#weekday-navbar").height() ;
     scrollVertical(topY);
     Session.set("hoverMonth", newDate);
     updateNavigationArrows();    
@@ -106,18 +106,7 @@ var updateNavigationArrows = function () {
   var anotherMonthBefore = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
   var myDiv = $('#' + anotherMonthBefore);
   (!myDiv.length) ? $(".scroll-prev-month").addClass("scroll-arrow-inactive") : $(".scroll-prev-month").removeClass("scroll-arrow-inactive");
-} 
-
-Template.calendar.rendered = function () {
-  //Affix and Scrollspy initialisation for bootstrap
-  $('#weekday-navbar').affix({
-      offset: {
-        // TODO find a cleaner way to get the top offset
-          top: $(".navbar-fixed-top").outerHeight() + $("#banner").height() - parseInt($("#banner").css('marginTop').replace("px", ""))
-      }
-  }); 
-  $('body').scrollspy({ target: '#myScrollspy' });
-};
+}
 
 function getMonths() {
   var now = getTodayDate();
