@@ -6,7 +6,7 @@ tasks/**/oauth.js
 
 #semantic
 # refer to https://github.com/Semantic-Org/Semantic-UI-Meteor for exluded files
-client/semantic/site/
+client/semantic/site/**/*.variables.import.less
 client/semantic/definitions
 client/semantic/themes
 theme.config
