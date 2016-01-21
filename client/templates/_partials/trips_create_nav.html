@@ -1,19 +1,23 @@
 <template name="tripsCreateNav">
   <div id="weekday-navbar" class="ui fixed fluid seven item tabular menu">
-      <div class="item helper-text">Sun</div>
-      <div class="item helper-text">Mon</div>
-      <div class="item helper-text">Tue</div>
-      <div class="item helper-text">Wed</div>
-      <div class="item helper-text">Thu</div>
-      <div class="item helper-text">Fri</div>
-      <div class="item helper-text">
-        Sat
-        <span class="scroll-next-month scroll-arrow">
-          <i class="fa fa-chevron-down fa-1d5x"></i>
-        </span>
-        <span class="scroll-prev-month scroll-arrow">
-          <i class="fa fa-chevron-up fa-1d5x"></i>
-        </span>
+      <div class="item">Sun</div>
+      <div class="item">Mon</div>
+      <div class="item">Tue</div>
+      <div class="item">Wed</div>
+      <div class="item">Thu</div>
+      <div class="item">Fri</div>
+      <div class="item  with-navigation">
+        <div class="day">
+          Sat
+        </div>
+        <div class="months-arrows">
+          <span class="scroll-prev-month scroll-arrow">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+          <span class="scroll-next-month scroll-arrow">
+            <i class="fa fa-chevron-down fa-2x"></i>
+          </span>          
+        </div>
     </div>    
 </div>
 </template>

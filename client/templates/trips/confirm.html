@@ -1,15 +1,16 @@
 <template name="confirmTrips">
   <div id="animationPlaceholder" style="width:100%; clear:both;"></div>
-  <div class="jumbotron confirm-jumbo">
-    <div class="container-fluid">
-      <h2>Dates</h2>
-      <p>{{getFormattedDate getStartDate}} <i class="long arrow right icon"></i> {{getFormattedDate getEndDate}}</p>
-      <div class="col-sm-2 col-sm-offset-4">
-        <div class="confirm-button reset-trip pull-right">CHANGE</div>       
-      </div>
-      <div class="col-sm-2">
-        <div class="confirm-button save-trip pull-right">SAVE</div>
-      </div>
+  <div class="confirm-jumbo">
+    <div class="ui divider"></div>
+    <div class="sixteen wide column">
+
+        <h2>Dates</h2>
+        <p>{{getFormattedDate getStartDate}} <i class="long arrow right icon"></i> {{getFormattedDate getEndDate}}</p>
     </div>
+    <div class="ui bottom attached">
+      <div class="confirm-button reset-trip">CHANGE</div>
+      <div class="confirm-button save-trip">SAVE</div>            
+    </div>
+    <div class="ui divider"></div>
   </div>
 </template>
