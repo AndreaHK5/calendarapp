@@ -4,6 +4,9 @@ Template.nav.helpers({
   },
   inAddTrip : function () {
     return Router.current().route.path() == "/create";
+  },
+  inEventsIndex : function () {
+    return Router.current().route.path() == "/events";
   }
 });
 
