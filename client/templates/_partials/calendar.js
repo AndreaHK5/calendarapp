@@ -20,26 +20,6 @@ Template.calendar.events({
     event.preventDefault();
     addMonth();
   },
-  "click .select-day" : function (event) {
-    event.preventDefault();
-    if (!Session.get("startDate")){
-      Session.set("startDate", this.fullDate);
-      sAlert.info(
-        "Leaving on " + moment.unix(this.fullDate).format("dddd MMM DD") + " it is. Let's pick the return now.");
-    } else {
-      // check that return date is correct
-      if (this.fullDate < Session.get("startDate")) { 
-        sAlert.error("Return before going? Dr Who is interested now!");
-        return;
-      }
-      Session.set("endDate", this.fullDate);
-      sAlert.info("Back on " + moment.unix(this.fullDate).format("dddd MMM DD") + " sounds cool.");
-    }
-  },
-  "click .same-return-day" : function (event) {
-    Session.set("endDate", Session.get("startDate"));
-    sAlert.info("One day gig on " + moment.unix(this.fullDate).format("dddd MMM DD") + " will be.");
-  },
   // TODO scroll next month and scroll prev months are similar, DRY them with helper
   "click .scroll-next-month" : function () {
     if (!Session.get("hoverMonth")) { return ; } 

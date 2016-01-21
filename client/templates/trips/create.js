@@ -9,7 +9,6 @@ Template.tripsCreate.helpers({
   }
 });
 
-
 function datesMissing() {
   return !Session.get("startDate") || !Session.get("endDate");
 } 

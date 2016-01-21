@@ -1,7 +1,6 @@
 Template.calendarDay.onRendered(function(){
   $(".day-box").hover(
-    function(){
-      console.log(this);      
+    function(){      
       $(this).find(".day-box-top").addClass("day-box-top-hovered");
     },
     function(){
@@ -62,5 +61,25 @@ Template.calendarDay.events({
   },
   "mouseleave .remove-start-date" : function (event) {
     Session.set("hoverResetStartDate", false);
-  }
+  },
+  "click .select-day" : function (event) {
+    event.preventDefault();
+    if (!Session.get("startDate")){
+      Session.set("startDate", this.fullDate);
+      sAlert.info(
+        "Leaving on " + moment.unix(this.fullDate).format("dddd MMM DD") + " it is. Let's pick the return now.");
+    } else {
+      // check that return date is correct
+      if (this.fullDate < Session.get("startDate")) { 
+        sAlert.error("Return before going? Dr Who is interested now!");
+        return;
+      }
+      Session.set("endDate", this.fullDate);
+      sAlert.info("Back on " + moment.unix(this.fullDate).format("dddd MMM DD") + " sounds cool.");
+    }
+  },
+  "click .same-return-day" : function (event) {
+    Session.set("endDate", Session.get("startDate"));
+    sAlert.info("One day gig on " + moment.unix(this.fullDate).format("dddd MMM DD") + " will be.");
+  },
 });

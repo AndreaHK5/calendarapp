@@ -143,6 +143,16 @@ body {
   background-color: white;
 }
 
+#weekday-navbar .tabular.menu {
+  height: 20px !important;
+}
+
+.tabular.menu .item {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  height: 20px !important;
+}
+
 /*confirm trip*/
 
 .confirm-button {

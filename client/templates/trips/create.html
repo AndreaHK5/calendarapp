@@ -1,6 +1,11 @@
 <template name="tripsCreate">
   {{#if datesMissing}}
-      {{> calendar}}
+    {{#if startDateSelected}} 
+      <h1 id="banner">Select End Date</h1>
+    {{else}}
+      <h1 id="banner">Select Start Date</h1>
+    {{/if}}
+    {{> calendar}}
   {{else}}
     {{> confirmTrips}}
   {{/if}}
