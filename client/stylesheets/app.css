@@ -74,6 +74,12 @@ body {
   text-align: center;
 }
 
+@media (max-width: 900px) {
+  .day-box-mid {
+    height: 22px;
+  }
+}
+
 .helper-text {
   height: 18px;
   color: black;
