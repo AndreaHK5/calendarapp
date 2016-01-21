@@ -52,7 +52,7 @@ body {
 }
 
 .selected-and-hover-day .day-box-top .message {
-  padding-top: 2px;
+  padding-top: 4px;
   text-align: center;
 }
 
@@ -140,12 +140,14 @@ body {
 /*confirm trip*/
 
 .confirm-button {
+  display: inline-block;
   width: 120px;
   height: 36px;
   border: 1px solid #DC3C00;
   color: #DC3C00;
   font-weight: 500;
   padding-top: 7px;
+  margin: 30px 8px 10px 8px;
 }
 
 .confirm-button:hover {
