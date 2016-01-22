@@ -1,6 +1,4 @@
 <template name="calendarDay">
- {{#if dayNumber}}
-  <div class="column">
     <div class="day-box
         {{#if isStartDateAndHovered}}
           selected-and-hover-day
@@ -47,11 +45,5 @@
           {{/if}}
         </div>
       </div>      
-    </div>
-  </div>
-  {{else}}
-    <!-- if no day is provided -->
-    <div class="column"></div>
-  {{/if}}    
- 
+    </div> 
 </template>

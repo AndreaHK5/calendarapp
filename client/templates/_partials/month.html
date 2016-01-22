@@ -4,8 +4,16 @@
   </h3> 
   <div class="ui seven column grid day-container">
     {{#each getDaysInMonth date}}
-    	<div class="one column grid">
-        	{{> DynamicTemplate template=getDayTemplate}}
+      	<div class="column">
+    		<div class="one column grid">
+	    		 {{#if dayNumber}}
+	        		{{> DynamicTemplate template=getDayTemplate}}	    		 	
+				 {{else}}
+				    <!-- if no day is provided -->
+				    <div></div>
+				{{/if}} 
+
+    		</div>
     	</div>
     {{/each}}
   </div>

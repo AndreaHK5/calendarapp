@@ -54,6 +54,30 @@ var eventsSeeds = [
       'picture' : "placholder.jpg"
     },
     'type' : "vacation"
+  },
+  {
+    'startDate' : moment([2016,1,29]).startOf("day").unix(),
+    'endDate'   : moment([2016,2,02]).startOf("day").unix(),
+    'visiting'  : {
+      'name' : "NA",
+      'location' : "London UK"
+    },
+    'title' : "Pub",
+    'description' : "Pub game night",
+    'engineersGoing' : [
+      {
+        'name' : "Phil King",
+        'email' : "phil@noemail.com",
+        'picture' : "placholder.jpg"
+      }
+    ],
+    'platform' : "London Pride",
+    'dam' : {
+      'name' : "Andre Cremese",
+      'email' : "andrea@noemail.com",
+      'picture' : "placholder.jpg"
+    },
+    'type' : "vacation"
   }
 ];
 
