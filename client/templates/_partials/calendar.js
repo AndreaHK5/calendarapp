@@ -34,7 +34,7 @@ Template.calendar.events({
       updateNavigationArrows();      
     }
   },
-    "click .scroll-prev-month" : function () {
+  "click .scroll-prev-month" : function () {
     if (!Session.get("hoverMonth")) { return ; } 
     var monthBefore = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
     var myDiv = $('#' + monthBefore);
