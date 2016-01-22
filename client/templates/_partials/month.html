@@ -4,9 +4,9 @@
   </h3> 
   <div class="ui seven column grid day-container">
     {{#each getDaysInMonth date}}
-    	{{> calendarDay}}
-        <!-- {{> yield "dayTemplate"}}         -->
-        <!-- {{> getDayTemplate}}         -->
+    	<div class="one column grid">
+        	{{> DynamicTemplate template=getDayTemplate}}
+    	</div>
     {{/each}}
   </div>
 </template>
