@@ -35,7 +35,7 @@ Template.confirmTrips.events({
         var start = moment.unix(res.startDate).format("dddd MMM DD");
         var end = moment.unix(res.endDate).format("dddd MMM DD");
         sAlert.success("Trip " +  start + " to " + end + " saved" , { onRouteClose: false } )
-        Router.go("tripsIndex");
+        FlowRouter.go("/");
       }
     });
   }

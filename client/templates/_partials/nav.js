@@ -1,12 +1,12 @@
 Template.nav.helpers({
   inTrips : function () {
-    return Router.current().route.path() == "/";
+    return FlowRouter.getRouteName() == "home";
   },
   inAddTrip : function () {
-    return Router.current().route.path() == "/create";
+    return FlowRouter.getRouteName() == "create";
   },
   inEventsIndex : function () {
-    return Router.current().route.path() == "/events";
+    return FlowRouter.getRouteName() == "events";
   }
 });
 
