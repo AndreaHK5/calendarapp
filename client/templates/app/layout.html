@@ -1,7 +1,7 @@
 <template name="layout">
   <div class="ui page grid">
     {{> nav}}
-    {{> Template.dynamic template=mainPane}}
+    {{>yield "mainPane"}}
     {{> sAlert}}
   </div>   
 </template>

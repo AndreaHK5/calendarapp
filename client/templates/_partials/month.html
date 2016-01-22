@@ -4,7 +4,7 @@
   </h3> 
   <div class="ui seven column grid day-container">
     {{#each getDaysInMonth date}}
-        {{> Template.dynamic template= whichDay}}        
+        {{> yield "dayCard"}}        
         <!-- {{> calendarDay}}         -->
     {{/each}}
   </div>
