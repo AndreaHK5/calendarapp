@@ -4,8 +4,9 @@
   </h3> 
   <div class="ui seven column grid day-container">
     {{#each getDaysInMonth date}}
-        {{> yield "dayCard"}}        
-        <!-- {{> calendarDay}}         -->
+    	{{> calendarDay}}
+        <!-- {{> yield "dayTemplate"}}         -->
+        <!-- {{> getDayTemplate}}         -->
     {{/each}}
   </div>
 </template>
