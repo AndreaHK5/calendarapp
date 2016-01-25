@@ -187,3 +187,43 @@ body {
   width: 100%;
 }
 
+/*events day style*/
+
+.event-day-top {
+  text-align: left;
+  height: 51px;
+  margin-top: 10px;
+  margin-left: 8px;
+}
+
+.day-box:hover .event-day-top {
+  margin-top: 8px;
+  margin-left: 6px
+}
+
+.event-day-bottom {
+  height: 30px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.day-box:hover .event-day-bottom {
+  margin-right: 8px;
+  margin-bottom: 6px;
+}
+
+.event-bubble {
+  display: inline-block;
+  height: 26px;
+  width: 26px;
+  border-radius: 13px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 23px;
+  vertical-align: middle;
+  color: black;
+}
+
+
+

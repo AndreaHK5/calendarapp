@@ -1,49 +1,47 @@
 <template name="calendarDay">
-    <div class="day-box
-        {{#if isStartDateAndHovered}}
-          selected-and-hover-day
-        {{else}}
-          select-day
-        {{/if}}
-
-        {{#if isSelectedStartDate}}
-          day-box-selected
-        {{else}}
-          {{#if isBeforeStartSate}}{{else}}day-box-unselected{{/if}}
-        {{/if}} 
-        {{#if isDateInTrip}}day-box-unselected-tripday{{/if}}">
-      <div class="column day-box-top remove-start-date">
-          <div class="message">
-            {{#if isSelectedStartDate}}
-              {{#if isHoveredDate}} 
-                {{#if hoverResetStartDate}} 
-                  <span >reset?</span>
-                {{/if}}
-              {{else}}
-                Start Date
-              {{/if}}
-            {{/if}} 
-          </div>
+  <div class="day-box
+      {{#if isStartDateAndHovered}}
+        selected-and-hover-day
+      {{else}}
+        select-day
+      {{/if}}
+      {{#if isSelectedStartDate}}
+        day-box-selected
+      {{else}}
+        {{#if isBeforeStartSate}}{{else}}day-box-unselected{{/if}}
+      {{/if}} 
+      {{#if isDateInTrip}}day-box-unselected-tripday{{/if}}">
+    <div class="column day-box-top remove-start-date">
+        <div class="message">
           {{#if isSelectedStartDate}}
-            {{#if isHoveredDate}}
-                <div class="remove-day-icon">
-                  <i class="remove icon"></i>
-                </div>
+            {{#if isHoveredDate}} 
+              {{#if hoverResetStartDate}} 
+                <span >reset?</span>
               {{/if}}
-          {{/if}}
-      </div>
-
-      <div class="column day-box-mid">
-        {{dayNumber}}
-      </div>
-      <div class="column">
-        <div class="same-return-day">
-          {{#if isSelectedStartDate}}
-            {{#if isHoveredDate}}
-              Same Return day?
+            {{else}}
+              Start Date
             {{/if}}
-          {{/if}}
+          {{/if}} 
         </div>
-      </div>      
-    </div> 
+        {{#if isSelectedStartDate}}
+          {{#if isHoveredDate}}
+              <div class="remove-day-icon">
+                <i class="remove icon"></i>
+              </div>
+            {{/if}}
+        {{/if}}
+    </div>
+    <div class="column day-box-mid">
+      {{dayNumber}}
+    </div>
+    <div class="column">
+      <div class="same-return-day">
+        {{#if isSelectedStartDate}}
+          {{#if isHoveredDate}}
+            Same Return day?
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>      
+  </div> 
 </template>

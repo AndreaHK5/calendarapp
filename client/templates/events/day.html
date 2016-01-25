@@ -1,8 +1,14 @@
 <template name="eventDay">
-	<div class="day-box">
-		{{dayNumber}}
-		{{#each dayEvents}}
-			{{eventType}} / {{count}}
-		{{/each}}
+	<div class="day-box day-box-unselected">
+		<div class="event-day-top day-box-mid">
+			{{dayNumber}}		
+		</div>
+		<div class="event-day-bottom">
+			{{#each dayEvents}}
+			<div class="event-bubble">
+				{{count}}				
+			</div>
+			{{/each}}		
+		</div>
 	</div>
 </template>
