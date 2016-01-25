@@ -1,12 +1,12 @@
 <template name="eventDay">
 	<div class="day-box day-box-unselected">
-		<div class="event-day-top day-box-mid">
+		<div class="event-day-top">
 			{{dayNumber}}		
 		</div>
 		<div class="event-day-bottom">
 			{{#each dayEvents}}
-			<div class="event-bubble">
-				{{count}}				
+			<div class="event-bubble" style="color: {{getEventTypeColor eventType}}; border-color: {{getEventTypeColor eventType}};">
+				{{count}} 				
 			</div>
 			{{/each}}		
 		</div>

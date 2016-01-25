@@ -191,25 +191,27 @@ body {
 
 .event-day-top {
   text-align: left;
-  height: 51px;
-  margin-top: 10px;
+  margin-top: 16px;
   margin-left: 8px;
+  height: 48px;
+  font-size: 45px;
+  font-weight: 100;
 }
 
 .day-box:hover .event-day-top {
-  margin-top: 8px;
+  margin-top: 14px;
   margin-left: 6px
 }
 
 .event-day-bottom {
   height: 30px;
-  margin-right: 10px;
+  margin-right: 8px;
   margin-bottom: 8px;
   text-align: right;
 }
 
 .day-box:hover .event-day-bottom {
-  margin-right: 8px;
+  margin-right: 6px;
   margin-bottom: 6px;
 }
 
@@ -218,12 +220,20 @@ body {
   height: 26px;
   width: 26px;
   border-radius: 13px;
-  border: 1px solid black;
+  border: 1px solid;
   text-align: center;
   line-height: 23px;
   vertical-align: middle;
-  color: black;
+  padding-right: 1px;
 }
 
+.event-bubble:last-of-type {
+  margin-right: 0px;
+}
+
+.day-box:hover .event-bubble {
+  border: 2px solid;
+  font-weight: 700;
+}
 
 

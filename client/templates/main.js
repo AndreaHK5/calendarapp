@@ -12,6 +12,25 @@ UI.registerHelper("getFormattedDate", function (unixDate) {
   return formateDateHelper(unixDate);
 });
 
+var eventTypeMap = {
+    "vacation" : "#00A600",
+    "engagement" : "#00AEEF"
+}
+
+var otherColors = [ "#8D2E92", "#FFBE00", "#FF0097", "#0071BC"];
+
+UI.registerHelper("getEventTypeColor", function (eventType) {
+
+  // safe method in case a new type is provided
+  eventType = eventType.toLowerCase(); 
+  if (!(eventType in eventTypeMap)) {
+    var color = otherColors.shift();
+    eventTypeMap[eventType] = color;
+    return color;
+  }
+  return eventTypeMap[eventType];
+});
+
 
 // universal helpers
 Template.registerHelper('equals',
@@ -28,6 +47,6 @@ var formateDateHelper = function (unixDate) {
 if (Meteor.isClient) {
   getTodayDate = function() {
     return moment().startOf('day');
-  }  
+  } 
 }
 
