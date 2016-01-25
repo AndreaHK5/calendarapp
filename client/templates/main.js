@@ -12,32 +12,6 @@ UI.registerHelper("getFormattedDate", function (unixDate) {
   return formateDateHelper(unixDate);
 });
 
-// TODO - consider do this in the html?
-// consider this as a helper - this is very specialised for a single html in month
-UI.registerHelper("getDaysInMonth", function (unixTime) {
-  var result = [];
-  var startDay;
-  var totalDays = moment.unix(unixTime).daysInMonth();
-  var lastDayOfMonth = moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), totalDays]);
-  if(moment().isBefore(lastDayOfMonth) && moment().month() == lastDayOfMonth.month()) {
-    startDay = moment().date();
-    for (var j = 0; j< moment().day(); j ++) {
-      result.push({}) 
-    }
-  } else {
-    startDay = 1;
-    var firstDayOfMonth = moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), 1])
-    for (var j = 0; j< firstDayOfMonth.day(); j ++) {
-      result.push({}) 
-    }
-  }
-
-  for (var i = startDay; i <= totalDays; i++) {
-    result.push({ dayNumber : i, fullDate : moment([moment.unix(unixTime).year(), moment.unix(unixTime).month(), i]).unix()});
-  }
-  return result;
-});
-
 
 // universal helpers
 Template.registerHelper('equals',
@@ -49,3 +23,11 @@ Template.registerHelper('equals',
 var formateDateHelper = function (unixDate) {
   return moment.unix(unixDate).format("dddd MMM DD");
 }
+
+// helpers for front end controllers
+if (Meteor.isClient) {
+  getTodayDate = function() {
+    return moment().startOf('day');
+  }  
+}
+

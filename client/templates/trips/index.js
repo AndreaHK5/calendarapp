@@ -1,5 +1,3 @@
-//Meteor.subscribe("all-trips") will go here
-
 Template.tripsIndex.onRendered(function () {
   Meteor.subscribe("trips");
 });

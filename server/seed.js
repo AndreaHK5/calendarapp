@@ -3,8 +3,8 @@ var lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
 
 var eventsSeeds = [
   {
-    "startDate" : moment([2016,2,1]).startOf("day").unix(),
-    'endDate'   : moment([2016,2,1]).startOf("day").unix(),
+    "startDate" : moment([2016,1,1]).startOf("day").unix(),
+    'endDate'   : moment([2016,1,1]).startOf("day").unix(),
     'visiting'  : {
       'name' : "John Doe",
       'location' : "Udine, Italy"
@@ -32,8 +32,8 @@ var eventsSeeds = [
     'type' : "engagement"
   },
   {
-    'startDate' : moment([2016,2,19]).startOf("day").unix(),
-    'endDate'   : moment([2016,2,22]).startOf("day").unix(),
+    'startDate' : moment([2016,1,19]).startOf("day").unix(),
+    'endDate'   : moment([2016,1,22]).startOf("day").unix(),
     'visiting'  : {
       'name' : "NA",
       'location' : "Mt Bachelor, OR"
@@ -56,8 +56,8 @@ var eventsSeeds = [
     'type' : "vacation"
   },
   {
-    'startDate' : moment([2016,1,29]).startOf("day").unix(),
-    'endDate'   : moment([2016,2,02]).startOf("day").unix(),
+    'startDate' : moment([2016,2,29]).startOf("day").unix(),
+    'endDate'   : moment([2016,3,02]).startOf("day").unix(),
     'visiting'  : {
       'name' : "NA",
       'location' : "London UK"

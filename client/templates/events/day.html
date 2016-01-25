@@ -1,5 +1,8 @@
 <template name="eventDay">
 	<div class="day-box">
-		some
+		{{dayNumber}}
+		{{#each dayEvents}}
+			{{eventType}} / {{count}}
+		{{/each}}
 	</div>
 </template>

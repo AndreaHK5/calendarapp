@@ -98,8 +98,3 @@ function getMonths() {
   };
   return result; 
 }
-
-
-function getTodayDate(){
-  return moment().startOf('day');
-}
