@@ -196,7 +196,7 @@ body {
   text-align: left;
   margin-top: 16px;
   margin-left: 8px;
-  height: 48px;
+  height: 32px;
   font-size: 45px;
   font-weight: 100;
 }
@@ -211,13 +211,16 @@ body {
   height: 30px;
   margin-right: 8px;
   margin-bottom: 8px;
-  text-align: right;
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
 }
 
-.day-box:hover .event-day-bottom,
-.day-box-selected .event-day-bottom {
-  margin-right: 6px;
-  margin-bottom: 6px;
+.calendar-event-bar {
+  position: absolute;
+  width: 100%;
+  margin-top: 50px;
+  height: 10px
 }
 
 .event-bubble {

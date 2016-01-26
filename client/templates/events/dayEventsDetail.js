@@ -1,5 +1,6 @@
 Template.dayEventsDetail.onRendered(function () {
 	showEventsContainer();
+	Session.set("eventOnCalendar", undefined );
 })
 
 Template.dayEventsDetail.helpers({
@@ -9,7 +10,46 @@ Template.dayEventsDetail.helpers({
 	}
 })
 
+Template.dayEventsDetail.events({
+	"mouseenter .select-event" : function () {
+		var targetEvent = this;
+		if (Session.get("eventOnCalendar")) {
+			// another event has been hovered, so no need to wait to make the animation appear
+			setEventOnCalendar(this);
+		} else {
+			// first event to be shown, on hover we wait to show
+			setTimeout(function() {
+				setEventOnCalendar(targetEvent);
+			}, 500);
+		}
+
+	},
+	"mouseleave .select-event" : function () {
+		resetEventOnCalendar();
+	},
+	"click .select-event" : function () {
+		setEventOnCalendar(this);
+	},
+	"click #calendar-container" : function () {
+		resetEventOnCalendar();
+	},
+}) 
+
 // local helpers and variables
+
+function setEventOnCalendar(event) {
+	var eventOnCalendar = {
+		startDate: event.startDate,
+		endDate: event.endDate,
+		type: event.type
+	}
+	Session.set("eventOnCalendar", eventOnCalendar );	
+}
+
+function resetEventOnCalendar() {
+	Session.set("eventOnCalendar", undefined );
+}
+
 var animationTime = 0.4;
 
 function resetSelectedDay() {

@@ -30,7 +30,6 @@ Template.eventsIndex.events({
 
 	},
 	"click .close-day-container" : function (event) {
-		console.log("click");
 		hideEventsContainer();
 	}
 })
@@ -40,6 +39,8 @@ var animationTime = 0.4;
 
 function resetSelectedDay() {
 	Session.set("dayForEventsDetail", undefined);
+	// in case this was ever set
+	Session.set("eventOnCalendar", undefined );
 }
 
 function showEventsContainer() {

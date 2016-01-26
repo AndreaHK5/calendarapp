@@ -1,10 +1,13 @@
 <template name="eventDay">
+	{{#if isInTheEventOnCalendar}}
+		<div class="calendar-event-bar" style="background-color: {{getEventTypeColor selectedEventType}}"></div>		
+	{{/if}}	
 	<div class="day-box day-box-unselected
 		{{#if isSelectedDay}}
 			day-box-selected
 		{{/if}}">
 		<div class="event-day-top">
-			{{dayNumber}}		
+			{{dayNumber}}
 		</div>
 		<div class="event-day-bottom">
 			{{#each dayEvents}}
