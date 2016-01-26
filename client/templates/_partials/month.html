@@ -4,15 +4,14 @@
   </h3> 
   <div class="ui seven column grid day-container">
     {{#each getDays}}
-      	<div class="column">
+      <div class="column">
     		<div class="one column grid">
-	    		 {{#if dayNumber}}
+	    		{{#if dayNumber}}
 	        		{{> DynamicTemplate template=getDayTemplate}}	    		 	
-				 {{else}}
+				  {{else}}
 				    <!-- if no day is provided -->
 				    <div></div>
-				{{/if}} 
-
+				  {{/if}}
     		</div>
     	</div>
     {{/each}}

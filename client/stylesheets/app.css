@@ -234,6 +234,13 @@ body {
 .day-box:hover .event-bubble {
   border: 2px solid;
   font-weight: 700;
+  line-height: 22px;
 }
 
+/*day events detail */
+
+.day-events {
+  width: 100%;
+  background-color: violet;
+}
 

@@ -47,6 +47,10 @@ var formateDateHelper = function (unixDate) {
 if (Meteor.isClient) {
   getTodayDate = function() {
     return moment().startOf('day');
+  }
+
+  findEvents = function (queryStartDate, queryEndDate) {
+    return Events.find({ $and :[{startDate : {$lte :  queryEndDate }},{endDate : {$gte : queryStartDate}}]});
   } 
 }
 

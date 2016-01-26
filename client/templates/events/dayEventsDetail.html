@@ -1,0 +1,30 @@
+<template name="dayEventsDetail" >
+	<div id="day-events-container">
+		<div class="close-day-container"><i class="remove icon"></i></div>
+		{{#each eventsOfTheDay}}
+			<div class="event-container">
+				<div>
+					{{title}} visiting {{visiting.location}} platform {{platform}} 
+				</div>
+				> see on calendar link here
+				<div>
+				engineers
+					{{#each engineersGoing}}
+						{{picture}}
+					{{/each}}
+				</div>
+				<div>
+					dam
+					{{dam.picture}}
+				</div>
+				<div>
+					{{description}}
+				</div>
+				<div>
+					{{type}}
+				</div>
+			</div>
+		{{/each}}
+
+	</div>
+</template>

@@ -1,4 +1,8 @@
 <template name="eventsIndex"> 
-{{getEvents}}
-  {{> calendar}}
+	{{> calendar}}
+	{{#if showDayEventsDetail}}
+		<div id="dayevents-container" class="day-events">
+			{{> dayEventsDetail}}
+		</div>
+	{{/if}}
 </template>
