@@ -78,6 +78,30 @@ var eventsSeeds = [
       'picture' : "placeholder.jpeg"
     },
     'type' : "vacation"
+  },
+  {
+    'startDate' : moment([2016,0,2]).startOf("day").unix(),
+    'endDate'   : moment([2016,1,16]).startOf("day").unix(),
+    'visiting'  : {
+      'name' : "ARUP",
+      'location' : "London UK"
+    },
+    'title' : "Glass Eng",
+    'description' : "Second order analysis",
+    'engineersGoing' : [
+      {
+        'name' : "Phil King",
+        'email' : "phil@noemail.com",
+        'picture' : "placeholder.jpeg"
+      }
+    ],
+    'platform' : "London Pride",
+    'dam' : {
+      'name' : "Andre Cremese",
+      'email' : "andrea@noemail.com",
+      'picture' : "placeholder.jpeg"
+    },
+    'type' : "engagement"
   }
 ];
 

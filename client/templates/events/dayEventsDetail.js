@@ -1,5 +1,7 @@
 Template.dayEventsDetail.onRendered(function () {
-	showEventsContainer();
+	setTimeout(function() {
+		showEventsContainer();
+	}, 10);
 	Session.set("eventOnCalendar", undefined );
 })
 
@@ -59,10 +61,11 @@ function resetSelectedDay() {
 function showEventsContainer() {
 	var calendar = $('#calendar-container');
 	var eventsContainer = $('#dayevents-container');
-
 	var totalHeight = getTotalHeight();
+	var eventsHeight = Math.min(eventsContainer.height() + 19, totalHeight / 2);
+	var calendarHeight = totalHeight - eventsHeight; 
 	// set height of calendar to window and add scroll
-	// plus adjuxt margin bottom for semantic
+	// plus adjust margin bottom for semantic
 	calendar.css("height", totalHeight);
 	calendar.css("overflow", "scroll");
 	calendar.css("margin-bottom", 0);
@@ -70,11 +73,12 @@ function showEventsContainer() {
 
 	// animate up container
 	// animate css for calendar
-	// TODO open the container only to what is actually needed!
-	TweenLite.set(calendar, {height:totalHeight /2});
-	TweenLite.from(calendar, animationTime, {height:totalHeight});
+	TweenLite.set(calendar, {height: calendarHeight});
+	TweenLite.from(calendar, animationTime, {height: totalHeight});
+	
 	scrollCalendar();
-	TweenLite.set(eventsContainer, {height:totalHeight /2});
+	
+	TweenLite.set(eventsContainer, {height: eventsHeight});
 	TweenLite.from(eventsContainer, animationTime, {height:0});
 }
 
