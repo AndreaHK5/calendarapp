@@ -1,5 +1,8 @@
 <template name="eventDay">
-	<div class="day-box day-box-unselected">
+	<div class="day-box day-box-unselected
+		{{#if isSelectedDay}}
+			day-box-selected
+		{{/if}}">
 		<div class="event-day-top">
 			{{dayNumber}}		
 		</div>
@@ -10,5 +13,6 @@
 			</div>
 			{{/each}}		
 		</div>
+
 	</div>
 </template>

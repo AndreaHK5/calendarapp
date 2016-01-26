@@ -18,21 +18,15 @@ Template.eventsIndex.events({
 		if (Session.get("dayForEventsDetail") == this.fullDate) { return; }
 		// gate if date has no events
 		if (this.dayEvents.length == 0) {
-			hideEventsContainer();
 			sAlert.info("No events up for this day, may I suggest \"007, Try another day?\"");
+			if (Session.get("dayForEventsDetail")) { 
+				hideEventsContainer(); 
+			} 
 			return;
 		}
 		sAlert.closeAll(); 
-		// gate to check if another day had been selected
-		// if (Session.get("dayForEventsDetail")) {
-		// 	var date = this.fullDate;
-		// 	hideEventsContainer().then( function () {
-		// 		console.log(date);
-		// 		Session.set("dayForEventsDetail", date);
-		// 	});
-		// } else {
-			Session.set("dayForEventsDetail", this.fullDate);
-		// }
+
+		Session.set("dayForEventsDetail", this.fullDate);
 	},
 	"click .close-day-container" : function (event) {
 		hideEventsContainer();
@@ -47,7 +41,6 @@ function resetSelectedDay() {
 }
 
 function hideEventsContainer() {
-	var deferred = Promise.defer();
 	var calendar = $('#calendar-container');
 	var eventsContainer = $('#dayevents-container');
 	var totalHeight = getTotalHeight();
@@ -55,19 +48,25 @@ function hideEventsContainer() {
 	TweenLite.to(eventsContainer, animationTime, { bottom: - 1 * eventsContainer.height()});
 
 	TweenLite.set(calendar, {height:totalHeight});
+	scrollCalendar();
 	TweenLite.from(calendar, animationTime, {
 		height:calendar.height(), 
 		onComplete : function () {
-			$('#calendar-container').css("overflow", "visible");
 			resetSelectedDay();
-			deferred.resolve();
 		}
 	});
 
-	return deferred.promise;
 }
 
 function getTotalHeight() {
 	return  $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height();
+}
+
+function scrollCalendar () {
+	var selectedDay = $(".day-box-selected");
+	var calendar = $('#calendar-container');
+
+	var topY = selectedDay.offset().top - 2 * selectedDay.height() / 2 - $("#site-navbar").height();
+	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});
 }
 

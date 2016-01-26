@@ -201,7 +201,8 @@ body {
   font-weight: 100;
 }
 
-.day-box:hover .event-day-top {
+.day-box:hover .event-day-top,
+.day-box-selected .event-day-top {
   margin-top: 14px;
   margin-left: 6px
 }
@@ -213,7 +214,8 @@ body {
   text-align: right;
 }
 
-.day-box:hover .event-day-bottom {
+.day-box:hover .event-day-bottom,
+.day-box-selected .event-day-bottom {
   margin-right: 6px;
   margin-bottom: 6px;
 }
@@ -234,7 +236,8 @@ body {
   margin-right: 0px;
 }
 
-.day-box:hover .event-bubble {
+.day-box:hover .event-bubble ,
+.day-box-selected .event-bubble {
   border: 2px solid;
   font-weight: 700;
   line-height: 22px;
