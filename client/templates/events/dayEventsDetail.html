@@ -1,30 +1,46 @@
 <template name="dayEventsDetail" >
 	<div id="day-events-container">
-		<div class="close-day-container"><i class="remove icon"></i></div>
-		{{#each eventsOfTheDay}}
-			<div class="event-container">
-				<div>
-					{{title}} visiting {{visiting.location}} platform {{platform}} 
+
+		<div class="ui grid">
+			<div class="close-day-container sixteen wide column"><i class="remove icon"></i></div>
+			{{#each eventsOfTheDay}}
+				<div class="fourteen wide column event-container" style="background-color: {{getEventTypeColor type}}">
+					<div class="ui grid">
+						<div class="eight wide column title">
+							{{title}}
+						</div>
+						<div class="six wide column">
+							{{type}}
+						</div>
+						<!-- visiting {{visiting.location}} platform {{platform}}  -->
+					</div>
+					<div class="event-mid">
+						{{#each engineersGoing}}
+							<img class="picture" src="/images/{{picture}}" alt="...">
+						{{/each}}							
+					</div>
+					<div class="event-low">
+						{{description}}
+					</div>
+<!-- 					> see on calendar link here
+					<div>
+					engineers
+						{{#each engineersGoing}}
+							{{picture}}
+						{{/each}}
+					</div>
+					<div>
+						dam
+						{{dam.picture}}
+					</div>
+					<div>
+					</div>-->
 				</div>
-				> see on calendar link here
-				<div>
-				engineers
-					{{#each engineersGoing}}
-						{{picture}}
-					{{/each}}
+				<div class="two wide column" style="background-color: {{getEventTypeColor type}}">
+					<i class="angle right icon"></i>
 				</div>
-				<div>
-					dam
-					{{dam.picture}}
-				</div>
-				<div>
-					{{description}}
-				</div>
-				<div>
-					{{type}}
-				</div>
-			</div>
 		{{/each}}
+		</div>
 
 	</div>
 </template>

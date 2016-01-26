@@ -27,13 +27,10 @@ Template.eventsIndex.events({
 		sAlert.closeAll(); 
 
 		Session.set("dayForEventsDetail", this.fullDate);
-		// workaround in order to have all animations in one single controller
-		// TODO - find out how to attach this to a call back
-		setTimeout(function() {
-			showEventsContainer();
-		}, 10);
+
 	},
 	"click .close-day-container" : function (event) {
+		console.log("click");
 		hideEventsContainer();
 	}
 })

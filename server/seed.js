@@ -15,19 +15,19 @@ var eventsSeeds = [
       {
         'name' : "Fabio Petris",
         'email' : "fabio@noemail.com",
-        'picture' : "placholder.jpg"
+        'picture' : "placeholder.jpeg"
       },
       {
         'name' : "Enrico Paglia",
         'email' : "enrico@noemail.com",
-        'picture' : "placholder.jpg"
+        'picture' : "placeholder.jpeg"
       }
     ],
     'platform' : "Xbox",
     'dam' : {
       'name' : "Andre Cremese",
       'email' : "andrea@noemail.com",
-      'picture' : "placholder.jpg"
+      'picture' : "placeholder.jpeg"
     },
     'type' : "engagement"
   },
@@ -44,14 +44,14 @@ var eventsSeeds = [
       {
         'name' : "Andrea Cremese",
         'email' : "andrea@noemail.com",
-        'picture' : "placholder.jpg"
+        'picture' : "placeholder.jpeg"
       }
     ],
     'platform' : "Volkl",
     'dam' : {
       'name' : "Andre Cremese",
       'email' : "andrea@noemail.com",
-      'picture' : "placholder.jpg"
+      'picture' : "placeholder.jpeg"
     },
     'type' : "vacation"
   },
@@ -68,14 +68,14 @@ var eventsSeeds = [
       {
         'name' : "Phil King",
         'email' : "phil@noemail.com",
-        'picture' : "placholder.jpg"
+        'picture' : "placeholder.jpeg"
       }
     ],
     'platform' : "London Pride",
     'dam' : {
       'name' : "Andre Cremese",
       'email' : "andrea@noemail.com",
-      'picture' : "placholder.jpg"
+      'picture' : "placeholder.jpeg"
     },
     'type' : "vacation"
   }
