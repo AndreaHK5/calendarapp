@@ -38,11 +38,10 @@ Template.eventsIndex.events({
 // local helpers and variables
 var animationTime = 0.4;
 
-function resetSelectedDay() {
+function resetSelectedDay () {
 	Session.set("dayForEventsDetail", undefined);
-	// in case this was ever set
-	Session.set("eventOnCalendar", undefined );
 }
+
 
 function hideEventsContainer() {
 	var calendar = $('#calendar-container');
@@ -53,13 +52,14 @@ function hideEventsContainer() {
 
 	TweenLite.set(calendar, {height:totalHeight});
 	scrollCalendarToDiv();
+	Session.set("eventOnCalendar", undefined );
 	TweenLite.from(calendar, animationTime, {
 		height:calendar.height(), 
 		onComplete : function () {
-
-			resetSelectedDay();
+			resetSelectedDay();			
 		}
 	});
+
 }
 
 function getTotalHeight() {
@@ -69,6 +69,9 @@ function getTotalHeight() {
 function scrollCalendarToDiv() {
 	var calendar = $('#calendar-container');
 	var div = $('.day-box-unselected:hover');
+	if (div.length == 0) {
+		div = $('.day-box-selected');
+	} 
 
 	var topY = calendar.scrollTop() + div.offset().top - 2 * div.height();
 	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});	
