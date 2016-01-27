@@ -279,3 +279,13 @@ body {
   width: 40px;
   border-radius: 50%;
 }
+
+/*events tray*/
+.close-day-container {
+  position: relative;
+  top: -24px;
+  left: -30px;
+  background: rgba(128,128,128,0.76);
+  height: 25px;
+}
+

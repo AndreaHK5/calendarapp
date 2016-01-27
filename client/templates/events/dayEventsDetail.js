@@ -23,28 +23,39 @@ Template.dayEventsDetail.events({
 	"mouseenter .select-event" : function () {
 		if (!useHover) {return;} 
 		var targetEvent = this;
-		if (Session.get("eventOnCalendar")) {
+		if (hoovering) {
 			// another event has been hovered, so no need to wait to make the animation appear
-			setEventOnCalendar(this);
+			setEventOnCalendar(targetEvent);
 		} else {
 			// first event to be shown, on hover we wait to show
 			showEventTimer = setTimeout(function() {
+				hoovering = true;
 				setEventOnCalendar(targetEvent);
-			}, 500);
+			}, hooverDebounceTime);
 		}
 
 	},
 	"mouseleave .select-event" : function () {
 		if (!useHover) {return;} 
+		// this is required if the hover is to another card rather than to the calendar
+		resetEventOnCalendar();
+	},
+	"mouseleave #day-events-container" : function () {
+		hoovering = false;
+		if (!useHover) {return;} 
+		// this is required if the hover is to another card rather than to the calendar
 		resetEventOnCalendar();
 	},
 	"click .select-event" : function () {
+		console.log("selecting");
 		useHover = false;
+		hoovering = false;
 		clearTimeout(showEventTimer);
 		setEventOnCalendar(this);
 	},
 	"click .unselect-event" : function () {
 		useHover = true;
+		hoovering = false;
 		clearTimeout(showEventTimer);
 		resetEventOnCalendar();
 		scrollCalendarToSelectedDay();
@@ -57,8 +68,15 @@ Template.dayEventsDetail.events({
 // local helpers and variables
 
 var eventContainerShowing = false;
-var showEventTimer;
+// if the user starts clicking on events turn off hoovering
 var useHover = true;
+// if we are already hoovering on something, do not debounce
+var hoovering = false;
+var animationTime = 0.4;
+var hooverDebounceTime = 800;
+var showEventTimer;
+
+
 
 function setEventOnCalendar(event) {
 	var eventOnCalendar = {
@@ -78,8 +96,6 @@ function resetEventOnCalendar() {
 	clearTimeout(showEventTimer);
 	Session.set("eventOnCalendar", undefined );
 }
-
-var animationTime = 0.4;
 
 function resetSelectedDay() {
 	Session.set("dayForEventsDetail", undefined);
