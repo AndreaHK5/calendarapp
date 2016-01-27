@@ -1,6 +1,6 @@
 Template.dayEventsDetail.onRendered(function () {
 	setTimeout(function() {
-		showEventsContainer(false);
+		showEventsContainer();
 	}, 10);
 	Session.set("eventOnCalendar", undefined );
 })
@@ -23,7 +23,7 @@ Template.dayEventsDetail.events({
 			setEventOnCalendar(this);
 		} else {
 			// first event to be shown, on hover we wait to show
-			setTimeout(function() {
+			timer = setTimeout(function() {
 				setEventOnCalendar(targetEvent);
 			}, 500);
 		}
@@ -43,6 +43,7 @@ Template.dayEventsDetail.events({
 // local helpers and variables
 
 var eventContainerShowing = false;
+var timer;
 
 function setEventOnCalendar(event) {
 	var eventOnCalendar = {
@@ -54,6 +55,7 @@ function setEventOnCalendar(event) {
 }
 
 function resetEventOnCalendar() {
+	clearTimeout(timer);
 	Session.set("eventOnCalendar", undefined );
 }
 
@@ -63,11 +65,11 @@ function resetSelectedDay() {
 	Session.set("dayForEventsDetail", undefined);
 }
 
-function showEventsContainer(useCurrentHeights) {
+function showEventsContainer() {
 	var calendar = $('#calendar-container');
 	var eventsContainer = $('#dayevents-container');
 	var totalHeight = getTotalHeight();
-	var eventsHeight = Math.min(eventsContainer.scrollHeight + 19, totalHeight / 2);
+	var eventsHeight = Math.min(eventsContainer.height() + 19, totalHeight / 2);
 	var calendarHeight = totalHeight - eventsHeight; 
 	// set height of calendar to window and add scroll
 	// plus adjust margin bottom for semantic
@@ -78,16 +80,14 @@ function showEventsContainer(useCurrentHeights) {
 
 	// animate up container
 	// animate css for calendar
-	var calendarStart = useCurrentHeights ? calendar.height() : totalHeight;
 
 	TweenLite.set(calendar, {height: calendarHeight});
-	TweenLite.from(calendar, animationTime, {height: calendarStart});
+	TweenLite.from(calendar, animationTime, {height: totalHeight});
 	
 	scrollCalendar();
 
-	var eventsStart = useCurrentHeights ? eventsContainer.height() : 0;	
 	TweenLite.set(eventsContainer, {height: eventsHeight});
-	TweenLite.from(eventsContainer, animationTime, { height: eventsStart, 
+	TweenLite.from(eventsContainer, animationTime, { height: 0, 
 		onComplete : function () { 
 			eventContainerShowing = true;
 		}
@@ -95,7 +95,19 @@ function showEventsContainer(useCurrentHeights) {
 }
 
 function adjustEventsContainer() {
-	showEventsContainer(true);
+	setTimeout(function() {
+		var eventsContainer = $('#dayevents-container');
+		var calendar = $('#calendar-container');
+		var totalHeight = getTotalHeight();
+		var eventsHeight = Math.min($('#day-events-container').height() + 19, totalHeight / 2);
+		var calendarHeight = totalHeight - eventsHeight; 
+
+		TweenLite.to(calendar,animationTime, {height:calendarHeight});		
+		TweenLite.to(eventsContainer,animationTime, {height:eventsHeight});
+		scrollCalendar();
+
+	}, 100);
+
 }
 
 function getTotalHeight() {
@@ -106,6 +118,6 @@ function scrollCalendar () {
 	var selectedDay = $(".day-box-selected");
 	var calendar = $('#calendar-container');
 
-	var topY = selectedDay.offset().top - 2 * selectedDay.height() / 2 - $("#site-navbar").height();
+	var topY = calendar.scrollTop() + selectedDay.offset().top - 2* selectedDay.height();
 	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});
 }
