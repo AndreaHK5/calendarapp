@@ -318,6 +318,11 @@ body {
     padding-left: 10px;
 }
 
+.unselect-event:hover,
+.select-event:hover {
+    cursor: pointer; 
+}
+
 /*events tray*/
 .close-day-container {
   position: relative;

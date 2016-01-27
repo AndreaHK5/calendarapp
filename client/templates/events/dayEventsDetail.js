@@ -47,7 +47,6 @@ Template.dayEventsDetail.events({
 		resetEventOnCalendar();
 	},
 	"click .select-event" : function () {
-		console.log("selecting");
 		useHover = false;
 		hoovering = false;
 		clearTimeout(showEventTimer);
@@ -135,7 +134,7 @@ function adjustEventsContainer() {
 		var eventsContainer = $('#dayevents-container');
 		var calendar = $('#calendar-container');
 		var totalHeight = getTotalHeight();
-		var eventsHeight = Math.min($('#day-events-container').height() + 19, totalHeight / 2);
+		var eventsHeight = Math.min($('#day-events-container').height() - 8 , totalHeight / 2);
 		var calendarHeight = totalHeight - eventsHeight; 
 
 		TweenLite.to(calendar,animationTime, {height:calendarHeight});		
