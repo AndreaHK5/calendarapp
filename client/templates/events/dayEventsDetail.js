@@ -1,6 +1,6 @@
 Template.dayEventsDetail.onRendered(function () {
 	setTimeout(function() {
-		showEventsContainer();
+		showEventsContainer(false);
 	}, 10);
 	Session.set("eventOnCalendar", undefined );
 })
@@ -8,6 +8,9 @@ Template.dayEventsDetail.onRendered(function () {
 Template.dayEventsDetail.helpers({
 	eventsOfTheDay : function () {
 		var unixDay = Session.get("dayForEventsDetail");
+		if (eventContainerShowing) {
+			adjustEventsContainer();
+		} 
 		return findEvents(unixDay,unixDay);
 	}
 })
@@ -39,6 +42,8 @@ Template.dayEventsDetail.events({
 
 // local helpers and variables
 
+var eventContainerShowing = false;
+
 function setEventOnCalendar(event) {
 	var eventOnCalendar = {
 		startDate: event.startDate,
@@ -58,11 +63,11 @@ function resetSelectedDay() {
 	Session.set("dayForEventsDetail", undefined);
 }
 
-function showEventsContainer() {
+function showEventsContainer(useCurrentHeights) {
 	var calendar = $('#calendar-container');
 	var eventsContainer = $('#dayevents-container');
 	var totalHeight = getTotalHeight();
-	var eventsHeight = Math.min(eventsContainer.height() + 19, totalHeight / 2);
+	var eventsHeight = Math.min(eventsContainer.scrollHeight + 19, totalHeight / 2);
 	var calendarHeight = totalHeight - eventsHeight; 
 	// set height of calendar to window and add scroll
 	// plus adjust margin bottom for semantic
@@ -73,13 +78,24 @@ function showEventsContainer() {
 
 	// animate up container
 	// animate css for calendar
+	var calendarStart = useCurrentHeights ? calendar.height() : totalHeight;
+
 	TweenLite.set(calendar, {height: calendarHeight});
-	TweenLite.from(calendar, animationTime, {height: totalHeight});
+	TweenLite.from(calendar, animationTime, {height: calendarStart});
 	
 	scrollCalendar();
-	
+
+	var eventsStart = useCurrentHeights ? eventsContainer.height() : 0;	
 	TweenLite.set(eventsContainer, {height: eventsHeight});
-	TweenLite.from(eventsContainer, animationTime, {height:0});
+	TweenLite.from(eventsContainer, animationTime, { height: eventsStart, 
+		onComplete : function () { 
+			eventContainerShowing = true;
+		}
+	});
+}
+
+function adjustEventsContainer() {
+	showEventsContainer(true);
 }
 
 function getTotalHeight() {

@@ -25,9 +25,8 @@ Template.eventsIndex.events({
 			return;
 		}
 		sAlert.closeAll(); 
-
+		
 		Session.set("dayForEventsDetail", this.fullDate);
-
 	},
 	"click .close-day-container" : function (event) {
 		hideEventsContainer();
@@ -58,6 +57,10 @@ function hideEventsContainer() {
 			resetSelectedDay();
 		}
 	});
+}
+
+function resizeEventsContainer() {
+	console.log("need resizing");
 }
 
 function getTotalHeight() {
