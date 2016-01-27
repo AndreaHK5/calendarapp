@@ -17,6 +17,7 @@ Template.eventsIndex.events({
 		// gate if clicking on same day
 		if (Session.get("dayForEventsDetail") == this.fullDate) { return; }
 		// gate if date has no events
+		Session.set("eventOnCalendar", undefined);
 		if (this.dayEvents.length == 0) {
 			sAlert.info("No events up for this day, may I suggest \"007, Try another day?\"");
 			if (Session.get("dayForEventsDetail")) { 

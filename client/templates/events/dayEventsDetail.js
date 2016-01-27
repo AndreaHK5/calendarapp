@@ -12,28 +12,42 @@ Template.dayEventsDetail.helpers({
 			adjustEventsContainer();
 		} 
 		return findEvents(unixDay,unixDay);
+	},
+	isSelectedEvent : function (id) {
+		if(!Session.get("eventOnCalendar")) { return }
+		return Session.get("eventOnCalendar")._id == id;
 	}
 })
 
 Template.dayEventsDetail.events({
 	"mouseenter .select-event" : function () {
+		if (!useHover) {return;} 
 		var targetEvent = this;
 		if (Session.get("eventOnCalendar")) {
 			// another event has been hovered, so no need to wait to make the animation appear
 			setEventOnCalendar(this);
 		} else {
 			// first event to be shown, on hover we wait to show
-			timer = setTimeout(function() {
+			showEventTimer = setTimeout(function() {
 				setEventOnCalendar(targetEvent);
 			}, 500);
 		}
 
 	},
 	"mouseleave .select-event" : function () {
+		if (!useHover) {return;} 
 		resetEventOnCalendar();
 	},
 	"click .select-event" : function () {
+		useHover = false;
+		clearTimeout(showEventTimer);
 		setEventOnCalendar(this);
+	},
+	"click .unselect-event" : function () {
+		useHover = true;
+		clearTimeout(showEventTimer);
+		resetEventOnCalendar();
+		scrollCalendarToSelectedDay();
 	},
 	"click #calendar-container" : function () {
 		resetEventOnCalendar();
@@ -43,19 +57,25 @@ Template.dayEventsDetail.events({
 // local helpers and variables
 
 var eventContainerShowing = false;
-var timer;
+var showEventTimer;
+var useHover = true;
 
 function setEventOnCalendar(event) {
 	var eventOnCalendar = {
 		startDate: event.startDate,
 		endDate: event.endDate,
-		type: event.type
+		type: event.type,
+		_id: event._id
 	}
-	Session.set("eventOnCalendar", eventOnCalendar );	
+	Session.set("eventOnCalendar", eventOnCalendar );
+	setTimeout(function() {
+		scrollCalendarToDiv($(".calendar-event-bar").first().parent().find(".day-box"));
+	}, 100);
 }
 
 function resetEventOnCalendar() {
-	clearTimeout(timer);
+	useHover = true;
+	clearTimeout(showEventTimer);
 	Session.set("eventOnCalendar", undefined );
 }
 
@@ -84,7 +104,7 @@ function showEventsContainer() {
 	TweenLite.set(calendar, {height: calendarHeight});
 	TweenLite.from(calendar, animationTime, {height: totalHeight});
 	
-	scrollCalendar();
+	scrollCalendarToSelectedDay();
 
 	TweenLite.set(eventsContainer, {height: eventsHeight});
 	TweenLite.from(eventsContainer, animationTime, { height: 0, 
@@ -104,7 +124,7 @@ function adjustEventsContainer() {
 
 		TweenLite.to(calendar,animationTime, {height:calendarHeight});		
 		TweenLite.to(eventsContainer,animationTime, {height:eventsHeight});
-		scrollCalendar();
+		scrollCalendarToSelectedDay();
 
 	}, 100);
 
@@ -114,10 +134,14 @@ function getTotalHeight() {
 	return  $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height();
 }
 
-function scrollCalendar () {
-	var selectedDay = $(".day-box-selected");
+function scrollCalendarToSelectedDay () {
+	scrollCalendarToDiv($(".day-box-selected"))
+}
+
+
+function scrollCalendarToDiv(div) {
 	var calendar = $('#calendar-container');
 
-	var topY = calendar.scrollTop() + selectedDay.offset().top - 2* selectedDay.height();
-	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});
+	var topY = calendar.scrollTop() + div.offset().top - 2* div.height();
+	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});	
 }

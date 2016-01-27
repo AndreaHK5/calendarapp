@@ -258,6 +258,14 @@ body {
   overflow: scroll;
 }
 
+.event-card {
+  opacity: 0.81;
+}
+
+.event-card-selected {
+  opacity: 1;
+}
+
 .event-top {
   height: 30px;  
 }
