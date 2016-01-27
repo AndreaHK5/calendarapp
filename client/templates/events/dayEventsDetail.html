@@ -1,59 +1,56 @@
-<template name="dayEventsDetail" >	<div id="day-events-container" >
+<template name="dayEventsDetail" >
+	<div id="day-events-container" >
 
 		<div class="ui grid">
+			<div class="events-top-spacer"></div>
 			{{#each eventsOfTheDay}}
-			<div class="sixteen wide column ">
-				<div class="ui grid
+			<div class="sixteen wide column event-card
 					{{#if isSelectedEvent _id}}
 						event-card-selected
 					{{else}}
 						event-card
 					{{/if}}">
-					<div class="fourteen wide column select-event" style="background-color: {{getEventTypeColor type}};">
+				<div class="ui grid 
+					">
+					<div class="fifteen wide column event-top hover-event" style="background-color: {{getEventTypeColor type}};">
 						<div class="ui grid">
 							<div class="eight wide column title">
-								{{title}}
+								{{title}} ({{type}})
 							</div>
 							<div class="six wide column">
-								{{type}}
+								
 							</div>
 							<!-- visiting {{visiting.location}} platform {{platform}}  -->
 						</div>
 						<div class="event-mid">
+							<span class="picture-label">
+								Engineers
+							</span>
 							{{#each engineersGoing}}
 								<img class="picture" src="/images/{{picture}}" alt="...">
-							{{/each}}							
+							{{/each}}
+							<span class="picture-label">
+							Dam 
+							</span> 
+							<img class="picture" src="/images/{{dam.picture}}" alt="...">							
 						</div>
 						<div class="event-low">
 							{{description}}
 						</div>
-	<!-- 					> see on calendar link here
-						<div>
-						engineers
-							{{#each engineersGoing}}
-								{{picture}}
-							{{/each}}
-						</div>
-						<div>
-							dam
-							{{dam.picture}}
-						</div>
-						<div>
-						</div>-->
 					</div>
-					<div class="one wide column select-event" style="background-color: {{getEventTypeColor type}}">
-						<i class="angle right icon"></i>
-					</div>
-					<div class="one wide column
+					<div class="one wide column" style="background-color: {{getEventTypeColor type}}">
+						<div class="calendar">
 						{{#if isSelectedEvent _id}}
+								<i class="remove circle icon unselect-event"></i>
 						{{else}}
-							select-event
-						{{/if}}"
-						 style="background-color: {{getEventTypeColor type}}">
-						{{#if isSelectedEvent _id}}
-							<i class="unselect-event remove icon"></i>
+								<i class="calendar icon select-event"></i>
 						{{/if}}
-					</div>						
+						</div>
+						<div class="navigation">
+							<i class="angle right icon"></i>						
+						</div>
+
+					</div>					
 				</div>
 			
 			</div>

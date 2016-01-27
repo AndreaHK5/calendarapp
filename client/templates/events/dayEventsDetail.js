@@ -20,7 +20,7 @@ Template.dayEventsDetail.helpers({
 })
 
 Template.dayEventsDetail.events({
-	"mouseenter .select-event" : function () {
+	"mouseenter .hover-event" : function () {
 		if (!useHover) {return;} 
 		var targetEvent = this;
 		if (hoovering) {
@@ -35,7 +35,7 @@ Template.dayEventsDetail.events({
 		}
 
 	},
-	"mouseleave .select-event" : function () {
+	"mouseleave .hover-event" : function () {
 		if (!useHover) {return;} 
 		// this is required if the hover is to another card rather than to the calendar
 		resetEventOnCalendar();
@@ -73,7 +73,7 @@ var useHover = true;
 // if we are already hoovering on something, do not debounce
 var hoovering = false;
 var animationTime = 0.4;
-var hooverDebounceTime = 800;
+var hooverDebounceTime = 1200;
 var showEventTimer;
 
 

@@ -258,6 +258,11 @@ body {
   overflow: scroll;
 }
 
+.events-top-spacer {
+  height:18px; 
+  background-color:white;
+} 
+
 .event-card {
   opacity: 0.81;
 }
@@ -266,18 +271,51 @@ body {
   opacity: 1;
 }
 
-.event-top {
-  height: 30px;  
+.event-card,
+.event-card-selected {
+  margin-top: 0px !important;
+  border-bottom: 4px solid white;
 }
 
-.event-container .title {
+.event-card-selected .calendar,
+.event-card .calendar {
+    position: absolute;
+    font-size: 120%;
+    top: 20%;
+    left: 15%;
+}
+
+.event-card-selected .navigation,
+.event-card .navigation {
+    position: absolute;
+    left: 0;
+    top: 60%;
+    font-size: 400%;
+}
+
+.event-top .title {
   font-size: 20px;
   font-weight: 700;
+  margin: 8px 0;
+}
+
+.event-mid {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  display: table;
 }
 
 .event-mid .picture {
   width: 40px;
   border-radius: 50%;
+  margin-right: 10px;
+}
+
+.event-mid .picture-label {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 /*events tray*/
