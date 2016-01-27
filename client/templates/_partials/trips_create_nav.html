@@ -10,14 +10,16 @@
         <div class="day">
           Sat
         </div>
-        <div class="months-arrows">
-          <span class="scroll-prev-month scroll-arrow">
-            <i class="fa fa-chevron-up fa-2x"></i>
-          </span>
-          <span class="scroll-next-month scroll-arrow">
-            <i class="fa fa-chevron-down fa-2x"></i>
-          </span>          
-        </div>
+        {{#if showArrows}}
+          <div class="months-arrows">
+            <span class="scroll-prev-month scroll-arrow">
+              <i class="fa fa-chevron-up fa-2x"></i>
+            </span>
+            <span class="scroll-next-month scroll-arrow">
+              <i class="fa fa-chevron-down fa-2x"></i>
+            </span>          
+          </div>
+        {{/if}}
     </div>    
 </div>
 </template>
