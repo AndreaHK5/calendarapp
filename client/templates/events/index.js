@@ -6,7 +6,6 @@ Template.eventsIndex.helpers({
 	showDayEventsDetail : function () {
 		// ensure calendar is always visible
 		if (!(Session.get("dayForEventsDetail"))) {
-			$('#calendar-container').css("overflow", "visible");
 		}
 		return Session.get("dayForEventsDetail");
 	}
@@ -22,7 +21,9 @@ Template.eventsIndex.events({
 			sAlert.info("No events up for this day, may I suggest \"007, Try another day?\"");
 			if (Session.get("dayForEventsDetail")) { 
 				hideEventsContainer(); 
-			} 
+			} else {
+				scrollCalendarToDiv();
+			}
 			return;
 		}
 		sAlert.closeAll(); 
@@ -51,28 +52,25 @@ function hideEventsContainer() {
 	TweenLite.to(eventsContainer, animationTime, { bottom: - 1 * eventsContainer.height()});
 
 	TweenLite.set(calendar, {height:totalHeight});
-	scrollCalendar();
+	scrollCalendarToDiv();
 	TweenLite.from(calendar, animationTime, {
 		height:calendar.height(), 
 		onComplete : function () {
+
 			resetSelectedDay();
 		}
 	});
-}
-
-function resizeEventsContainer() {
-	console.log("need resizing");
 }
 
 function getTotalHeight() {
 	return  $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height();
 }
 
-function scrollCalendar () {
-	var selectedDay = $(".day-box-selected");
+function scrollCalendarToDiv() {
 	var calendar = $('#calendar-container');
+	var div = $('.day-box-unselected:hover');
 
-	var topY = selectedDay.offset().top - 2 * selectedDay.height() / 2 - $("#site-navbar").height();
-	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});
+	var topY = calendar.scrollTop() + div.offset().top - 2 * div.height();
+	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});	
 }
 

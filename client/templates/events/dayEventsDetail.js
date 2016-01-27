@@ -51,7 +51,7 @@ Template.dayEventsDetail.events({
 	},
 	"click #calendar-container" : function () {
 		resetEventOnCalendar();
-	},
+	}
 }) 
 
 // local helpers and variables
