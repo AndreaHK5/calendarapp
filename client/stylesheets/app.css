@@ -224,11 +224,11 @@ body {
 }
 
 .event-bubble {
+  color: white;
   display: inline-block;
   height: 26px;
   width: 26px;
   border-radius: 13px;
-  border: 1px solid;
   text-align: center;
   line-height: 23px;
   vertical-align: middle;
@@ -241,9 +241,8 @@ body {
 
 .day-box:hover .event-bubble ,
 .day-box-selected .event-bubble {
-  border: 2px solid;
   font-weight: 700;
-  line-height: 22px;
+  line-height: 25px;
 }
 
 /*day events detail */
