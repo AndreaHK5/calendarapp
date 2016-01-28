@@ -1,0 +1,30 @@
+<template name="eventLegend">
+	<div class="event-legend">
+		<div class="label">
+			{{#if isLegendShowing}}
+				<i class="angle right icon"></i>
+			{{else}}
+				<i class="angle left icon"></i>
+			{{/if}}
+			<div>L</div>
+			<div>E</div>
+			<div>G</div>
+			<div>E</div>
+			<div>N</div>
+			<div>D</div>
+		</div>
+		<div class="
+			{{#if isLegendShowing}}
+				content
+			{{else}}
+				content-hidden
+			{{/if}}
+		">
+			{{#each getAllEventsTypes}}
+			<div class="legend-entry">
+				<span class="event-bubble" style="background-color: {{getEventTypeColor eventType}};"></span>{{eventType}}
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</template>

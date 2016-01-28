@@ -331,3 +331,42 @@ body {
   height: 25px;
 }
 
+/*event legend*/
+
+.event-legend {
+  position: fixed;
+  top: 100px;
+  right: 0px;
+  background: rgba(128,128,128,0.88);
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  border-color: grey;
+  display: table;
+}
+
+.event-legend .label {
+  display: inline-block;
+  text-align: center;
+}
+
+.event-legend .content-hidden {
+  display: none;
+}
+
+.event-legend .content {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.legend-entry {
+  margin: 4px 4px;
+}
+
+.legend-entry .event-bubble {
+  margin-right: 5px;
+}
+
+

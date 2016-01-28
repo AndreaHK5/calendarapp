@@ -20,7 +20,6 @@ var eventTypeMap = {
 var otherColors = [ "#8D2E92", "#FFBE00", "#FF0097", "#0071BC"];
 
 UI.registerHelper("getEventTypeColor", function (eventType) {
-
   // safe method in case a new type is provided
   eventType = eventType.toLowerCase(); 
   if (!(eventType in eventTypeMap)) {
@@ -52,5 +51,9 @@ if (Meteor.isClient) {
   findEvents = function (queryStartDate, queryEndDate) {
     return Events.find({ $and :[{startDate : {$lte :  queryEndDate }},{endDate : {$gte : queryStartDate}}]});
   } 
+
+  getEventTypeMap = function () {
+    return eventTypeMap;
+  }
 }
 
