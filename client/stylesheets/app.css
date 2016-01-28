@@ -5,6 +5,7 @@ body {
 /*calendar view*/
 #calendar-container {
   margin-top: 14px;
+  overflow: scroll;
 }
 
 .month-header {

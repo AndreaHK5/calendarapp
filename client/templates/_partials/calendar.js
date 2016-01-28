@@ -3,7 +3,12 @@ Template.calendar.onRendered(function () {
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set('months', getMonths());
   Session.set('hoverMonth', getTodayDate().unix());
-  //TweenMax.set(, {opacity:0.2});
+  // set height of calendar container in order to allow scrolling
+  var calendar = $('#calendar-container');
+  calendar.css("height", $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height());
+  calendar.css("overflow", "scroll");
+
+  // initiate the scrollMonth
 });
 
 Template.calendar.helpers({
@@ -28,8 +33,7 @@ Template.calendar.events({
     if (!myDiv.length) { 
       addMonth();
     } else {
-      var topY = myDiv.offset().top - $("#site-navbar").height() - $("#weekday-navbar").height();
-      scrollVertical(topY);
+      scrollVertical(myDiv);
       Session.set("hoverMonth", monthAfter);
       updateNavigationArrows();      
     }
@@ -39,8 +43,7 @@ Template.calendar.events({
     var monthBefore = moment.unix(Session.get("hoverMonth")).add(-1, 'month').unix();
     var myDiv = $('#' + monthBefore);
     if (!myDiv.length) { return ;}
-    var topY = myDiv.offset().top - $("#site-navbar").height() - $("#weekday-navbar").height();
-    scrollVertical(topY);
+    scrollVertical(myDiv);
     // window.scrollTo(0, topY);
     Session.set("hoverMonth", monthBefore);
 
@@ -55,8 +58,10 @@ Template.calendar.events({
 // helpers 
 // TODO how to make helpers not in global? IFFE an module load at top?
 
-function scrollVertical(topY) {
-  TweenMax.to(window,1, {scrollTo:{y:topY}, ease:Power4.easeOut});
+function scrollVertical(div) {
+  var calendar = $('#calendar-container');
+  var topY = calendar.scrollTop() + div.offset().top - $('#weekday-navbar').height() - $('#site-navbar').height() + 10;
+  TweenMax.to(calendar,1, {scrollTo:{y:topY}, ease:Power4.easeOut});
 } 
 
 function addMonth() {
@@ -73,8 +78,7 @@ function addMonth() {
   // TODO this is a terrible workaround, need a promise on the div creation (on rendered?)
   setTimeout(function(){
     var myDiv = $('#' + newDate);
-    var topY = myDiv.offset().top - $("#site-navbar").height() - $("#weekday-navbar").height() ;
-    scrollVertical(topY);
+    scrollVertical(myDiv);
     Session.set("hoverMonth", newDate);
     updateNavigationArrows();    
   },100)
