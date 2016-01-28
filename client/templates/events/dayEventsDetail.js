@@ -28,7 +28,7 @@ Template.dayEventsDetail.events({
 			setEventOnCalendar(targetEvent);
 		} else {
 			// first event to be shown, on hover we wait to show
-			showEventTimer = setTimeout(function() {
+			showHoveredEventTimer = setTimeout(function() {
 				hoovering = true;
 				setEventOnCalendar(targetEvent);
 			}, hooverDebounceTime);
@@ -49,13 +49,13 @@ Template.dayEventsDetail.events({
 	"click .select-event" : function () {
 		useHover = false;
 		hoovering = false;
-		clearTimeout(showEventTimer);
+		clearTimeout(showHoveredEventTimer);
 		setEventOnCalendar(this);
 	},
 	"click .unselect-event" : function () {
 		useHover = true;
 		hoovering = false;
-		clearTimeout(showEventTimer);
+		clearTimeout(showHoveredEventTimer);
 		resetEventOnCalendar();
 		scrollCalendarToSelectedDay();
 	},
@@ -73,11 +73,14 @@ var useHover = true;
 var hoovering = false;
 var animationTime = 0.4;
 var hooverDebounceTime = 1200;
-var showEventTimer;
+var removeClickedEventTime = 3200;
+var showHoveredEventTimer;
+var resetClickedEventTimer;
 
 
 
 function setEventOnCalendar(event) {
+	// resetEventOnCalendar();
 	var eventOnCalendar = {
 		startDate: event.startDate,
 		endDate: event.endDate,
@@ -87,13 +90,19 @@ function setEventOnCalendar(event) {
 	Session.set("eventOnCalendar", eventOnCalendar );
 	setTimeout(function() {
 		scrollCalendarToDiv($(".calendar-event-bar").first().parent().find(".day-box"));
-	}, 100);
+		//TweenMax.allTo($(".calendar-event-bar"), 0.1, {opacity:1}, 0.02);
+	}, 10);
+	clearTimeout(resetClickedEventTimer);
+	resetClickedEventTimer = setTimeout(function() {
+		resetEventOnCalendar();
+	}, removeClickedEventTime);
 }
 
 function resetEventOnCalendar() {
 	useHover = true;
-	clearTimeout(showEventTimer);
+	clearTimeout(showHoveredEventTimer);
 	Session.set("eventOnCalendar", undefined );
+	scrollCalendarToSelectedDay();
 }
 
 function resetSelectedDay() {
