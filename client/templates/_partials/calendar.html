@@ -1,5 +1,21 @@
 <template name="calendar">
   {{> tripsCreateNav}}
+   <div class="calendar-navigation">
+      <div class="month-helper">
+        <h3>
+          {{getShortMonth}} 
+        </h3>  
+     </div>
+     <div class="months-arrows">
+       <span class="scroll-prev-month scroll-arrow">
+         <i class="chevron up icon "></i>
+       </span>
+       <span class="scroll-next-month scroll-arrow">
+         <i class="chevron down icon"></i>
+       </span>          
+     </div>
+       
+  </div>
   <div id="calendar-container" class="ui grid">
     {{#each months}}
       <div class="sixteen wide column hovering" id="{{date}}">

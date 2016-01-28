@@ -17,6 +17,9 @@ Template.calendar.helpers({
   },
   startDateSelected : function () {
     return Session.get("startDate");
+  },
+  getShortMonth : function () {
+    return moment.unix(Session.get('hoverMonth')).format("MMM").toUpperCase();
   }
 });
 

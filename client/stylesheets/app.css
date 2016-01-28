@@ -1,10 +1,19 @@
 body {
   padding-top: 50px;
 }
+.ui.page.grid {
+   overflow: hidden;
+}
+
+/*site navbar*/
+.navbar-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 
 /*calendar view*/
 #calendar-container {
-  margin-top: 14px;
+  margin-top: 24px;
   overflow: scroll;
 }
 
@@ -128,33 +137,32 @@ body {
 
 /*calendar navbar*/
 
-.scroll-next-month {
-  margin-left: 4px;
-  padding-left: 4px;
-  border-left: 1px solid #D6D5D4;
-}
-
 .scroll-arrow {
   color: #DC3C00;
+  font-size: 150%
 }
 
 .scroll-arrow-inactive {
   color: #D6D5D4;
   opacity: 90%;
+  font-size: 150%
 }
 
 #weekday-navbar {
   background-color: white;
+  min-height: 18px;
 }
 
 #weekday-navbar .tabular.menu {
   height: 20px !important;
 }
 
-.tabular.menu .item {
+#weekday-navbar .item {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   height: 20px !important;
+  justify-content: initial !important;
+  padding-left: 10px !important;
 }
 
 /*confirm trip*/
@@ -330,6 +338,20 @@ body {
   left: -30px;
   background: rgba(128,128,128,0.76);
   height: 25px;
+}
+
+/*calendar navigation*/
+
+.calendar-navigation {
+  position: fixed;
+  top: 16px;
+  right: 0px;
+  z-index: 9999;
+}
+
+.calendar-navigation .month-helper {
+  color: #DC3C00;
+  text-align: center;
 }
 
 /*event legend*/
