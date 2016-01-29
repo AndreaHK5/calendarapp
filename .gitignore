@@ -9,9 +9,9 @@ tasks/**/oauth.js
 #client/semantic/site/**/*.variables.import.less
 client/semantic/definitions
 client/semantic/themes
-theme.config
-semantic.json
-semantic.less
-theme.import.less
+#theme.config
+#semantic.json
+#semantic.less
+#theme.import.less
 
 
