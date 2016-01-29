@@ -1,0 +1,32 @@
+<template name="eventDetails">
+	<div class="ten wide column centered">
+		<form class="ui form">
+			<h4 class="ui dividing header">Event Information</h4>
+			    <div class="two fields">
+				    <div class="field">
+					    <label>Title</label>
+					     <div class="field">
+					        <input type="text" placeholder="Title">
+					     </div>
+				    </div>
+				    <div class="field">
+						<div class="field">
+						    <label>Type</label>
+						     <select class="ui fluid dropdown">
+								<option >Engineer</option>
+
+						        {{#each getEngineers}}
+									<option value="AL">{{name}}</option>
+						        {{/each}}
+						     </select>
+					    </div>
+					</div>
+
+					</div>
+					<div class="field">
+			    		<label>Description</label>
+			    		<textarea rows="2"></textarea>
+			  		</div>
+			</form>			
+	</div>
+</template>

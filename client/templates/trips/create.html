@@ -7,6 +7,12 @@
     {{/if}} -->
     {{> calendar}}
   {{else}}
-    {{> confirmTrips}}
+
+    {{#if detailsMissing}}
+      {{> eventDetails}}
+    {{else}}
+      {{> confirmTrips}}
+    {{/if}}
+
   {{/if}}
 </template> 

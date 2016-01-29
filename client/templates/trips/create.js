@@ -6,9 +6,12 @@ Template.tripsCreate.onRendered(function (){
 Template.tripsCreate.helpers({
   datesMissing : function () {
     return datesMissing();
+  },
+  detailsMissing : function () {
+  	return !Session.get("plannedEvent");
   }
 });
 
 function datesMissing() {
   return !Session.get("startDate") || !Session.get("endDate");
-} 
+}
