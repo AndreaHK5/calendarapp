@@ -8,8 +8,11 @@ Template.tripsCreate.helpers({
     return datesMissing();
   },
   detailsMissing : function () {
-  	return !Session.get("plannedEvent");
-  }
+  	return !Session.get("formValid");
+  },
+  	getEventDetails : function () {
+		return Session.get("eventDetails");
+	}
 });
 
 function datesMissing() {

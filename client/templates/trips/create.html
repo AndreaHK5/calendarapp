@@ -7,10 +7,11 @@
     {{/if}} -->
     {{> calendar}}
   {{else}}
-
+    {{> selectedDates}}
     {{#if detailsMissing}}
       {{> eventDetails}}
     {{else}}
+      {{> eventDetailsShow getEventDetails}}
       {{> confirmTrips}}
     {{/if}}
 

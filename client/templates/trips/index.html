@@ -1,10 +1,8 @@
 <template name="tripsIndex">
   <div class="container-fluid">
-  <h1>Trips</h1>
-  {{#each trips}}
-    <div>
-      <p>{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</p>
-    </div>
+  <h1>Events</h1>
+  {{#each events}}
+  	{{> eventDetailsShow }}
   {{/each}}    
   </div>
 

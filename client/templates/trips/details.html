@@ -1,32 +1,65 @@
 <template name="eventDetails">
 	<div class="ten wide column centered">
 		<form class="ui form">
-			<h4 class="ui dividing header">Event Information</h4>
-			    <div class="two fields">
-				    <div class="field">
-					    <label>Title</label>
-					     <div class="field">
-					        <input type="text" placeholder="Title">
-					     </div>
-				    </div>
-				    <div class="field">
-						<div class="field">
-						    <label>Type</label>
-						     <select class="ui fluid dropdown">
-								<option >Engineer</option>
-
-						        {{#each getEngineers}}
-									<option value="AL">{{name}}</option>
-						        {{/each}}
-						     </select>
-					    </div>
-					</div>
-
-					</div>
+			<h4 class="ui dividing header">Event</h4>
+		    <div class="two fields">
+			    <div class="field">
+				    <label>Title</label>
+				     <div class="field" >
+				        <input type="text" placeholder="title" name="title">
+				     </div>
+			    </div>
+				<div class="field">
+				    <label>Type</label>
+				     <select class="ui dropdown" name="type">
+						<option value="">Type</option>
+				        {{#each getAllTypes}}
+							<option value="{{eventType}}">{{eventType}}</option>
+				        {{/each}}
+				     </select>
+			    </div>
+			</div>
+			<div class="field">
+	    		<label>Description</label>
+	    		<textarea rows="2" name="description"></textarea>
+	  		</div>
+			<h4 class="ui dividing header">Team</h4>
+				<div class="two fields">
 					<div class="field">
-			    		<label>Description</label>
-			    		<textarea rows="2"></textarea>
-			  		</div>
-			</form>			
+					    <label>Engineer</label>
+					     <select class="ui dropdown"  name="engineerGoing">
+							<option value="">Engineer</option>
+					        {{#each getAllEngineers}}
+								<option value='{"name": "{{name}}", "email" : "{{email}}", "picture" : "{{picture}}" }'>{{name}}</option>
+					        {{/each}}
+					     </select>
+				    </div>
+					<div class="field">
+					    <label>Dam</label>
+					     <select class="ui fluid dropdown" name="dam">
+							<option value="">Dam</option>
+					        {{#each getAllEngineers}}
+								<option value='{"name": "{{name}}", "email" : "{{email}}", "picture" : "{{picture}}" }'>{{name}} ({{email}})</option>
+					        {{/each}}
+					     </select>
+				    </div>
+				</div>
+				<div class="ui submit button" > Book </div>
+				<div class="ui error message"></div>
+<!-- this is the semantic ui better looking select, which does not really work -->
+<!-- 			<div class="field">
+		      <label>Engineers</label>
+		      <div class="ui fluid search selection dropdown">
+		        <input type="hidden" name="country">
+		        <i class="dropdown icon"></i>
+		        <div class="default text">Select Engineer</div>
+		        <div class="menu">
+			        {{#each getAllEngineers}}
+						<option value="{{email}}">{{email}}</option>
+			        {{/each}}        
+		        </div>
+		      </div>
+		    </div> -->
+		</form>			
 	</div>
 </template>

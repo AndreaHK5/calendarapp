@@ -4,15 +4,6 @@ Template.confirmTrips.onRendered(function(){
   TweenLite.to(myDiv,0.8, {height: 0});
 });
 
-Template.confirmTrips.helpers({
-  getStartDate : function () {
-    return Session.get("startDate");
-  },
-  getEndDate : function () {
-    return Session.get("endDate");
-  }
-});
-
 Template.confirmTrips.events({
   "click .reset-trip" : function (event) {
     var myDiv = getPlaceholder();
@@ -21,13 +12,18 @@ Template.confirmTrips.events({
     TweenLite.to(myDiv,time/1000, {height: $(window).height()});
     setTimeout(function() {
       Session.set("startDate", false);
-      Session.set("endDate", false);      
+      Session.set("endDate", false); 
+      Session.set("formValid", false);     
+      Session.set("eventDetails", undefined);     
     }, time - 200);
-    sAlert.warning("Let's pick new dates!");
+    sAlert.warning("Let's start again!");
   },
   "click .save-trip" : function (event) {
     event.preventDefault();
-    saveTrip(Session.get('startDate'), Session.get("endDate"), function (err, res) {
+    var eventL = Session.get("eventDetails");
+    eventL.startDate = Session.get('startDate');
+    eventL.endDate = Session.get('endDate');  
+    saveEvent(eventL, function (err, res) {
       if (err) {
         console.error(err);
       } else {
@@ -44,5 +40,5 @@ Template.confirmTrips.events({
 
 // helpers
 function getPlaceholder() {
-  return $("#animationPlaceholder");; 
+  return $("#animationPlaceholder"); 
 }

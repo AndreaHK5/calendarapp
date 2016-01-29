@@ -1,9 +1,9 @@
 Template.tripsIndex.onRendered(function () {
-  Meteor.subscribe("trips");
+  Meteor.subscribe("events");
 });
 
 Template.tripsIndex.helpers({
-  trips : function () {
-    return Trips.find();
+  events : function () {
+    return Events.find();
   }
 });
