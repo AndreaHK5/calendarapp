@@ -1,5 +1,8 @@
 Template.eventDetails.onRendered(function () {
-	Session.set("eventDetails", {});
+	Session.set("eventDetails", {
+    startDate : Session.get("selectedStartDate"),
+    endDate : Session.get("selectedEndDate"),
+  });
 	formValidations();
   var myDiv = $("#animationPlaceholder");
   myDiv.height($(window).height() - $(".confirm-jumbo").height());
@@ -29,7 +32,6 @@ Template.eventDetails.helpers({
 
 Template.eventDetails.events({
 	"change input[name=title]" : function (event,context) {
-		// validations will go here
 		updateEventDetails("title", event.target.value);
 	},
 	"change select[name=type]" : function (event,context) {
@@ -40,12 +42,17 @@ Template.eventDetails.events({
 	},
 	"change select[name=engineerGoing]" : function (event,context) {
 		// TODO this is a terryfying wasy of doign two way binding, find a better one!
-		// is the data cmoing in in the form at submit?
-		updateEventDetails("engineersGoing", [JSON.parse(event.target.value)]);
+    var engineersGoing = $(".ui.form")
+      .find('[name="engineerGoing"] option:selected')
+      .map(function (e,v) {
+        // TODO make a collection of engineers and get by ID!  
+        return _.find(Session.get("allEngineers"), function (g) {return g.name == v.value })
+      }).get();
+    updateEventDetails("engineersGoing", engineersGoing);
 	},
 	"change select[name=dam]" : function (event,context) {
-		// TODO ditto!
-		updateEventDetails("dam", JSON.parse(event.target.value));
+    var dam = _.find(Session.get("allEngineers"), function (g) {return g.name == event.target.value });
+		updateEventDetails("dam", dam);
 	},
 	"submit .form" : function (event) {
 		if(!$('.ui.form').form('is valid')) { return };
@@ -58,7 +65,6 @@ function updateEventDetails (field, value) {
 	var eventL = Session.get("eventDetails");
 	eventL[field] = value;
 	Session.set("eventDetails", eventL);
-	//Session.set("formValid", $('.ui.form').form('is valid'));	
 }
 
 function formValidations () {
@@ -95,7 +101,7 @@ function formValidations () {
         	identifier: 'dam',
         	rules: [
           		{
-            		type   : 'empty',
+            		type   : 'minCount[1]',
             		prompt : 'Need a DAM'
           		}
         	]
@@ -104,12 +110,13 @@ function formValidations () {
         	identifier: 'engineerGoing',
         	rules: [
           		{
-            		type   : 'empty',
+            		type   : 'minCount[1]',
             		prompt : "Who's going as ENIGNEER"
           		}
         	]
       	}
     }
   });
+  $('select.dropdown').dropdown();
 }
 

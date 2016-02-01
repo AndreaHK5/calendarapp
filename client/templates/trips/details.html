@@ -25,44 +25,30 @@
 	  		</div>
 			<h4 class="ui dividing header">Team</h4>
 				<div class="two fields">
-					<div class="field">
-					    <label>Engineer</label>
-					     <select class="ui dropdown"  name="engineerGoing">
-							<option value="">Engineer</option>
-					        {{#each getAllEngineers}}
-								<option value='{"name": "{{name}}", "email" : "{{email}}", "picture" : "{{picture}}" }'>{{name}}</option>
-					        {{/each}}
-					     </select>
-				    </div>
-					<div class="field">
-					    <label>Dam</label>
-					     <select class="ui fluid dropdown" name="dam">
-							<option value="">Dam</option>
-					        {{#each getAllEngineers}}
-								<option value='{"name": "{{name}}", "email" : "{{email}}", "picture" : "{{picture}}" }'>{{name}} ({{email}})</option>
-					        {{/each}}
-					     </select>
-				    </div>
-				</div>
-				<div class="confirm-jumbo">
-					<div class="confirm-button reset-trip">CHANGE DATES</div>
-	      			<div class="ui submit confirm-button confirm-details ">PROCEED</div>  
-				</div>
-				<div class="ui error message"></div>
-<!-- this is the semantic ui better looking select, which does not really work -->
-<!-- 			<div class="field">
-		      <label>Engineers</label>
-		      <div class="ui fluid search selection dropdown">
-		        <input type="hidden" name="country">
-		        <i class="dropdown icon"></i>
-		        <div class="default text">Select Engineer</div>
-		        <div class="menu">
-			        {{#each getAllEngineers}}
-						<option value="{{email}}">{{email}}</option>
-			        {{/each}}        
-		        </div>
-		      </div>
-		    </div> -->
+				<div class="field">
+				    <label>Engineer</label>
+				     <select class="ui dropdown" name="engineerGoing" multiple="">
+						<option value="">Engineer</option>
+				        {{#each getAllEngineers}}
+							<option value='{{name}}'>{{name}} ({{email}})</option>
+				        {{/each}}
+				     </select>
+			    </div>
+				<div class="field">
+				    <label>Dam</label>
+				     <select class="ui dropdown" name="dam">
+						<option value="">Dam</option>
+				        {{#each getAllEngineers}}
+							<option value='{{name}}'>{{name}} ({{email}})</option>
+				        {{/each}}
+				     </select>
+			    </div>
+			</div>
+			<div class="confirm-jumbo">
+				<div class="confirm-button reset-trip">CHANGE DATES</div>
+      			<div class="ui submit confirm-button confirm-details ">PROCEED</div>  
+			</div>
+			<div class="ui error message"></div>
 		</form>			
 	</div>
 </template>
