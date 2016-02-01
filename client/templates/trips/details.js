@@ -1,6 +1,9 @@
 Template.eventDetails.onRendered(function () {
 	Session.set("eventDetails", {});
 	formValidations();
+  var myDiv = $("#animationPlaceholder");
+  myDiv.height($(window).height() - $(".confirm-jumbo").height());
+  TweenLite.to(myDiv,0.8, {height: 0});
 })
 
 

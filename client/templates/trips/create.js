@@ -29,7 +29,18 @@ Template.tripsCreate.events({
       Session.set("eventDetails", undefined);     
     }, time - 200);
     sAlert.warning("Let's start again!");
-  }
+  },
+  "click .reset-details" : function (event) {
+    var myDiv = $("#animationPlaceholder");
+    var time = 800; //ms
+
+    TweenLite.to(myDiv,time/1000, {height: $(window).height()});
+    setTimeout(function() {
+      Session.set("formValid", false);     
+      Session.set("eventDetails", undefined);     
+    }, time - 200);
+    sAlert.warning("Same Dates, different team");
+  },
 
 });
 
