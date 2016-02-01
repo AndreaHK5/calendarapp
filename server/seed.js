@@ -1,3 +1,66 @@
+// helper methods
+
+getIdByName = function (collection, string) {
+  return collection.findOne({name : string})["_id"];
+} 
+
+
+if(Engineers.find().count() === 0){
+  var engineers = [
+    {
+      'name' : "Fabio Petris",
+      'email' : "fabio@noemail.com",
+      'picture' : "placeholder1.jpeg"
+    },
+    {
+        'name' : "Enrico Paglia",
+        'email' : "enrico@noemail.com",
+        'picture' : "placeholder2.jpeg"
+    },
+    {
+        'name' : "Andrea Cremese",
+        'email' : "andrea@noemail.com",
+        'picture' : "placeholder.jpeg"
+    },
+    {
+        'name' : "Phil King",
+        'email' : "phil@noemail.com",
+        'picture' : "placeholder4.jpeg"
+    }
+  ];
+
+  _.each(engineers, function(engineer){
+    Engineers.insert(engineer);
+    console.log("Engineer added to db ", engineer.name);
+  });
+}
+
+
+if(Dams.find().count() === 0){
+  var dams = [
+    {
+      'name' : "Lee Van Cleef",
+      'email' : "sentenza@theGoodTheBad.com",
+      'picture' : "placeholder4.jpeg"
+    },
+    {
+        'name' : "Henry Fonda",
+        'email' : "frank@onceUponInW.com",
+        'picture' : "placeholder5.jpeg"
+    },
+    {
+        'name' : "Charles Bronson",
+        'email' : "harmonica@onceUponInW.com",
+        'picture' : "placeholder6.jpeg"
+    }
+  ];
+
+  _.each(dams, function(dam){
+    Dams.insert(dam);
+    console.log("Dam added to db ", dam.name);
+  });
+}
+
 var lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
  
 
@@ -12,23 +75,13 @@ var eventsSeeds = [
     'title' : "Maintainance",
     'description' : lorem,
     'engineersGoing' : [
-      {
-        'name' : "Fabio Petris",
-        'email' : "fabio@noemail.com",
-        'picture' : "placeholder1.jpeg"
-      },
-      {
-        'name' : "Enrico Paglia",
-        'email' : "enrico@noemail.com",
-        'picture' : "placeholder2.jpeg"
-      }
+      getIdByName(Engineers, "Fabio Petris"),
+      getIdByName(Engineers, "Andrea Cremese"),
     ],
     'platform' : "Xbox",
-    'dam' : {
-      'name' : "Andre Cremese",
-      'email' : "andrea@noemail.com",
-      'picture' : "placeholder3.jpeg"
-    },
+    'dam' : 
+      getIdByName(Dams, "Lee Van Cleef")
+    ,
     'type' : "engagement"
   },
   {
@@ -41,18 +94,15 @@ var eventsSeeds = [
     'title' : "Skiing",
     'description' : "Skiing is fun",
     'engineersGoing' : [
-      {
-        'name' : "Andrea Cremese",
-        'email' : "andrea@noemail.com",
-        'picture' : "placeholder.jpeg"
-      }
-    ],
+        getIdByName(Engineers, "Fabio Petris"),
+        getIdByName(Engineers, "Andrea Cremese"),
+        getIdByName(Engineers, "Phil King"),
+        getIdByName(Engineers, "Enrico Paglia"),
+      ],
     'platform' : "Volkl",
-    'dam' : {
-      'name' : "Andre Cremese",
-      'email' : "andrea@noemail.com",
-      'picture' : "placeholder3.jpeg"
-    },
+    'dam' : 
+      getIdByName(Dams, "Henry Fonda")
+    ,
     'type' : "vacation"
   },
   {
@@ -65,18 +115,13 @@ var eventsSeeds = [
     'title' : "Pub",
     'description' : "Pub game night",
     'engineersGoing' : [
-      {
-        'name' : "Phil King",
-        'email' : "phil@noemail.com",
-        'picture' : "placeholder4.jpeg"
-      }
-    ],
+      getIdByName(Engineers, "Fabio Petris"),
+      getIdByName(Engineers, "Andrea Cremese"),
+     ],
     'platform' : "London Pride",
-    'dam' : {
-      'name' : "Andre Cremese",
-      'email' : "andrea@noemail.com",
-      'picture' : "placeholder3.jpeg"
-    },
+    'dam' : 
+      getIdByName(Dams, "Charles Bronson")
+    ,
     'type' : "vacation"
   },
   {
@@ -88,19 +133,13 @@ var eventsSeeds = [
     },
     'title' : "Glass Eng",
     'description' : "Second order analysis",
-    'engineersGoing' : [
-      {
-        'name' : "Phil King",
-        'email' : "phil@noemail.com",
-        'picture' : "placeholder4.jpeg"
-      }
-    ],
+    'engineersGoing' : [ 
+        getIdByName(Engineers, "Enrico Paglia")
+      ],
     'platform' : "London Pride",
-    'dam' : {
-      'name' : "Andre Cremese",
-      'email' : "andrea@noemail.com",
-      'picture' : "placeholder3.jpeg"
-    },
+    'dam' :  
+      getIdByName(Dams, "Charles Bronson")
+    ,
     'type' : "engagement"
   }
 ];

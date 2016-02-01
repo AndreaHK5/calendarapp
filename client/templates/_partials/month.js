@@ -1,7 +1,6 @@
 Template.calendarMonth.onRendered(function () {
   if (Router.current().route.getName() == "eventsIndex") {
       Meteor.subscribe("events");
-
   }
 })
 
