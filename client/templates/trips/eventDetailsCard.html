@@ -1,0 +1,23 @@
+<template name="eventDetailsCard">
+	<div class="ui grid">
+		<div class="sixteen wide column">
+			<div class="title">{{title}} @ {{visiting.location}} for {{platform}} ({{type}})</div>
+			<p>{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</p>
+		</div>
+	</div>
+	<div class="event-mid">
+		<span class="picture-label">
+			Engineers
+		</span>
+		{{#each engineersGoing}}
+			<img class="picture" src="/images/{{picture}}" alt="...">
+		{{/each}}
+		<span class="picture-label">
+		Dam 
+		</span> 
+		<img class="picture" src="/images/{{dam.picture}}" alt="...">							
+	</div>
+	<div class="event-low">
+		{{description}}
+	</div>
+</template>

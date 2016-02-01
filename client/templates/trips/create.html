@@ -2,13 +2,14 @@
   {{#if datesMissing}}
     {{> calendar}}
   {{else}}
-    {{> selectedDates}}
     {{#if detailsMissing}}
+      {{> selectedDates}}
       {{> eventDetails}}
     {{else}}
-      {{> eventDetailsShow getEventDetails}}
+      <div class="eight wide column centered event-top hover-event event-card-selected">
+        {{> eventDetailsCard getEventDetails}}
+      </div>
       {{> confirmTrips}}
     {{/if}}
-
   {{/if}}
 </template> 

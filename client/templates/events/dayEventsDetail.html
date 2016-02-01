@@ -1,6 +1,5 @@
 <template name="dayEventsDetail" >
 	<div id="day-events-container" >
-
 		<div class="ui grid">
 			<div class="events-top-spacer"></div>
 			{{#each eventsOfTheDay}}
@@ -13,30 +12,7 @@
 				<div class="ui grid 
 					">
 					<div class="fifteen wide column event-top hover-event" style="background-color: {{getEventTypeColor type}};">
-						<div class="ui grid">
-							<div class="eight wide column title">
-								{{title}} ({{type}})
-							</div>
-							<div class="six wide column">
-								
-							</div>
-							<!-- visiting {{visiting.location}} platform {{platform}}  -->
-						</div>
-						<div class="event-mid">
-							<span class="picture-label">
-								Engineers
-							</span>
-							{{#each engineersGoing}}
-								<img class="picture" src="/images/{{picture}}" alt="...">
-							{{/each}}
-							<span class="picture-label">
-							Dam 
-							</span> 
-							<img class="picture" src="/images/{{dam.picture}}" alt="...">							
-						</div>
-						<div class="event-low">
-							{{description}}
-						</div>
+						{{> eventDetailsCard }}
 					</div>
 					<div class="one wide column" style="background-color: {{getEventTypeColor type}}">
 						<div class="calendar">
@@ -49,14 +25,10 @@
 						<div class="navigation">
 							<i class="angle right icon"></i>						
 						</div>
-
 					</div>					
-				</div>
-			
+				</div>	
 			</div>
-
 		{{/each}}
 		</div>
-
 	</div>
 </template>

@@ -12,7 +12,10 @@ Template.tripsCreate.helpers({
   	return !Session.get("formValid");
   },
   	getEventDetails : function () {
-		return Session.get("eventDetails");
+    var ev = Session.get("eventDetails");
+    ev.startDate = Session.get("startDate");
+    ev.endDate = Session.get("endDate");
+		return ev;
 	}
 });
 
