@@ -5,19 +5,6 @@ Template.confirmTrips.onRendered(function(){
 });
 
 Template.confirmTrips.events({
-  "click .reset-trip" : function (event) {
-    var myDiv = getPlaceholder();
-    var time = 800; //ms
-
-    TweenLite.to(myDiv,time/1000, {height: $(window).height()});
-    setTimeout(function() {
-      Session.set("startDate", false);
-      Session.set("endDate", false); 
-      Session.set("formValid", false);     
-      Session.set("eventDetails", undefined);     
-    }, time - 200);
-    sAlert.warning("Let's start again!");
-  },
   "click .save-trip" : function (event) {
     event.preventDefault();
     var eventL = Session.get("eventDetails");

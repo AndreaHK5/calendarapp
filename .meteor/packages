@@ -25,3 +25,5 @@ semantic:ui
 flemay:less-autoprefixer
 iron:dynamic-template
 mikowals:find-async
+semantic:ui-css
+semantic:ui-dropdown
