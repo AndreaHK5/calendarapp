@@ -1,6 +1,8 @@
 Template.tripsCreate.onRendered(function (){
     Session.set("startDate", undefined);
     Session.set("endDate", undefined);
+    Session.set("eventDetails", undefined);
+    Session.set("formValid", undefined);
     sAlert.info("Let's start with the Leaving Date");
 })
 

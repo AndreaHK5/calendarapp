@@ -16,8 +16,7 @@ Template.calendarMonth.helpers({
 			var queryStartDate = now.unix();
 			var queryEndDate = now.add(3, "month").unix()
 			var eventsPerDay = {};
-			findEvents(queryStartDate, queryEndDate)
-			// Events.find({ $and :[{startDate : {$lte :  queryEndDate }},{endDate : {$gte : queryStartDate}}]})        
+			Events.find(betweenTwoDatesEventsQuery(queryStartDate,queryEndDate))        
 			.forEach(function (e) {
 
 		        // TODO move this to the mongo query! 

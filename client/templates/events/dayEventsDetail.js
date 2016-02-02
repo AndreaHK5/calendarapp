@@ -11,7 +11,7 @@ Template.dayEventsDetail.helpers({
 		if (eventContainerShowing) {
 			adjustEventsContainer();
 		} 
-		return findEvents(unixDay,unixDay);
+		return Events.find(betweenTwoDatesEventsQuery(unixDay,unixDay));
 	},
 	isSelectedEvent : function (id) {
 		if(!Session.get("eventOnCalendar")) { return }

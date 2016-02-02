@@ -48,8 +48,8 @@ if (Meteor.isClient) {
     return moment().startOf('day');
   }
 
-  findEvents = function (queryStartDate, queryEndDate) {
-    return Events.find({ $and :[{startDate : {$lte :  queryEndDate }},{endDate : {$gte : queryStartDate}}]});
+  betweenTwoDatesEventsQuery = function (queryStartDate, queryEndDate) {
+    return { $and :[{startDate : {$lte :  queryEndDate }},{endDate : {$gte : queryStartDate}}]}
   } 
 
   getEventTypeMap = function () {
