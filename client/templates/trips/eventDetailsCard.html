@@ -10,12 +10,12 @@
 			Engineers
 		</span>
 		{{#each engineersGoing}}
-			<img class="picture" src="/images/{{picture}}" alt="...">
+			<img class="picture" src="/images/{{getEngineerPicture id}}" alt="...">
 		{{/each}}
 		<span class="picture-label">
 		Dam 
 		</span> 
-		<img class="picture" src="/images/{{dam.picture}}" alt="...">							
+		<img class="picture" src="/images/{{getDamPicture dam.id}}" alt="...">							
 	</div>
 	<div class="event-low">
 		{{description}}

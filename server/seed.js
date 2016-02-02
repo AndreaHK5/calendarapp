@@ -41,17 +41,17 @@ if(Dams.find().count() === 0){
     {
       'name' : "Lee Van Cleef",
       'email' : "sentenza@theGoodTheBad.com",
-      'picture' : "placeholder4.jpeg"
+      'picture' : "lee.jpeg"
     },
     {
         'name' : "Henry Fonda",
         'email' : "frank@onceUponInW.com",
-        'picture' : "placeholder5.jpeg"
+        'picture' : "henry.jpeg"
     },
     {
         'name' : "Charles Bronson",
         'email' : "harmonica@onceUponInW.com",
-        'picture' : "placeholder6.jpeg"
+        'picture' : "charles.jpeg"
     }
   ];
 
@@ -75,13 +75,11 @@ var eventsSeeds = [
     'title' : "Maintainance",
     'description' : lorem,
     'engineersGoing' : [
-      getIdByName(Engineers, "Fabio Petris"),
-      getIdByName(Engineers, "Andrea Cremese"),
+      { id : getIdByName(Engineers, "Fabio Petris") },
+      { id : getIdByName(Engineers, "Andrea Cremese") },
     ],
     'platform' : "Xbox",
-    'dam' : 
-      getIdByName(Dams, "Lee Van Cleef")
-    ,
+    'dam' : { id : getIdByName(Dams, "Lee Van Cleef") },
     'type' : "engagement"
   },
   {
@@ -94,15 +92,13 @@ var eventsSeeds = [
     'title' : "Skiing",
     'description' : "Skiing is fun",
     'engineersGoing' : [
-        getIdByName(Engineers, "Fabio Petris"),
-        getIdByName(Engineers, "Andrea Cremese"),
-        getIdByName(Engineers, "Phil King"),
-        getIdByName(Engineers, "Enrico Paglia"),
+        { id : getIdByName(Engineers, "Fabio Petris") },
+        { id : getIdByName(Engineers, "Andrea Cremese") },
+        { id : getIdByName(Engineers, "Phil King") },
+        { id : getIdByName(Engineers, "Enrico Paglia") },
       ],
     'platform' : "Volkl",
-    'dam' : 
-      getIdByName(Dams, "Henry Fonda")
-    ,
+    'dam' : { id : getIdByName(Dams, "Henry Fonda") },
     'type' : "vacation"
   },
   {
@@ -115,13 +111,11 @@ var eventsSeeds = [
     'title' : "Pub",
     'description' : "Pub game night",
     'engineersGoing' : [
-      getIdByName(Engineers, "Fabio Petris"),
-      getIdByName(Engineers, "Andrea Cremese"),
+      { id : getIdByName(Engineers, "Fabio Petris") },
+      { id : getIdByName(Engineers, "Andrea Cremese") },
      ],
     'platform' : "London Pride",
-    'dam' : 
-      getIdByName(Dams, "Charles Bronson")
-    ,
+    'dam' : { id : getIdByName(Dams, "Charles Bronson") },
     'type' : "vacation"
   },
   {
@@ -134,12 +128,10 @@ var eventsSeeds = [
     'title' : "Glass Eng",
     'description' : "Second order analysis",
     'engineersGoing' : [ 
-        getIdByName(Engineers, "Enrico Paglia")
+        { id : getIdByName(Engineers, "Enrico Paglia") }
       ],
     'platform' : "London Pride",
-    'dam' :  
-      getIdByName(Dams, "Charles Bronson")
-    ,
+    'dam' : { id :  getIdByName(Dams, "Charles Bronson") },
     'type' : "engagement"
   }
 ];

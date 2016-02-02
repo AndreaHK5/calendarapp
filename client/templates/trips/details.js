@@ -7,15 +7,17 @@ Template.eventDetails.onRendered(function () {
   var myDiv = $("#animationPlaceholder");
   myDiv.height($(window).height() - $(".confirm-jumbo").height());
   TweenLite.to(myDiv,0.8, {height: 0});
+  Meteor.subscribe("engineers");
+  Meteor.subscribe("dams");
 })
 
 
 Template.eventDetails.helpers({
   getAllEngineers : function () {
-  	getAllDistinctInEvents("engineersGoing",function (err,res) {
-  		Session.set("allEngineers", res);
-  	});
-  	return Session.get("allEngineers");
+  	return Engineers.find();
+  },
+  getAllDams : function () {
+    return Dams.find();
   },
    getAllTypes : function () {
   	getAllDistinctInEvents("type",function (err,res) {
@@ -46,13 +48,12 @@ Template.eventDetails.events({
       .find('[name="engineerGoing"] option:selected')
       .map(function (e,v) {
         // TODO make a collection of engineers and get by ID!  
-        return _.find(Session.get("allEngineers"), function (g) {return g.name == v.value })
+        return { id : v.value }; 
       }).get();
     updateEventDetails("engineersGoing", engineersGoing);
 	},
 	"change select[name=dam]" : function (event,context) {
-    var dam = _.find(Session.get("allEngineers"), function (g) {return g.name == event.target.value });
-		updateEventDetails("dam", dam);
+		updateEventDetails("dam", { id : event.target.value });
 	},
 	"submit .form" : function (event) {
 		if(!$('.ui.form').form('is valid')) { return };

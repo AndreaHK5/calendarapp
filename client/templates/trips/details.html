@@ -30,7 +30,10 @@
 				     <select class="ui dropdown" name="engineerGoing" multiple="">
 						<option value="">Engineer</option>
 				        {{#each getAllEngineers}}
-							<option value='{{name}}'>{{name}} ({{email}})</option>
+							<option value="{{_id}}">
+								<img class="ui mini avatar image" src="/images/{{picture}}">
+								{{name}} 
+							</option>
 				        {{/each}}
 				     </select>
 			    </div>
@@ -38,8 +41,11 @@
 				    <label>Dam</label>
 				     <select class="ui dropdown" name="dam">
 						<option value="">Dam</option>
-				        {{#each getAllEngineers}}
-							<option value='{{name}}'>{{name}} ({{email}})</option>
+				        {{#each getAllDams}}
+							<option value="{{_id}}">
+								<img class="ui mini avatar image" src="/images/{{picture}}">
+								{{name}}
+							</option>
 				        {{/each}}
 				     </select>
 			    </div>

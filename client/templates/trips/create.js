@@ -11,7 +11,7 @@ Template.tripsCreate.helpers({
   detailsMissing : function () {
   	return !Session.get("formValid");
   },
-  	getEventDetails : function () {
+  getEventDetails : function () {
     var ev = Session.get("eventDetails");
     ev.startDate = Session.get("startDate");
     ev.endDate = Session.get("endDate");
