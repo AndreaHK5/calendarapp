@@ -6,6 +6,8 @@ Template.eventDetails.onRendered(function () {
     endDate : Session.get("selectedEndDate"),
   });
 
+  Session.set("customType", undefined);
+
   // animations
   var myDiv = $("#animationPlaceholder");
   myDiv.height($(window).height() - $(".confirm-jumbo").height());
@@ -34,13 +36,16 @@ Template.eventDetails.helpers({
   getAllDams : function () {
     return Dams.find();
   },
-   getAllTypes : function () {
+  getAllTypes : function () {
     return lodash.uniqBy( 
       Events.find().map(
         function (e) { 
           return { "type" : e.type};
         }), 
       lodash.iteratee("type"));
+  },
+  getCustomType : function () {
+    return Session.get("customType");
   }
 })
 
@@ -50,12 +55,15 @@ Template.eventDetails.events({
 		updateEventDetails("title", event.target.value);
 	},
 	"change select[name=type]" : function (event,context) {
+    console.log("change2");
 		updateEventDetails("type", event.target.value);
 	},
 	"change textarea[name=description]" : function (event,context) {
 		updateEventDetails("description", event.target.value);
+
 	},
 	"change select[name=engineerGoing]" : function (event,context) {
+
 		// TODO this is a terryfying wasy of doign two way binding, find a better one!
     var engineersGoing = $(".ui.form")
       .find('[name="engineerGoing"] option:selected')

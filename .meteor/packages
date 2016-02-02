@@ -28,3 +28,6 @@ mikowals:find-async
 semantic:ui-css
 semantic:ui-dropdown
 erasaur:meteor-lodash
+aldeed:simple-schema
+aldeed:collection2
+matb33:collection-hooks

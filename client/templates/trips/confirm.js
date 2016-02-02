@@ -12,7 +12,7 @@ Template.confirmTrips.events({
     eventL.endDate = Session.get('endDate');  
     saveEvent(eventL, function (err, res) {
       if (err) {
-        console.error(err);
+        sAlert.error("Woha, something went wrong" + (err));
       } else {
         // TODO the format is starting to be used quite frequently - research a global helper
         var start = moment.unix(res.startDate).format("dddd MMM DD");
