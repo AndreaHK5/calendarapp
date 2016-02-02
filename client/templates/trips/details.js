@@ -9,6 +9,7 @@ Template.eventDetails.onRendered(function () {
   TweenLite.to(myDiv,0.8, {height: 0});
   Meteor.subscribe("engineers");
   Meteor.subscribe("dams");
+  Meteor.subscribe("events");
 })
 
 
@@ -20,14 +21,12 @@ Template.eventDetails.helpers({
     return Dams.find();
   },
    getAllTypes : function () {
-  	getAllDistinctInEvents("type",function (err,res) {
-  		if (err) {
-  			console.log(err);
-  			return;
-  		}
-  		Session.set("allTypes", _.map(res, function (e) {return {eventType : e}}));
-  	});
-  	return Session.get("allTypes");
+    return lodash.uniqBy( 
+      Events.find().map(
+        function (e) { 
+          return { "type" : e.type};
+        }), 
+      lodash.iteratee("type"));
   }
 })
 

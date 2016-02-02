@@ -27,3 +27,4 @@ iron:dynamic-template
 mikowals:find-async
 semantic:ui-css
 semantic:ui-dropdown
+erasaur:meteor-lodash
