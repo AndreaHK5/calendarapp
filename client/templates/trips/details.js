@@ -1,15 +1,29 @@
 Template.eventDetails.onRendered(function () {
+  
+  // set eventBasic Details
 	Session.set("eventDetails", {
     startDate : Session.get("selectedStartDate"),
     endDate : Session.get("selectedEndDate"),
   });
-	formValidations();
+
+  // animations
   var myDiv = $("#animationPlaceholder");
   myDiv.height($(window).height() - $(".confirm-jumbo").height());
-  TweenLite.to(myDiv,0.8, {height: 0});
+  TweenLite.to(myDiv,0.8, {
+    height: 0, 
+    onComplete : function () {
+      var h = $(window).height() - $('.confirm-jumbo').offset().top - 2 * $('.confirm-jumbo').height();
+      $('.event-details-form').height(h)
+    }
+  });
+  
+  // subscriptions
   Meteor.subscribe("engineers");
   Meteor.subscribe("dams");
   Meteor.subscribe("events");
+
+  // register validations
+  formValidations();
 })
 
 
