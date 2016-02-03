@@ -1,4 +1,4 @@
-Template.calendar.onRendered(function () {
+Template.engagementsCalendar.onRendered(function () {
   // form is cleared at render. Move this code outside this handler in case we prefer 
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set('months', getMonths());
@@ -8,10 +8,11 @@ Template.calendar.onRendered(function () {
   calendar.css("height", $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height());
   calendar.css("overflow", "scroll");
 
-  // initiate the scrollMonth
+  // position the days of the week nav at top
+  $('#weekday-navbar').css("margin-top", $("#site-navbar").height());
 });
 
-Template.calendar.helpers({
+Template.engagementsCalendar.helpers({
   months : function () {
     return Session.get("months");
   },
@@ -23,7 +24,7 @@ Template.calendar.helpers({
   }
 });
 
-Template.calendar.events({
+Template.engagementsCalendar.events({
   "click .add-month" : function (event) {
     event.preventDefault();
     addMonth();

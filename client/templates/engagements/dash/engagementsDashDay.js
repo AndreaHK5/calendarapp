@@ -1,4 +1,4 @@
-Template.eventDay.helpers({
+Template.engagementsDashDay.helpers({
 	isSelectedDay : function () {
 		return this.fullDate == Session.get("dayForEventsDetail");
 	},

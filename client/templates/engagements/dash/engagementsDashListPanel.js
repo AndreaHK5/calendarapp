@@ -1,11 +1,11 @@
-Template.dayEventsDetail.onRendered(function () {
+Template.engagementsDashListPanel.onRendered(function () {
 	setTimeout(function() {
 		showEventsContainer();
 	}, 10);
 	Session.set("eventOnCalendar", undefined );
 })
 
-Template.dayEventsDetail.helpers({
+Template.engagementsDashListPanel.helpers({
 	eventsOfTheDay : function () {
 		var unixDay = Session.get("dayForEventsDetail");
 		if (eventContainerShowing) {
@@ -19,7 +19,7 @@ Template.dayEventsDetail.helpers({
 	}
 })
 
-Template.dayEventsDetail.events({
+Template.engagementsDashListPanel.events({
 	"mouseenter .hover-event" : function () {
 		if (!useHover) {return;} 
 		var targetEvent = this;

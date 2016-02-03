@@ -1,13 +1,7 @@
-Template.calendarMonth.onRendered(function () {
-  if (Router.current().route.getName() == "eventsIndex") {
-      Meteor.subscribe("events");
-  }
-})
-
-Template.calendarMonth.helpers({
+Template.engagementsMonth.helpers({
 	getDayTemplate : function () {
 		if ( Router.current().route.getName() == "engagementsCreate") { return "engagementsCreateDay"; }
-		if ( Router.current().route.getName() == "engagementsDash") { return "eventDay"; }
+		if ( Router.current().route.getName() == "engagementsDash") { return "engagementsDashDay"; }
 	},
 	getDays : function () {
 		var eventsRequired = Router.current().route.getName() == "engagementsDash"; 
@@ -17,9 +11,7 @@ Template.calendarMonth.helpers({
 			var queryEndDate = now.add(3, "month").unix()
 			var eventsPerDay = {};
 			Events.find(betweenTwoDatesEventsQuery(queryStartDate,queryEndDate))        
-			.forEach(function (e) {
-
-		        // TODO move this to the mongo query! 
+			.forEach(function (e) {		        // TODO move this to the mongo query! 
 		        // TODO add unit test of this mostruosity
 		        var startLoop = moment.max(moment.unix(e.startDate), moment.unix(queryStartDate));
 		        var endLoop = moment.min(moment.unix(e.endDate), moment.unix(queryEndDate));

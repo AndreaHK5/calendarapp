@@ -1,7 +1,15 @@
-<template name="calendar">
-  {{> tripsCreateNav}}
-   <div class="calendar-navigation">
-      <div class="month-helper">
+<template name="engagementsCalendar">
+    <div id="weekday-navbar" class="ui fixed fluid seven item tabular menu">
+      <div class="item">Sun</div>
+      <div class="item">Mon</div>
+      <div class="item">Tue</div>
+      <div class="item">Wed</div>
+      <div class="item">Thu</div>
+      <div class="item">Fri</div>
+      <div class="item">Sat</div>
+  </div>
+  <div class="calendar-navigation">
+    <div class="month-helper">
         <h3>
           {{getShortMonth}} 
         </h3>  
@@ -19,7 +27,7 @@
   <div id="calendar-container" class="ui grid">
     {{#each months}}
       <div class="sixteen wide column hovering" id="{{date}}">
-        {{> calendarMonth date=date}}
+        {{> engagementsMonth date=date}}
       </div>
     {{/each}} 
     <div class="sixteen wide column">

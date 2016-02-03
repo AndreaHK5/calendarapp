@@ -1,8 +1,8 @@
-Template.eventLegend.onRendered(function () {
+Template.engagementsDashLegend.onRendered(function () {
 	Session.set("legendShow", false);
 })
 
-Template.eventLegend.helpers({
+Template.engagementsDashLegend.helpers({
 	isLegendShowing : function () {
 		return Session.get("legendShow");
 	},
@@ -16,7 +16,7 @@ Template.eventLegend.helpers({
 	}
 }) 
 
-Template.eventLegend.events({
+Template.engagementsDashLegend.events({
 	"click .event-legend" : function () {
 		Session.set("legendShow", ! Session.get("legendShow"));
 	}
