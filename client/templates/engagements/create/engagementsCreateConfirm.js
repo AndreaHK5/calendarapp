@@ -10,7 +10,7 @@ Template.engagementsCreateConfirm.events({
     var eventL = Session.get("eventDetails");
     eventL.startDate = Session.get('startDate');
     eventL.endDate = Session.get('endDate');  
-    saveEvent(eventL, function (err, res) {
+    saveEngagement(eventL, function (err, res) {
       if (err) {
         sAlert.error("Woha, something went wrong" + (err));
       } else {

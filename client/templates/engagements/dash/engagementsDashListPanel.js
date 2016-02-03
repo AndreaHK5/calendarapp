@@ -11,7 +11,7 @@ Template.engagementsDashListPanel.helpers({
 		if (eventContainerShowing) {
 			adjustEventsContainer();
 		} 
-		return Events.find(betweenTwoDatesEventsQuery(unixDay,unixDay));
+		return Engagements.find(betweenTwoDatesEventsQuery(unixDay,unixDay));
 	},
 	isSelectedEvent : function (id) {
 		if(!Session.get("eventOnCalendar")) { return }

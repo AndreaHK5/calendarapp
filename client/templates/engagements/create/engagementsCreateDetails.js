@@ -22,7 +22,7 @@ Template.engagementsCreateDetails.onRendered(function () {
   // subscriptions
   Meteor.subscribe("engineers");
   Meteor.subscribe("dams");
-  Meteor.subscribe("events");
+  Meteor.subscribe("engagements");
 
   // register validations
   formValidations();
@@ -38,7 +38,7 @@ Template.engagementsCreateDetails.helpers({
   },
   getAllTypes : function () {
     return lodash.uniqBy( 
-      Events.find().map(
+      Engagements.find().map(
         function (e) { 
           return { "type" : e.type};
         }), 

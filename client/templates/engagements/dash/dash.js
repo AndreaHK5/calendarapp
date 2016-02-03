@@ -1,6 +1,6 @@
 Template.engagementsDash.onRendered(function () {
 	resetSelectedDay();
-	 Meteor.subscribe("events");
+	 Meteor.subscribe("engagements");
 });
 
 Template.engagementsDash.helpers({

@@ -64,7 +64,7 @@ if(Dams.find().count() === 0){
 var lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
  
 
-var eventsSeeds = [
+var engagementsSeeds = [
   {
     "startDate" : moment([2016,1,1]).startOf("day").unix(),
     'endDate'   : moment([2016,1,5]).startOf("day").unix(),
@@ -137,9 +137,9 @@ var eventsSeeds = [
 ];
 
 
-if(Events.find().count() === 0){
-  _.each(eventsSeeds, function(event){
-    Events.insert(event);
+if(Engagements.find().count() === 0){
+  _.each(engagementsSeeds, function(event){
+    Engagements.insert(event);
     console.log("Inserted ", event.title);
   })
 }

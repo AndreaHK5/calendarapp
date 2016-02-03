@@ -1,9 +1,9 @@
 Template.engagementsList.onRendered(function () {
-  Meteor.subscribe("events");
+  Meteor.subscribe("engagements");
 });
 
 Template.engagementsList.helpers({
   events : function () {
-    return Events.find();
+    return Engagements.find();
   }
 });

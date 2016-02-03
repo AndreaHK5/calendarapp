@@ -1,5 +1,5 @@
-Meteor.publish("events", function (queryStartDate, queryEndDate) {
-	return Events.find();
+Meteor.publish("engagements", function (queryStartDate, queryEndDate) {
+	return Engagements.find();
 });
 
 Meteor.publish("engineers", function(){

@@ -10,7 +10,7 @@ Template.engagementsMonth.helpers({
 			var queryStartDate = now.unix();
 			var queryEndDate = now.add(3, "month").unix()
 			var eventsPerDay = {};
-			Events.find(betweenTwoDatesEventsQuery(queryStartDate,queryEndDate))        
+			Engagements.find(betweenTwoDatesEventsQuery(queryStartDate,queryEndDate))        
 			.forEach(function (e) {		        // TODO move this to the mongo query! 
 		        // TODO add unit test of this mostruosity
 		        var startLoop = moment.max(moment.unix(e.startDate), moment.unix(queryStartDate));
