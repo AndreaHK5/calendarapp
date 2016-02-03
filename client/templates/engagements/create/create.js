@@ -22,7 +22,7 @@ Template.engagementsCreate.helpers({
 });
 
 Template.engagementsCreate.events({
-  "click .reset-trip" : function (event) {
+  "click .reset-engagement" : function (event) {
     var myDiv = $("#animationPlaceholder");
     var time = 800; //ms
 
