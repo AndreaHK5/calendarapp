@@ -26,6 +26,12 @@ Template.engagementsMonth.helpers({
 		    });
 		} 
 		return getDaysInMonth(this.date, eventsPerDay);
+	},
+	getMonth : function (unixTime) {
+  		return moment.unix(unixTime).format('MMMM');
+	},
+	getYear : function (unixTime) {
+ 		return moment.unix(unixTime).year();
 	}
 });
 

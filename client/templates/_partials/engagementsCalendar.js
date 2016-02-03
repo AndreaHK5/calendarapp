@@ -1,7 +1,7 @@
 Template.engagementsCalendar.onRendered(function () {
   // form is cleared at render. Move this code outside this handler in case we prefer 
   //the form to remain populated (logic will be required in order to wipe that) 
-  Session.set('months', getMonths());
+  Session.set("monthsShowing", getMonths());
   Session.set('hoverMonth', getTodayDate().unix());
   // set height of calendar container in order to allow scrolling
   var calendar = $('#calendar-container');
@@ -14,7 +14,7 @@ Template.engagementsCalendar.onRendered(function () {
 
 Template.engagementsCalendar.helpers({
   months : function () {
-    return Session.get("months");
+    return Session.get("monthsShowing");
   },
   startDateSelected : function () {
     return Session.get("startDate");
@@ -69,14 +69,14 @@ function scrollVertical(div) {
 } 
 
 function addMonth() {
-  var months = Session.get("months");
+  var months = Session.get("monthsShowing");
   var last = 
     _.max(months, 
       function (month) { return month.date }
     );
   var newDate = moment.unix(last.date).add(1, 'month').unix();
   months.push({date : newDate});
-  Session.set("months", months);
+  Session.set("monthsShowing", months);
   updateNavigationArrows();
   // scroll to newly created month...
   // TODO this is a terrible workaround, need a promise on the div creation (on rendered?)
@@ -102,7 +102,7 @@ function getMonths() {
   result.push({date : now.unix()});
   for (var i = 1; i < 3; i++) {
     var newDate = now.add(1, 'month');
-    result.push({date : newDate.unix()});
+    result.push({date : newDate.toISOString()});
   };
   return result; 
 }
