@@ -1,11 +1,6 @@
-// UI helpers
-
 UI.registerHelper("getFormattedDate", function (unixDate) {
   return formateDateHelper(unixDate);
 });
-
-
-
 
 
 // These helpers and setting serve and allow to get colors for the legend and the difference engagement types.

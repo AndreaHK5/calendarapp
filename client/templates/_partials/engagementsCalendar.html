@@ -15,7 +15,7 @@
         </h3>  
      </div>
      <div class="months-arrows">
-       <span class="scroll-prev-month scroll-arrow">
+       <span class="scroll-prev-month scroll-arrow {{#if firstMonthHovered}} scroll-arrow-inactive {{/if}}">
          <i class="chevron up icon "></i>
        </span>
        <span class="scroll-next-month scroll-arrow">
@@ -26,7 +26,7 @@
   </div>
   <div id="calendar-container" class="ui grid">
     {{#each months}}
-      <div class="sixteen wide column hovering" id="{{date}}">
+      <div class="sixteen wide column hovering" id="{{getUnix date}}">
         {{> engagementsMonth date=date}}
       </div>
     {{/each}} 

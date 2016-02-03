@@ -6,7 +6,7 @@
     {{#each getDays}}
       <div class="column">
     		<div class="one column grid">
-	    		{{#if dayNumber}}
+	    		{{#if date}}
 	        		{{> DynamicTemplate template=getDayTemplate}}	    		 	
 				  {{else}}
 				    <!-- if no day is provided -->

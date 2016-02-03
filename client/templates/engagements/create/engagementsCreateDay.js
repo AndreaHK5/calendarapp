@@ -13,22 +13,22 @@ Template.engagementsCreateDay.onRendered(function(){
 
 Template.engagementsCreateDay.helpers({
   isSelectedStartDate : function () {
-    return Session.get("startDate") == this.fullDate;
+    return Session.get("startDate") == this.date;
   },
   isDateInTrip : function () {
     //check that start date is selected, end date not selected and that the current hovered date is greater that the date 
     lastDay = Session.get("endDate") ? Session.get("endDate") :  Session.get("hoverDay")
     return Session.get("startDate")
-      && this.fullDate <= lastDay
-      && this.fullDate > Session.get("startDate");
+      && this.date <= lastDay
+      && this.date > Session.get("startDate");
   },
   isHoveredDate : function () {
     return Session.get("startDate")
-      && this.fullDate == Session.get("hoverDay");
+      && this.date == Session.get("hoverDay");
   },
   isStartDateAndHovered : function () {
-      return Session.get("startDate") == this.fullDate
-        && this.fullDate == Session.get("hoverDay");
+      return Session.get("startDate") == this.date
+        && this.date == Session.get("hoverDay");
   },
   hoverResetStartDate : function () {
     return Session.get("hoverResetStartDate");
@@ -37,15 +37,18 @@ Template.engagementsCreateDay.helpers({
     if (!Session.get("startDate")){
       return false;
     } else {
-      return this.fullDate < Session.get("startDate");
+      return this.date < Session.get("startDate");
     }
+  },
+  dayNumber : function (isoDate) {
+    return moment(isoDate).date();
   }
 });
 
 Template.engagementsCreateDay.events({
   "mouseenter .select-day" : function (event) {
     // style dates after start date is selected
-    Session.set("hoverDay", this.fullDate);
+    Session.set("hoverDay", this.date);
   },
   "mouseleave .selected-and-hover-day" : function (event) {
     // style dates after start date is selected
@@ -65,21 +68,21 @@ Template.engagementsCreateDay.events({
   "click .select-day" : function (event) {
     event.preventDefault();
     if (!Session.get("startDate")){
-      Session.set("startDate", this.fullDate);
+      Session.set("startDate", this.date);
       sAlert.info(
-        "Leaving on " + moment.unix(this.fullDate).format("dddd MMM DD") + " it is. Let's pick the return now.");
+        "Leaving on " + moment(this.date).format("dddd MMM DD") + " it is. Let's pick the return now.");
     } else {
       // check that return date is correct
-      if (this.fullDate < Session.get("startDate")) { 
+      if (this.date < Session.get("startDate")) { 
         sAlert.error("Return before going? Dr Who is interested now!");
         return;
       }
-      Session.set("endDate", this.fullDate);
-      sAlert.info("Back on " + moment.unix(this.fullDate).format("dddd MMM DD") + " sounds cool.");
+      Session.set("endDate", this.date);
+      sAlert.info("Back on " + moment(this.date).format("dddd MMM DD") + " sounds cool.");
     }
   },
   "click .same-return-day" : function (event) {
     Session.set("endDate", Session.get("startDate"));
-    sAlert.info("One day gig on " + moment.unix(this.fullDate).format("dddd MMM DD") + " will be.");
+    sAlert.info("One day gig on " + moment(this.date).format("dddd MMM DD") + " will be.");
   },
 });
