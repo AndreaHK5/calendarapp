@@ -7,7 +7,7 @@ Template.eventLegend.helpers({
 		return Session.get("legendShow");
 	},
 	getAllEventsTypes : function () {
-		var hash = getEventTypeMap();
+		var hash = Session.get("eventsMap");
 		result = [];
 		for (var k in hash) {
 			result.push({eventType: k.toUpperCase()})

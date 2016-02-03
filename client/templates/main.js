@@ -12,19 +12,23 @@ UI.registerHelper("getFormattedDate", function (unixDate) {
   return formateDateHelper(unixDate);
 });
 
-var eventTypeMap = {
-    "vacation" : "#00A600",
-    "engagement" : "#00AEEF"
-}
+Session.set("eventsMap", {
+    "vacation" : "rgb(0,174,239)",
+    "engagement" : "rgb(0,166,0)"
+});
 
-var otherColors = [ "#8D2E92", "#FFBE00", "#FF0097", "#0071BC"];
+var otherColors = [ "rgb(0,113,188)", "rgb(141,46,136)", "rgb(15,62,157)", "rgb(140,198,0)",
+                    "rgb(255,242,0)", "rgb(255,190,0)", "rgb(255,138,0)", "rgb(255,83,0)",
+                    "rgb(255,0,0)", "rgb(255,0,151)"];
 
 UI.registerHelper("getEventTypeColor", function (eventType) {
   // safe method in case a new type is provided
+  var eventTypeMap = Session.get("eventsMap");
   eventType = eventType.toLowerCase(); 
   if (!(eventType in eventTypeMap)) {
     var color = otherColors.shift();
     eventTypeMap[eventType] = color;
+    Session.set("eventsMap", eventTypeMap);
     return color;
   }
   return eventTypeMap[eventType];
@@ -51,9 +55,5 @@ if (Meteor.isClient) {
   betweenTwoDatesEventsQuery = function (queryStartDate, queryEndDate) {
     return { $and :[{startDate : {$lte :  queryEndDate }},{endDate : {$gte : queryStartDate}}]}
   } 
-
-  getEventTypeMap = function () {
-    return eventTypeMap;
-  }
 }
 
