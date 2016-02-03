@@ -1,8 +1,8 @@
-Template.eventsIndex.onRendered(function () {
+Template.engagementsDash.onRendered(function () {
 	resetSelectedDay();
 });
 
-Template.eventsIndex.helpers({
+Template.engagementsDash.helpers({
 	showDayEventsDetail : function () {
 		// ensure calendar is always visible
 		if (!(Session.get("dayForEventsDetail"))) {
@@ -11,7 +11,7 @@ Template.eventsIndex.helpers({
 	}
 });
 
-Template.eventsIndex.events({
+Template.engagementsDash.events({
 	"click .day-box": function (event) {
 		// gate if clicking on same day
 		if (Session.get("dayForEventsDetail") == this.fullDate) { return; }

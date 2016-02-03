@@ -1,4 +1,4 @@
-Template.eventDetails.onRendered(function () {
+Template.engagementsCreateDetails.onRendered(function () {
   
   // set eventBasic Details
 	Session.set("eventDetails", {
@@ -29,7 +29,7 @@ Template.eventDetails.onRendered(function () {
 })
 
 
-Template.eventDetails.helpers({
+Template.engagementsCreateDetails.helpers({
   getAllEngineers : function () {
   	return Engineers.find();
   },
@@ -46,11 +46,17 @@ Template.eventDetails.helpers({
   },
   getCustomType : function () {
     return Session.get("customType");
+  },
+  getStartDate : function () {
+      return Session.get("startDate");
+    },
+  getEndDate : function () {
+      return Session.get("endDate");
   }
 })
 
 
-Template.eventDetails.events({
+Template.engagementsCreateDetails.events({
 	"change input[name=title]" : function (event,context) {
 		updateEventDetails("title", event.target.value);
 	},

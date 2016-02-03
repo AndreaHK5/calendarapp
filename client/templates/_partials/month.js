@@ -6,11 +6,11 @@ Template.calendarMonth.onRendered(function () {
 
 Template.calendarMonth.helpers({
 	getDayTemplate : function () {
-		if ( Router.current().route.getName() == "tripsCreate") { return "calendarDay"; }
-		if ( Router.current().route.getName() == "eventsIndex") { return "eventDay"; }
+		if ( Router.current().route.getName() == "engagementsCreate") { return "engagementsCreateDay"; }
+		if ( Router.current().route.getName() == "engagementsDash") { return "eventDay"; }
 	},
 	getDays : function () {
-		var eventsRequired = Router.current().route.getName() == "eventsIndex"; 
+		var eventsRequired = Router.current().route.getName() == "engagementsDash"; 
 		if (eventsRequired) {
 			var now =  getTodayDate();
 			var queryStartDate = now.unix();

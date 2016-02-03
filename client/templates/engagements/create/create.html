@@ -1,15 +1,14 @@
-<template name="tripsCreate">
+<template name="engagementsCreate">
   {{#if datesMissing}}
     {{> calendar}}
   {{else}}
     {{#if detailsMissing}}
-      {{> selectedDates}}
-      {{> eventDetails}}
+      {{> engagementsCreateDetails}}
     {{else}}
       <div class="eight wide column centered event-top hover-event event-card-selected">
-        {{> eventDetailsCard getEventDetails}}
+        {{> engagementDetailsCard getEventDetails}}
       </div>
-      {{> confirmTrips}}
+      {{> engagementsCreateConfirm}}
     {{/if}}
   {{/if}}
 </template> 

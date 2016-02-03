@@ -1,4 +1,4 @@
-Template.tripsCreate.onRendered(function (){
+Template.engagementsCreate.onRendered(function (){
     Session.set("startDate", undefined);
     Session.set("endDate", undefined);
     Session.set("eventDetails", undefined);
@@ -6,7 +6,7 @@ Template.tripsCreate.onRendered(function (){
     sAlert.info("Let's start with the Leaving Date");
 })
 
-Template.tripsCreate.helpers({
+Template.engagementsCreate.helpers({
   datesMissing : function () {
     return datesMissing();
   },
@@ -21,7 +21,7 @@ Template.tripsCreate.helpers({
 	}
 });
 
-Template.tripsCreate.events({
+Template.engagementsCreate.events({
   "click .reset-trip" : function (event) {
     var myDiv = $("#animationPlaceholder");
     var time = 800; //ms

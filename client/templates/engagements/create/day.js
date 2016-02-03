@@ -1,4 +1,4 @@
-Template.calendarDay.onRendered(function(){
+Template.engagementsCreateDay.onRendered(function(){
   $(".day-box").hover(
     function(){      
       $(this).find(".day-box-top").addClass("day-box-top-hovered");
@@ -11,7 +11,7 @@ Template.calendarDay.onRendered(function(){
 });
 
 
-Template.calendarDay.helpers({
+Template.engagementsCreateDay.helpers({
   isSelectedStartDate : function () {
     return Session.get("startDate") == this.fullDate;
   },
@@ -42,7 +42,7 @@ Template.calendarDay.helpers({
   }
 });
 
-Template.calendarDay.events({
+Template.engagementsCreateDay.events({
   "mouseenter .select-day" : function (event) {
     // style dates after start date is selected
     Session.set("hoverDay", this.fullDate);

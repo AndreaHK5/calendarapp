@@ -32,16 +32,14 @@ UI.registerHelper("getEventTypeColor", function (eventType) {
   var eventTypeMap = Session.get("eventsMap");
   eventType = eventType.toLowerCase(); 
   if (!(eventType in eventTypeMap)) {
-    var color = microsoftColors.shift();
+    // generate random color when the standard ones are finished
+    var color = microsoftColors.shift() || "#"+((1<<24)*Math.random()|0).toString(16);
     eventTypeMap[eventType] = color;
     Session.set("eventsMap", eventTypeMap);
     return color;
   }
   return eventTypeMap[eventType];
 });
-
-
-
 
 
 

@@ -1,10 +1,10 @@
-Template.confirmTrips.onRendered(function(){
+Template.engagementsCreateConfirm.onRendered(function(){
   var myDiv = getPlaceholder();
   myDiv.height($(window).height() - $(".confirm-jumbo").height());
   TweenLite.to(myDiv,0.8, {height: 0});
 });
 
-Template.confirmTrips.events({
+Template.engagementsCreateConfirm.events({
   "click .save-trip" : function (event) {
     event.preventDefault();
     var eventL = Session.get("eventDetails");
@@ -18,7 +18,7 @@ Template.confirmTrips.events({
         var start = moment.unix(res.startDate).format("dddd MMM DD");
         var end = moment.unix(res.endDate).format("dddd MMM DD");
         sAlert.success("Trip " +  start + " to " + end + " saved" , { onRouteClose: false } )
-        Router.go("tripsIndex");
+        Router.go("engagementsList");
       }
     });
   }

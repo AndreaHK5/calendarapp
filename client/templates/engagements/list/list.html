@@ -1,9 +1,9 @@
-<template name="tripsIndex">
+<template name="engagementsList">
   <div class="container-fluid">
 	  <div class="ui grid">
 		  {{#each events}}
 			<div class="sixteen wide column event-top hover-event event-card-selected" style="background-color: {{getEventTypeColor type}};">
-		  		{{> eventDetailsCard }}
+		  		{{> engagementDetailsCard }}
 		  	</div>
 		  {{/each}}
 	  </div>
