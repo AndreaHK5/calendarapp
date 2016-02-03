@@ -4,28 +4,7 @@ Template.engagementsMonth.helpers({
 		if ( Router.current().route.getName() == "engagementsDash") { return "engagementsDashDay"; }
 	},
 	getDays : function () {
-		var eventsRequired = Router.current().route.getName() == "engagementsDash"; 
-		if (eventsRequired) {
-			var now =  getTodayDate();
-			var queryStartDate = now.unix();
-			var queryEndDate = now.add(3, "month").unix()
-			var eventsPerDay = {};
-			Engagements.find(betweenTwoDatesEventsQuery(queryStartDate,queryEndDate))        
-			.forEach(function (e) {		        // TODO move this to the mongo query! 
-		        // TODO add unit test of this mostruosity
-		        var startLoop = moment.max(moment.unix(e.startDate), moment.unix(queryStartDate));
-		        var endLoop = moment.min(moment.unix(e.endDate), moment.unix(queryEndDate));
-		        var type = e.type;			
-		        for(var m = startLoop; !m.isAfter(endLoop);  m.add('days',1)) {
-		          var unixDay = m.unix();
-		          // initailize objects if not present
-		          if (! (unixDay in eventsPerDay)) { eventsPerDay[unixDay] = {}; } 
-		          if (! (type in eventsPerDay[unixDay])) { eventsPerDay[unixDay][type] = 0 }
-		          eventsPerDay[unixDay][type] ++;
-		        }
-		    });
-		} 
-		return getDaysInMonth(this.date, eventsPerDay);
+		return getDaysInMonth(this.date);
 	},
 	getMonth : function (isoTime) {
   		return moment(isoTime).format('MMMM');

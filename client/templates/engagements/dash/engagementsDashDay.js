@@ -7,13 +7,19 @@ Template.engagementsDashDay.helpers({
 		if (!(Session.get("engagementOnCalendar"))) { return false;}
 
 		var engagementOnCalendar = Session.get("engagementOnCalendar");
-		return ( this.date >= engagementOnCalendar.startDate && this.date <= engagementOnCalendar.endDate);	
+
+		return ( moment(this.date).isAfter(moment(engagementOnCalendar.startDate)) && moment(this.date).isBefore(moment(engagementOnCalendar.endDate)) );	
 	},
 	selectedEventType : function () {
 		if (!(Session.get("engagementOnCalendar"))) { return ;}
 		return Session.get("engagementOnCalendar").type;
 	},
-	dayNumber : function (isoDate) {
-		return moment(isoDate).date();
+	dayNumber : function () {
+		return moment(this.date).date();
+	},	
+	dayEvents : function () {
+		var engagementsPerDay = Session.get("engagementsPerDay");
+		var result = _.map(engagementsPerDay[this.date], function (v, k) { return { type: k, count : v}} );
+		return result;
 	}
 })

@@ -15,10 +15,10 @@ Template.engagementsDash.helpers({
 Template.engagementsDash.events({
 	"click .day-box": function (event) {
 		// gate if clicking on same day
-		if (Session.get("dayForEventsDetail") == this.fullDate) { return; }
+		if (Session.get("dayForEventsDetail") == this.date) { return; }
 		// gate if date has no events
 		Session.set("engagementOnCalendar", undefined);
-		if (this.dayEvents.length == 0) {
+		if (Engagements.find(betweenTwoDatesEventsQuery(moment(this.date), moment(this.date))).count() == 0) {
 			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
 			if (Session.get("dayForEventsDetail")) { 
 				hideEventsContainer(); 
@@ -29,7 +29,7 @@ Template.engagementsDash.events({
 		}
 		sAlert.closeAll(); 
 		
-		Session.set("dayForEventsDetail", this.fullDate);
+		Session.set("dayForEventsDetail", this.date);
 	},
 	"click .close-day-container" : function (event) {
 		hideEventsContainer();

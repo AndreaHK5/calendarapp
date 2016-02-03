@@ -7,16 +7,16 @@ Template.engagementsCreateConfirm.onRendered(function(){
 Template.engagementsCreateConfirm.events({
   "click .save-event" : function (event) {
     event.preventDefault();
-    var eventL = Session.get("engagementDetails");
-    eventL.startDate = Session.get('startDate');
-    eventL.endDate = Session.get('endDate');  
-    saveEngagement(eventL, function (err, res) {
+    var engagement = Session.get("engagementDetails");
+    engagement.startDate = Session.get('startDate');
+    engagement.endDate = Session.get('endDate');  
+    saveEngagement(engagement, function (err, res) {
       if (err) {
         sAlert.error("Woha, something went wrong" + (err));
       } else {
         // TODO the format is starting to be used quite frequently - research a global helper
-        var start = moment.unix(res.startDate).format("dddd MMM DD");
-        var end = moment.unix(res.endDate).format("dddd MMM DD");
+        var start = moment(res.startDate).format("dddd MMM DD");
+        var end = moment(res.endDate).format("dddd MMM DD");
         sAlert.success("Trip " +  start + " to " + end + " saved" , { onRouteClose: false } )
         Router.go("engagementsList");
       }

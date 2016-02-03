@@ -5,9 +5,13 @@ Template.engagementDetailsCard.onRendered(function () {
 
 Template.engagementDetailsCard.helpers({
 	getEngineerPicture : function (id) {
-		return Engineers.findOne({_id : id}).picture;
+		var eng = Engineers.findOne({_id : id});
+		if (!eng) {return ;}
+		return eng.picture;
 	},
 	getDamPicture : function (id) {
-		return Dams.findOne({_id : id}).picture;
+		var dam = Dams.findOne({_id : id});
+		if (!dam) { return ;}
+		return dam.picture;
 	} 
 })

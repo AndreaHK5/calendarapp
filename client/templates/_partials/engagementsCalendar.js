@@ -80,11 +80,7 @@ function scrollVertical(div) {
 } 
 
 function addMonth() {
-  var months = Session.get("monthsShowing");
-  var last = 
-    _.max(months, 
-      function (month) { return moment(month.date).unix() }
-    );
+  var last = mainGetLastMonthShowing();
   var newDate = moment(last.date).add(1, 'month');
   months.push({date : newDate.toISOString() });
   Session.set("monthsShowing", months)

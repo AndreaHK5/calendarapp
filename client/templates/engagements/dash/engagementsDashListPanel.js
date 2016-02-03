@@ -7,11 +7,12 @@ Template.engagementsDashListPanel.onRendered(function () {
 
 Template.engagementsDashListPanel.helpers({
 	engagementsOfTheDay : function () {
-		var unixDay = Session.get("dayForEventsDetail");
+		var date = Session.get("dayForEventsDetail");
 		if (engagementContainerShowing) {
 			adjustEventsContainer();
-		} 
-		return Engagements.find(betweenTwoDatesEventsQuery(unixDay,unixDay));
+		}
+		//console.log(Engagements.find(betweenTwoDatesEventsQuery(moment(date), moment(date))).count());
+		return Engagements.find(betweenTwoDatesEventsQuery(moment(date), moment(date)));
 	},
 	isSelectedEvent : function (id) {
 		if(!Session.get("engagementOnCalendar")) { return }

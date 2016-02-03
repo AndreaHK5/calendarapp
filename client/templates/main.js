@@ -38,7 +38,7 @@ Template.registerHelper('equals',
 );
 
 var formateDateHelper = function (unixDate) {
-  return moment.unix(unixDate).format("dddd MMM DD");
+  return moment(unixDate).format("dddd MMM DD");
 }
 
 // helpers for front end controllers
@@ -47,8 +47,23 @@ if (Meteor.isClient) {
     return moment().startOf('day');
   }
 
+  mainGetLastMonthShowing = function () {
+    var months = Session.get("monthsShowing");
+    var last =  _.max(months, 
+        function (month) { return moment(month.date).unix() }
+    );
+  }
+
   betweenTwoDatesEventsQuery = function (queryStartDate, queryEndDate) {
-    return { $and :[{startDate : {$lte :  queryEndDate }},{endDate : {$gte : queryStartDate}}]}
+    return { $and :[
+                  {
+                    startDate : {$lte :  new Date (queryEndDate.toISOString()) }
+                  },
+                  {
+                    endDate : {$gte : new Date (queryStartDate.toISOString())  }
+                  }
+                ]
+              };
   } 
 }
 

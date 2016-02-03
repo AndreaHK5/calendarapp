@@ -66,8 +66,8 @@ var lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
 
 var engagementsSeeds = [
   {
-    "startDate" : moment([2016,1,1]).startOf("day").unix(),
-    'endDate'   : moment([2016,1,5]).startOf("day").unix(),
+    "startDate" : moment([2016,1,1]).startOf("day").toISOString(),
+    'endDate'   : moment([2016,1,5]).startOf("day").toISOString(),
     'visiting'  : {
       'name' : "John Doe",
       'location' : "Udine, Italy"
@@ -83,8 +83,8 @@ var engagementsSeeds = [
     'type' : "engagement"
   },
   {
-    'startDate' : moment([2016,0,29]).startOf("day").unix(),
-    'endDate'   : moment([2016,1,06]).startOf("day").unix(),
+    'startDate' : moment([2016,0,29]).startOf("day").toISOString(),
+    'endDate'   : moment([2016,1,06]).startOf("day").toISOString(),
     'visiting'  : {
       'name' : "NA",
       'location' : "Mt Bachelor, OR"
@@ -102,8 +102,8 @@ var engagementsSeeds = [
     'type' : "vacation"
   },
   {
-    'startDate' : moment([2016,1,2]).startOf("day").unix(),
-    'endDate'   : moment([2016,1,14]).startOf("day").unix(),
+    'startDate' : moment([2016,1,2]).startOf("day").toISOString(),
+    'endDate'   : moment([2016,1,14]).startOf("day").toISOString(),
     'visiting'  : {
       'name' : "NA",
       'location' : "London UK"
@@ -119,8 +119,8 @@ var engagementsSeeds = [
     'type' : "vacation"
   },
   {
-    'startDate' : moment([2016,0,2]).startOf("day").unix(),
-    'endDate'   : moment([2016,1,16]).startOf("day").unix(),
+    'startDate' : moment([2016,0,2]).startOf("day").toISOString(),
+    'endDate'   : moment([2016,1,16]).startOf("day").toISOString(),
     'visiting'  : {
       'name' : "ARUP",
       'location' : "London UK"
