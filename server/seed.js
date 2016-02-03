@@ -20,7 +20,7 @@ if(Engineers.find().count() === 0){
     {
         'name' : "Andrea Cremese",
         'email' : "andrea@noemail.com",
-        'picture' : "placeholder.jpeg"
+        'picture' : "placeholder3.jpeg"
     },
     {
         'name' : "Phil King",

@@ -55,12 +55,18 @@ Template.eventDetails.events({
 		updateEventDetails("title", event.target.value);
 	},
 	"change select[name=type]" : function (event,context) {
-    console.log("change2");
 		updateEventDetails("type", event.target.value);
 	},
+  "change .type-dropdown input" : function (event) {
+    // this handler is required in order to allow addition of another custom event
+    var newValue = event.target.value;
+    Session.set("customType", newValue);
+    setTimeout(function() {
+      $(".ui.fluid.search.selection.dropdown").dropdown('set selected', newValue);
+    }, 10);
+  },
 	"change textarea[name=description]" : function (event,context) {
 		updateEventDetails("description", event.target.value);
-
 	},
 	"change select[name=engineerGoing]" : function (event,context) {
 
