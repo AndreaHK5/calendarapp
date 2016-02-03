@@ -7,17 +7,17 @@ Template.engagementsDashLegend.helpers({
 		return Session.get("legendShow");
 	},
 	getAllEventsTypes : function () {
-		var hash = Session.get("eventsMap");
+		var hash = Session.get("engagementsTypesColorMap");
 		result = [];
 		for (var k in hash) {
-			result.push({eventType: k.toUpperCase()})
+			result.push({type: k.toUpperCase()})
 		}
 		return result
 	}
 }) 
 
 Template.engagementsDashLegend.events({
-	"click .event-legend" : function () {
+	"click .engagements-legend" : function () {
 		Session.set("legendShow", ! Session.get("legendShow"));
 	}
 });

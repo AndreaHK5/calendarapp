@@ -3,7 +3,7 @@ Template.engagementsList.onRendered(function () {
 });
 
 Template.engagementsList.helpers({
-  events : function () {
+  engagements : function () {
     return Engagements.find();
   }
 });

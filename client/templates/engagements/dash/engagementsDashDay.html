@@ -1,17 +1,17 @@
 <template name="engagementsDashDay">
 	{{#if isInTheEventOnCalendar}}
-		<div class="calendar-event-bar" style="background-color: {{getEventTypeColor selectedEventType}}; opacity: 0.9"></div>		
+		<div class="calendar-engagement-bar" style="background-color: {{getEngagementTypeColor selectedEventType}}; opacity: 0.9"></div>		
 	{{/if}}	
 	<div class="day-box day-box-unselected
 		{{#if isSelectedDay}}
 			day-box-selected
 		{{/if}}">
-		<div class="event-day-top">
+		<div class="engagement-day-top">
 			{{dayNumber}}
 		</div>
-		<div class="event-day-bottom">
+		<div class="engagement-day-bottom">
 			{{#each dayEvents}}
-			<div class="event-bubble" style="background-color: {{getEventTypeColor eventType}};">
+			<div class="engagement-bubble" style="background-color: {{getEngagementTypeColor type}};">
 				{{count}} 				
 			</div>
 			{{/each}}		

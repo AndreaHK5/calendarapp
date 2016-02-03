@@ -1,25 +1,25 @@
 <template name="engagementsDashListPanel" >
-	<div id="day-events-container" >
+	<div id="day-engagements-container" >
 		<div class="ui grid">
-			<div class="events-top-spacer"></div>
-			{{#each eventsOfTheDay}}
-			<div class="sixteen wide column event-card
+			<div class="engagements-top-spacer"></div>
+			{{#each engagementsOfTheDay}}
+			<div class="sixteen wide column engagement-card
 					{{#if isSelectedEvent _id}}
-						event-card-selected
+						engagement-card-selected
 					{{else}}
-						event-card
+						engagement-card
 					{{/if}}">
 				<div class="ui grid 
 					">
-					<div class="fifteen wide column event-top hover-event" style="background-color: {{getEventTypeColor type}};">
+					<div class="fifteen wide column engagement-top hover-engagement" style="background-color: {{getEngagementTypeColor type}};">
 						{{> engagementDetailsCard }}
 					</div>
-					<div class="one wide column" style="background-color: {{getEventTypeColor type}}">
+					<div class="one wide column" style="background-color: {{getEngagementTypeColor type}}">
 						<div class="calendar">
 						{{#if isSelectedEvent _id}}
-								<i class="remove circle icon unselect-event" style="font-size: 140%"></i>
+								<i class="remove circle icon unselect-engagement" style="font-size: 140%"></i>
 						{{else}}
-								<i class="calendar icon select-event"></i>
+								<i class="calendar icon select-engagement"></i>
 						{{/if}}
 						</div>
 						<div class="navigation">

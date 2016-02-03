@@ -2,32 +2,32 @@ Template.engagementsDashListPanel.onRendered(function () {
 	setTimeout(function() {
 		showEventsContainer();
 	}, 10);
-	Session.set("eventOnCalendar", undefined );
+	Session.set("engagementOnCalendar", undefined );
 })
 
 Template.engagementsDashListPanel.helpers({
-	eventsOfTheDay : function () {
+	engagementsOfTheDay : function () {
 		var unixDay = Session.get("dayForEventsDetail");
-		if (eventContainerShowing) {
+		if (engagementContainerShowing) {
 			adjustEventsContainer();
 		} 
 		return Engagements.find(betweenTwoDatesEventsQuery(unixDay,unixDay));
 	},
 	isSelectedEvent : function (id) {
-		if(!Session.get("eventOnCalendar")) { return }
-		return Session.get("eventOnCalendar")._id == id;
+		if(!Session.get("engagementOnCalendar")) { return }
+		return Session.get("engagementOnCalendar")._id == id;
 	}
 })
 
 Template.engagementsDashListPanel.events({
-	"mouseenter .hover-event" : function () {
+	"mouseenter .hover-engagement" : function () {
 		if (!useHover) {return;} 
 		var targetEvent = this;
 		if (hoovering) {
-			// another event has been hovered, so no need to wait to make the animation appear
+			// another engagement has been hovered, so no need to wait to make the animation appear
 			setEventOnCalendar(targetEvent);
 		} else {
-			// first event to be shown, on hover we wait to show
+			// first engagement to be shown, on hover we wait to show
 			showHoveredEventTimer = setTimeout(function() {
 				hoovering = true;
 				setEventOnCalendar(targetEvent);
@@ -35,24 +35,24 @@ Template.engagementsDashListPanel.events({
 		}
 
 	},
-	"mouseleave .hover-event" : function () {
+	"mouseleave .hover-engagement" : function () {
 		if (!useHover) {return;} 
 		// this is required if the hover is to another card rather than to the calendar
 		resetEventOnCalendar();
 	},
-	"mouseleave #day-events-container" : function () {
+	"mouseleave #day-engagements-container" : function () {
 		hoovering = false;
 		if (!useHover) {return;} 
 		// this is required if the hover is to another card rather than to the calendar
 		resetEventOnCalendar();
 	},
-	"click .select-event" : function () {
+	"click .select-engagement" : function () {
 		useHover = false;
 		hoovering = false;
 		clearTimeout(showHoveredEventTimer);
 		setEventOnCalendar(this);
 	},
-	"click .unselect-event" : function () {
+	"click .unselect-engagement" : function () {
 		useHover = true;
 		hoovering = false;
 		clearTimeout(showHoveredEventTimer);
@@ -66,8 +66,8 @@ Template.engagementsDashListPanel.events({
 
 // local helpers and variables
 
-var eventContainerShowing = false;
-// if the user starts clicking on events turn off hoovering
+var engagementContainerShowing = false;
+// if the user starts clicking on engagments turn off hoovering
 var useHover = true;
 // if we are already hoovering on something, do not debounce
 var hoovering = false;
@@ -81,16 +81,16 @@ var resetClickedEventTimer;
 
 function setEventOnCalendar(event) {
 	// resetEventOnCalendar();
-	var eventOnCalendar = {
+	var engagementOnCalendar = {
 		startDate: event.startDate,
 		endDate: event.endDate,
 		type: event.type,
 		_id: event._id
 	}
-	Session.set("eventOnCalendar", eventOnCalendar );
+	Session.set("engagementOnCalendar", engagementOnCalendar );
 	setTimeout(function() {
-		scrollCalendarToDiv($(".calendar-event-bar").first().parent().find(".day-box"));
-		//TweenMax.allTo($(".calendar-event-bar"), 0.1, {opacity:1}, 0.02);
+		scrollCalendarToDiv($(".calendar-engagement-bar").first().parent().find(".day-box"));
+		//TweenMax.allTo($(".calendar-engagement-bar"), 0.1, {opacity:1}, 0.02);
 	}, 10);
 	clearTimeout(resetClickedEventTimer);
 	resetClickedEventTimer = setTimeout(function() {
@@ -101,7 +101,7 @@ function setEventOnCalendar(event) {
 function resetEventOnCalendar() {
 	useHover = true;
 	clearTimeout(showHoveredEventTimer);
-	Session.set("eventOnCalendar", undefined );
+	Session.set("engagementOnCalendar", undefined );
 	scrollCalendarToSelectedDay();
 }
 
@@ -111,16 +111,16 @@ function resetSelectedDay() {
 
 function showEventsContainer() {
 	var calendar = $('#calendar-container');
-	var eventsContainer = $('#dayevents-container');
+	var engagementsContainer = $('#dayengagements-container');
 	var totalHeight = getTotalHeight();
-	var eventsHeight = Math.min(eventsContainer.height() + 19, totalHeight / 2);
-	var calendarHeight = totalHeight - eventsHeight; 
+	var engagementsHeight = Math.min(engagementsContainer.height() + 19, totalHeight / 2);
+	var calendarHeight = totalHeight - engagementsHeight; 
 	// set height of calendar to window and add scroll
 	// plus adjust margin bottom for semantic
 	calendar.css("height", totalHeight);
 	calendar.css("overflow", "scroll");
 	calendar.css("margin-bottom", 0);
-	eventsContainer.css("visibility", "visible");
+	engagementsContainer.css("visibility", "visible");
 
 	// animate up container
 	// animate css for calendar
@@ -130,24 +130,24 @@ function showEventsContainer() {
 	
 	scrollCalendarToSelectedDay();
 
-	TweenLite.set(eventsContainer, {height: eventsHeight});
-	TweenLite.from(eventsContainer, animationTime, { height: 0, 
+	TweenLite.set(engagementsContainer, {height: engagementsHeight});
+	TweenLite.from(engagementsContainer, animationTime, { height: 0, 
 		onComplete : function () { 
-			eventContainerShowing = true;
+			engagementContainerShowing = true;
 		}
 	});
 }
 
 function adjustEventsContainer() {
 	setTimeout(function() {
-		var eventsContainer = $('#dayevents-container');
+		var engagementsContainer = $('#dayengagements-container');
 		var calendar = $('#calendar-container');
 		var totalHeight = getTotalHeight();
-		var eventsHeight = Math.min($('#day-events-container').height() - 8 , totalHeight / 2);
-		var calendarHeight = totalHeight - eventsHeight; 
+		var engagementsHeight = Math.min($('#day-engagements-container').height() - 8 , totalHeight / 2);
+		var calendarHeight = totalHeight - engagementsHeight; 
 
 		TweenLite.to(calendar,animationTime, {height:calendarHeight});		
-		TweenLite.to(eventsContainer,animationTime, {height:eventsHeight});
+		TweenLite.to(engagementsContainer,animationTime, {height:engagementsHeight});
 		scrollCalendarToSelectedDay();
 
 	}, 100);

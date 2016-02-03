@@ -1,7 +1,7 @@
 Template.engagementsCreateDetails.onRendered(function () {
   
-  // set eventBasic Details
-	Session.set("eventDetails", {
+  // set engagementBasic Details
+	Session.set("engagementDetails", {
     startDate : Session.get("selectedStartDate"),
     endDate : Session.get("selectedEndDate"),
   });
@@ -15,7 +15,7 @@ Template.engagementsCreateDetails.onRendered(function () {
     height: 0, 
     onComplete : function () {
       var h = $(window).height() - $('.confirm-jumbo').offset().top - 2 * $('.confirm-jumbo').height();
-      $('.event-details-form').height(h)
+      $('.engagement-details-form').height(h)
     }
   });
   
@@ -96,9 +96,9 @@ Template.engagementsCreateDetails.events({
 })
 
 function updateEventDetails (field, value) {
-	var eventL = Session.get("eventDetails");
-	eventL[field] = value;
-	Session.set("eventDetails", eventL);
+	var engagement = Session.get("engagementDetails");
+	engagement[field] = value;
+	Session.set("engagementDetails", engagement);
 }
 
 function formValidations () {

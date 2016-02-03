@@ -200,9 +200,9 @@ body {
   width: 100%;
 }
 
-/*events day style*/
+/*engagements day style*/
 
-.event-day-top {
+.engagement-day-top {
   text-align: left;
   margin-top: 16px;
   margin-left: 8px;
@@ -211,13 +211,13 @@ body {
   font-weight: 100;
 }
 
-.day-box:hover .event-day-top,
-.day-box-selected .event-day-top {
+.day-box:hover .engagement-day-top,
+.day-box-selected .engagement-day-top {
   margin-top: 14px;
   margin-left: 6px
 }
 
-.event-day-bottom {
+.engagement-day-bottom {
   height: 30px;
   margin-right: 8px;
   margin-bottom: 8px;
@@ -226,14 +226,14 @@ body {
   right: 8px;
 }
 
-.calendar-event-bar {
+.calendar-engagement-bar {
   position: absolute;
   width: 100%;
   margin-top: 50px;
   height: 10px;
 }
 
-.event-bubble {
+.engagement-bubble {
   color: white;
   display: inline-block;
   height: 26px;
@@ -245,19 +245,19 @@ body {
   padding-right: 1px;
 }
 
-.event-bubble:last-of-type {
+.engagement-bubble:last-of-type {
   margin-right: 0px;
 }
 
-.day-box:hover .event-bubble ,
-.day-box-selected .event-bubble {
+.day-box:hover .engagement-bubble ,
+.day-box-selected .engagement-bubble {
   font-weight: 700;
   line-height: 25px;
 }
 
-/*day events detail */
+/*day engagements detail */
 
-.day-events {
+.day-engagements {
   width: 100%;
   border-top: 2px solid grey;
   position: fixed;
@@ -267,72 +267,72 @@ body {
   overflow: scroll;
 }
 
-.events-top-spacer {
+.engagements-top-spacer {
   height:18px; 
   background-color:white;
 } 
 
-.event-card {
+.engagement-card {
   opacity: 0.81;
 }
 
-.event-card-selected {
+.engagement-card-selected {
   opacity: 1;
 }
 
-.event-card,
-.event-card-selected {
+.engagement-card,
+.engagement-card-selected {
   margin-top: 0px !important;
   border-bottom: 4px solid white;
 }
 
-.event-card-selected .calendar,
-.event-card .calendar {
+.engagement-card-selected .calendar,
+.engagement-card .calendar {
     position: absolute;
     font-size: 120%;
     top: 20%;
     left: 15%;
 }
 
-.event-card-selected .navigation,
-.event-card .navigation {
+.engagement-card-selected .navigation,
+.engagement-card .navigation {
     position: absolute;
     left: 0;
     top: 60%;
     font-size: 400%;
 }
 
-.event-top .title {
+.engagement-top .title {
   font-size: 20px;
   font-weight: 700;
   margin: 8px 0;
 }
 
-.event-mid {
+.engagement-mid {
   margin-top: 6px;
   margin-bottom: 6px;
   display: table;
 }
 
-.event-mid .picture {
+.engagement-mid .picture {
   width: 40px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
-.event-mid .picture-label {
+.engagement-mid .picture-label {
     display: table-cell;
     vertical-align: middle;
     padding-right: 10px;
     padding-left: 10px;
 }
 
-.unselect-event:hover,
-.select-event:hover {
+.unselect-engagement:hover,
+.select-engagement:hover {
     cursor: pointer; 
 }
 
-/*events tray*/
+/*engagements tray*/
 .close-day-container {
   position: relative;
   top: -24px;
@@ -355,9 +355,9 @@ body {
   text-align: center;
 }
 
-/*event legend*/
+/*engagement legend*/
 
-.event-legend {
+.engagements-legend {
   position: fixed;
   top: 100px;
   right: 0px;
@@ -371,16 +371,16 @@ body {
   display: table;
 }
 
-.event-legend .label {
+.engagements-legend .label {
   display: inline-block;
   text-align: center;
 }
 
-.event-legend .content-hidden {
+.engagements-legend .content-hidden {
   display: none;
 }
 
-.event-legend .content {
+.engagements-legend .content {
   display: table-cell;
   vertical-align: middle;
 }
@@ -389,7 +389,7 @@ body {
   margin: 4px 4px;
 }
 
-.legend-entry .event-bubble {
+.legend-entry .engagement-bubble {
   margin-right: 5px;
 }
 

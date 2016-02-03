@@ -17,9 +17,9 @@ Template.engagementsDash.events({
 		// gate if clicking on same day
 		if (Session.get("dayForEventsDetail") == this.fullDate) { return; }
 		// gate if date has no events
-		Session.set("eventOnCalendar", undefined);
+		Session.set("engagementOnCalendar", undefined);
 		if (this.dayEvents.length == 0) {
-			sAlert.info("No events up for this day, may I suggest \"007, Try another day?\"");
+			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
 			if (Session.get("dayForEventsDetail")) { 
 				hideEventsContainer(); 
 			} else {
@@ -46,14 +46,14 @@ function resetSelectedDay () {
 
 function hideEventsContainer() {
 	var calendar = $('#calendar-container');
-	var eventsContainer = $('#dayevents-container');
+	var engagementsContainer = $('#dayengagements-container');
 	var totalHeight = getTotalHeight();
 	
-	TweenLite.to(eventsContainer, animationTime, { bottom: - 1 * eventsContainer.height()});
+	TweenLite.to(engagementsContainer, animationTime, { bottom: - 1 * engagementsContainer.height()});
 
 	TweenLite.set(calendar, {height:totalHeight});
 	scrollCalendarToDiv();
-	Session.set("eventOnCalendar", undefined );
+	Session.set("engagementOnCalendar", undefined );
 	TweenLite.from(calendar, animationTime, {
 		height:calendar.height(), 
 		onComplete : function () {

@@ -1,8 +1,8 @@
 <template name="engagementsList">
   <div class="container-fluid">
 	  <div class="ui grid">
-		  {{#each events}}
-			<div class="sixteen wide column event-top hover-event event-card-selected" style="background-color: {{getEventTypeColor type}};">
+		  {{#each engagements}}
+			<div class="sixteen wide column engagement-top hover-engagement engagement-card-selected" style="background-color: {{getEngagementTypeColor type}};">
 		  		{{> engagementDetailsCard }}
 		  	</div>
 		  {{/each}}

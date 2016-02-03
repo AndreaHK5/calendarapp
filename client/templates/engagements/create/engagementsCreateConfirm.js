@@ -7,7 +7,7 @@ Template.engagementsCreateConfirm.onRendered(function(){
 Template.engagementsCreateConfirm.events({
   "click .save-trip" : function (event) {
     event.preventDefault();
-    var eventL = Session.get("eventDetails");
+    var eventL = Session.get("engagementDetails");
     eventL.startDate = Session.get('startDate');
     eventL.endDate = Session.get('endDate');  
     saveEngagement(eventL, function (err, res) {

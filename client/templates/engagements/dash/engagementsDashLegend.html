@@ -1,5 +1,5 @@
 <template name="engagementsDashLegend">
-	<div class="event-legend">
+	<div class="engagements-legend">
 		<div class="label">
 			{{#if isLegendShowing}}
 				<i class="angle right icon"></i>
@@ -22,7 +22,7 @@
 		">
 			{{#each getAllEventsTypes}}
 			<div class="legend-entry">
-				<span class="event-bubble" style="background-color: {{getEventTypeColor eventType}};"></span>{{eventType}}
+				<span class="engagement-bubble" style="background-color: {{getEngagementTypeColor type}};"></span>{{type}}
 			</div>
 			{{/each}}
 		</div>

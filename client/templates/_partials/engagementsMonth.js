@@ -15,13 +15,13 @@ Template.engagementsMonth.helpers({
 		        // TODO add unit test of this mostruosity
 		        var startLoop = moment.max(moment.unix(e.startDate), moment.unix(queryStartDate));
 		        var endLoop = moment.min(moment.unix(e.endDate), moment.unix(queryEndDate));
-		        var eventType = e.type;			
+		        var type = e.type;			
 		        for(var m = startLoop; !m.isAfter(endLoop);  m.add('days',1)) {
 		          var unixDay = m.unix();
 		          // initailize objects if not present
 		          if (! (unixDay in eventsPerDay)) { eventsPerDay[unixDay] = {}; } 
-		          if (! (eventType in eventsPerDay[unixDay])) { eventsPerDay[unixDay][eventType] = 0 }
-		          eventsPerDay[unixDay][eventType] ++;
+		          if (! (type in eventsPerDay[unixDay])) { eventsPerDay[unixDay][type] = 0 }
+		          eventsPerDay[unixDay][type] ++;
 		        }
 		    });
 		} 
@@ -62,7 +62,7 @@ function getDaysInMonth(unixTime, eventsPerDay) {
 			dayEntry.dayEvents = [];
 			for (var k in eventsPerDay[fullUnixDate]) {
 				var v = eventsPerDay[fullUnixDate][k];
-				dayEntry.dayEvents.push({eventType : k, count: v}); 
+				dayEntry.dayEvents.push({type : k, count: v}); 
 			}     
 		}
 	    result.push(dayEntry);

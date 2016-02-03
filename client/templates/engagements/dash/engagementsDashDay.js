@@ -3,14 +3,14 @@ Template.engagementsDashDay.helpers({
 		return this.fullDate == Session.get("dayForEventsDetail");
 	},
 	isInTheEventOnCalendar : function () {
-		// gate if no event is present
-		if (!(Session.get("eventOnCalendar"))) { return false;}
+		// gate if no engagements are present
+		if (!(Session.get("engagementOnCalendar"))) { return false;}
 
-		var eventOnCalendar = Session.get("eventOnCalendar");
-		return ( this.fullDate >= eventOnCalendar.startDate && this.fullDate <= eventOnCalendar.endDate);	
+		var engagementOnCalendar = Session.get("engagementOnCalendar");
+		return ( this.fullDate >= engagementOnCalendar.startDate && this.fullDate <= engagementOnCalendar.endDate);	
 	},
 	selectedEventType : function () {
-		if (!(Session.get("eventOnCalendar"))) { return ;}
-		return Session.get("eventOnCalendar").type;
+		if (!(Session.get("engagementOnCalendar"))) { return ;}
+		return Session.get("engagementOnCalendar").type;
 	}
 })

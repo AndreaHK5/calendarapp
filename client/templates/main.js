@@ -16,8 +16,8 @@ UI.registerHelper("getFormattedDate", function (unixDate) {
 
 
 
-// These helpers and setting serve and allow to get colors for the legend and the difference events types.
-Session.set("eventsMap", {
+// These helpers and setting serve and allow to get colors for the legend and the difference engagement types.
+Session.set("engagementsTypesColorMap", {
     "vacation" : "rgb(0,174,239)",
     "engagement" : "rgb(0,166,0)"
 });
@@ -27,18 +27,18 @@ var microsoftColors = [ "rgb(0,113,188)", "rgb(141,46,136)", "rgb(15,62,157)", "
                     "rgb(255,242,0)", "rgb(255,190,0)", "rgb(255,138,0)", "rgb(255,83,0)",
                     "rgb(255,0,0)", "rgb(255,0,151)"];
 
-UI.registerHelper("getEventTypeColor", function (eventType) {
+UI.registerHelper("getEngagementTypeColor", function (engagementType) {
   // safe method in case a new type is provided
-  var eventTypeMap = Session.get("eventsMap");
-  eventType = eventType.toLowerCase(); 
-  if (!(eventType in eventTypeMap)) {
+  var map = Session.get("engagementsTypesColorMap");
+  engagementType = engagementType.toLowerCase(); 
+  if (!(engagementType in map)) {
     // generate random color when the standard ones are finished
     var color = microsoftColors.shift() || "#"+((1<<24)*Math.random()|0).toString(16);
-    eventTypeMap[eventType] = color;
-    Session.set("eventsMap", eventTypeMap);
+    map[engagementType] = color;
+    Session.set("engagementsTypesColorMap", map);
     return color;
   }
-  return eventTypeMap[eventType];
+  return map[engagementType];
 });
 
 

@@ -1,7 +1,7 @@
 Template.engagementsCreate.onRendered(function (){
     Session.set("startDate", undefined);
     Session.set("endDate", undefined);
-    Session.set("eventDetails", undefined);
+    Session.set("engagementDetails", undefined);
     Session.set("formValid", undefined);
     sAlert.info("Let's start with the Leaving Date");
 })
@@ -14,7 +14,7 @@ Template.engagementsCreate.helpers({
   	return !Session.get("formValid");
   },
   getEventDetails : function () {
-    var ev = Session.get("eventDetails");
+    var ev = Session.get("engagementDetails");
     ev.startDate = Session.get("startDate");
     ev.endDate = Session.get("endDate");
 		return ev;
@@ -31,7 +31,7 @@ Template.engagementsCreate.events({
       Session.set("startDate", false);
       Session.set("endDate", false); 
       Session.set("formValid", false);     
-      Session.set("eventDetails", undefined);     
+      Session.set("engagementDetails", undefined);     
     }, time - 200);
     sAlert.warning("Let's start again!");
   },
@@ -42,7 +42,7 @@ Template.engagementsCreate.events({
     TweenLite.to(myDiv,time/1000, {height: $(window).height()});
     setTimeout(function() {
       Session.set("formValid", false);     
-      Session.set("eventDetails", undefined);     
+      Session.set("engagementDetails", undefined);     
     }, time - 200);
     sAlert.warning("Same Dates, different team");
   },

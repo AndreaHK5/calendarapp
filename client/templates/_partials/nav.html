@@ -1,10 +1,10 @@
 <template name="nav">
     <div class="computer tablet only row navbar-container">
       <div id="site-navbar" class="ui fixed menu inverted navbar">
-        <a class="brand item" href="{{pathFor 'engagementsList'}}"> Calendar app</a>
-        <a class="item {{#if inEngagementsDash}}active{{/if}}"   href="{{pathFor 'engagementsDash'}}">Events</a>
+        <a class="brand item" href="{{pathFor 'engagementsList'}}"> Engagements</a>
+        <a class="item {{#if inEngagementsDash}}active{{/if}}"   href="{{pathFor 'engagementsDash'}}">Dash</a>
         <a class="item {{#if inEngagementsList}}active{{/if}}"   href="{{pathFor 'engagementsList'}}">List</a>
-        <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Add</a>
+        <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Create</a>
       </div>
     </div>
     <div class="mobile only row">
