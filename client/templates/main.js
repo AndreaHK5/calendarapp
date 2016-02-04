@@ -43,11 +43,14 @@ var formateDateHelper = function (unixDate) {
 
 // helpers for front end controllers
 if (Meteor.isClient) {
-  getTodayDate = function() {
+  mainHelpers = {}
+
+
+  mainHelpers.getTodayDate = function() {
     return moment().startOf('day');
   }
 
-  mainGetLastMonthShowing = function () {
+  mainHelpers.GetLastMonthShowing = function () {
     var months = Session.get("monthsShowing");
     var last =  _.max(months, 
         function (month) { return moment(month.date).unix() }
@@ -55,7 +58,7 @@ if (Meteor.isClient) {
     return last;
   }
 
-  betweenTwoDatesEventsQuery = function (queryStartDate, queryEndDate) {
+  mainHelpers.betweenTwoDatesEventsQuery = function (queryStartDate, queryEndDate) {
     return { $and :[
                   {
                     startDate : {$lte :  new Date (queryEndDate.toISOString()) }
@@ -65,6 +68,6 @@ if (Meteor.isClient) {
                   }
                 ]
               };
-  } 
+  }
 }
 

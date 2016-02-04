@@ -1,13 +1,11 @@
 Template.engagementsDash.onRendered(function () {
 	resetSelectedDay();
-	 Meteor.subscribe("engagements");
+	Meteor.subscribe("engagements");
 });
 
 Template.engagementsDash.helpers({
 	showDayEventsDetail : function () {
 		// ensure calendar is always visible
-		if (!(Session.get("dayForEventsDetail"))) {
-		}
 		return Session.get("dayForEventsDetail");
 	}
 });
@@ -18,7 +16,7 @@ Template.engagementsDash.events({
 		if (Session.get("dayForEventsDetail") == this.date) { return; }
 		// gate if date has no events
 		Session.set("engagementOnCalendar", undefined);
-		if (Engagements.find(betweenTwoDatesEventsQuery(moment(this.date), moment(this.date))).count() == 0) {
+		if (Engagements.find(mainHelpers.betweenTwoDatesEventsQuery(moment(this.date), moment(this.date))).count() == 0) {
 			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
 			if (Session.get("dayForEventsDetail")) { 
 				hideEventsContainer(); 

@@ -11,13 +11,15 @@ Template.engagementsDashListPanel.helpers({
 		if (engagementContainerShowing) {
 			adjustEventsContainer();
 		}
-		//console.log(Engagements.find(betweenTwoDatesEventsQuery(moment(date), moment(date))).count());
-		return Engagements.find(betweenTwoDatesEventsQuery(moment(date), moment(date)));
+		return Engagements.find(mainHelpers.betweenTwoDatesEventsQuery(moment(date), moment(date)));
 	},
 	isSelectedEvent : function (id) {
 		if(!Session.get("engagementOnCalendar")) { return }
 		return Session.get("engagementOnCalendar")._id == id;
-	}
+	},
+	isCreator : function () {
+		return this.createdBy == Meteor.userId();
+	} 
 })
 
 Template.engagementsDashListPanel.events({
@@ -62,6 +64,23 @@ Template.engagementsDashListPanel.events({
 	},
 	"click #calendar-container" : function () {
 		resetEventOnCalendar();
+	},
+	"click .delete-engagement" : function () {
+		var title = this.title;
+		removeEngagement(this._id, function (err, res) {
+			if (err) {
+				sAlert.error("Woha, somethign went wrong trying to delete " + this.title + ", " + res);
+			} else {
+				sAlert.success("Engagement " + title + " deleted");
+				var date = Session.get("dayForEventsDetail");
+				if (Engagements.find(mainHelpers.betweenTwoDatesEventsQuery(moment(date), moment(date))).count() == 0) {
+					// if no more engagements at this date, close the list panel
+					mainHelpers.hideEventsContainer();
+				} else {
+					adjustEventsContainer();
+				}
+			}
+		})
 	}
 }) 
 

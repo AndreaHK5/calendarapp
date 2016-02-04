@@ -291,20 +291,26 @@ body {
   border-bottom: 4px solid white;
 }
 
-.engagement-card-selected .calendar,
-.engagement-card .calendar {
+.engagement-card-selected .icons-container div,
+.engagement-card .icons-container div {
     position: absolute;
-    font-size: 120%;
-    top: 20%;
-    left: 15%;
+    font-size: 1.4em !important;
+    left: 1em;  
+}
+
+.engagement-card-selected .show-on-calendar,
+.engagement-card .show-on-calendar {
+    top: 0.8em;
+}
+
+.engagement-card-selected .delete,
+.engagement-card .delete {
+    top: 35%;
 }
 
 .engagement-card-selected .navigation,
 .engagement-card .navigation {
-    position: absolute;
-    left: 0;
-    top: 60%;
-    font-size: 400%;
+    bottom: 0.8em;
 }
 
 .engagement-top .title {
@@ -350,7 +356,7 @@ body {
 
 .calendar-navigation {
   position: fixed;
-  top: 40px;
+  top: 38px;
   right: 0px;
   z-index: 100;
 }
@@ -406,7 +412,7 @@ body {
   z-index: 200;
 }
 
-.login-buttons {
+#login-buttons {
   margin-top: 1em;
   margin-right: 1em;
 }

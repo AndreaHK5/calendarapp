@@ -2,7 +2,7 @@ Template.engagementsCalendar.onRendered(function () {
   // form is cleared at render. Move this code outside this handler in case we prefer 
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set("monthsShowing", getMonths());
-  Session.set('hoverMonth', getTodayDate().toISOString());
+  Session.set('hoverMonth', mainHelpers.getTodayDate().toISOString());
   // set height of calendar container in order to allow scrolling
   var calendar = $('#calendar-container');
   calendar.css("height", $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height());
@@ -23,7 +23,7 @@ Template.engagementsCalendar.helpers({
     return moment(isoDate).unix();
   },
   firstMonthHovered : function () {
-    return Session.get("hoverMonth") == getTodayDate().toISOString();
+    return Session.get("hoverMonth") == mainHelpers.getTodayDate().toISOString();
   }
 });
 
@@ -51,11 +51,11 @@ Template.engagementsCalendar.events({
 
     if (!myDiv.length ) { 
       // no more dates unless we are in the month after the now()
-      if (Session.get("hoverMonth") != getTodayDate().add(1,'month').startOf('month').toISOString()) { 
+      if (Session.get("hoverMonth") != mainHelpers.getTodayDate().add(1,'month').startOf('month').toISOString()) { 
         return; 
       }
-      myDiv = $('#' + getTodayDate().unix());
-      Session.set("hoverMonth", getTodayDate().toISOString());
+      myDiv = $('#' + mainHelpers.getTodayDate().unix());
+      Session.set("hoverMonth", mainHelpers.getTodayDate().toISOString());
     } else {
       Session.set("hoverMonth", monthBefore.toISOString());
     }
@@ -77,7 +77,7 @@ function scrollVertical(div) {
 } 
 
 function addMonth() {
-  var last = mainGetLastMonthShowing();
+  var last = mainHelpers.GetLastMonthShowing();
   var newDate = moment(last.date).add(1, 'month');
   var months = Session.get("monthsShowing")
   months.push({date : newDate.toISOString() });
@@ -92,7 +92,7 @@ function addMonth() {
 }
 
 function getMonths() {
-  var now = getTodayDate();
+  var now = mainHelpers.getTodayDate();
   var result = [];
   result.push({date : now.toISOString()});
   for (var i = 1; i < 3; i++) {
