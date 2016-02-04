@@ -1,3 +1,14 @@
+Meteor.startup(function() {
+  if (Meteor.users.find().count() === 0) {
+    Accounts.createUser({
+      username: 'claudia',
+      email: 'claudia@onceUponInW.com',
+      password: 'pass123'
+    });
+  }
+});
+
+
 // helper methods
 
 getIdByName = function (collection, string) {

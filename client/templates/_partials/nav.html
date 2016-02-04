@@ -3,7 +3,12 @@
       <div id="site-navbar" class="ui fixed menu inverted navbar">
         <a class="brand item" href="{{pathFor 'engagementsDash'}}"> Engagements</a>
         <a class="item {{#if inEngagementsDash}}active{{/if}}"   href="{{pathFor 'engagementsDash'}}">Dash</a>
-        <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Create</a>
+        {{# if currentUser}}
+          <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Create</a>
+        {{/if}}
+        <div class="right menu">
+          {{> loginButtons}}
+        </div>
       </div>
     </div>
     <div class="mobile only row">

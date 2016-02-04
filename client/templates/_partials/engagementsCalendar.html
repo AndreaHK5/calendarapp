@@ -1,5 +1,5 @@
 <template name="engagementsCalendar">
-    <div id="weekday-navbar" class="ui fixed fluid seven item tabular menu">
+    <div id="weekday-navbar" class="ui fluid seven item tabular menu">
       <div class="item">Sun</div>
       <div class="item">Mon</div>
       <div class="item">Tue</div>
@@ -9,18 +9,18 @@
       <div class="item">Sat</div>
   </div>
   <div class="calendar-navigation">
-    <div class="month-helper">
-        <h3>
-          {{getShortMonth}} 
-        </h3>  
-     </div>
      <div class="months-arrows">
        <span class="scroll-prev-month scroll-arrow {{#if firstMonthHovered}} scroll-arrow-inactive {{/if}}">
-         <i class="chevron up icon "></i>
+         <i class="chevron up icon"></i>
        </span>
        <span class="scroll-next-month scroll-arrow">
          <i class="chevron down icon"></i>
        </span>          
+     </div>
+      <div class="month-helper">
+        <h3>
+          {{getShortMonth}} 
+        </h3>  
      </div>
        
   </div>

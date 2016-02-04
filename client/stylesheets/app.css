@@ -4,6 +4,8 @@ body {
 }
 .ui.page.grid {
    overflow: hidden;
+   padding-right: 14px !important;
+   padding-left: 14px !important;
 }
 
 /*site navbar*/
@@ -14,7 +16,8 @@ body {
 
 /*calendar view*/
 #calendar-container {
-  margin-top: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   overflow: scroll;
 }
 
@@ -140,18 +143,20 @@ body {
 
 .scroll-arrow {
   color: #DC3C00;
-  font-size: 150%
+  font-weight: 120;
 }
 
 .scroll-arrow-inactive {
   color: #D6D5D4;
   opacity: 90%;
-  font-size: 150%
+  font-size: 120%;
 }
 
 #weekday-navbar {
   background-color: white;
   min-height: 18px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 #weekday-navbar .tabular.menu {
@@ -345,9 +350,9 @@ body {
 
 .calendar-navigation {
   position: fixed;
-  top: 16px;
+  top: 40px;
   right: 0px;
-  z-index: 9999;
+  z-index: 100;
 }
 
 .calendar-navigation .month-helper {
@@ -391,6 +396,19 @@ body {
 
 .legend-entry .engagement-bubble {
   margin-right: 5px;
+}
+
+/*login items*/
+
+#login-dropdown-list {
+  left: -200px !important;
+  right: 15px !important;
+  z-index: 200;
+}
+
+.login-buttons {
+  margin-top: 1em;
+  margin-right: 1em;
 }
 
 
