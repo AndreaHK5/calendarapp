@@ -55,6 +55,10 @@ Template.engagementsCreateDay.events({
     Session.set("hoverDay", false);
   },
   "click .remove-start-date" : function (event) {
+    // guard to prevent resetting from another date
+    if (Session.get("startDate") != this.date) {
+      return;
+    }
     Session.set("startDate", false);
     Session.set("hoverResetStartDate", false);
     sAlert.warning("Let's leave on another day then.")
