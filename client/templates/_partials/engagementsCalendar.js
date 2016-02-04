@@ -7,9 +7,6 @@ Template.engagementsCalendar.onRendered(function () {
   var calendar = $('#calendar-container');
   calendar.css("height", $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height());
   calendar.css("overflow", "scroll");
-
-  // position the days of the week nav at top
-  $('#weekday-navbar').css("margin-top", $("#site-navbar").height());
 });
 
 Template.engagementsCalendar.helpers({

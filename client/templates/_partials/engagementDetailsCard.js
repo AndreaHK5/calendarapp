@@ -13,5 +13,12 @@ Template.engagementDetailsCard.helpers({
 		var dam = Dams.findOne({_id : id});
 		if (!dam) { return ;}
 		return dam.picture;
-	} 
+	},
+	createdBy : function () {
+		var user = Meteor.users.findOne({_id : this.createdBy});
+		if (!user) { 
+			return false; 
+		}
+		return user.username;
+	}
 })

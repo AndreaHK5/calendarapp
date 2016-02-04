@@ -18,7 +18,7 @@ Template.engagementsCreateConfirm.events({
         var start = moment(res.startDate).format("dddd MMM DD");
         var end = moment(res.endDate).format("dddd MMM DD");
         sAlert.success("Trip " +  start + " to " + end + " saved" , { onRouteClose: false } )
-        Router.go("engagementsList");
+        Router.go("engagementsDash");
       }
     });
   }

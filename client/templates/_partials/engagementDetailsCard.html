@@ -3,6 +3,9 @@
 		<div class="sixteen wide column">
 			<div class="title">{{title}} @ {{visiting.location}} for {{platform}} ({{type}})</div>
 			<p>{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</p>
+			{{#if createdBy}}
+				<p> Created By {{createdBy}}</p>
+			{{/if}}
 		</div>
 	</div>
 	<div class="engagement-mid">
