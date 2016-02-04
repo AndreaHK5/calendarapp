@@ -66,10 +66,27 @@ Template.engagementsDashListPanel.events({
 		resetEventOnCalendar();
 	},
 	"click .delete-engagement" : function () {
+		// stop hovering animations
+		hoovering = false;
+
 		var title = this.title;
-		removeEngagement(this._id, function (err, res) {
+		var engagementId = this._id;
+
+		$('.basic.modal').modal({ 
+			onApprove : removeEngagementCallback,
+			onDeny : function () {
+				return true;
+			}
+		})
+		.modal('show');
+
+		function removeEngagementCallback() {
+			removeEngagement(engagementId, engagementRemovalHandler)			
+		}
+
+		engagementRemovalHandler = function (err, res) {
 			if (err) {
-				sAlert.error("Woha, somethign went wrong trying to delete " + this.title + ", " + res);
+				sAlert.error("Woha, somethign went wrong trying to delete " + title + ", " + res);
 			} else {
 				sAlert.success("Engagement " + title + " deleted");
 				var date = Session.get("dayForEventsDetail");
@@ -80,7 +97,7 @@ Template.engagementsDashListPanel.events({
 					adjustEventsContainer();
 				}
 			}
-		})
+		}
 	}
 })
 

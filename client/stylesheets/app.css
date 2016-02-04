@@ -417,4 +417,11 @@ body {
   margin-right: 1em;
 }
 
+.details-card-modal {
+  width: 100% !important;
+  padding: 1em !important;
+  margin: 1em !important;
+  opacity: 0.8;
+}
+
 
