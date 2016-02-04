@@ -1,9 +1,8 @@
 <template name="nav">
     <div class="computer tablet only row navbar-container">
       <div id="site-navbar" class="ui fixed menu inverted navbar">
-        <a class="brand item" href="{{pathFor 'engagementsList'}}"> Engagements</a>
+        <a class="brand item" href="{{pathFor 'engagementsDash'}}"> Engagements</a>
         <a class="item {{#if inEngagementsDash}}active{{/if}}"   href="{{pathFor 'engagementsDash'}}">Dash</a>
-        <a class="item {{#if inEngagementsList}}active{{/if}}"   href="{{pathFor 'engagementsList'}}">List</a>
         <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Create</a>
       </div>
     </div>

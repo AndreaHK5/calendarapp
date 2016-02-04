@@ -1,7 +1,4 @@
 Template.nav.helpers({
-  inEngagementsList : function () {
-    return Router.current().route.getName() == "engagementsList";
-  },
   inEngagementCreate : function () {
     return Router.current().route.getName() == "engagementsCreate";
   },

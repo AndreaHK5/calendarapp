@@ -82,6 +82,7 @@ function scrollVertical(div) {
 function addMonth() {
   var last = mainGetLastMonthShowing();
   var newDate = moment(last.date).add(1, 'month');
+  var months = Session.get("monthsShowing")
   months.push({date : newDate.toISOString() });
   Session.set("monthsShowing", months)
   // scroll to newly created month...

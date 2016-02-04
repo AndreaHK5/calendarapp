@@ -52,6 +52,7 @@ if (Meteor.isClient) {
     var last =  _.max(months, 
         function (month) { return moment(month.date).unix() }
     );
+    return last;
   }
 
   betweenTwoDatesEventsQuery = function (queryStartDate, queryEndDate) {
