@@ -19,7 +19,7 @@ Template.engagementsDash.events({
 		if (Engagements.find(mainHelpers.betweenTwoDatesEventsQuery(moment(this.date), moment(this.date))).count() == 0) {
 			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
 			if (Session.get("dayForEventsDetail")) { 
-				hideEventsContainer(); 
+				mainHelpers.hideEventsContainer(); 
 			} else {
 				scrollCalendarToDiv();
 			}
@@ -30,39 +30,15 @@ Template.engagementsDash.events({
 		Session.set("dayForEventsDetail", this.date);
 	},
 	"click .close-day-container" : function (event) {
-		hideEventsContainer();
+		mainHelpers.hideEventsContainer();
 	}
 })
 
 // local helpers and variables
 var animationTime = 0.4;
 
-function resetSelectedDay () {
+function resetSelectedDay() {
 	Session.set("dayForEventsDetail", undefined);
-}
-
-
-function hideEventsContainer() {
-	var calendar = $('#calendar-container');
-	var engagementsContainer = $('#dayengagements-container');
-	var totalHeight = getTotalHeight();
-	
-	TweenLite.to(engagementsContainer, animationTime, { bottom: - 1 * engagementsContainer.height()});
-
-	TweenLite.set(calendar, {height:totalHeight});
-	scrollCalendarToDiv();
-	Session.set("engagementOnCalendar", undefined );
-	TweenLite.from(calendar, animationTime, {
-		height:calendar.height(), 
-		onComplete : function () {
-			resetSelectedDay();			
-		}
-	});
-
-}
-
-function getTotalHeight() {
-	return  $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height();
 }
 
 function scrollCalendarToDiv() {

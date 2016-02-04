@@ -82,7 +82,7 @@ Template.engagementsDashListPanel.events({
 			}
 		})
 	}
-}) 
+})
 
 // local helpers and variables
 

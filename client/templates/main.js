@@ -41,10 +41,11 @@ var formateDateHelper = function (unixDate) {
   return moment(unixDate).format("dddd MMM DD");
 }
 
-// helpers for front end controllers
 if (Meteor.isClient) {
+  // all helpers for use in Templates are encapsulated in an object for reference 
   mainHelpers = {}
 
+  // helpers for front end controllers
 
   mainHelpers.getTodayDate = function() {
     return moment().startOf('day');
@@ -68,6 +69,24 @@ if (Meteor.isClient) {
                   }
                 ]
               };
+  }
+
+  mainHelpers.hideEventsContainer = function() {
+    var animationTime = 0.4; 
+    var calendar = $('#calendar-container');
+    var engagementsContainer = $('#dayengagements-container');
+    var totalHeight =  $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height();
+    
+    TweenLite.to(engagementsContainer, animationTime, { bottom: - 1 * engagementsContainer.height()});  
+
+    TweenLite.set(calendar, {height:totalHeight});
+    Session.set("engagementOnCalendar", undefined );
+    TweenLite.from(calendar, animationTime, {
+      height:calendar.height(), 
+      onComplete : function () {
+        Session.set("dayForEventsDetail", undefined);     
+      }
+    }); 
   }
 }
 
