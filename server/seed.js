@@ -1,3 +1,5 @@
+
+// ***** Users
 Meteor.startup(function() {
   if (Meteor.users.find().count() === 0) {
     Accounts.createUser({
@@ -10,12 +12,16 @@ Meteor.startup(function() {
 
 
 // helper methods
-
 getIdByName = function (collection, string) {
   return collection.findOne({name : string})["_id"];
-} 
+}
+
+getGameTitleIdByProduct = function (string) {
+  return GameTitles.findOne({product : string})["_id"];
+}
 
 
+// ***** Engineers
 if(Engineers.find().count() === 0){
   var engineers = [
     {
@@ -46,6 +52,7 @@ if(Engineers.find().count() === 0){
   });
 }
 
+// ***** Dams
 
 if(Dams.find().count() === 0){
   var dams = [
@@ -72,8 +79,33 @@ if(Dams.find().count() === 0){
   });
 }
 
-var lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
- 
+// ***** GameTitles
+
+var gameTitleSeeds = [
+  {
+    product : "Fifa 2016",
+    codename : "Euro16"
+  },
+  {
+    product : "Drangon Age 2",
+    codename : "project B"
+  },
+  {
+    product : "Fallout New Vegas",
+    codename : "Brotherhood"
+  },
+  {
+    product : "Escape from castle Woflenstein",
+    codename : "Project X"
+  },
+]
+if(GameTitles.find().count() === 0){
+  _.each(gameTitleSeeds, function(gameTitle){
+    GameTitles.insert(gameTitle);
+    console.log("Game Title added to db ", gameTitle.product);
+  });
+}
+// ***** Engagements
 
 var engagementsSeeds = [
   {
@@ -84,13 +116,14 @@ var engagementsSeeds = [
       'location' : "Udine, Italy"
     },
     'title' : "Maintainance",
-    'description' : lorem,
+    'description' : "lorem",
     'engineersGoing' : [
       { id : getIdByName(Engineers, "Fabio Petris") },
       { id : getIdByName(Engineers, "Andrea Cremese") },
     ],
     'platform' : "Xbox",
     'dam' : { id : getIdByName(Dams, "Lee Van Cleef") },
+    'gameTitle' : { id : getGameTitleIdByProduct('Fifa 2016')},
     'type' : "engagement"
   },
   {
@@ -110,6 +143,7 @@ var engagementsSeeds = [
       ],
     'platform' : "Volkl",
     'dam' : { id : getIdByName(Dams, "Henry Fonda") },
+    'gameTitle' : { id : getGameTitleIdByProduct('Drangon Age 2')},
     'type' : "vacation"
   },
   {
@@ -127,6 +161,7 @@ var engagementsSeeds = [
      ],
     'platform' : "London Pride",
     'dam' : { id : getIdByName(Dams, "Charles Bronson") },
+    'gameTitle' : { id : getGameTitleIdByProduct('Fallout New Vegas')},
     'type' : "vacation"
   },
   {
@@ -143,6 +178,7 @@ var engagementsSeeds = [
       ],
     'platform' : "London Pride",
     'dam' : { id :  getIdByName(Dams, "Charles Bronson") },
+    'gameTitle' : { id : getGameTitleIdByProduct('Escape from castle Woflenstein')},
     'type' : "engagement"
   }
 ];
