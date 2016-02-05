@@ -378,19 +378,21 @@ body {
   position: fixed;
   top: 100px;
   right: 0px;
-  background: rgba(128,128,128,0.88);
+  background: rgba(128,128,128,0.99);
   padding-left: 3px !important;
   padding-right: 3px !important;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 5px;
   border-color: grey;
+  color: white;
   display: table;
 }
 
 .engagements-legend .label {
   display: inline-block;
   text-align: center;
+  font-weight: 700;
 }
 
 .engagements-legend .content-hidden {
@@ -400,6 +402,7 @@ body {
 .engagements-legend .content {
   display: table-cell;
   vertical-align: middle;
+  font-weight: 400;
 }
 
 .legend-entry {

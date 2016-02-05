@@ -19,5 +19,12 @@ Template.engagementsDashLegend.helpers({
 Template.engagementsDashLegend.events({
 	"click .engagements-legend" : function () {
 		Session.set("legendShow", ! Session.get("legendShow"));
+		
+		if (hideLegendTimer) {  clearTimeout(hideLegendTimer); }
+		hideLegendTimer = setTimeout(function() {
+			Session.set("legendShow", false);
+		}, 2000);
 	}
 });
+
+var hideLegendTimer;
