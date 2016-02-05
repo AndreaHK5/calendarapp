@@ -89,6 +89,7 @@ Template.engagementsCreateDetails.events({
 		updateEngagementDetails("description", event.target.value);
 	},
 	"change select[name=engineerGoing]" : function (event,context) {
+    event.preventDefault();
 		// TODO this is a terryfying wasy of doign two way binding, find a better one!
     var engineersGoing = $(".ui.form")
       .find('[name="engineerGoing"] option:selected')
@@ -117,8 +118,8 @@ Template.engagementsCreateDetails.events({
       // Enter has been pressed BUT we deactivated enter on the goals dropdown
       // and also we clear the errors
       event.preventDefault();
-      $('.form div').find('.error').removeClass('error');
-      $('.ui.error.message').empty()
+      clearValidations();
+
 
       var goals = Session.get("goalsArray");
       var newGoal = event.target.value
@@ -135,6 +136,7 @@ Template.engagementsCreateDetails.events({
   },
 	"submit .ui.form" : function (event) {
     event.preventDefault();
+    clearValidations();
 	},
   "click .confirm-button" : function (event) { 
     $('.ui.form').form('validate form');
@@ -147,6 +149,11 @@ function updateEngagementDetails (field, value) {
 	var engagement = Session.get("engagementDetails");
 	engagement[field] = value;
 	Session.set("engagementDetails", engagement);
+}
+
+function clearValidations() {
+  $('.form div').find('.error').removeClass('error');
+  $('.ui.error.message').empty()
 }
 
 function formValidations () {
