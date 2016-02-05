@@ -7,6 +7,9 @@ Template.engagementsDash.helpers({
 	showDayEventsDetail : function () {
 		// ensure calendar is always visible
 		return Session.get("dayForEventsDetail");
+	},
+	dayShowing : function () {
+		return Session.get("dayForEventsDetail");
 	}
 });
 

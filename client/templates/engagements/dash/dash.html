@@ -2,7 +2,10 @@
 	{{> engagementsCalendar}}
 	{{> engagementsDashLegend}}
 	{{#if showDayEventsDetail}}
-		<div class="close-day-container"><i class="remove icon"></i></div>
+		<div class="close-day-container">
+			<i class="remove icon"></i>
+			Showing engagements for <span class="date">{{getFormattedDate dayShowing}}</span>
+		</div>
 		<div id="dayengagements-container" class="day-engagements">
 			{{> engagementsDashListPanel}}
 		</div>

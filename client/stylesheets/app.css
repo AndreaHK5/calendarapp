@@ -346,10 +346,16 @@ body {
 /*engagements tray*/
 .close-day-container {
   position: relative;
-  top: -24px;
-  left: 0;
-  background: rgba(128,128,128,0.76);
-  height: 25px;
+  top: -2.2em;
+  left: -1em;
+  background: rgba(128,128,128,0.96);
+  padding: 0.5em 1em;
+  color: white;
+}
+
+.close-day-container .date {
+  font-size: 120%;
+  font-weight: 700;
 }
 
 /*calendar navigation*/
