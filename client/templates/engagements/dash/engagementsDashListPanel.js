@@ -86,7 +86,7 @@ Template.engagementsDashListPanel.events({
 
 		engagementRemovalHandler = function (err, res) {
 			if (err) {
-				sAlert.error("Woha, somethign went wrong trying to delete " + title + ", " + res);
+				sAlert.error("Woha, somethign went wrong trying to delete " + title + ", " + err.error);
 			} else {
 				sAlert.success("Engagement " + title + " deleted");
 				var date = Session.get("dayForEventsDetail");
