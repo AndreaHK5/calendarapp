@@ -33,35 +33,34 @@
 					</div>					
 				</div>	
 			</div>
-
-
-			<div class="ui basic modal confirm-delete-modal">
-			  <i class="close icon"></i>
-			  <div class="header">
-			    Delete Engagement ?
-			  </div>
-			  <div class="image content">
-			    <div class="image">
-			      <i class="trash icon"></i>
-			    </div>
-			    <div class="description details-card-modal" style="background-color: {{getEngagementTypeColor type}};">
-			      {{> engagementDetailsCard }}
-			    </div>
-			  </div>
-			  <div class="actions">
-			    <div class="two fluid ui inverted deny buttons">
-			      <div class="ui red basic inverted button">
-			        <i class="remove icon"></i>
-			        No
-			      </div>
-			      <div class="ui green basic inverted approve button">
-			        <i class="trash icon"></i>
-			        Yes
-			      </div>
-			    </div>
-			  </div>
-			</div>
 		{{/each}}
 		</div>
+	</div>
+
+	<div class="ui basic modal confirm-delete-modal">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    Delete Engagement ?
+	  </div>
+	  <div class="image content">
+	    <div class="image">
+	      <i class="trash icon"></i>
+	    </div>
+	    <div class="description details-card-modal" style="background-color: {{getEngagementTypeColor type}};">
+	      {{> engagementDetailsCard getEventDetails}}
+	    </div>
+	  </div>
+	  <div class="actions">
+	    <div class="two fluid ui inverted deny buttons">
+	      <div class="ui red basic inverted button">
+	        <i class="remove icon"></i>
+	        No
+	      </div>
+	      <div class="ui green basic inverted approve button">
+	        <i class="trash icon"></i>
+	        Yes
+	      </div>
+	    </div>
+	  </div>
 	</div>
 </template>

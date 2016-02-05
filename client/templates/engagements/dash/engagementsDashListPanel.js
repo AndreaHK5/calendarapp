@@ -3,6 +3,7 @@ Template.engagementsDashListPanel.onRendered(function () {
 		showEventsContainer();
 	}, 10);
 	Session.set("engagementOnCalendar", undefined );
+	Session.set("engagementToDelete", undefined );
 })
 
 Template.engagementsDashListPanel.helpers({
@@ -24,7 +25,10 @@ Template.engagementsDashListPanel.helpers({
 	},
 	isCreator : function () {
 		return Meteor.user() && this.createdBy == Meteor.userId();
-	} 
+	},
+	getEventDetails : function () {
+		return Session.get("engagementToDelete");
+	}
 })
 
 Template.engagementsDashListPanel.events({
@@ -70,12 +74,14 @@ Template.engagementsDashListPanel.events({
 	"click #calendar-container" : function () {
 		resetEventOnCalendar();
 	},
-	"click .delete-engagement" : function () {
+	"click .delete-engagement" : function (event) {
 		// stop hovering animations
 		hoovering = false;
 
-		var title = this.title;
+		
 		var engagementId = this._id;
+		var engagement = Engagements.findOne(engagementId);
+		Session.set("engagementToDelete", engagement);
 
 		$('.basic.modal').modal({ 
 			onApprove : removeEngagementCallback,
@@ -91,9 +97,9 @@ Template.engagementsDashListPanel.events({
 
 		engagementRemovalHandler = function (err, res) {
 			if (err) {
-				sAlert.error("Woha, somethign went wrong trying to delete " + title + ", " + err.error);
+				sAlert.error("Woha, somethign went wrong trying to delete " + engagement.title + ", " + err.error);
 			} else {
-				sAlert.success("Engagement " + title + " deleted");
+				sAlert.success("Engagement " + engagement.title + " deleted");
 				var date = Session.get("dayForEventsDetail");
 				if (Engagements.find(mainHelpers.betweenTwoDatesEngagementsQuery(moment(date), moment(date))).count() == 0) {
 					// if no more engagements at this date, close the list panel
