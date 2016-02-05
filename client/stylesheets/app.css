@@ -344,7 +344,7 @@ body {
 }
 
 /*engagements tray*/
-.close-day-container {
+.engagement-list-messages {
   position: relative;
   top: -2.2em;
   left: -1em;
@@ -353,7 +353,7 @@ body {
   color: white;
 }
 
-.close-day-container .date {
+.engagement-list-messages .date {
   font-size: 120%;
   font-weight: 700;
 }

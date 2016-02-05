@@ -59,7 +59,7 @@ if (Meteor.isClient) {
     return last;
   }
 
-  mainHelpers.betweenTwoDatesEventsQuery = function (queryStartDate, queryEndDate) {
+  mainHelpers.betweenTwoDatesEngagementsQuery = function (queryStartDate, queryEndDate) {
     return { $and :[
                   {
                     startDate : {$lte :  new Date (queryEndDate.toISOString()) }
@@ -69,6 +69,12 @@ if (Meteor.isClient) {
                   }
                 ]
               };
+  }
+
+  mainHelpers.betweenDatesAndTypeEngagementsQuery = function (queryStartDate, queryEndDate, type) {
+    var query = mainHelpers.betweenTwoDatesEngagementsQuery(queryStartDate, queryEndDate);
+    query[$and].push({type : type});
+    return query;
   }
 
   mainHelpers.hideEventsContainer = function() {

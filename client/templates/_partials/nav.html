@@ -13,7 +13,7 @@
     </div>
     <div class="mobile only row">
       <div class="ui fixed menu inverted navbar">
-        <a class="brand item" href="{{pathFor 'engagementsList'}}"> Calendar app</a>
+        <a class="brand item" href="{{pathFor 'engagementsDash'}}"> Engagements</a>
         <div class="right menu open">
           <a class="menu item">
             <i class="sidebar icon"></i>
@@ -21,7 +21,6 @@
         </div>
       </div>
       <div class="ui vertical menu navbar" style="display: none;">
-        <a class="item {{#if inEngagementsList}}active{{/if}}"   href="{{pathFor 'engagementsList'}}">Trips</a>
         <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Add</a> 
       </div>
     </div>

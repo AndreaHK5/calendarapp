@@ -8,7 +8,7 @@ Template.engagementsDashDay.helpers({
 
 		var engagementOnCalendar = Session.get("engagementOnCalendar");
 
-		return ( moment(this.date).isAfter(moment(engagementOnCalendar.startDate)) && moment(this.date).isBefore(moment(engagementOnCalendar.endDate)) );	
+		return ( !moment(this.date).isBefore(moment(engagementOnCalendar.startDate)) && !moment(this.date).isAfter(moment(engagementOnCalendar.endDate)) );	
 	},
 	selectedEventType : function () {
 		if (!(Session.get("engagementOnCalendar"))) { return ;}

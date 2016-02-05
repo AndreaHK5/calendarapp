@@ -11,7 +11,12 @@ Template.engagementsDashListPanel.helpers({
 		if (engagementContainerShowing) {
 			adjustEventsContainer();
 		}
-		return Engagements.find(mainHelpers.betweenTwoDatesEventsQuery(moment(date), moment(date)));
+		var query = mainHelpers.betweenTwoDatesEngagementsQuery(moment(date), moment(date));
+		var typeFiler = Session.get("typeFilter");
+		if (typeFiler) {
+			query["$and"].push({type : typeFiler});
+		}
+		return Engagements.find(query);
 	},
 	isSelectedEvent : function (id) {
 		if(!Session.get("engagementOnCalendar")) { return }
@@ -90,7 +95,7 @@ Template.engagementsDashListPanel.events({
 			} else {
 				sAlert.success("Engagement " + title + " deleted");
 				var date = Session.get("dayForEventsDetail");
-				if (Engagements.find(mainHelpers.betweenTwoDatesEventsQuery(moment(date), moment(date))).count() == 0) {
+				if (Engagements.find(mainHelpers.betweenTwoDatesEngagementsQuery(moment(date), moment(date))).count() == 0) {
 					// if no more engagements at this date, close the list panel
 					mainHelpers.hideEventsContainer();
 				} else {

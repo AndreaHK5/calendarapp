@@ -10,30 +10,50 @@ Template.engagementsDash.helpers({
 	},
 	dayShowing : function () {
 		return Session.get("dayForEventsDetail");
+	},
+	typeFilter : function () {
+		return Session.get("typeFilter");
 	}
 });
 
 Template.engagementsDash.events({
 	"click .day-box": function (event) {
-		// gate if clicking on same day
-		if (Session.get("dayForEventsDetail") == this.date) { return; }
+		// in case the click is on the bubble, filter by that!
+		// remember to skip in case the day has only one type anyway
+		var type = undefined;
+
+		var typesPerDay = Object.keys(Session.get("engagementsPerDay")[this.date] || {});
+		if(_.contains(event.target.classList, "type-filer") && typesPerDay.length > 1) {
+			type = Session.set("typeFilter", event.target.getAttribute("value-type"));
+		} else {
+			Session.set("typeFilter", undefined);
+		}	
+
 		// gate if date has no events
+		if (Session.get("dayForEventsDetail") == this.date) { return; }	
+
+		var query = mainHelpers.betweenTwoDatesEngagementsQuery(moment(this.date), moment(this.date));
+		if (type) {
+		// gate if this.date has no events
+			query = mainHelpers.betweenDatesAndTypeEngagementsQuery(moment(this.date), moment(this.date), type) 
+		}
 		Session.set("engagementOnCalendar", undefined);
-		if (Engagements.find(mainHelpers.betweenTwoDatesEventsQuery(moment(this.date), moment(this.date))).count() == 0) {
+		if (Engagements.find(query).count() == 0) {
+			mainHelpers.hideEventsContainer();
+			Session.set("dayForEventsDetail", undefined);
+			scrollCalendarToDiv();
 			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
-			if (Session.get("dayForEventsDetail")) { 
-				mainHelpers.hideEventsContainer(); 
-			} else {
-				scrollCalendarToDiv();
-			}
 			return;
 		}
 		sAlert.closeAll(); 
-		
+			
 		Session.set("dayForEventsDetail", this.date);
 	},
 	"click .close-day-container" : function (event) {
 		mainHelpers.hideEventsContainer();
+	},
+	"click .clear-type-filter" : function (event) {
+		Session.set("typeFilter", undefined);;
 	}
 })
 
@@ -41,6 +61,7 @@ Template.engagementsDash.events({
 var animationTime = 0.4;
 
 function resetSelectedDay() {
+	Session.set("typeFilter", undefined);
 	Session.set("dayForEventsDetail", undefined);
 }
 
