@@ -9,7 +9,7 @@
     </div>
 	<div class="ten wide column centered engagement-details-form">
 		<form class="ui form">
-			<h4 class="ui dividing header">Event</h4>
+			<h4 class="ui dividing header">Engagement</h4>
 		    <div class="two fields">
 			    <div class="field">
 				    <label>Title</label>
@@ -28,8 +28,29 @@
 				     </select>
 			    </div>
 			</div>
+			<h4 class="ui dividing header">Game Title</h4>
+			<div class="two fields">
+				<div class="field">
+					<label>Prduct</label>
+					<select class="ui fluid search selection dropdown" name="product">
+						<option value="">Product</option>
+						{{#each getAllGameTitles}}
+							<option value="{{_id}}">{{product}}</option>
+				        {{/each}}
+			        </select>
+				</div>
+				<div class="field">
+					<label>Codename</label>
+					<select class="ui fluid search selection dropdown" name="codename">
+						<option value="">Codename</option>
+						{{#each getAllGameTitles}}
+							<option value="{{_id}}">{{codename}}</option>
+				        {{/each}}
+			        </select>
+				</div>
+			</div>
+			<h4 class="ui dividing header">Description</h4>
 			<div class="field">
-	    		<label>Description</label>
 	    		<textarea rows="2" name="description"></textarea>
 	  		</div>
 			<h4 class="ui dividing header">Team</h4>

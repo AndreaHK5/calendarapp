@@ -23,6 +23,7 @@ Template.engagementsCreateDetails.onRendered(function () {
   Meteor.subscribe("engineers");
   Meteor.subscribe("dams");
   Meteor.subscribe("engagements");
+  Meteor.subscribe("gameTitles");
 
   // register validations
   formValidations();
@@ -49,10 +50,14 @@ Template.engagementsCreateDetails.helpers({
   },
   getStartDate : function () {
       return Session.get("startDate");
-    },
+  },
   getEndDate : function () {
       return Session.get("endDate");
+  },
+  getAllGameTitles : function () {
+    return GameTitles.find();
   }
+
 })
 
 
@@ -88,6 +93,14 @@ Template.engagementsCreateDetails.events({
 	"change select[name=dam]" : function (event,context) {
 		updateEventDetails("dam", { id : event.target.value });
 	},
+  "change select[name=product]" : function (event) {
+    updateEventDetails("gameTitle", { id : event.target.value });
+    $(".ui.dropdown select[name='codename']").dropdown('set selected', GameTitles.findOne(event.target.value).codename);
+  },
+  "change select[name=codename]" : function (event) {
+    updateEventDetails("gameTitle", { id : event.target.value });
+    $(".ui.dropdown select[name='product']").dropdown('set selected', GameTitles.findOne(event.target.value).product);
+  },
 	"submit .form" : function (event) {
 		if(!$('.ui.form').form('is valid')) { return };
 		event.preventDefault();
@@ -104,24 +117,33 @@ function updateEventDetails (field, value) {
 function formValidations () {
 	$('.ui.form').form({
 	fields: {
-     	title: {
-        	identifier: 'title',
-        	rules: [
-          		{
-            		type   : 'empty',
-            		prompt : 'We need a TITLE'
-          		}
-        	]
-      	},
+    title: {
+     	identifier: 'title',
+     	rules: [
+     		{
+       		type   : 'empty',
+       		prompt : 'We need a TITLE'
+     		}
+     	]
+    },
 		type: {
-        	identifier: 'type',
-        	rules: [
-          		{
-            		type   : 'empty',
-            		prompt : 'We need a TYPE'
-          		}
-        	]
-      	},
+     	identifier: 'type',
+     	rules: [
+     		{
+       		type   : 'empty',
+       		prompt : 'We need a TYPE'
+     		}
+     	]
+   	},
+    product: {
+      identifier: 'product',
+      rules: [
+        {
+          type   : 'empty',
+          prompt : 'Select GAME TITLE'
+        }
+      ] 
+    },       
 		description: {
         	identifier: 'description',
         	rules: [

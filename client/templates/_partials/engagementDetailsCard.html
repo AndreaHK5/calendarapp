@@ -5,7 +5,13 @@
 				{{title}} 
 				{{#if visiting.location}} @ {{visiting.location}} {{/if}} 
 				{{#if platform}} for {{platform}} {{/if}} 
-				 ({{type}})</div>
+				 ({{type}})
+			</div>
+			{{#if gameTitle}}
+				<div class="title">
+					{{getGameTitleProduct}} {{getGameTitlecCodename}}  
+				</div>
+			{{/if}}
 			<p>{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</p>
 			{{#if createdBy}}
 				<p> Created By {{createdBy}}</p>

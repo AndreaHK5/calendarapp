@@ -1,6 +1,7 @@
 Template.engagementDetailsCard.onRendered(function () {
 	Meteor.subscribe("engineers");
 	Meteor.subscribe("dams");
+	Meteor.subscribe("gameTitles");
 })
 
 Template.engagementDetailsCard.helpers({
@@ -20,5 +21,11 @@ Template.engagementDetailsCard.helpers({
 			return false; 
 		}
 		return user.username;
+	},
+	getGameTitleProduct : function () {
+		return GameTitles.findOne(this.gameTitle.id).product;
+	},
+	getGameTitlecCodename : function () {
+		return GameTitles.findOne(this.gameTitle.id).codename;
 	}
 })

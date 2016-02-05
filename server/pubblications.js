@@ -9,3 +9,7 @@ Meteor.publish("engineers", function(){
 Meteor.publish("dams", function(){
   return Dams.find()
 });
+
+Meteor.publish("gameTitles", function(){
+  return GameTitles.find()
+});
