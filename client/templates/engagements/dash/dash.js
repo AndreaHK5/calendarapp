@@ -1,6 +1,7 @@
 Template.engagementsDash.onRendered(function () {
 	resetSelectedDay();
 	Meteor.subscribe("engagements");
+	Meteor.subscribe("gameTitles");
 });
 
 Template.engagementsDash.helpers({

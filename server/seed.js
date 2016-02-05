@@ -124,7 +124,10 @@ var engagementsSeeds = [
     'platform' : "Xbox",
     'dam' : { id : getIdByName(Dams, "Lee Van Cleef") },
     'gameTitle' : { id : getGameTitleIdByProduct('Fifa 2016')},
-    'type' : "engagement"
+    'type' : "engagement",
+    'goals' : [
+      'frico', 'tocai'
+    ]
   },
   {
     'startDate' : moment([2016,0,29]).startOf("day").toISOString(),
@@ -144,7 +147,10 @@ var engagementsSeeds = [
     'platform' : "Volkl",
     'dam' : { id : getIdByName(Dams, "Henry Fonda") },
     'gameTitle' : { id : getGameTitleIdByProduct('Drangon Age 2')},
-    'type' : "vacation"
+    'type' : "vacation",
+    'goals' : [
+      'moguls', 'apre ski'
+    ]
   },
   {
     'startDate' : moment([2016,1,2]).startOf("day").toISOString(),
@@ -162,7 +168,10 @@ var engagementsSeeds = [
     'platform' : "London Pride",
     'dam' : { id : getIdByName(Dams, "Charles Bronson") },
     'gameTitle' : { id : getGameTitleIdByProduct('Fallout New Vegas')},
-    'type' : "vacation"
+    'type' : "vacation",
+    'goals' : [
+      'win'
+    ]
   },
   {
     'startDate' : moment([2016,0,2]).startOf("day").toISOString(),
@@ -179,7 +188,10 @@ var engagementsSeeds = [
     'platform' : "London Pride",
     'dam' : { id :  getIdByName(Dams, "Charles Bronson") },
     'gameTitle' : { id : getGameTitleIdByProduct('Escape from castle Woflenstein')},
-    'type' : "engagement"
+    'type' : "engagement",
+    'goals' : [
+      'local buckling', 'global buckling'
+    ]
   }
 ];
 

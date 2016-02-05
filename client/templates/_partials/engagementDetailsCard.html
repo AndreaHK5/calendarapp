@@ -9,7 +9,7 @@
 			</div>
 			{{#if gameTitle}}
 				<div class="title">
-					{{getGameTitleProduct}} {{getGameTitlecCodename}}  
+					{{getGameTitleProduct}} - {{getGameTitlecCodename}}  
 				</div>
 			{{/if}}
 			<p>{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</p>
@@ -32,5 +32,8 @@
 	</div>
 	<div>
 		{{description}}
+	</div>
+	<div>
+		Goals : {{#each getGoals}} {{goal}} {{/each}}
 	</div>
 </template>

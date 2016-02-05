@@ -7,6 +7,7 @@ Template.engagementsCreateDetails.onRendered(function () {
   });
 
   Session.set("customType", undefined);
+  Session.set("goalsArray", [])
 
   // animations
   var myDiv = $("#animationPlaceholder");
@@ -14,7 +15,7 @@ Template.engagementsCreateDetails.onRendered(function () {
   TweenLite.to(myDiv,0.8, {
     height: 0, 
     onComplete : function () {
-      var h = $(window).height() - $('.confirm-jumbo').offset().top - 2 * $('.confirm-jumbo').height();
+      var h = $(window).height() - $('.confirm-jumbo').offset().top - $('.confirm-jumbo').height();
       $('.engagement-details-form').height(h)
     }
   });
@@ -25,8 +26,10 @@ Template.engagementsCreateDetails.onRendered(function () {
   Meteor.subscribe("engagements");
   Meteor.subscribe("gameTitles");
 
-  // register validations
+  // activate dropdown
+  $('select.dropdown').dropdown();
   formValidations();
+
 })
 
 
@@ -56,59 +59,91 @@ Template.engagementsCreateDetails.helpers({
   },
   getAllGameTitles : function () {
     return GameTitles.find();
+  }, 
+  getAllGoals : function () {
+    return _.map(Session.get("goalsArray"), 
+      function (goal) { 
+        return { goal : goal }; 
+      });
   }
-
 })
 
 
 Template.engagementsCreateDetails.events({
 	"change input[name=title]" : function (event,context) {
-		updateEventDetails("title", event.target.value);
+		updateEngagementDetails("title", event.target.value);
 	},
 	"change select[name=type]" : function (event,context) {
-		updateEventDetails("type", event.target.value);
+		updateEngagementDetails("type", event.target.value);
 	},
   "change .type-dropdown input" : function (event) {
     // this handler is required in order to allow addition of another custom event
     var newValue = event.target.value;
     Session.set("customType", newValue);
     setTimeout(function() {
-      $(".ui.fluid.search.selection.dropdown").dropdown('set selected', newValue);
+      $(".ui.fluid.search.selection.dropdown.type-dropdown").dropdown('set selected', newValue);
     }, 10);
+    event.preventDefault();
   },
 	"change textarea[name=description]" : function (event,context) {
-		updateEventDetails("description", event.target.value);
+		updateEngagementDetails("description", event.target.value);
 	},
 	"change select[name=engineerGoing]" : function (event,context) {
-
 		// TODO this is a terryfying wasy of doign two way binding, find a better one!
     var engineersGoing = $(".ui.form")
       .find('[name="engineerGoing"] option:selected')
-      .map(function (e,v) {
-        // TODO make a collection of engineers and get by ID!  
+      .map(function (e,v) {  
         return { id : v.value }; 
       }).get();
-    updateEventDetails("engineersGoing", engineersGoing);
+    updateEngagementDetails("engineersGoing", engineersGoing);
 	},
 	"change select[name=dam]" : function (event,context) {
-		updateEventDetails("dam", { id : event.target.value });
+		updateEngagementDetails("dam", { id : event.target.value });
 	},
   "change select[name=product]" : function (event) {
-    updateEventDetails("gameTitle", { id : event.target.value });
+    updateEngagementDetails("gameTitle", { id : event.target.value });
     $(".ui.dropdown select[name='codename']").dropdown('set selected', GameTitles.findOne(event.target.value).codename);
   },
   "change select[name=codename]" : function (event) {
-    updateEventDetails("gameTitle", { id : event.target.value });
+    updateEngagementDetails("gameTitle", { id : event.target.value });
     $(".ui.dropdown select[name='product']").dropdown('set selected', GameTitles.findOne(event.target.value).product);
   },
-	"submit .form" : function (event) {
-		if(!$('.ui.form').form('is valid')) { return };
-		event.preventDefault();
-		Session.set("formValid", true);
-	}
+  "change select[name=goals]" : function (event) {
+    var selectedGoals = $(".ui.form").find('[name="goals"] option:selected').map(function (e,v) { return v.value; } ).get();
+    updateEngagementDetails("goals", selectedGoals);
+  },
+  "keydown .goals-dropdown input" : function (event) {
+    if (event.keyCode == 13) {
+      // Enter has been pressed BUT we deactivated enter on the goals dropdown
+      // and also we clear the errors
+      event.preventDefault();
+      $('.form div').find('.error').removeClass('error');
+      $('.ui.error.message').empty()
+
+      var goals = Session.get("goalsArray");
+      var newGoal = event.target.value
+      if(_.contains(goals, newGoal)) { return ;}
+
+      goals.push(newGoal);
+      Session.set("goalsArray", goals);
+
+      setTimeout(function() {
+        $(".goals-dropdown input").val("");
+        $(".ui.dropdown select[name='goals']").dropdown('set selected', newGoal);
+      }, 10);
+    }
+  },
+	"submit .ui.form" : function (event) {
+    event.preventDefault();
+	},
+  "click .confirm-button" : function (event) { 
+    $('.ui.form').form('validate form');
+    if(!$('.ui.form').form('is valid')) { return };
+    Session.set("formValid", true);
+  }
 })
 
-function updateEventDetails (field, value) {
+function updateEngagementDetails (field, value) {
 	var engagement = Session.get("engagementDetails");
 	engagement[field] = value;
 	Session.set("engagementDetails", engagement);
@@ -145,34 +180,42 @@ function formValidations () {
       ] 
     },       
 		description: {
-        	identifier: 'description',
-        	rules: [
-          		{
-            		type   : 'empty',
-            		prompt : 'A few words would do as a DESCRIPTION'
-          		}
-        	]
-      	},
-		dam: {
-        	identifier: 'dam',
-        	rules: [
-          		{
-            		type   : 'minCount[1]',
-            		prompt : 'Need a DAM'
-          		}
-        	]
-      	},
+     	identifier: 'description',
+     	rules: [
+     		{
+       		type   : 'empty',
+       		prompt : 'A few words would do as a DESCRIPTION'
+     		}
+     	]
+   	},
+    dam: {
+      identifier: 'dam',
+      rules: [
+        {
+          type   : 'minCount[1]',
+          prompt : 'Need a DAM'
+        }
+      ]
+    },
 		engineerGoing: {
-        	identifier: 'engineerGoing',
-        	rules: [
-          		{
-            		type   : 'minCount[1]',
-            		prompt : "Who's going as ENIGNEER"
-          		}
-        	]
-      	}
-    }
+     	identifier: 'engineerGoing',
+     	rules: [
+       		{
+         		type   : 'minCount[1]',
+         		prompt : "Who's going as ENIGNEER"
+       		}
+       	]
+     	}
+    },
+    goals: {
+      identifier: 'goals',
+      rules: [
+        {
+          type   : 'minCount[1]',
+          prompt : 'what are the GOALS'
+        }
+      ]
+    },
   });
-  $('select.dropdown').dropdown();
 }
 

@@ -23,7 +23,7 @@ Template.engagementsDashListPanel.helpers({
 		return Session.get("engagementOnCalendar")._id == id;
 	},
 	isCreator : function () {
-		return this.createdBy == Meteor.userId();
+		return Meteor.user() && this.createdBy == Meteor.userId();
 	} 
 })
 
