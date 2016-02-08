@@ -382,7 +382,7 @@ body {
 .engagements-legend {
   position: fixed;
   top: 100px;
-  right: 0px;
+  right: 14px;
   background: rgba(128,128,128,0.99);
   padding-left: 3px !important;
   padding-right: 3px !important;
