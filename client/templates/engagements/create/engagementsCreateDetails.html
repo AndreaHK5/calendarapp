@@ -57,6 +57,11 @@
 			</div>
 			<div class="field">
 				<label>Goals</label>
+			    {{#if showGoalsHelper}}
+				    <div class="ui pointing below label">
+						Want to enter multiple goals? Press Enter between them!
+				    </div>
+				{{/if}}
 			     <select class="ui fluid search selection dropdown goals-dropdown" name="goals" multiple="">
 					<option value="">Enter goals here</option>
 			        {{#each getAllGoals}}

@@ -7,7 +7,8 @@ Template.engagementsCreateDetails.onRendered(function () {
   });
 
   Session.set("customType", undefined);
-  Session.set("goalsArray", [])
+  Session.set("goalsArray", []);
+  Session.set("showGoalsHelper", undefined);
 
   // animations
   var myDiv = $("#animationPlaceholder");
@@ -65,6 +66,9 @@ Template.engagementsCreateDetails.helpers({
       function (goal) { 
         return { goal : goal }; 
       });
+  },
+  showGoalsHelper : function () {
+    return Session.get("showGoalsHelper");
   }
 })
 
@@ -118,11 +122,23 @@ Template.engagementsCreateDetails.events({
       // Enter has been pressed BUT we deactivated enter on the goals dropdown
       // and also we clear the errors
       event.preventDefault();
-      clearValidations();
       addToGoals(event.target.value);
+      clearValidations();
     }
   },
+  "focus .goals-dropdown input" : function () {
+    // show the helper message on the goals.
+    Session.set("showGoalsHelper", true);
+    
+    clearTimeout(goalsHelperTimer); 
+    goalsHelperTimer = setTimeout(function() {
+      Session.set("showGoalsHelper", false);
+    }, 5000);
+  },
   "blur .goals-dropdown input" : function (event) {
+    // hide the helper message for the goals, if showing;
+    clearTimeout(goalsHelperTimer);
+    Session.set("showGoalsHelper", false);
     addToGoals(event.target.value);
   },
 	"submit .ui.form" : function (event) {
@@ -136,21 +152,22 @@ Template.engagementsCreateDetails.events({
   }
 });
 
+var goalsHelperTimer;
+
 function addToGoals(newGoal) {
-      var goals = Session.get("goalsArray");
-      if(_.contains(goals, newGoal)) { 
-        sAlert.info("We already have that goal. It's important - got it =)")
-        return ;
-      }
-
-      goals.push(newGoal);
-      Session.set("goalsArray", goals);
-
-      setTimeout(function() {
-        $(".goals-dropdown input").val("");
-        $(".ui.dropdown select[name='goals']").dropdown('set selected', newGoal);
-      }, 10);
+  var goals = Session.get("goalsArray");
+  if(_.contains(goals, newGoal)) { 
+    sAlert.info("We already have that goal. It's important - got it =)")
+    return ;
+  }
+  goals.push(newGoal);
+  Session.set("goalsArray", goals);
+  setTimeout(function() {
+    $(".goals-dropdown input").val("");
+    $(".ui.dropdown select[name='goals']").dropdown('set selected', newGoal);
+  }, 10);
 }
+
 
 function updateEngagementDetails (field, value) {
 	var engagement = Session.get("engagementDetails");
