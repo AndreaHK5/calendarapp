@@ -119,20 +119,11 @@ Template.engagementsCreateDetails.events({
       // and also we clear the errors
       event.preventDefault();
       clearValidations();
-
-
-      var goals = Session.get("goalsArray");
-      var newGoal = event.target.value
-      if(_.contains(goals, newGoal)) { return ;}
-
-      goals.push(newGoal);
-      Session.set("goalsArray", goals);
-
-      setTimeout(function() {
-        $(".goals-dropdown input").val("");
-        $(".ui.dropdown select[name='goals']").dropdown('set selected', newGoal);
-      }, 10);
+      addToGoals(event.target.value);
     }
+  },
+  "blur .goals-dropdown input" : function (event) {
+    addToGoals(event.target.value);
   },
 	"submit .ui.form" : function (event) {
     event.preventDefault();
@@ -143,7 +134,23 @@ Template.engagementsCreateDetails.events({
     if(!$('.ui.form').form('is valid')) { return };
     Session.set("formValid", true);
   }
-})
+});
+
+function addToGoals(newGoal) {
+      var goals = Session.get("goalsArray");
+      if(_.contains(goals, newGoal)) { 
+        sAlert.info("We already have that goal. It's important - got it =)")
+        return ;
+      }
+
+      goals.push(newGoal);
+      Session.set("goalsArray", goals);
+
+      setTimeout(function() {
+        $(".goals-dropdown input").val("");
+        $(".ui.dropdown select[name='goals']").dropdown('set selected', newGoal);
+      }, 10);
+}
 
 function updateEngagementDetails (field, value) {
 	var engagement = Session.get("engagementDetails");
