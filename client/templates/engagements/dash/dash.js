@@ -2,6 +2,8 @@ Template.engagementsDash.onRendered(function () {
 	resetSelectedDay();
 	Meteor.subscribe("engagements");
 	Meteor.subscribe("gameTitles");
+	// Semantic UI modal no removed from dom after callback runs in List Panel, removed manually here. 
+	$('.basic.modal').remove();
 });
 
 Template.engagementsDash.helpers({

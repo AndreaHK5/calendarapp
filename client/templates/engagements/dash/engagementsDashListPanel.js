@@ -96,13 +96,15 @@ Template.engagementsDashListPanel.events({
 		}
 
 		engagementRemovalHandler = function (err, res) {
+			Session.set("engagementToDelete", undefined);
 			if (err) {
 				sAlert.error("Woha, somethign went wrong trying to delete " + engagement.title + ", " + err.error);
 			} else {
 				sAlert.success("Engagement " + engagement.title + " deleted");
 				var date = Session.get("dayForEventsDetail");
 				if (Engagements.find(mainHelpers.betweenTwoDatesEngagementsQuery(moment(date), moment(date))).count() == 0) {
-					// if no more engagements at this date, close the list panel
+					// if no more engagements at this date, close the list panel 
+					$('.basic.modal').remove()
 					mainHelpers.hideEventsContainer();
 				} else {
 					adjustEventsContainer();

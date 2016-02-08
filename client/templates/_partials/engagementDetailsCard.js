@@ -28,6 +28,7 @@ Template.engagementDetailsCard.helpers({
 		return GameTitles.findOne(this.gameTitle.id).codename;
 	},
 	getGoals : function () {
+		if (this.goals == undefined) { return; }
 		var last = this.goals.pop();
 		var result = _.map(this.goals, function (goal) { return  { goal : goal + ", " }; });
 		result.push({goal : last});

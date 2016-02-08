@@ -16,6 +16,9 @@ var microsoftColors = [ "rgb(0,113,188)", "rgb(141,46,136)", "rgb(15,62,157)", "
 
 UI.registerHelper("getEngagementTypeColor", function (engagementType) {
   // safe method in case a new type is provided
+  if (engagementType == null) {
+    return;
+  }
   var map = Session.get("engagementsTypesColorMap");
   engagementType = engagementType.toLowerCase(); 
   if (!(engagementType in map)) {
