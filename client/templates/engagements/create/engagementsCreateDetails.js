@@ -177,6 +177,15 @@ function formValidations () {
      		}
      	]
    	},
+    goals: {
+      identifier: 'goals',
+      rules: [
+        {
+          type   : 'minCount[1]',
+          prompt : 'What are the GOALS'
+        }
+      ]
+    },
     product: {
       identifier: 'product',
       rules: [
@@ -213,16 +222,7 @@ function formValidations () {
        		}
        	]
      	}
-    },
-    goals: {
-      identifier: 'goals',
-      rules: [
-        {
-          type   : 'minCount[1]',
-          prompt : 'what are the GOALS'
-        }
-      ]
-    },
+    }
   });
 }
 

@@ -9,25 +9,6 @@
     </div>
 	<div class="ten wide column centered engagement-details-form">
 		<form class="ui form">
-			<h4 class="ui dividing header">Engagement</h4>
-		    <div class="two fields">
-			    <div class="field">
-				    <label>Title</label>
-				     <div class="field" >
-				        <input type="text" placeholder="title" name="title">
-				     </div>
-			    </div>
-				<div class="field">
-				    <label>Type</label>
-				     <select class="ui fluid search selection dropdown type-dropdown" name="type">
-						<option value="">Type</option>
-				        {{#each getAllTypes}}
-							<option value="{{type}}">{{type}}</option>
-				        {{/each}}
-				        <option value="{{getCustomType}}">{{getCustomType}}</option>
-				     </select>
-			    </div>
-			</div>
 			<h4 class="ui dividing header">Game Title</h4>
 			<div class="two fields">
 				<div class="field">
@@ -49,12 +30,40 @@
 			        </select>
 				</div>
 			</div>
+			<h4 class="ui dividing header">Engagement</h4>
+		    <div class="two fields">
+			    <div class="field">
+				    <label>Title</label>
+				     <div class="field" >
+				        <input type="text" placeholder="title" name="title">
+				     </div>
+			    </div>
+				<div class="field">
+				    <label>Type</label>
+				     <select class="ui fluid search selection dropdown type-dropdown" name="type">
+						<option value="">Type</option>
+				        {{#each getAllTypes}}
+							<option value="{{type}}">{{type}}</option>
+				        {{/each}}
+				        <option value="{{getCustomType}}">{{getCustomType}}</option>
+				     </select>
+			    </div>
+			</div>
 			<div class="one field">
 				<div class="field">
 					<label>Description</label>
 		    		<textarea rows="2" name="description"></textarea>
 		  		</div>
 			</div>
+			<div class="field">
+				<label>Goals</label>
+			     <select class="ui fluid search selection dropdown goals-dropdown" name="goals" multiple="">
+					<option value="">Enter goals here</option>
+			        {{#each getAllGoals}}
+						<option value="{{goal}}">{{goal}}</option>
+			        {{/each}}
+			     </select>
+		    </div>	
 			<h4 class="ui dividing header">Team</h4>
 			<div class="two fields">
 				<div class="field">
@@ -81,16 +90,7 @@
 				        {{/each}}
 				     </select>
 			    </div>
-			</div>
-			<div class="field">
-				<label>Goals</label>
-			     <select class="ui fluid search selection dropdown goals-dropdown" name="goals" multiple="">
-					<option value="">Type</option>
-			        {{#each getAllGoals}}
-						<option value="{{goal}}">{{goal}}</option>
-			        {{/each}}
-			     </select>
-		    </div>			
+			</div>		
 			<div class="confirm-jumbo">
 				<div class="confirm-button reset-engagement">CHANGE DATES</div>
       			<div class="ui confirm-button confirm-details ">PROCEED</div>  
