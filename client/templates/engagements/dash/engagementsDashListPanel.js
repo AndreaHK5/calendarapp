@@ -4,6 +4,14 @@ Template.engagementsDashListPanel.onRendered(function () {
 	}, 10);
 	Session.set("engagementOnCalendar", undefined );
 	Session.set("engagementToDelete", undefined );
+
+	// recompute calendar and events list container on resize
+	$(window).resize(function(evt) {
+		// debounced
+    	setTimeout(function () {
+	    	adjustEventsContainer();
+    	},150)
+  	});
 })
 
 Template.engagementsDashListPanel.helpers({
