@@ -7,7 +7,6 @@ body {
    padding-right: 14px !important;
    padding-left: 14px !important;
    margin-bottom: 0px !important;
-   margin-top: 0px !important;
 }
 
 /*site navbar*/
@@ -407,8 +406,8 @@ body {
 
 .engagements-legend {
   position: fixed;
-  top: 100px;
-  right: 14px;
+  top: 80px;
+  left: 10px;
   background: rgba(128,128,128,0.99);
   padding-left: 3px !important;
   padding-right: 3px !important;
