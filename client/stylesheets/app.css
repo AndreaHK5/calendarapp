@@ -212,6 +212,15 @@ body {
 .engagement-details-form {
   overflow: scroll;
 }
+
+.add-goal-button {
+  margin-top: 22px !important;
+}
+
+.goals-container {
+  margin-left: 0.5em !important;
+}
+
 /*engagements day style*/
 
 .engagement-day-top {

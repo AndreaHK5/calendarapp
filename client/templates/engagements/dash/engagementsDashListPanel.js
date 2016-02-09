@@ -222,6 +222,7 @@ function scrollCalendarToSelectedDay () {
 
 
 function scrollCalendarToDiv(div) {
+	if (!div) {return ;}
 	var calendar = $('#calendar-container');
 
 	var topY = calendar.scrollTop() + div.offset().top - 2* div.height();

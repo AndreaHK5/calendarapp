@@ -4,11 +4,10 @@ Template.engagementsCreateDetails.onRendered(function () {
 	Session.set("engagementDetails", {
     startDate : Session.get("selectedStartDate"),
     endDate : Session.get("selectedEndDate"),
+    goals : []
   });
 
   Session.set("customType", undefined);
-  Session.set("goalsArray", []);
-  Session.set("showGoalsHelper", undefined);
 
   // animations
   var myDiv = $("#animationPlaceholder");
@@ -29,8 +28,8 @@ Template.engagementsCreateDetails.onRendered(function () {
 
   // activate dropdown
   $('select.dropdown').dropdown();
+  // validations
   formValidations();
-
 })
 
 
@@ -62,13 +61,11 @@ Template.engagementsCreateDetails.helpers({
     return GameTitles.find();
   }, 
   getAllGoals : function () {
-    return _.map(Session.get("goalsArray"), 
+    if (!Session.get("engagementDetails")) { return; }
+    return _.map(Session.get("engagementDetails").goals, 
       function (goal) { 
         return { goal : goal }; 
       });
-  },
-  showGoalsHelper : function () {
-    return Session.get("showGoalsHelper");
   }
 })
 
@@ -113,11 +110,7 @@ Template.engagementsCreateDetails.events({
     updateEngagementDetails("gameTitle", { id : event.target.value });
     $(".ui.dropdown select[name='product']").dropdown('set selected', GameTitles.findOne(event.target.value).product);
   },
-  "change select[name=goals]" : function (event) {
-    var selectedGoals = $(".ui.form").find('[name="goals"] option:selected').map(function (e,v) { return v.value; } ).get();
-    updateEngagementDetails("goals", selectedGoals);
-  },
-  "keydown .goals-dropdown input" : function (event) {
+  "keydown input[name=goals]" : function (event) {
     if (event.keyCode == 13) {
       // Enter has been pressed BUT we deactivated enter on the goals dropdown
       // and also we clear the errors
@@ -126,20 +119,17 @@ Template.engagementsCreateDetails.events({
       clearValidations();
     }
   },
-  "focus .goals-dropdown input" : function () {
-    // show the helper message on the goals.
-    Session.set("showGoalsHelper", true);
-    
-    clearTimeout(goalsHelperTimer); 
-    goalsHelperTimer = setTimeout(function() {
-      Session.set("showGoalsHelper", false);
-    }, 5000);
+  "click .add-goal" : function (event) {
+    event.preventDefault();
+    addToGoals($("input[name=goals]").val());
+    setTimeout(function () {
+        clearValidations();
+      }, 
+      100
+    );
   },
-  "blur .goals-dropdown input" : function (event) {
-    // hide the helper message for the goals, if showing;
-    clearTimeout(goalsHelperTimer);
-    Session.set("showGoalsHelper", false);
-    addToGoals(event.target.value);
+  "click .remove-goal" : function (event) {
+    removeGoal($(event.target).attr('value'));
   },
 	"submit .ui.form" : function (event) {
     event.preventDefault();
@@ -148,24 +138,41 @@ Template.engagementsCreateDetails.events({
   "click .confirm-button" : function (event) { 
     $('.ui.form').form('validate form');
     if(!$('.ui.form').form('is valid')) { return };
+
+    // in case there is a value in the goals, this needs to be included in the engagement object
+    addToGoals($('input[name=goals]').val());
+
     Session.set("formValid", true);
   }
 });
 
-var goalsHelperTimer;
+
 
 function addToGoals(newGoal) {
-  var goals = Session.get("goalsArray");
+  if (newGoal == "" || newGoal == undefined) {
+    sAlert.info("Type your goal in the box, them press ENTER to add it.");
+    return;
+  }
+
+  if (newGoal.length > 140) {
+    sAlert.info("Please keep goals to a tweet.");
+    return;    
+  }
+
+  var goals = Session.get("engagementDetails").goals;
   if(_.contains(goals, newGoal)) { 
-    sAlert.info("We already have that goal. It's important - got it =)")
+    sAlert.info("We already have that goal. It's important - got it.")
     return ;
   }
   goals.push(newGoal);
-  Session.set("goalsArray", goals);
-  setTimeout(function() {
-    $(".goals-dropdown input").val("");
-    $(".ui.dropdown select[name='goals']").dropdown('set selected', newGoal);
-  }, 10);
+  updateEngagementDetails("goals", goals );
+  $("input[name=goals]").val("")
+}
+
+function removeGoal(goal) {
+  var goals = Session.get("engagementDetails").goals;
+  lodash.remove(goals, function (g) { return g == goal;} );
+  updateEngagementDetails("goals", goals );
 }
 
 
@@ -181,6 +188,12 @@ function clearValidations() {
 }
 
 function formValidations () {
+  // custom validation
+  $.fn.form.settings.rules.validateGoals = function() {
+    return Session.get("engagementDetails").goals.length != 0; 
+  }
+
+
 	$('.ui.form').form({
 	fields: {
     title: {
@@ -205,8 +218,8 @@ function formValidations () {
       identifier: 'goals',
       rules: [
         {
-          type   : 'minCount[1]',
-          prompt : 'What are the GOALS'
+          type   : 'validateGoals[]',
+          prompt : 'What are the GOALS?'
         }
       ]
     },
@@ -218,7 +231,7 @@ function formValidations () {
           prompt : 'Select GAME TITLE'
         }
       ] 
-    },       
+    },     
 		description: {
      	identifier: 'description',
      	rules: [
