@@ -21,5 +21,14 @@ Template.engagementsDashDay.helpers({
 		var engagementsPerDay = Session.get("engagementsPerDay");
 		var result = _.map(engagementsPerDay[this.date], function (v, k) { return { type: k, count : v}} );
 		return result;
+	},
+	isTypeInFilter : function (type, date) {
+		// halo if no day is selected
+		if ( date != Session.get("dayForEventsDetail") ) { return false; }
+
+		var currentType = Session.get("typeFilter");
+		// all bubbles to get a halo in case there is no selected type
+		if (!currentType) { return true; }
+		return type == currentType;
 	}
 })

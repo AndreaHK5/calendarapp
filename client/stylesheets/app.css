@@ -6,6 +6,8 @@ body {
    overflow: hidden;
    padding-right: 14px !important;
    padding-left: 14px !important;
+   margin-bottom: 0px !important;
+   margin-top: 0px !important;
 }
 
 /*site navbar*/
@@ -29,7 +31,7 @@ body {
 .day-box {
   height: 98px;
   border: 1px solid #D6D5D4;
-  margin: 5%;
+  margin: 0.5em;
 }
 
 .day-box-selected {
@@ -221,10 +223,8 @@ body {
   font-weight: 100;
 }
 
-.day-box:hover .engagement-day-top,
-.day-box-selected .engagement-day-top {
-  margin-top: 14px;
-  margin-left: 6px
+.day-box-selected .engagement-day-bottom {
+  bottom: 5px;
 }
 
 .engagement-day-bottom {
@@ -232,8 +232,14 @@ body {
   margin-right: 8px;
   margin-bottom: 8px;
   position: absolute;
-  bottom: 5px;
+  bottom: 3px;
   right: 8px;
+}
+
+.day-box:hover .engagement-day-top,
+.day-box-selected .engagement-day-top {
+  margin-top: 14px;
+  margin-left: 6px
 }
 
 .calendar-engagement-bar {
@@ -243,26 +249,37 @@ body {
   height: 10px;
 }
 
+.engagement-bubble-halo {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  border: 2px solid;
+  border-radius: 15px;
+}
+
+.engagement-bubble-nohalo {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  border: 0px solid;
+  margin-right: -2px;
+  margin-left: 2px;
+}
+
 .engagement-bubble {
   color: white;
   display: inline-block;
-  height: 26px;
-  width: 26px;
-  border-radius: 13px;
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
   text-align: center;
   line-height: 23px;
   vertical-align: middle;
-  padding-right: 1px;
+  margin: 2px;
 }
 
 .engagement-bubble:last-of-type {
   margin-right: 0px;
-}
-
-.day-box:hover .engagement-bubble ,
-.day-box-selected .engagement-bubble {
-  font-weight: 700;
-  line-height: 25px;
 }
 
 /*day engagements detail */
@@ -351,7 +368,7 @@ body {
 /*engagements tray*/
 .engagement-list-messages {
   position: relative;
-  top: -2.2em;
+  top: -4.3em;
   left: -1em;
   background: rgba(128,128,128,0.96);
   padding: 0.5em 1em;

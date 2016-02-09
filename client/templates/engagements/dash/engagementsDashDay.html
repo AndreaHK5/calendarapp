@@ -11,9 +11,12 @@
 		</div>
 		<div class="engagement-day-bottom">
 			{{#each dayEvents}}
-			<div class="engagement-bubble type-filer" value-type="{{type}}" style="background-color: {{getEngagementTypeColor type}};">
-				{{count}} 				
-			</div>
+
+				<div class="{{#if isTypeInFilter type ../date}} engagement-bubble-halo {{else}} engagement-bubble-nohalo {{/if}}" style="border-color: {{getEngagementTypeColor type}};">
+					<div class="engagement-bubble type-filer" value-type="{{type}}" style="background-color: {{getEngagementTypeColor type}};">
+						{{count}} 				
+					</div>
+				</div>
 			{{/each}}		
 		</div>
 
