@@ -4,6 +4,14 @@ Template.engagementsDash.onRendered(function () {
 	Meteor.subscribe("gameTitles");
 	// Semantic UI modal no removed from dom after callback runs in List Panel, removed manually here. 
 	$('.basic.modal').remove();
+
+	// resize boxes in order to fit all bubbles 
+	$(window).resize(function(evt) {
+		// debounced
+    	setTimeout(function () {
+	    	adjustdayBoxHeight();
+    	},150)
+  	});
 });
 
 Template.engagementsDash.helpers({
@@ -79,3 +87,15 @@ function scrollCalendarToDiv() {
 	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});	
 }
 
+function adjustdayBoxHeight() {
+	var standardDayBoxHeight = 92;
+	var requiredHeight = lodash.reduce($('.day-box'), 
+		function (heightRequired, e) { 
+			var thisBoxHeight = $(e).find('.engagement-day-top').outerHeight(true) + $(e).find('.engagement-day-bottom').outerHeight(true);
+			return Math.max(heightRequired, thisBoxHeight);
+		},
+		standardDayBoxHeight
+	);
+
+	TweenMax.to($('.day-box'), 0.8, { ease: Power4.easeOut, height : requiredHeight });
+}
