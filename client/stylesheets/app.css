@@ -2,6 +2,7 @@ body {
   padding-top: 50px;
   overflow: hidden;
 }
+
 .page-container {
    padding-right: 14px !important;
    padding-left: 14px !important;
@@ -210,6 +211,7 @@ body {
 
 .engagement-details-form {
   overflow: scroll;
+  padding-bottom: 14px !important; 
 }
 
 .add-goal-button {

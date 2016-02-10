@@ -1,105 +1,107 @@
 <template name="engagementsCreateDetails">
- 	<div class="confirm-jumbo">
+ 	<div class="confirm-jumbo ui grid">
 	    <div class="ui divider"></div>
 	    <div class="sixteen wide column">
 	   	    <h2>Dates</h2>
 	       	<p>{{getFormattedDate getStartDate}} <i class="long arrow right icon"></i> {{getFormattedDate getEndDate}}</p>
 	   	</div>
     </div>
-	<div class="ten wide column centered engagement-details-form">
-		<form class="ui form">
-			<h4 class="ui dividing header">Game Title</h4>
-			<div class="two fields">
-				<div class="field">
-					<label>Prduct</label>
-					<select class="ui fluid search selection dropdown" name="product">
-						<option value="">Product</option>
-						{{#each getAllGameTitles}}
-							<option value="{{_id}}">{{product}}</option>
-				        {{/each}}
-			        </select>
-				</div>
-				<div class="field">
-					<label>Codename</label>
-					<select class="ui fluid search selection dropdown" name="codename">
-						<option value="">Codename</option>
-						{{#each getAllGameTitles}}
-							<option value="{{_id}}">{{codename}}</option>
-				        {{/each}}
-			        </select>
-				</div>
-			</div>
-			<h4 class="ui dividing header">Engagement</h4>
-		    <div class="two fields">
-			    <div class="field">
-				    <label>Title</label>
-				     <div class="field" >
-				        <input type="text" placeholder="title" name="title">
-				     </div>
-			    </div>
-				<div class="field">
-				    <label>Type</label>
-				     <select class="ui fluid search selection dropdown type-dropdown" name="type">
-						<option value="">Type</option>
-				        {{#each getAllTypes}}
-							<option value="{{type}}">{{type}}</option>
-				        {{/each}}
-				        <option value="{{getCustomType}}">{{getCustomType}}</option>
-				     </select>
-			    </div>
-			</div>
-			<div class="fields">
-				<div class="ten wide field">
-					<label>Description</label>
-		    		<textarea rows="5" name="description"></textarea>
-		  		</div>
-				<div class="five wide field">
-					<label>Goals</label>
-					<input name="goals">
-					<div class="ui divided divided list goals-container">
-				        {{#each getAllGoals}}
-							<div class="item">{{goal}} <i value="{{goal}}" class="right floated remove icon remove-goal"></i></div>
-				        {{/each}}
+    <div class="ui grid engagement-details-form">
+		<div class="ten wide column centered">
+			<form class="ui form">
+				<h4 class="ui dividing header">Game Title</h4>
+				<div class="two fields">
+					<div class="field">
+						<label>Prduct</label>
+						<select class="ui fluid search selection dropdown" name="product">
+							<option value="">Product</option>
+							{{#each getAllGameTitles}}
+								<option value="{{_id}}">{{product}}</option>
+					        {{/each}}
+				        </select>
 					</div>
-			    </div>
-			    <div class="one wide field add-goal-button">
-			    	<div class="circular ui icon button">
-					  <i class="icon plus"></i>
+					<div class="field">
+						<label>Codename</label>
+						<select class="ui fluid search selection dropdown" name="codename">
+							<option value="">Codename</option>
+							{{#each getAllGameTitles}}
+								<option value="{{_id}}">{{codename}}</option>
+					        {{/each}}
+				        </select>
 					</div>
-			    </div>
-			</div>
-			<h4 class="ui dividing header">Team</h4>
-			<div class="two fields">
-				<div class="field">
-				    <label>Engineer</label>
-				     <select class="ui dropdown" name="engineerGoing" multiple="">
-						<option value="">Engineer</option>
-				        {{#each getAllEngineers}}
-							<option value="{{_id}}">
-								<img class="ui mini avatar image" src="/images/{{picture}}">
-								{{name}} 
-							</option>
-				        {{/each}}
-				     </select>
-			    </div>
-				<div class="field">
-				    <label>Dam</label>
-				     <select class="ui dropdown" name="dam">
-						<option value="">Dam</option>
-				        {{#each getAllDams}}
-							<option value="{{_id}}">
-								<img class="ui mini avatar image" src="/images/{{picture}}">
-								{{name}}
-							</option>
-				        {{/each}}
-				     </select>
-			    </div>
-			</div>		
-			<div class="confirm-jumbo">
-				<div class="confirm-button reset-engagement">CHANGE DATES</div>
-      			<div class="ui confirm-button confirm-details ">PROCEED</div>  
-			</div>
-			<div class="ui error message"></div>
-		</form>			
+				</div>
+				<h4 class="ui dividing header">Engagement</h4>
+			    <div class="two fields">
+				    <div class="field">
+					    <label>Title</label>
+					     <div class="field" >
+					        <input type="text" placeholder="title" name="title">
+					     </div>
+				    </div>
+					<div class="field">
+					    <label>Type</label>
+					     <select class="ui fluid search selection dropdown type-dropdown" name="type">
+							<option value="">Type</option>
+					        {{#each getAllTypes}}
+								<option value="{{type}}">{{type}}</option>
+					        {{/each}}
+					        <option value="{{getCustomType}}">{{getCustomType}}</option>
+					     </select>
+				    </div>
+				</div>
+				<div class="fields">
+					<div class="ten wide field">
+						<label>Description</label>
+			    		<textarea rows="5" name="description"></textarea>
+			  		</div>
+					<div class="five wide field">
+						<label>Goals</label>
+						<input name="goals">
+						<div class="ui divided divided list goals-container">
+					        {{#each getAllGoals}}
+								<div class="item">{{goal}} <i value="{{goal}}" class="right floated remove icon remove-goal"></i></div>
+					        {{/each}}
+						</div>
+				    </div>
+				    <div class="one wide field add-goal-button">
+				    	<div class="circular ui icon button">
+						  <i class="icon plus"></i>
+						</div>
+				    </div>
+				</div>
+				<h4 class="ui dividing header">Team</h4>
+				<div class="two fields">
+					<div class="field">
+					    <label>Engineer</label>
+					     <select class="ui dropdown" name="engineerGoing" multiple="">
+							<option value="">Engineer</option>
+					        {{#each getAllEngineers}}
+								<option value="{{_id}}">
+									<img class="ui mini avatar image" src="/images/{{picture}}">
+									{{name}} 
+								</option>
+					        {{/each}}
+					     </select>
+				    </div>
+					<div class="field">
+					    <label>Dam</label>
+					     <select class="ui dropdown" name="dam">
+							<option value="">Dam</option>
+					        {{#each getAllDams}}
+								<option value="{{_id}}">
+									<img class="ui mini avatar image" src="/images/{{picture}}">
+									{{name}}
+								</option>
+					        {{/each}}
+					     </select>
+				    </div>
+				</div>		
+				<div class="confirm-jumbo">
+					<div class="confirm-button reset-engagement">CHANGE DATES</div>
+	      			<div class="ui confirm-button confirm-details ">PROCEED</div>  
+				</div>
+				<div class="ui error message"></div>
+			</form>			
+		</div>
 	</div>
 </template>
