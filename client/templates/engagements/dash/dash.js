@@ -5,18 +5,15 @@ Template.engagementsDash.onRendered(function () {
 	// Semantic UI modal no removed from dom after callback runs in List Panel, removed manually here. 
 	$('.basic.modal').remove();
 
-	// resize boxes in order to fit all bubbles 
+		// register handler on resize boxes in order to fit all bubbles 
 	$(window).resize(function(evt) {
-		// debounced
-    	setTimeout(function () {
-	    	adjustdayBoxHeight();
-    	},150)
+	    adjustdayBoxHeight();
   	});
 });
 
 Template.engagementsDash.helpers({
 	showDayEventsDetail : function () {
-		// ensure calendar is always visible
+
 		return Session.get("dayForEventsDetail");
 	},
 	dayShowing : function () {

@@ -2,11 +2,9 @@ body {
   padding-top: 50px;
   overflow: hidden;
 }
-.ui.page.grid {
-   overflow: hidden;
+.page-container {
    padding-right: 14px !important;
    padding-left: 14px !important;
-   margin-bottom: 0px !important;
 }
 
 /*site navbar*/
@@ -154,9 +152,9 @@ body {
 }
 
 #weekday-navbar {
+  margin-top: 40px !important;
   background-color: white;
   min-height: 18px;
-  margin-top: 0px !important;
   margin-bottom: 0px !important;
 }
 
@@ -241,8 +239,8 @@ body {
   position: absolute;
   bottom: 3px;
   right: 0px;
-  margin-right: 8px;
-  margin-left: 8px;
+  margin-right: 12px;
+  margin-left: 12px;
   margin-bottom: 8px;
 
 }
@@ -291,6 +289,10 @@ body {
 
 .engagement-bubble:last-of-type {
   margin-right: 0px;
+}
+
+.day-box-selected .engagement-bubble-nohalo {
+  margin-bottom: -2px;
 }
 
 /*day engagements detail */
@@ -379,7 +381,8 @@ body {
 /*engagements tray*/
 .engagement-list-messages {
   position: relative;
-  top: -4.3em;
+  display: inline-block;
+  top: -1.7em;
   left: -1em;
   background: rgba(128,128,128,0.96);
   padding: 0.5em 1em;
@@ -397,7 +400,7 @@ body {
   position: fixed;
   top: 38px;
   right: 0px;
-  z-index: 100;
+  z-index: 105;
 }
 
 .calendar-navigation .month-helper {

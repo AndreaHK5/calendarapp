@@ -1,27 +1,14 @@
 <template name="nav">
-    <div class="computer tablet only row navbar-container">
-      <div id="site-navbar" class="ui fixed menu inverted navbar">
-        <a class="brand item" href="{{pathFor 'engagementsDash'}}"> Engagements</a>
-        <a class="item {{#if inEngagementsDash}}active{{/if}}"   href="{{pathFor 'engagementsDash'}}">Dash</a>
-        {{# if currentUser}}
-          <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Create</a>
-        {{/if}}
-        <div class="right menu">
-          {{> loginButtons}}
-        </div>
+  <div class="computer tablet only row navbar-container">
+    <div id="site-navbar" class="ui fixed menu inverted navbar">
+      <a class="brand item" href="{{pathFor 'engagementsDash'}}"> Engagements</a>
+      <a class="item {{#if inEngagementsDash}}active{{/if}}"   href="{{pathFor 'engagementsDash'}}">Dash</a>
+      {{# if currentUser}}
+        <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Create</a>
+      {{/if}}
+      <div class="right menu">
+        {{> loginButtons}}
       </div>
     </div>
-    <div class="mobile only row">
-      <div class="ui fixed menu inverted navbar">
-        <a class="brand item" href="{{pathFor 'engagementsDash'}}"> Engagements</a>
-        <div class="right menu open">
-          <a class="menu item">
-            <i class="sidebar icon"></i>
-          </a>
-        </div>
-      </div>
-      <div class="ui vertical menu navbar" style="display: none;">
-        <a class="item {{#if inEngagementCreate}}active{{/if}}" href="{{pathFor 'engagementsCreate'}}">Add</a> 
-      </div>
-    </div>
+  </div>
 </template>
