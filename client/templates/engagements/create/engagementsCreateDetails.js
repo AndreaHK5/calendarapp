@@ -12,6 +12,7 @@ Template.engagementsCreateDetails.onRendered(function () {
   // animations
   var myDiv = $("#animationPlaceholder");
   myDiv.height($(window).height() - $(".confirm-jumbo").height());
+  
   TweenLite.to(myDiv,0.8, {
     height: 0, 
     onComplete : function () {
@@ -136,11 +137,11 @@ Template.engagementsCreateDetails.events({
     clearValidations();
 	},
   "click .confirm-button" : function (event) { 
+    addToGoals($('input[name=goals]').val());
     $('.ui.form').form('validate form');
     if(!$('.ui.form').form('is valid')) { return };
 
     // in case there is a value in the goals, this needs to be included in the engagement object
-    addToGoals($('input[name=goals]').val());
 
     Session.set("formValid", true);
   }

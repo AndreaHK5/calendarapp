@@ -11,7 +11,14 @@ Template.engagementsCreate.helpers({
     return datesMissing();
   },
   detailsMissing : function () {
-  	return !Session.get("formValid");
+  	var detailsMissing = !Session.get("formValid");
+    if (detailsMissing) {
+      return true;
+    } else {
+      scrollPlaceholderOut();     
+      return false;
+
+    }
   },
   getEventDetails : function () {
     var ev = Session.get("engagementDetails");
@@ -23,27 +30,21 @@ Template.engagementsCreate.helpers({
 
 Template.engagementsCreate.events({
   "click .reset-engagement" : function (event) {
-    var myDiv = $("#animationPlaceholder");
-    var time = 800; //ms
-
-    TweenLite.to(myDiv,time/1000, {height: $(window).height()});
+    scrollPlaceholderOut();
     setTimeout(function() {
       Session.set("startDate", false);
       Session.set("endDate", false); 
       Session.set("formValid", false);     
-      Session.set("engagementDetails", undefined);     
-    }, time - 200);
+      Session.set("engagementDetails", undefined);
+    }, 600);
     sAlert.warning("Let's start again!");
   },
   "click .reset-details" : function (event) {
-    var myDiv = $("#animationPlaceholder");
-    var time = 800; //ms
-
-    TweenLite.to(myDiv,time/1000, {height: $(window).height()});
+    scrollPlaceholderOut();
     setTimeout(function() {
       Session.set("formValid", false);     
       Session.set("engagementDetails", undefined);     
-    }, time - 200);
+    }, 600);
     sAlert.warning("Same Dates, different team");
   },
 
@@ -51,4 +52,10 @@ Template.engagementsCreate.events({
 
 function datesMissing() {
   return !Session.get("startDate") || !Session.get("endDate");
+}
+
+function scrollPlaceholderOut () {
+   var myDiv = $("#animationPlaceholder");
+   var time = 800; //ms
+   TweenLite.to(myDiv,time/1000, {height: $(window).height()});
 }

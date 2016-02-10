@@ -196,7 +196,9 @@ body {
 }
 
 #animationPlaceholder {
-  height: 500px;
+  height: 0;
+  width:100%; 
+  clear:both;
 }
 
 /* jumbotron */

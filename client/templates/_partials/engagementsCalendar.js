@@ -7,6 +7,9 @@ Template.engagementsCalendar.onRendered(function () {
   var calendar = $('#calendar-container');
   calendar.css("height", $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height());
   calendar.css("overflow", "scroll");
+  var calendar = $("#calendar-container");
+  calendar.css("opacity", 0);
+  TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
 });
 
 Template.engagementsCalendar.helpers({
