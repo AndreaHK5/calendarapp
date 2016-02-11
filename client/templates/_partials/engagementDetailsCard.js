@@ -22,16 +22,39 @@ Template.engagementDetailsCard.helpers({
 		return user.username;
 	},
 	getGameTitleProduct : function () {
-		return GameTitles.findOne(this.gameTitle.id).product;
+		var gameTitle = this.gameTitle;
+		if (!gameTitle) { return ; }
+		return GameTitles.findOne(gameTitle.id).product;
 	},
-	getGameTitlecCodename : function () {
-		return GameTitles.findOne(this.gameTitle.id).codename;
+	getGameTitleCodename : function () {
+		var gameTitle = this.gameTitle;
+		if (!gameTitle) { return ; }
+		return GameTitles.findOne(gameTitle.id).codename;
 	},
 	getGoals : function () {
 		if (this.goals == undefined) { return; }
-		var last = this.goals.pop();
-		var result = _.map(this.goals, function (goal) { return  { goal : goal + ", " }; });
-		result.push({goal : last});
-		return result; 
-	}
+		return _.map(this.goals, function (goal) { return  { goal : goal }; });
+	},
+	getEngineerData : function (id) {
+		var eng = Engineers.findOne({_id : id});
+		if (!eng) {return ;}
+		if (popupTimer) { clearTimeout(popupTimer); }
+		popupTimer = setTimeout(function() {
+		$('.ui.avatar.image').popup();
+	}, 500);
+		return  { 
+					name : eng.name,
+				  	picture : eng.picture 
+				};	
+	},
+	getDamData : function (id) {
+		var dam = Dams.findOne({_id : id});
+		if (!dam) { return ;}
+		return  { 
+					name : dam.name,
+				  	picture : dam.picture 
+				};	
+	},
 })
+
+var popupTimer;

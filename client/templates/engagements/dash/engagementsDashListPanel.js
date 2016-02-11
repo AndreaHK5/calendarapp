@@ -24,6 +24,11 @@ Template.engagementsDashListPanel.helpers({
 	getEventDetails : function () {
 		return Session.get("engagementToDelete");
 	},
+	modalCardColor : function () {
+		var engagement = Session.get("engagementToDelete");
+		if (!engagement) { return ;}
+		return engagement.type;
+	},
 	typeFilter : function () {
 		return Session.get("typeFilter");
 	},
