@@ -21,13 +21,6 @@ Template.engagementsDashListPanel.helpers({
 		}, 200);
 		return engagements;
 	},
-	isSelectedEvent : function (id) {
-		if(!Session.get("engagementOnCalendar")) { return }
-		return Session.get("engagementOnCalendar")._id == id;
-	},
-	isCreator : function () {
-		return Meteor.user() && this.createdBy == Meteor.userId();
-	},
 	getEventDetails : function () {
 		return Session.get("engagementToDelete");
 	},
@@ -169,7 +162,6 @@ function resetSelectedDay() {
 
 
 // Animations
-
 function scrollCalendarToSelectedDay () {
 	mainHelpers.scrollCalendarToDay($(".day-box-selected"))
 }

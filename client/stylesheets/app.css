@@ -403,6 +403,19 @@ body {
     cursor: pointer; 
 }
 
+.navigation-icon {
+  font-size: 130%;
+  margin-top: 12px;
+}
+
+.navigation-icon:first {
+  margin-top: 0px;
+}
+
+.card-description {
+  display: inline-block;
+}
+
 /*engagements tray*/
 #engagement-list-messages {
   position: absolute;

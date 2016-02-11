@@ -12,42 +12,9 @@
 		<div id="cards-viewport">
 			<div id="cards-container" class="ui four stackable cards">
 				{{#each engagementsOfTheDay}}
-					<!-- <div class="column"> -->
-						<div class="card" style="background-color: {{getEngagementTypeColor type}};">
-							{{> engagementBriefCard}}
-						</div>
-					<!-- </div> -->	
-
-	<!-- 			<div class="sixteen wide column engagement-card
-						{{#if isSelectedEvent _id}}
-							engagement-card-selected
-						{{else}}
-							engagement-card
-						{{/if}}">
-					<div class="ui grid 
-						">
-						<div class="fifteen wide column engagement-top hover-engagement" ">
-							{{> engagementDetailsCard }}
-						</div>
-						<div class="one wide column icons-container" style="background-color: {{getEngagementTypeColor type}}">
-							<div class="show-on-calendar">
-								{{#if isSelectedEvent _id}}
-										<i class="remove circle icon unselect-engagement"></i>
-								{{else}}
-										<i class="calendar icon select-engagement"></i>
-								{{/if}}
-							</div>
-							{{#if isCreator}}
-								<div class="delete delete-engagement">
-									<i class="trash icon"></i>
-								</div>
-							{{/if}}
-							<div class="navigation">
-								<i class="chevron right icon"></i>						
-							</div>
-						</div>					
-					</div>	
-				</div> -->
+					<div class="card" style="background-color: {{getEngagementTypeColor type}};">
+						{{> engagementBriefCard}}
+					</div>
 			{{/each}}
 			</div>
 		</div>

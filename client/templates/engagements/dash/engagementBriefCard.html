@@ -1,7 +1,24 @@
 <template name="engagementBriefCard">
 	  <div class="content">
+  		<div class="right floated">
+    		<div class="navigation-icon">
+				{{#if isSelectedEvent _id}}
+						<i class="remove circle icon unselect-engagement"></i>
+				{{else}}
+						<i class="calendar icon select-engagement"></i>
+				{{/if}}	
+    		</div>
+			{{#if isCreator}}
+				<div class="navigation-icon delete delete-engagement">
+					<i class="trash icon"></i>
+				</div>
+			{{/if}}
+			<div class="navigation-icon">
+				<i class="right chevron icon"></i>
+			</div>
+    	</div>
 	    <div class="header">
-	    	<div class="right floated">
+	    	<div class="meta">
 	    		{{type}}
 	    	</div>
 	    	{{title}} 
@@ -9,7 +26,7 @@
 	    <div class="meta"> 
 		    <span class="category">{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</span>
 	    </div>
-	    <div class="description">
+	    <div class="description card-description">
 			{{getGameTitleProduct}} ({{getGameTitlecCodename}})  
 	    </div>
 	  </div>

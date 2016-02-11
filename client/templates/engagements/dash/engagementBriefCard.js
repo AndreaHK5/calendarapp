@@ -22,4 +22,11 @@ Template.engagementBriefCard.helpers({
 		if (!dam) { return ;}
 		return dam.picture;
 	},
+	isSelectedEvent : function (id) {
+		if(!Session.get("engagementOnCalendar")) { return }
+		return Session.get("engagementOnCalendar")._id == id;
+	},
+	isCreator : function () {
+		return Meteor.user() && this.createdBy == Meteor.userId();
+	},
 });
