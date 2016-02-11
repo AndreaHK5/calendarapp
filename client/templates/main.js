@@ -141,6 +141,8 @@ if (Meteor.isClient) {
     if (bottomTray.length == 0) { return ; }
     var cardsTotalHeight = $("#cards-container").height();
     var bottomTrayHeight = Math.min(usableAreaHeight / 2, cardsTotalHeight );
+    var overflow = bottomTrayHeight == cardsTotalHeight ? "hidden" : "scroll";
+    $("#cards-viewport").css("overflow-y", overflow)
     mainAreaHeight = usableAreaHeight - bottomTrayHeight;
     
     TweenMax.to(calendar, slidingTime, { height : mainAreaHeight});

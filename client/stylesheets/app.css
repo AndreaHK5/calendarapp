@@ -23,6 +23,7 @@ body {
   position: absolute;
   overflow-y: scroll;
   overflow-x: visible;
+
 }
 
 .month-header {
@@ -227,11 +228,12 @@ body {
 
 /*engagement tray*/ 
 #dayengagements-container {
-  border-top: 2px solid grey;
+  border-top: 2px solid rgba(133, 133, 133,.95);
   position: absolute;
   visibility: hidden;
   left: 0px;
   width: 100%;
+  background-color: rgba(133, 133, 133,0.7)
 }
 
 #cards-viewport {
