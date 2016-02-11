@@ -5,10 +5,18 @@ Template.engagementsDash.onRendered(function () {
 	// Semantic UI modal no removed from dom after callback runs in List Panel, removed manually here. 
 	$('.basic.modal').remove();
 
-		// register handler on resize boxes in order to fit all bubbles 
-	$(window).resize(function(evt) {
+	// register handler on resize boxes in order to fit all bubbles
+	// and to resize the calendar and tray 
+
+  	$(window).resize(function(evt) {
 	    adjustdayBoxHeight();
+		mainHelpers.resizeTrayAndCalendar();
   	});
+
+  	// 
+  	setTimeout(function() {
+  		adjustdayBoxHeight()
+  	}, 100);
 });
 
 Template.engagementsDash.helpers({
@@ -19,10 +27,10 @@ Template.engagementsDash.helpers({
 
 Template.engagementsDash.events({
 	"click .day-box": function (event) {
+		// TYPE FILTERING
 		// in case the click is on the bubble, filter by that!
 		// remember to skip in case the day has only one type anyway
 		var type = undefined;
-
 		var typesPerDay = Object.keys(Session.get("engagementsPerDay")[this.date] || {});
 		if(_.contains(event.target.classList, "type-filer") && typesPerDay.length > 1) {
 			type = Session.set("typeFilter", event.target.getAttribute("value-type"));
@@ -49,6 +57,7 @@ Template.engagementsDash.events({
 		sAlert.closeAll(); 
 			
 		Session.set("dayForEventsDetail", this.date);
+		scrollCalendarToDiv();
 	},
 	"click .clear-type-filter" : function (event) {
 		Session.set("typeFilter", undefined);;
@@ -64,18 +73,15 @@ function resetSelectedDay() {
 }
 
 function scrollCalendarToDiv() {
-	var calendar = $('#calendar-container');
 	var div = $('.day-box-unselected:hover');
 	if (div.length == 0) {
 		div = $('.day-box-selected');
 	} 
-
-	var topY = calendar.scrollTop() + div.offset().top - 2 * div.height();
-	TweenLite.to(calendar, animationTime, {scrollTo:{y:topY}, ease:Power2.easeOut});	
+	mainHelpers.scrollCalendarToDay(div);	
 }
 
 function adjustdayBoxHeight() {
-	var standardDayBoxHeight = 92;
+	var standardDayBoxHeight = 98;
 	var requiredHeight = lodash.reduce($('.day-box'), 
 		function (heightRequired, e) { 
 			var thisBoxHeight = $(e).find('.engagement-day-top').outerHeight(true) + $(e).find('.engagement-day-bottom').outerHeight(true);
