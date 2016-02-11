@@ -13,15 +13,8 @@ Template.engagementsDash.onRendered(function () {
 
 Template.engagementsDash.helpers({
 	showDayEventsDetail : function () {
-
 		return Session.get("dayForEventsDetail");
 	},
-	dayShowing : function () {
-		return Session.get("dayForEventsDetail");
-	},
-	typeFilter : function () {
-		return Session.get("typeFilter");
-	}
 });
 
 Template.engagementsDash.events({
@@ -56,9 +49,6 @@ Template.engagementsDash.events({
 		sAlert.closeAll(); 
 			
 		Session.set("dayForEventsDetail", this.date);
-	},
-	"click .close-day-container" : function (event) {
-		mainHelpers.hideEventsContainer();
 	},
 	"click .clear-type-filter" : function (event) {
 		Session.set("typeFilter", undefined);;

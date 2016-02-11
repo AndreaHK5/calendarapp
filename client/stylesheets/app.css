@@ -18,7 +18,10 @@ body {
 #calendar-container {
   margin-top: 0px;
   margin-bottom: 0px;
-  overflow: scroll;
+  margin-right: 0px;
+  position: absolute;
+  overflow-y: scroll;
+  overflow-x: visible;
 }
 
 .month-header {
@@ -222,6 +225,25 @@ body {
   margin-left: 0.5em !important;
 }
 
+/*engagement tray*/ 
+#dayengagements-container {
+  border-top: 2px solid grey;
+  position: absolute;
+  visibility: hidden;
+  left: 0px;
+  width: 100%;
+}
+
+#cards-viewport {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#cards-container {
+  padding: 0px 10px;
+  margin-top: 0px !important;
+}  
+
 /*engagements day style*/
 
 .engagement-day-top {
@@ -299,7 +321,7 @@ body {
 
 /*day engagements detail */
 
-.day-engagements {
+#day-engagements {
   width: 100%;
   border-top: 2px solid grey;
   position: fixed;
@@ -381,17 +403,17 @@ body {
 }
 
 /*engagements tray*/
-.engagement-list-messages {
-  position: relative;
+#engagement-list-messages {
+  position: absolute;
   display: inline-block;
-  top: -1.7em;
+  top: -34px;
   left: -1em;
   background: rgba(128,128,128,0.96);
   padding: 0.5em 1em;
   color: white;
 }
 
-.engagement-list-messages .date {
+#engagement-list-messages .date {
   font-size: 120%;
   font-weight: 700;
 }

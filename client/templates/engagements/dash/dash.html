@@ -2,17 +2,6 @@
 	{{> engagementsCalendar}}
 	{{> engagementsDashLegend}}
 	{{#if showDayEventsDetail}}
-		<div class="engagement-list-messages">
-			<i class="remove icon close-day-container"></i>
-			Engagements for 
-			<span class="date">{{getFormattedDate dayShowing}}</span> 
-			{{#if typeFilter}}
-				 showing only: <span class="date">{{typeFilter}}</span>
-				<span class="clear-type-filter"> (show all)</span>
-			{{/if}}
-		</div>
-		<div id="dayengagements-container" class="day-engagements">
-			{{> engagementsDashListPanel}}
-		</div>
+		{{> engagementsDashListPanel}}
 	{{/if}}
 </template>

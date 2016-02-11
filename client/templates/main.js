@@ -41,7 +41,7 @@ Template.registerHelper('equals',
 );
 
 var formateDateHelper = function (unixDate) {
-  return moment(unixDate).format("dddd MMM DD");
+  return moment(unixDate).format("ddd MMM DD");
 }
 
 if (Meteor.isClient) {
@@ -80,22 +80,49 @@ if (Meteor.isClient) {
     return query;
   }
 
-  mainHelpers.hideEventsContainer = function() {
-    var animationTime = 0.4; 
-    var calendar = $('#calendar-container');
-    var engagementsContainer = $('#dayengagements-container');
-    var totalHeight =  $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height();
-    
-    TweenLite.to(engagementsContainer, animationTime, { bottom: - 1 * engagementsContainer.height()});  
+  var slidingTime = 0.6;
 
-    TweenLite.set(calendar, {height:totalHeight});
-    Session.set("engagementOnCalendar", undefined );
-    TweenLite.from(calendar, animationTime, {
-      height:calendar.height(), 
+  mainHelpers.positionTrayAndCalendar = function() {
+    var calendar = $("#calendar-container");
+    var bottomTray = $("#dayengagements-container");
+    var navbarHeigt = $('#site-navbar').height() + $('#weekday-navbar').height();
+    var totalHeight = $(window).height();
+    var usableAreaHeight = totalHeight - navbarHeigt;
+    calendar.css("top", navbarHeigt);
+    if (bottomTray.length != 0) {
+      var bottomTrayHeight = Math.min(usableAreaHeight / 2, bottomTray.outerHeight(true) );
+      mainAreaHeight = usableAreaHeight - bottomTrayHeight;
+      bottomTray.css("height", bottomTrayHeight);
+
+      // Animations!
+      // calendar
+      TweenMax.to(calendar, slidingTime, { height : mainAreaHeight});
+      // bottom tray
+      bottomTray.css("top", totalHeight);
+      TweenMax.to(bottomTray, slidingTime, { top : usableAreaHeight - bottomTrayHeight + navbarHeigt});
+      bottomTray.css("visibility", "visible");
+      $('#cards-viewport').height(bottomTrayHeight)
+
+    } else {
+      mainAreaHeight = usableAreaHeight;
+      calendar.css("height", mainAreaHeight);
+    } 
+  }
+
+  mainHelpers.hideEventsContainer = function() {
+    // this needs to be a promise in order for the caller to update on finish
+    var calendar = $("#calendar-container");
+    var bottomTray = $("#dayengagements-container");
+    var totalHeight = $(window).height();
+    var navbarHeigt = $('#site-navbar').height() + $('#weekday-navbar').height();
+    var usableAreaHeight = totalHeight - navbarHeigt;
+    TweenMax.to(calendar, slidingTime, { height : usableAreaHeight});    
+    TweenMax.to(bottomTray, slidingTime, { 
+      top : totalHeight,
       onComplete : function () {
         Session.set("dayForEventsDetail", undefined);     
       }
-    }); 
+    });
   }
 }
 

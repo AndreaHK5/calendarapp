@@ -1,17 +1,17 @@
 Template.engagementsDashListPanel.onRendered(function () {
 	setTimeout(function() {
-		showEventsContainer();
-	}, 10);
+		mainHelpers.positionTrayAndCalendar();
+	}, 100);
 	Session.set("engagementOnCalendar", undefined );
 	Session.set("engagementToDelete", undefined );
 
-	// recompute calendar and events list container on resize
-	$(window).resize(function(evt) {
-		// debounced
-    	setTimeout(function () {
-	    	adjustEventsContainer();
-    	},150)
-  	});
+	// TODO this in recompute calendar and events list container on resize
+	// $(window).resize(function(evt) {
+	// 	// debounced
+ //    	setTimeout(function () {
+	//     	adjustEventsContainer();
+ //    	},150)
+ //  	});
 })
 
 Template.engagementsDashListPanel.helpers({
@@ -36,7 +36,14 @@ Template.engagementsDashListPanel.helpers({
 	},
 	getEventDetails : function () {
 		return Session.get("engagementToDelete");
-	}
+	},
+	typeFilter : function () {
+		return Session.get("typeFilter");
+	},
+	dayShowing : function () {
+		return Session.get("dayForEventsDetail");
+	},
+
 })
 
 Template.engagementsDashListPanel.events({
@@ -60,11 +67,14 @@ Template.engagementsDashListPanel.events({
 		// this is required if the hover is to another card rather than to the calendar
 		resetEventOnCalendar();
 	},
-	"mouseleave #day-engagements-container" : function () {
+	"mouseleave #dayengagements-container" : function () {
 		hoovering = false;
 		if (!useHover) {return;} 
 		// this is required if the hover is to another card rather than to the calendar
 		resetEventOnCalendar();
+	},
+	"click .close-day-container" : function (event) {
+		mainHelpers.hideEventsContainer();
 	},
 	"click .select-engagement" : function () {
 		useHover = false;
@@ -167,11 +177,14 @@ function resetSelectedDay() {
 	Session.set("dayForEventsDetail", undefined);
 }
 
+
+// Animations
+
 function showEventsContainer() {
 	var calendar = $('#calendar-container');
 	var engagementsContainer = $('#dayengagements-container');
 	var totalHeight = getTotalHeight();
-	var engagementsHeight = Math.min(engagementsContainer.height() + 19, totalHeight / 2);
+	var engagementsHeight = Math.min(engagementsContainer.height() , totalHeight / 2);
 	var calendarHeight = totalHeight - engagementsHeight; 
 	// set height of calendar to window and add scroll
 	// plus adjust margin bottom for semantic
@@ -201,7 +214,7 @@ function adjustEventsContainer() {
 		var engagementsContainer = $('#dayengagements-container');
 		var calendar = $('#calendar-container');
 		var totalHeight = getTotalHeight();
-		var engagementsHeight = Math.min($('#day-engagements-container').height() - 8 , totalHeight / 2);
+		var engagementsHeight = Math.min($('#dayengagements-container').height(), totalHeight / 2);
 		var calendarHeight = totalHeight - engagementsHeight; 
 
 		TweenLite.to(calendar,animationTime, {height:calendarHeight});		

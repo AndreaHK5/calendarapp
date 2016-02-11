@@ -3,13 +3,12 @@ Template.engagementsCalendar.onRendered(function () {
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set("monthsShowing", getMonths());
   Session.set('hoverMonth', mainHelpers.getTodayDate().toISOString());
-  // set height of calendar container in order to allow scrolling
-  var calendar = $('#calendar-container');
-  calendar.css("height", $(window).height() - $('#site-navbar').height() - $('#weekday-navbar').height());
-  calendar.css("overflow", "scroll");
-  var calendar = $("#calendar-container");
-  calendar.css("opacity", 0);
-  TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
+  fadeInCalendar();
+  
+  // TODO find an elegant workaround for onFinishRendered
+  setTimeout(function (){
+    mainHelpers.positionTrayAndCalendar();
+  },10)
 });
 
 Template.engagementsCalendar.helpers({
@@ -70,14 +69,7 @@ Template.engagementsCalendar.events({
   }
 });
 
-// helpers 
-// TODO how to make helpers not in global? IFFE an module load at top?
-
-function scrollVertical(div) {
-  var calendar = $('#calendar-container');
-  var topY = calendar.scrollTop() + div.offset().top - $('#weekday-navbar').height() - $('#site-navbar').height() + 10;
-  TweenMax.to(calendar,1, {scrollTo:{y:topY}, ease:Power4.easeOut});
-} 
+// HELPERS 
 
 function addMonth() {
   var last = mainHelpers.GetLastMonthShowing();
@@ -103,4 +95,19 @@ function getMonths() {
     result.push({date : newDate.toISOString()});
   };
   return result; 
+}
+
+
+// Animations
+
+function fadeInCalendar() {
+  var calendar = $("#calendar-container");
+  calendar.css("opacity", 0);
+  TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
+}
+
+function scrollVertical(div) {
+  var calendar = $('#calendar-container');
+  var topY = calendar.scrollTop() + div.offset().top - $('#weekday-navbar').height() - $('#site-navbar').height() + 10;
+  TweenMax.to(calendar,1, {scrollTo:{y:topY}, ease:Power4.easeOut});
 }

@@ -1,41 +1,58 @@
 <template name="engagementsDashListPanel" >
-	<div id="day-engagements-container" >
-		<div class="ui grid">
-			<div class="engagements-top-spacer"></div>
-			{{#each engagementsOfTheDay}}
-			<div class="sixteen wide column engagement-card
-					{{#if isSelectedEvent _id}}
-						engagement-card-selected
-					{{else}}
-						engagement-card
-					{{/if}}">
-				<div class="ui grid 
-					">
-					<div class="fifteen wide column engagement-top hover-engagement" style="background-color: {{getEngagementTypeColor type}};">
-						{{> engagementDetailsCard }}
-					</div>
-					<div class="one wide column icons-container" style="background-color: {{getEngagementTypeColor type}}">
-						<div class="show-on-calendar">
-							{{#if isSelectedEvent _id}}
-									<i class="remove circle icon unselect-engagement"></i>
-							{{else}}
-									<i class="calendar icon select-engagement"></i>
-							{{/if}}
+	<div id="dayengagements-container" >
+		<div id="engagement-list-messages">
+			<i class="remove icon close-day-container"></i>
+			Engagements for 
+			<span class="date">{{getFormattedDate dayShowing}}</span> 
+			{{#if typeFilter}}
+				 showing only: <span class="date">{{typeFilter}}</span>
+				<span class="clear-type-filter"> (show all)</span>
+			{{/if}}
+		</div>
+		<div id="cards-viewport">
+			<div id="cards-container" class="ui four stackable cards">
+				{{#each engagementsOfTheDay}}
+					<!-- <div class="column"> -->
+						<div class="card" style="background-color: {{getEngagementTypeColor type}};">
+							{{> engagementBriefCard}}
 						</div>
-						{{#if isCreator}}
-							<div class="delete delete-engagement">
-								<i class="trash icon"></i>
+					<!-- </div> -->	
+
+	<!-- 			<div class="sixteen wide column engagement-card
+						{{#if isSelectedEvent _id}}
+							engagement-card-selected
+						{{else}}
+							engagement-card
+						{{/if}}">
+					<div class="ui grid 
+						">
+						<div class="fifteen wide column engagement-top hover-engagement" ">
+							{{> engagementDetailsCard }}
+						</div>
+						<div class="one wide column icons-container" style="background-color: {{getEngagementTypeColor type}}">
+							<div class="show-on-calendar">
+								{{#if isSelectedEvent _id}}
+										<i class="remove circle icon unselect-engagement"></i>
+								{{else}}
+										<i class="calendar icon select-engagement"></i>
+								{{/if}}
 							</div>
-						{{/if}}
-						<div class="navigation">
-							<i class="chevron right icon"></i>						
-						</div>
-					</div>					
-				</div>	
+							{{#if isCreator}}
+								<div class="delete delete-engagement">
+									<i class="trash icon"></i>
+								</div>
+							{{/if}}
+							<div class="navigation">
+								<i class="chevron right icon"></i>						
+							</div>
+						</div>					
+					</div>	
+				</div> -->
+			{{/each}}
 			</div>
-		{{/each}}
 		</div>
 	</div>
+
 
 	<div class="ui basic modal confirm-delete-modal">
 	  <i class="close icon"></i>
