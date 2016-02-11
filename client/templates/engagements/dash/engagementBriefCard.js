@@ -1,11 +1,4 @@
 Template.engagementBriefCard.helpers({
-	// createdBy : function () {
-	// 	var user = Meteor.users.findOne({_id : this.createdBy});
-	// 	if (!user) { 
-	// 		return false; 
-	// 	}
-	// 	return user.username;
-	// },
 	getGameTitleProduct : function () {
 		return GameTitles.findOne(this.gameTitle.id).product;
 	},

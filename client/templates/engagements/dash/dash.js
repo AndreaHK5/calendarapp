@@ -1,19 +1,17 @@
 Template.engagementsDash.onRendered(function () {
-	resetSelectedDay();
+	
+	Session.set("typeFilter", undefined);
+	Session.set("dayForEventsDetail", undefined);
+
 	Meteor.subscribe("engagements");
 	Meteor.subscribe("gameTitles");
-	// Semantic UI modal no removed from dom after callback runs in List Panel, removed manually here. 
-	$('.basic.modal').remove();
 
 	// register handler on resize boxes in order to fit all bubbles
 	// and to resize the calendar and tray 
-
   	$(window).resize(function(evt) {
 	    adjustdayBoxHeight();
 		mainHelpers.resizeTrayAndCalendar();
   	});
-
-  	// 
   	setTimeout(function() {
   		adjustdayBoxHeight()
   	}, 100);
@@ -49,7 +47,6 @@ Template.engagementsDash.events({
 		Session.set("engagementOnCalendar", undefined);
 		if (Engagements.find(query).count() == 0) {
 			mainHelpers.hideEventsContainer();
-			Session.set("dayForEventsDetail", undefined);
 			scrollCalendarToDiv();
 			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
 			return;
@@ -63,14 +60,6 @@ Template.engagementsDash.events({
 		Session.set("typeFilter", undefined);;
 	}
 })
-
-// local helpers and variables
-var animationTime = 0.4;
-
-function resetSelectedDay() {
-	Session.set("typeFilter", undefined);
-	Session.set("dayForEventsDetail", undefined);
-}
 
 function scrollCalendarToDiv() {
 	var div = $('.day-box-unselected:hover');
