@@ -90,7 +90,8 @@ if (Meteor.isClient) {
     var usableAreaHeight = totalHeight - navbarHeigt;
     calendar.css("top", navbarHeigt);
     if (bottomTray.length != 0) {
-      var bottomTrayHeight = Math.min(usableAreaHeight / 2, bottomTray.outerHeight(true) );
+      var cardsTotalHeight = $("#cards-container").height();
+      var bottomTrayHeight = Math.min(usableAreaHeight / 2, cardsTotalHeight );
       mainAreaHeight = usableAreaHeight - bottomTrayHeight;
       bottomTray.css("height", bottomTrayHeight);
 
