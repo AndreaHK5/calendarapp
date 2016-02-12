@@ -7,7 +7,6 @@ Template.engagementsCreateDay.onRendered(function(){
       $(this).find(".day-box-top").removeClass("day-box-top-hovered");
     }
   )
-
 });
 
 

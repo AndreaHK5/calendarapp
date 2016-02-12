@@ -19,7 +19,6 @@ Template.engagementsCalendar.onRendered(function () {
     mainHelpers.resizeTrayAndCalendar();
   });
 
-
 });
 
 Template.engagementsCalendar.helpers({

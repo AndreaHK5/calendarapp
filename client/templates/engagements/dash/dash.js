@@ -56,14 +56,10 @@ Template.engagementsDash.events({
 		sAlert.closeAll();
 		if ( createMode ) {
 			sAlert.info("Let's look at the schedule");
-			Session.set("createEngagementMode", !createMode);
+			Session.set("createEngagementMode", false);
 		} else {
 			mainHelpers.hideEventsContainer()
-				.then(function () {
-				sAlert.info("CREATE ENGAGEMENT MODE",{ position: "top", timeout: 'none'})
-				Session.set("createEngagementMode", !createMode);
-				sAlert.info("Let's start with the Leaving Date");
-			});
+				.then(enterInCreateMode);
 		}
 	},
 	"click .reset-engagement" : function (event) {
@@ -81,6 +77,19 @@ Template.engagementsDash.events({
 	    sAlert.warning("Same Dates, different team");
 	 },
 })
+
+function enterInCreateMode() {
+	sAlert.info("CREATE ENGAGEMENT MODE",{ 
+		position: "top", 
+		timeout: 'none', 
+		onClose : function () {
+			sAlert.closeAll();
+			Session.set("createEngagementMode", false );
+		}
+	});
+	Session.set("createEngagementMode", true);
+	sAlert.info("Let's start with the Leaving Date");
+}
 
 function fadeInCalendar() {
   var calendar = $("#calendar-container");
