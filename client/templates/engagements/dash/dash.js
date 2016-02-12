@@ -1,6 +1,7 @@
 Template.engagementsDash.onRendered(function () {
 	Session.set("createEngagementMode", false);	
 	mainHelpers.resetSessionForDash();
+	fadeInCalendar();
 });
 
 Template.engagementsDash.helpers({
@@ -19,6 +20,28 @@ Template.engagementsDash.helpers({
 		}
 		return createMode;
 	},
+	showCalendar : function () {
+		if (Session.get("createEngagementMode")) {
+			return datesMissing();
+		} else {
+			return true;
+		}
+	},
+	detailsMissing : function () {
+	  	var detailsMissing = !Session.get("formValid");
+	    if (detailsMissing) {
+	      return true;
+	    } else {
+	      scrollPlaceholderOut();     
+	      return false;	
+	    }
+	},
+	getEventDetails : function () {
+	    var ev = Session.get("engagementDetails");
+	    ev.startDate = Session.get("startDate");
+	    ev.endDate = Session.get("endDate");
+			return ev;
+	},
 });
 
 
@@ -29,5 +52,36 @@ Template.engagementsDash.events({
 		if ( createMode ) {
 			sAlert.info("Let's start with the Leaving Date");
 		}
-	}
-}) 
+	},
+	"click .reset-engagement" : function (event) {
+	    scrollPlaceholderOut();
+	    setTimeout(function() {
+	      mainHelpers.resetSessionForCreate();
+	    }, 600);
+	    sAlert.warning("Let's start again!");
+	},
+	"click .reset-details" : function (event) {
+	    scrollPlaceholderOut();
+	    setTimeout(function() {
+	      Session.set("formValid", false);     
+	      Session.set("engagementDetails", undefined);     
+	    }, 600);
+	    sAlert.warning("Same Dates, different team");
+	 },
+})
+
+function fadeInCalendar() {
+  var calendar = $("#calendar-container");
+  calendar.css("opacity", 0);
+  TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
+} 
+
+function datesMissing() {
+  return !Session.get("startDate") || !Session.get("endDate");
+}
+
+function scrollPlaceholderOut () {
+   var myDiv = $("#animationPlaceholder");
+   var time = 800; //ms
+   TweenLite.to(myDiv,time/1000, {height: $(window).height()});
+}

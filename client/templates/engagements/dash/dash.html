@@ -8,10 +8,24 @@
 			{{/if}}
 		</div>	
 	{{/if}}
+  	{{#if showCalendar}}
+  	  {{> engagementsCalendar}}
+  	{{/if}}	
+
 	{{#if createModeOn}}
-		{{> engagementsCreate}}
+	    {{#if showCalendar}}
+  		{{else}}
+		    <div id="animationPlaceholder"></div>
+		    {{#if detailsMissing}}
+		      {{> engagementsCreateDetails}}
+		    {{else}}
+		      <div class="eight wide column centered">
+		        {{> engagementDetailsCard getEventDetails}}
+		      </div>
+		      {{> engagementsCreateConfirm}}
+		    {{/if}}
+	  	{{/if}}
 	{{else}}
-		{{> engagementsCalendar}}
 		{{> engagementsDashLegend}}	
 		{{#if showDayEventsDetail}}
 			{{> engagementsDashListPanel}}

@@ -3,7 +3,6 @@ Template.engagementsCalendar.onRendered(function () {
   //the form to remain populated (logic will be required in order to wipe that) 
   Session.set("monthsShowing", getMonths());
   Session.set('hoverMonth', mainHelpers.getTodayDate().toISOString());
-  fadeInCalendar();
   
   // TODO find an elegant workaround for onFinishRendered
   setTimeout(function (){
@@ -111,12 +110,6 @@ function getMonths() {
 
 
 // Animations
-
-function fadeInCalendar() {
-  var calendar = $("#calendar-container");
-  calendar.css("opacity", 0);
-  TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
-}
 
 function scrollVertical(div) {
   var calendar = $('#calendar-container');
