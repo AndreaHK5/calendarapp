@@ -410,26 +410,18 @@ body {
 
 /*engagement legend and create button*/
 
-.create-engagement-button {
+.create-engagement-toggle {
   position: fixed;
-  top: 80px;
+  top: 70px;
   left: 10px;
-  font-weight: 700;
-  background: rgba(128,128,128,0.99);
-  padding-left: 3px !important;
-  padding-right: 3px !important;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 5px;
-  border-color: grey;
-  color: white;
-  display: table;
+  background-color: #DC3C00 !important;
+  color: white !important;
   z-index: 200;
 }
 
 .engagements-legend {
   position: fixed;
-  top: 120px;
+  top: 140px;
   left: 10px;
   background: rgba(128,128,128,0.99);
   padding-left: 3px !important;

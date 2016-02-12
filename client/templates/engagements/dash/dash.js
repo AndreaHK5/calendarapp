@@ -46,11 +46,18 @@ Template.engagementsDash.helpers({
 
 
 Template.engagementsDash.events({
-	"click .create-engagement-button" : function () {
-		var createMode = !Session.get("createEngagementMode")
-		Session.set("createEngagementMode", createMode);
+	"click .create-engagement-toggle" : function () {
+		var createMode = Session.get("createEngagementMode")
+		sAlert.closeAll();
 		if ( createMode ) {
-			sAlert.info("Let's start with the Leaving Date");
+			sAlert.info("Let's look at the schedule");
+			Session.set("createEngagementMode", !createMode);
+		} else {
+			mainHelpers.hideEventsContainer()
+				.then(function () {
+				Session.set("createEngagementMode", !createMode);
+				sAlert.info("Let's start with the Leaving Date");
+			});
 		}
 	},
 	"click .reset-engagement" : function (event) {

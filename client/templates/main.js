@@ -136,17 +136,22 @@ if (Meteor.isClient) {
   }
 
   mainHelpers.hideEventsContainer = function() {
-    // this needs to be a promise in order for the caller to update on finish
     var calendar = $("#calendar-container");
     var bottomTray = $("#dayengagements-container");
+    if (bottomTray.length == 0 ) { 
+      return Promise.resolve(); 
+    }
+    var deferred = Promise.defer();
     var usableAreaHeight = getUsableHeight();
     TweenMax.to(calendar, slidingTime, { height : usableAreaHeight});    
     TweenMax.to(bottomTray, slidingTime, { 
       top : $(window).height(),
       onComplete : function () {
         Session.set("dayForEventsDetail", undefined);     
+        deferred.resolve();
       }
     });
+    return deferred.promise;
   }
 
   mainHelpers.resizeTrayAndCalendar = function () {
