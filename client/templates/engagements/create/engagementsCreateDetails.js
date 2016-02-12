@@ -120,7 +120,7 @@ Template.engagementsCreateDetails.events({
       clearValidations();
     }
   },
-  "click .add-goal" : function (event) {
+  "click .add-goal-button" : function (event) {
     event.preventDefault();
     addToGoals($("input[name=goals]").val());
     setTimeout(function () {
