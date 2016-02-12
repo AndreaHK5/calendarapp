@@ -14,10 +14,10 @@ Template.engagementsCalendar.onRendered(function () {
 
   // register handler on resize boxes in order to fit all bubbles
   // and to resize the calendar and tray 
-    $(window).resize(function(evt) {
-      adjustdayBoxHeight();
-      mainHelpers.resizeTrayAndCalendar();
-    });
+  $(window).resize(function(evt) {
+    adjustdayBoxHeight();
+    mainHelpers.resizeTrayAndCalendar();
+  });
 
 
 });

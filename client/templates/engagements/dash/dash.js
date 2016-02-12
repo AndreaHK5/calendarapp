@@ -60,6 +60,7 @@ Template.engagementsDash.events({
 		} else {
 			mainHelpers.hideEventsContainer()
 				.then(function () {
+				sAlert.info("CREATE ENGAGEMENT MODE",{ position: "top", timeout: 'none'})
 				Session.set("createEngagementMode", !createMode);
 				sAlert.info("Let's start with the Leaving Date");
 			});

@@ -14,3 +14,8 @@
 .s-alert-error {
   background-color: #D41400;
 }
+
+.s-alert-top {
+	height: 60px;
+	padding-top: 12px;
+}
