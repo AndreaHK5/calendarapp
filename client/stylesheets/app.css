@@ -338,67 +338,6 @@ body {
   background-color:white;
 } 
 
-.engagement-card {
-  opacity: 0.81;
-}
-
-.engagement-card-selected {
-  opacity: 1;
-}
-
-.engagement-card,
-.engagement-card-selected {
-  margin-top: 0px !important;
-  border-bottom: 4px solid white;
-}
-
-.engagement-card-selected .icons-container div,
-.engagement-card .icons-container div {
-    position: absolute;
-    font-size: 1.4em !important;
-    left: 1em;  
-}
-
-.engagement-card-selected .show-on-calendar,
-.engagement-card .show-on-calendar {
-    top: 0.8em;
-}
-
-.engagement-card-selected .delete,
-.engagement-card .delete {
-    top: 35%;
-}
-
-.engagement-card-selected .navigation,
-.engagement-card .navigation {
-    bottom: 0.8em;
-}
-
-.engagement-top .title {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 8px 0;
-}
-
-.engagement-mid {
-  margin-top: 6px;
-  margin-bottom: 6px;
-  display: table;
-}
-
-.engagement-mid .picture {
-  width: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.engagement-mid .picture-label {
-    display: table-cell;
-    vertical-align: middle;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
 .unselect-engagement:hover,
 .select-engagement:hover {
     cursor: pointer; 
@@ -505,7 +444,8 @@ body {
   width: 100% !important;
   padding: 1em !important;
   margin: 1em !important;
-  opacity: 0.8;
+  color: black;
+
 }
 
 

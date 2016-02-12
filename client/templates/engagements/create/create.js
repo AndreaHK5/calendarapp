@@ -25,7 +25,7 @@ Template.engagementsCreate.helpers({
     ev.startDate = Session.get("startDate");
     ev.endDate = Session.get("endDate");
 		return ev;
-	}
+	},
 });
 
 Template.engagementsCreate.events({
