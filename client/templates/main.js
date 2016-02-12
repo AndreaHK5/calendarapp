@@ -128,6 +128,9 @@ if (Meteor.isClient) {
       TweenMax.to(bottomTray, slidingTime, { top : usableAreaHeight - bottomTrayHeight + getNavbarHeight() });
       bottomTray.css("visibility", "visible");
       $('#cards-viewport').height(bottomTrayHeight)
+      // legend 
+      var legend = $('#engagements-legend');
+      TweenMax.to(legend, slidingTime, { top : (mainAreaHeight - legend.outerHeight(true) ) /2 });
 
     } else {
       mainAreaHeight = usableAreaHeight;
@@ -143,7 +146,9 @@ if (Meteor.isClient) {
     }
     var deferred = Promise.defer();
     var usableAreaHeight = getUsableHeight();
-    TweenMax.to(calendar, slidingTime, { height : usableAreaHeight});    
+    TweenMax.to(calendar, slidingTime, { height : usableAreaHeight});
+    var legend = $('#engagements-legend');
+    TweenMax.to(legend, slidingTime, { top : 140 });    
     TweenMax.to(bottomTray, slidingTime, { 
       top : $(window).height(),
       onComplete : function () {
@@ -169,6 +174,9 @@ if (Meteor.isClient) {
     TweenMax.to(bottomTray, slidingTime, { top : usableAreaHeight - bottomTrayHeight + getNavbarHeight() });
     TweenMax.to(bottomTray, slidingTime, { height : bottomTrayHeight});
     $('#cards-viewport').height(bottomTrayHeight);
+    // legend 
+    var legend = $('#engagements-legend');
+    TweenMax.to(legend, slidingTime, { top : (mainAreaHeight - legend.outerHeight(true) ) /2 });
   }
 
   mainHelpers.scrollCalendarToDay = function (div) {

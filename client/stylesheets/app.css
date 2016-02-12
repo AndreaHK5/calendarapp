@@ -420,7 +420,7 @@ body {
   z-index: 200;
 }
 
-.engagements-legend {
+#engagements-legend {
   position: fixed;
   top: 140px;
   left: 10px;
@@ -435,17 +435,17 @@ body {
   display: table;
 }
 
-.engagements-legend .label {
+#engagements-legend .label {
   display: inline-block;
   text-align: center;
   font-weight: 700;
 }
 
-.engagements-legend .content-hidden {
+#engagements-legend .content-hidden {
   display: none;
 }
 
-.engagements-legend .content {
+#engagements-legend .content {
   display: table-cell;
   vertical-align: middle;
   font-weight: 400;

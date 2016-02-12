@@ -17,7 +17,7 @@ Template.engagementsDashLegend.helpers({
 }) 
 
 Template.engagementsDashLegend.events({
-	"click .engagements-legend" : function () {
+	"click #engagements-legend" : function () {
 		Session.set("legendShow", ! Session.get("legendShow"));
 		
 		if (hideLegendTimer) {  clearTimeout(hideLegendTimer); }
