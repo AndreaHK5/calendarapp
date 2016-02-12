@@ -399,7 +399,7 @@ body {
 .calendar-navigation {
   position: fixed;
   top: 38px;
-  right: 0px;
+  right: 14px;
   z-index: 105;
 }
 

@@ -1,7 +1,12 @@
 Template.engagementsDash.onRendered(function () {
 	Session.set("createEngagementMode", false);	
 	mainHelpers.resetSessionForDash();
-	fadeInCalendar();
+
+	$('.page-container').on('DOMNodeInserted', function(e) {
+	    if ($(e.target).is('#calendar-container')) {
+	       fadeInCalendar();
+	    }
+	});
 });
 
 Template.engagementsDash.helpers({
@@ -61,10 +66,9 @@ Template.engagementsDash.events({
 		}
 	},
 	"click .reset-engagement" : function (event) {
-	    scrollPlaceholderOut();
-	    setTimeout(function() {
-	      mainHelpers.resetSessionForCreate();
-	    }, 600);
+	    scrollPlaceholderOut().then( function () {
+	    	mainHelpers.resetSessionForCreate();
+	    });
 	    sAlert.warning("Let's start again!");
 	},
 	"click .reset-details" : function (event) {
@@ -88,7 +92,14 @@ function datesMissing() {
 }
 
 function scrollPlaceholderOut () {
-   var myDiv = $("#animationPlaceholder");
-   var time = 800; //ms
-   TweenLite.to(myDiv,time/1000, {height: $(window).height()});
+	var deferred = Promise.defer();
+    var myDiv = $("#animationPlaceholder");
+    var time = 800; //ms
+    TweenLite.to(myDiv,time/1000, {
+   		height: $(window).height(),
+   		onComplete : function () {
+   			deferred.resolve();
+   		}
+   	});
+   return deferred.promise;
 }
