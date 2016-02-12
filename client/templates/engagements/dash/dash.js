@@ -1,83 +1,33 @@
 Template.engagementsDash.onRendered(function () {
-	
-	Session.set("typeFilter", undefined);
-	Session.set("dayForEventsDetail", undefined);
-
-	Meteor.subscribe("engagements");
-	Meteor.subscribe("gameTitles");
-
-	// register handler on resize boxes in order to fit all bubbles
-	// and to resize the calendar and tray 
-  	$(window).resize(function(evt) {
-	    adjustdayBoxHeight();
-		mainHelpers.resizeTrayAndCalendar();
-  	});
-  	setTimeout(function() {
-  		adjustdayBoxHeight()
-  	}, 100);
+	Session.set("createEngagementMode", false);	
+	mainHelpers.resetSessionForDash();
 });
 
 Template.engagementsDash.helpers({
 	showDayEventsDetail : function () {
 		return Session.get("dayForEventsDetail");
 	},
+	isLoggedInUser : function () {
+		return Meteor.user();
+	},
+	createModeOn : function () {
+		var createMode = Session.get("createEngagementMode");
+		if (createMode) {
+			mainHelpers.resetSessionForCreate();
+		} else {
+			mainHelpers.resetSessionForDash();
+		}
+		return createMode;
+	},
 });
 
+
 Template.engagementsDash.events({
-	"click .day-box": function (event) {
-		// TYPE FILTERING
-		// in case the click is on the bubble, filter by that!
-		// remember to skip in case the day has only one type anyway
-		var type = undefined;
-		var typesPerDay = Object.keys(Session.get("engagementsPerDay")[this.date] || {});
-		if(_.contains(event.target.classList, "type-filer") && typesPerDay.length > 1) {
-			type = Session.set("typeFilter", event.target.getAttribute("value-type"));
-		} else {
-			Session.set("typeFilter", undefined);
-		}	
-
-		// gate if date has no events
-		if (Session.get("dayForEventsDetail") == this.date) { return; }	
-
-		var query = mainHelpers.betweenTwoDatesEngagementsQuery(moment(this.date), moment(this.date));
-		if (type) {
-		// gate if this.date has no events
-			query = mainHelpers.betweenDatesAndTypeEngagementsQuery(moment(this.date), moment(this.date), type) 
+	"click .create-engagement-button" : function () {
+		var createMode = !Session.get("createEngagementMode")
+		Session.set("createEngagementMode", createMode);
+		if ( createMode ) {
+			sAlert.info("Let's start with the Leaving Date");
 		}
-		Session.set("engagementOnCalendar", undefined);
-		if (Engagements.find(query).count() == 0) {
-			mainHelpers.hideEventsContainer();
-			scrollCalendarToDiv();
-			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
-			return;
-		}
-		sAlert.closeAll(); 
-			
-		Session.set("dayForEventsDetail", this.date);
-		scrollCalendarToDiv();
-	},
-	"click .clear-type-filter" : function (event) {
-		Session.set("typeFilter", undefined);;
 	}
-})
-
-function scrollCalendarToDiv() {
-	var div = $('.day-box-unselected:hover');
-	if (div.length == 0) {
-		div = $('.day-box-selected');
-	} 
-	mainHelpers.scrollCalendarToDay(div);	
-}
-
-function adjustdayBoxHeight() {
-	var standardDayBoxHeight = 98;
-	var requiredHeight = lodash.reduce($('.day-box'), 
-		function (heightRequired, e) { 
-			var thisBoxHeight = $(e).find('.engagement-day-top').outerHeight(true) + $(e).find('.engagement-day-bottom').outerHeight(true);
-			return Math.max(heightRequired, thisBoxHeight);
-		},
-		standardDayBoxHeight
-	);
-
-	TweenMax.to($('.day-box'), 0.8, { ease: Power4.easeOut, height : requiredHeight });
-}
+}) 

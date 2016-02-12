@@ -1,7 +1,6 @@
 Template.engagementsMonth.helpers({
 	getDayTemplate : function () {
-		if ( Router.current().route.getName() == "engagementsCreate") { return "engagementsCreateDay"; }
-		if ( Router.current().route.getName() == "engagementsDash") { return "engagementsDashDay"; }
+        return Session.get("createEngagementMode") ? "engagementsCreateDay" : "engagementsDashDay";
 	},
 	getDays : function () {
 		return getDaysInMonth(this.date);

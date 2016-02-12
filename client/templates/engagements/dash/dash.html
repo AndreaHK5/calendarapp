@@ -1,7 +1,20 @@
-<template name="engagementsDash"> 
-	{{> engagementsCalendar}}
-	{{> engagementsDashLegend}}
-	{{#if showDayEventsDetail}}
-		{{> engagementsDashListPanel}}
+<template name="engagementsDash">
+	{{#if isLoggedInUser}}
+		<div class="create-engagement-button">
+			{{#if createModeOn}}
+				<i class="calendar icon"> </i>
+			{{else}}
+				<i class="add circle icon"> </i>
+			{{/if}}
+		</div>	
+	{{/if}}
+	{{#if createModeOn}}
+		{{> engagementsCreate}}
+	{{else}}
+		{{> engagementsCalendar}}
+		{{> engagementsDashLegend}}	
+		{{#if showDayEventsDetail}}
+			{{> engagementsDashListPanel}}
+		{{/if}}
 	{{/if}}
 </template>

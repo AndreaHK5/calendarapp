@@ -1,11 +1,3 @@
-Template.engagementsCreate.onRendered(function (){
-    Session.set("startDate", undefined);
-    Session.set("endDate", undefined);
-    Session.set("engagementDetails", undefined);
-    Session.set("formValid", undefined);
-    sAlert.info("Let's start with the Leaving Date");
-})
-
 Template.engagementsCreate.helpers({
   datesMissing : function () {
     return datesMissing();
@@ -32,10 +24,7 @@ Template.engagementsCreate.events({
   "click .reset-engagement" : function (event) {
     scrollPlaceholderOut();
     setTimeout(function() {
-      Session.set("startDate", false);
-      Session.set("endDate", false); 
-      Session.set("formValid", false);     
-      Session.set("engagementDetails", undefined);
+      mainHelpers.resetSessionForCreate();
     }, 600);
     sAlert.warning("Let's start again!");
   },

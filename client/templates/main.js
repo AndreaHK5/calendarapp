@@ -80,7 +80,22 @@ if (Meteor.isClient) {
     return query;
   }
 
-  // animations
+  // TODO are these Session helpers really needed???
+
+  mainHelpers.resetSessionForCreate = function () {
+    Session.set("startDate", undefined);
+    Session.set("endDate", undefined);
+    Session.set("engagementDetails", undefined);
+    Session.set("formValid", undefined);
+  }
+
+
+  mainHelpers.resetSessionForDash = function () {
+    Session.set("typeFilter", undefined);
+    Session.set("dayForEventsDetail", undefined);
+  }
+
+  // ++++++++++++++++ ANIMATIONS ++++++++++++
 
   var slidingTime = 0.6;
 

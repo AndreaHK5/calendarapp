@@ -49,6 +49,9 @@ Template.engagementsDashListPanel.events({
 		resetEventOnCalendar();
 		mainHelpers.scrollCalendarToDay($(".day-box-selected"));
 	},
+	"click .clear-type-filter" : function (event) {
+		Session.set("typeFilter", undefined);;
+	},
 	"click .delete-engagement" : function (event) {
 		// stop hovering animations		
 		var engagementId = this._id;

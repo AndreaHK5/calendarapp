@@ -24,7 +24,7 @@ Template.engagementsDashLegend.events({
 		hideLegendTimer = setTimeout(function() {
 			Session.set("legendShow", false);
 		}, 2000);
-	}
+	},
 });
 
 var hideLegendTimer;

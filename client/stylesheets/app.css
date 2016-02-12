@@ -386,11 +386,28 @@ body {
   text-align: center;
 }
 
-/*engagement legend*/
+/*engagement legend and create button*/
+
+.create-engagement-button {
+  position: fixed;
+  top: 80px;
+  left: 10px;
+  font-weight: 700;
+  background: rgba(128,128,128,0.99);
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  border-color: grey;
+  color: white;
+  display: table;
+  z-index: 200;
+}
 
 .engagements-legend {
   position: fixed;
-  top: 80px;
+  top: 120px;
   left: 10px;
   background: rgba(128,128,128,0.99);
   padding-left: 3px !important;
