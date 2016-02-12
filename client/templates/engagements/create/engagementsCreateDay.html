@@ -1,47 +1,39 @@
 <template name="engagementsCreateDay">
   <div class="day-box
       {{#if isStartDateAndHovered}}
-        selected-and-hover-day
       {{else}}
         select-day
       {{/if}}
       {{#if isSelectedStartDate}}
         day-box-selected
       {{else}}
-        {{#if isBeforeStartSate}}{{else}}day-box-unselected{{/if}}
-      {{/if}} 
+        {{#if isBeforeStartSate}}day-before-start{{else}}day-box-unselected{{/if}}
+      {{/if}}
+
       {{#if isDateInTrip}}day-box-unselected-day{{/if}}">
-    <div class="column day-box-top remove-start-date">
-        <div class="message">
-          {{#if isSelectedStartDate}}
-            {{#if isHoveredDate}} 
-              {{#if hoverResetStartDate}} 
-                <span >reset?</span>
-              {{/if}}
-            {{else}}
-              Start Date
-            {{/if}}
-          {{/if}} 
-        </div>
-        {{#if isSelectedStartDate}}
-          {{#if isHoveredDate}}
-              <div class="remove-day-icon">
-                <i class="remove icon"></i>
-              </div>
-            {{/if}}
-        {{/if}}
-    </div>
-    <div class="column day-box-mid">
+
+    <div class="engagement-day-top">
       {{dayNumber date}}
+      <div class="top-message">
+        {{#if isSelectedStartDate}}
+          {{#if isHoveredDate}} 
+            <!-- {{#if hoverResetStartDate}}  -->
+              <div class="reset-date">Reset?</div>
+            <!-- {{/if}} -->
+          {{else}}
+            <div class="start-date">
+              Start Date
+            </div>
+          {{/if}}
+        {{/if}} 
+      </div>
     </div>
-    <div class="column">
-      <div class="same-return-day">
+    <div class="engagement-day-bottom same-return-day">
         {{#if isSelectedStartDate}}
           {{#if isHoveredDate}}
             Same Return day?
           {{/if}}
         {{/if}}
-      </div>
     </div>      
   </div> 
 </template>

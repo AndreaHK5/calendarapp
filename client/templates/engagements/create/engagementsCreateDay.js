@@ -30,9 +30,6 @@ Template.engagementsCreateDay.helpers({
       return Session.get("startDate") == this.date
         && this.date == Session.get("hoverDay");
   },
-  hoverResetStartDate : function () {
-    return Session.get("hoverResetStartDate");
-  },
   isBeforeStartSate : function () {
     if (!Session.get("startDate")){
       return false;
@@ -54,20 +51,13 @@ Template.engagementsCreateDay.events({
     // style dates after start date is selected
     Session.set("hoverDay", false);
   },
-  "click .remove-start-date" : function (event) {
+  "click .top-message" : function (event) {
     // guard to prevent resetting from another date
     if (Session.get("startDate") != this.date) {
       return;
     }
     Session.set("startDate", false);
-    Session.set("hoverResetStartDate", false);
     sAlert.warning("Let's leave on another day then.")
-  },
-  "mouseenter .remove-start-date" : function (event) {
-    Session.set("hoverResetStartDate", true);
-  },
-  "mouseleave .remove-start-date" : function (event) {
-    Session.set("hoverResetStartDate", false);
   },
   "click .select-day" : function (event) {
     event.preventDefault();

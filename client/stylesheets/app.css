@@ -124,11 +124,6 @@ body {
   line-height: 35px;  
 }
 
-.remove-start-date {
-  padding-right: 3px;
-  font-size: 15px;
-}
-
 .selected-icon {
   margin-top: 15px;
 }
@@ -257,8 +252,35 @@ body {
   font-weight: 100;
 }
 
+.engagement-day-top .top-message {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  margin-right: 12px;
+  margin-left: 12px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.engagement-day-top .top-message:hover {
+  font-weight: 700;
+}
+
+.engagement-day-top .start-date {
+  font-size: 15px;
+}
+
+.engagement-day-top .reset-date {
+  font-size: 12px;
+  text-decoration: underline;
+}
+
 .day-box-selected .engagement-day-bottom {
   bottom: 5px;
+}
+
+.day-before-start:hover {
+
 }
 
 .engagement-day-bottom {
@@ -268,11 +290,11 @@ body {
   margin-right: 12px;
   margin-left: 12px;
   margin-bottom: 8px;
-
 }
 
-.day-box:hover .engagement-day-top,
-.day-box-selected .engagement-day-top {
+.day-box-unselected:hover .engagement-day-top,
+.day-box-selected .engagement-day-top,
+.day-box-unselected-day .engagement-day-top {
   margin-top: 14px;
   margin-left: 6px
 }
