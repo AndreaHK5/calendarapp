@@ -8,14 +8,15 @@ Template.engagementsCalendar.onRendered(function () {
   setTimeout(function (){
     mainHelpers.positionTrayAndCalendar();
   },10)
+
   setTimeout(function() {
-    adjustdayBoxHeight()
+    mainHelpers.adjustdayBoxHeight();
   }, 300);
 
   // register handler on resize boxes in order to fit all bubbles
   // and to resize the calendar and tray 
   $(window).resize(function(evt) {
-    adjustdayBoxHeight();
+    mainHelpers.adjustdayBoxHeight();
     mainHelpers.resizeTrayAndCalendar();
   });
 
@@ -118,18 +119,4 @@ function scrollVertical(div) {
   var calendar = $('#calendar-container');
   var topY = calendar.scrollTop() + div.offset().top - $('#weekday-navbar').height() - $('#site-navbar').height() + 10;
   TweenMax.to(calendar,1, {scrollTo:{y:topY}, ease:Power4.easeOut});
-}
-
-
-function adjustdayBoxHeight() {
-  var standardDayBoxHeight = 98;
-  var requiredHeight = lodash.reduce($('.day-box'), 
-    function (heightRequired, e) { 
-      var thisBoxHeight = $(e).find('.engagement-day-top').outerHeight(true) + $(e).find('.engagement-day-bottom').outerHeight(true);
-      return Math.max(heightRequired, thisBoxHeight);
-    },
-    standardDayBoxHeight
-  );
-
-  TweenMax.to($('.day-box'), 0.8, { ease: Power4.easeOut, height : requiredHeight });
 }

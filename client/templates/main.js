@@ -185,5 +185,18 @@ if (Meteor.isClient) {
     var topY = calendar.scrollTop() + div.offset().top - 2* div.height();
     TweenLite.to(calendar, slidingTime, {scrollTo:{y:topY}, ease:Power2.easeOut});
   }
+
+   mainHelpers.adjustdayBoxHeight = function() {
+    var standardDayBoxHeight = 98;
+    var requiredHeight = lodash.reduce($('.day-box'), 
+      function (heightRequired, e) { 
+        var thisBoxHeight = $(e).find('.engagement-day-top').outerHeight(true) + $(e).find('.engagement-day-bottom').outerHeight(true);
+        return Math.max(heightRequired, thisBoxHeight);
+      },
+      standardDayBoxHeight
+    );  
+
+    TweenMax.to($('.day-box'), 0.8, { ease: Power4.easeOut, height : requiredHeight });
+  }
 }
 

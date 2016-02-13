@@ -16,6 +16,9 @@ Template.engagementsDash.helpers({
 			mainHelpers.resetSessionForCreate();
 		} else {
 			mainHelpers.resetSessionForDash();
+			setTimeout(function() {
+				mainHelpers.adjustdayBoxHeight();
+			}, 200);
 		}
 		return createMode;
 	},
@@ -39,7 +42,7 @@ Template.engagementsDash.helpers({
 	    var ev = Session.get("engagementDetails");
 	    ev.startDate = Session.get("startDate");
 	    ev.endDate = Session.get("endDate");
-			return ev;
+		return ev;
 	},
 });
 
