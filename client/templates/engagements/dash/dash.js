@@ -1,12 +1,6 @@
 Template.engagementsDash.onRendered(function () {
 	Session.set("createEngagementMode", false);	
 	mainHelpers.resetSessionForDash();
-
-	$('.page-container').on('DOMNodeInserted', function(e) {
-	    if ($(e.target).is('#calendar-container')) {
-	       fadeInCalendar();
-	    }
-	});
 });
 
 Template.engagementsDash.helpers({
@@ -55,11 +49,18 @@ Template.engagementsDash.events({
 		var createMode = Session.get("createEngagementMode")
 		sAlert.closeAll();
 		if ( createMode ) {
-			sAlert.info("Let's look at the schedule");
-			Session.set("createEngagementMode", false);
+			if (datesMissing()) {
+				sAlert.info("Let's look at the schedule");
+				Session.set("createEngagementMode", false);
+			} else {
+				scrollPlaceholderOut().then(function () {
+					sAlert.info("Let's look at the schedule");
+					Session.set("createEngagementMode", false);
+				})
+			}
+
 		} else {
-			mainHelpers.hideEventsContainer()
-				.then(enterInCreateMode);
+			mainHelpers.hideEventsContainer().then(enterInCreateMode);
 		}
 	},
 	"click .reset-engagement" : function (event) {
@@ -69,11 +70,10 @@ Template.engagementsDash.events({
 	    sAlert.warning("Let's start again!");
 	},
 	"click .reset-details" : function (event) {
-	    scrollPlaceholderOut();
-	    setTimeout(function() {
+	    scrollPlaceholderOut().then(function () {
 	      Session.set("formValid", false);     
-	      Session.set("engagementDetails", undefined);     
-	    }, 600);
+	      Session.set("engagementDetails", undefined);     	    	
+	    });
 	    sAlert.warning("Same Dates, different team");
 	 },
 })
@@ -81,21 +81,11 @@ Template.engagementsDash.events({
 function enterInCreateMode() {
 	sAlert.info("CREATE ENGAGEMENT MODE",{ 
 		position: "top", 
-		timeout: 'none', 
-		onClose : function () {
-			sAlert.closeAll();
-			Session.set("createEngagementMode", false );
-		}
+		timeout: 10000,
 	});
 	Session.set("createEngagementMode", true);
 	sAlert.info("Let's start with the Leaving Date");
 }
-
-function fadeInCalendar() {
-  var calendar = $("#calendar-container");
-  calendar.css("opacity", 0);
-  TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
-} 
 
 function datesMissing() {
   return !Session.get("startDate") || !Session.get("endDate");

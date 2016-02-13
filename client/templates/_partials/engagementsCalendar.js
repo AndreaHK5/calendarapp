@@ -19,6 +19,10 @@ Template.engagementsCalendar.onRendered(function () {
     mainHelpers.resizeTrayAndCalendar();
   });
 
+  var calendar = $("#calendar-container");
+  calendar.css("opacity", 0);
+  TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
+
 });
 
 Template.engagementsCalendar.helpers({
