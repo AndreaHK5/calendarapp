@@ -313,6 +313,7 @@ body {
   width: 32px;
   border: 2px solid;
   border-radius: 15px;
+  margin-bottom: 2px;
 }
 
 .engagement-bubble-nohalo {
@@ -322,6 +323,7 @@ body {
   border: 0px solid;
   margin-right: -2px;
   margin-left: 2px;
+  margin-bottom: 2px;
 }
 
 .engagement-bubble {
@@ -341,7 +343,8 @@ body {
 }
 
 .day-box-selected .engagement-bubble-nohalo {
-  margin-bottom: -2px;
+  margin-bottom: 0px;
+  margin-top: 2px;
 }
 
 /*day engagements detail */
