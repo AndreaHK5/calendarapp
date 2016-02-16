@@ -72,6 +72,12 @@ Template.engagementsCreateDay.events({
       }
       Session.set("endDate", this.date);
       sAlert.info("Back on " + moment(this.date).format("dddd MMM DD") + " sounds cool.");
+        // set engagementBasic Details
+      Session.set("engagementDetails", {
+        startDate : Session.get("selectedStartDate"),
+        endDate : Session.get("selectedEndDate"),
+        goals : []
+      });
     }
   },
   "click .same-return-day" : function (event) {

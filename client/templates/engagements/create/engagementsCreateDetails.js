@@ -1,11 +1,5 @@
 Template.engagementsCreateDetails.onRendered(function () {
   
-  // set engagementBasic Details
-	Session.set("engagementDetails", {
-    startDate : Session.get("selectedStartDate"),
-    endDate : Session.get("selectedEndDate"),
-    goals : []
-  });
 
   Session.set("customType", undefined);
 
@@ -31,6 +25,8 @@ Template.engagementsCreateDetails.onRendered(function () {
   $('select.dropdown').dropdown();
   // validations
   formValidations();
+  // pre filled in case of back button
+  reFillForm();
 })
 
 
@@ -136,7 +132,7 @@ Template.engagementsCreateDetails.events({
     event.preventDefault();
     clearValidations();
 	},
-  "click .confirm-button" : function (event) { 
+  "click .confirm-details" : function (event) { 
     addToGoals($('input[name=goals]').val());
     $('.ui.form').form('validate form');
     if(!$('.ui.form').form('is valid')) { return };
@@ -147,6 +143,26 @@ Template.engagementsCreateDetails.events({
   }
 });
 
+
+function reFillForm () {
+  var engagementDetails = Session.get("engagementDetails");
+  if (! ("title" in engagementDetails) ) { return ; } 
+  $("select[name=product]").dropdown("set selected",
+    GameTitles.findOne({ _id : engagementDetails.gameTitle.id}).product);
+  $("input[name=title]").val(engagementDetails.title);
+  Session.set("customType", engagementDetails.type);
+  $("select[name=type]").dropdown("set selected",engagementDetails.type);
+  $("textarea[name=description]").val(engagementDetails.description);
+  $("select[name=engineerGoing]").dropdown(
+    "set selected", 
+    _.map(engagementDetails.engineersGoing, 
+        function (e) { return e.id; } 
+    )
+  );
+
+  $("select[name=dam]").dropdown("set selected",engagementDetails.dam.id);
+
+}
 
 
 function addToGoals(newGoal) {

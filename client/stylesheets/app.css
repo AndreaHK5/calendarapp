@@ -173,7 +173,7 @@ body {
 
 /*confirm engagement creation*/
 
-.confirm-button {
+.styled-button {
   display: inline-block;
   width: 120px;
   height: 36px;
@@ -184,12 +184,12 @@ body {
   margin: 30px 8px 10px 8px;
 }
 
-.confirm-button:hover {
+.styled-button:hover {
   color: #ecf0f1;
   background-color: #DC3C00; 
 }
 
-.confirm-jumbo:hover .confirm-button {
+.confirm-jumbo:hover .styled-button {
   border: 3px solid #DC3C00;
   padding-top: 5px;
 }

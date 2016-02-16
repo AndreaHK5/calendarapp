@@ -67,6 +67,7 @@ Template.engagementsDash.events({
 		}
 	},
 	"click .reset-engagement" : function (event) {
+		event.preventDefault();
 	    scrollPlaceholderOut().then( function () {
 	    	mainHelpers.resetSessionForCreate();
 	    });
@@ -74,8 +75,7 @@ Template.engagementsDash.events({
 	},
 	"click .reset-details" : function (event) {
 	    scrollPlaceholderOut().then(function () {
-	      Session.set("formValid", false);     
-	      Session.set("engagementDetails", undefined);     	    	
+	      Session.set("formValid", false);     	    	
 	    });
 	    sAlert.warning("Same Dates, different team");
 	 },
