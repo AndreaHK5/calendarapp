@@ -1,7 +1,24 @@
 Template.engagementsDashListPanel.onRendered(function () {
-	setTimeout(function() {
-		mainHelpers.positionTrayAndCalendar();
-	}, 100);
+	// size the calendar and the tray at render
+	Tracker.afterFlush(mainHelpers.positionTrayAndCalendar)
+
+	// scroll calendar when the engagement bars are showing 
+	this.autorun(function () {
+		var onCalendar = Session.get("engagementOnCalendar");
+		if (!onCalendar) { return ;}
+		Tracker.afterFlush(function () {
+			mainHelpers.scrollCalendarToDay($(".calendar-engagement-bar").first().parent().find(".day-box"));
+		})
+	})
+
+	// resize when a filter is applied
+	this.autorun(function () {
+		Session.get("engagementsShowing");
+		Tracker.afterFlush(function () {
+			mainHelpers.resizeTrayAndCalendar();
+		});
+	});
+
 	Session.set("engagementOnCalendar", undefined );
 	Session.set("engagementToDelete", undefined );
 
@@ -16,9 +33,7 @@ Template.engagementsDashListPanel.helpers({
 			query["$and"].push({type : typeFiler});
 		}
 		var engagements = Engagements.find(query);
-		setTimeout(function() {
-			mainHelpers.resizeTrayAndCalendar();
-		}, 200);
+		Session.set("engagementsShowing", engagements.count());
 		return engagements;
 	},
 	getEventDetails : function () {
@@ -101,9 +116,7 @@ function setEventOnCalendar(event) {
 		_id: event._id
 	}
 	Session.set("engagementOnCalendar", engagementOnCalendar );
-	setTimeout(function() {
-			mainHelpers.scrollCalendarToDay($(".calendar-engagement-bar").first().parent().find(".day-box"));
-	}, 10);
+
 	clearTimeout(resetClickedEventTimer);
 	resetClickedEventTimer = setTimeout(function() {
 		resetEventOnCalendar();

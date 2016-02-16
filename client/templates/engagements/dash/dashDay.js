@@ -3,6 +3,7 @@ Template.engagementsDashDay.onRendered(function () {
 	Meteor.subscribe("gameTitles");
 })
 
+
 Template.engagementsDashDay.helpers({
 	isSelectedDay : function () {
 		return this.date == Session.get("dayForEventsDetail");
@@ -25,6 +26,7 @@ Template.engagementsDashDay.helpers({
 	dayEvents : function () {
 		var engagementsPerDay = Session.get("engagementsPerDay");
 		var result = _.map(engagementsPerDay[this.date], function (v, k) { return { type: k, count : v}} );
+		Session.set("newDayRendered",result.length)
 		return result;
 	},
 	isTypeInFilter : function (type, date) {
@@ -35,7 +37,7 @@ Template.engagementsDashDay.helpers({
 		// all bubbles to get a halo in case there is no selected type
 		if (!currentType) { return true; }
 		return type == currentType;
-	}
+	},
 })
 
 Template.engagementsDashDay.events({

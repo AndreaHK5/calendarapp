@@ -1,6 +1,5 @@
 Template.engagementsCreateDetails.onRendered(function () {
   
-
   Session.set("customType", undefined);
 
   // animations
@@ -27,6 +26,11 @@ Template.engagementsCreateDetails.onRendered(function () {
   formValidations();
   // pre filled in case of back button
   reFillForm();
+
+  this.autorun(function () {
+    Session.get("engagementDetails");
+    clearValidations();
+  })
 })
 
 
@@ -78,6 +82,7 @@ Template.engagementsCreateDetails.events({
     // this handler is required in order to allow addition of another custom event
     var newValue = event.target.value;
     Session.set("customType", newValue);
+    // timeout left here as this functionality will be deleted
     setTimeout(function() {
       $(".ui.fluid.search.selection.dropdown.type-dropdown").dropdown('set selected', newValue);
     }, 10);
@@ -119,11 +124,6 @@ Template.engagementsCreateDetails.events({
   "click .add-goal-button" : function (event) {
     event.preventDefault();
     addToGoals($("input[name=goals]").val());
-    setTimeout(function () {
-        clearValidations();
-      }, 
-      100
-    );
   },
   "click .remove-goal" : function (event) {
     removeGoal($(event.target).attr('value'));

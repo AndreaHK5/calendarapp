@@ -1,25 +1,28 @@
 Template.engagementsCalendar.onRendered(function () {
-  // form is cleared at render. Move this code outside this handler in case we prefer 
-  //the form to remain populated (logic will be required in order to wipe that) 
+
   Session.set("monthsShowing", getMonths());
   Session.set('hoverMonth', mainHelpers.getTodayDate().toISOString());
   
-  // TODO find an elegant workaround for onFinishRendered
-  setTimeout(function (){
-    mainHelpers.positionTrayAndCalendar();
-  },10)
+  // size the calendar to the screen
+  Tracker.afterFlush(mainHelpers.positionTrayAndCalendar);
 
-  setTimeout(function() {
-    mainHelpers.adjustDayBoxHeight();
-  }, 1000);
-
-  // register handler on resize boxes in order to fit all bubbles
-  // and to resize the calendar and tray 
-  $(window).resize(function(evt) {
-    mainHelpers.adjustDayBoxHeight();
-    mainHelpers.resizeTrayAndCalendar();
+  // on finish rendered to ensure the daybox is tall enough
+  this.autorun(function(){ 
+    Session.get("newDayRendered");
+    Tracker.afterFlush(mainHelpers.adjustDayBoxHeight);
   });
 
+  // scroll to newly created month on DOM
+  this.autorun(function () {
+    var targetMonth = Session.get("targetMonth");
+    if (!targetMonth) { return ;}
+    Tracker.afterFlush( function () {
+      scrollVertical($('#' + moment(targetMonth).unix() ));
+      Session.set("hoverMonth", targetMonth); 
+    });
+  })
+
+  // fade calendar in
   var calendar = $("#calendar-container");
   calendar.css("opacity", 0);
   TweenLite.to(calendar, 0.7, {ease : Sine.easeIn, opacity: 1});
@@ -92,13 +95,8 @@ function addMonth() {
   var months = Session.get("monthsShowing")
   months.push({date : newDate.toISOString() });
   Session.set("monthsShowing", months)
-  // scroll to newly created month...
-  // TODO this is a terrible workaround, need a promise on the div creation (on rendered?)
-  setTimeout(function(){
-    var myDiv = $('#' + newDate.unix());
-    scrollVertical(myDiv);
-    Session.set("hoverMonth", newDate.toISOString());    
-  },100)
+  // scroll to newly created month with a reactive variable
+  Session.set("targetMonth", newDate.toISOString());
 }
 
 function getMonths() {

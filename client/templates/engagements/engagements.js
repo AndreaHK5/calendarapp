@@ -12,9 +12,6 @@ Template.engagements.helpers({
 			mainHelpers.resetSessionForCreate();
 		} else {
 			mainHelpers.resetSessionForDash();
-			setTimeout(function() {
-				mainHelpers.adjustDayBoxHeight();
-			}, 200);
 		}
 		return createMode;
 	},

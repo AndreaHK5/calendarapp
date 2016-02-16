@@ -1,7 +1,10 @@
 Template.engagementBriefCard.onRendered( function () {
-	setTimeout(function() {
-		$('.ui.avatar.image').popup();
-	}, 200);
+	this.autorun(function () {
+		Session.get("popupAdded");
+		Tracker.afterFlush(function () {
+			$('.ui.avatar.image').popup();			
+		})
+	});
 })
 
 Template.engagementBriefCard.helpers({
@@ -14,6 +17,7 @@ Template.engagementBriefCard.helpers({
 	getEngineerData : function (id) {
 		var eng = Engineers.findOne({_id : id});
 		if (!eng) {return ;}
+		Session.set("popupAdded",eng);
 		return  { 
 					name : eng.name,
 				  	picture : eng.picture 
@@ -22,6 +26,7 @@ Template.engagementBriefCard.helpers({
 	getDamData : function (id) {
 		var dam = Dams.findOne({_id : id});
 		if (!dam) { return ;}
+		Session.set("popupAdded",dam);
 		return  { 
 					name : dam.name,
 				  	picture : dam.picture 

@@ -1,6 +1,12 @@
 Template.engagementDetailsCard.onRendered(function () {
 	Meteor.subscribe("engineers");
 	Meteor.subscribe("dams");
+	this.autorun(function () {
+		Session.get("popupAdded");
+		Tracker.afterFlush(function () {
+			$('.ui.avatar.image').popup();			
+		})
+	});
 })
 
 Template.engagementDetailsCard.helpers({
@@ -37,11 +43,8 @@ Template.engagementDetailsCard.helpers({
 	},
 	getEngineerData : function (id) {
 		var eng = Engineers.findOne({_id : id});
+		Session.set("popupAdded",eng);
 		if (!eng) {return ;}
-		if (popupTimer) { clearTimeout(popupTimer); }
-		popupTimer = setTimeout(function() {
-		$('.ui.avatar.image').popup();
-	}, 500);
 		return  { 
 					name : eng.name,
 				  	picture : eng.picture 
@@ -50,6 +53,7 @@ Template.engagementDetailsCard.helpers({
 	getDamData : function (id) {
 		var dam = Dams.findOne({_id : id});
 		if (!dam) { return ;}
+		Session.set("popupAdded",dam);
 		return  { 
 					name : dam.name,
 				  	picture : dam.picture 

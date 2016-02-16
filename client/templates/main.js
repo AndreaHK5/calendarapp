@@ -163,7 +163,10 @@ if (Meteor.isClient) {
     var calendar = $("#calendar-container");
     var bottomTray = $("#dayengagements-container");
     var usableAreaHeight = getUsableHeight();
-    if (bottomTray.length == 0) { return ; }
+    if (bottomTray.length == 0) { 
+      calendar.css("height", usableAreaHeight);
+      return ; 
+    }
     var cardsTotalHeight = $("#cards-container").height();
     var bottomTrayHeight = Math.min(usableAreaHeight / 2, cardsTotalHeight );
     var overflow = bottomTrayHeight == cardsTotalHeight ? "hidden" : "scroll";

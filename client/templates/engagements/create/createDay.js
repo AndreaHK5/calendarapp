@@ -70,18 +70,22 @@ Template.engagementsCreateDay.events({
         sAlert.error("Return before going? Dr Who is interested now!");
         return;
       }
-      Session.set("endDate", this.date);
+      prepareEngagementDetail(this.date);
       sAlert.info("Back on " + moment(this.date).format("dddd MMM DD") + " sounds cool.");
-        // set engagementBasic Details
-      Session.set("engagementDetails", {
-        startDate : Session.get("selectedStartDate"),
-        endDate : Session.get("selectedEndDate"),
-        goals : []
-      });
     }
   },
   "click .same-return-day" : function (event) {
-    Session.set("endDate", Session.get("startDate"));
+    prepareEngagementDetail(Session.get("startDate"));
     sAlert.info("One day gig on " + moment(this.date).format("dddd MMM DD") + " will be.");
   },
 });
+
+// set engagementBasic Details
+function prepareEngagementDetail(date) {
+  Session.set("endDate", date);
+  Session.set("engagementDetails", {
+    startDate : Session.get("selectedStartDate"),
+    endDate : date,
+    goals : []
+  });  
+}
