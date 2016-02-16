@@ -1,12 +1,8 @@
 Template.engagements.onRendered(function () {
 	Session.set("createEngagementMode", false);	
-	mainHelpers.resetSessionForDash();
 });
 
 Template.engagements.helpers({
-	showDayEventsDetail : function () {
-		return Session.get("dayForEventsDetail");
-	},
 	isLoggedInUser : function () {
 		return Meteor.user();
 	},
