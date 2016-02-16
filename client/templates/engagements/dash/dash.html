@@ -1,34 +1,3 @@
 <template name="engagementsDash">
-	{{#if isLoggedInUser}}
-		<div class="circular ui icon big button create-engagement-toggle">
-			{{#if createModeOn}}
-				<i class="calendar icon"> </i>
-			{{else}}
-				<i class="plus icon"> </i>
-			{{/if}}
-		</div>	
-	{{/if}}
-  	{{#if showCalendar}}
-  	  {{> engagementsCalendar}}
-  	{{/if}}	
 
-	{{#if createModeOn}}
-	    {{#if showCalendar}}
-  		{{else}}
-		    <div id="animationPlaceholder"></div>
-		    {{#if detailsMissing}}
-		      {{> engagementsCreateDetails}}
-		    {{else}}
-		      <div class="eight wide column centered">
-		        {{> engagementDetailsCard getEventDetails}}
-		      </div>
-		      {{> engagementsCreateConfirm}}
-		    {{/if}}
-	  	{{/if}}
-	{{else}}
-		{{> engagementsDashLegend}}	
-		{{#if showDayEventsDetail}}
-			{{> engagementsDashListPanel}}
-		{{/if}}
-	{{/if}}
 </template>

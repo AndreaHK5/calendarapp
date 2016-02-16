@@ -198,5 +198,18 @@ if (Meteor.isClient) {
 
     TweenMax.to($('.day-box'), 0.8, { ease: Power4.easeOut, height : requiredHeight });
   }
+
+  mainHelpers.scrollPlaceholderOut = function() {
+    var deferred = Promise.defer();
+      var myDiv = $("#animationPlaceholder");
+      var time = 800; //ms
+      TweenLite.to(myDiv,time/1000, {
+        height: $(window).height(),
+        onComplete : function () {
+          deferred.resolve();
+        }
+      });
+     return deferred.promise;
+  }
 }
 

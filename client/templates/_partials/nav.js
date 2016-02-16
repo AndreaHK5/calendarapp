@@ -3,7 +3,7 @@ Template.nav.helpers({
     return Router.current().route.getName() == "engagementsCreate";
   },
   inEngagementsDash : function () {
-    return Router.current().route.getName() == "engagementsDash";
+    return Router.current().route.getName() == "engagements";
   }
 });
 
