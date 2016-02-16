@@ -17,7 +17,7 @@ Template.engagementsDash.helpers({
 		} else {
 			mainHelpers.resetSessionForDash();
 			setTimeout(function() {
-				mainHelpers.adjustdayBoxHeight();
+				mainHelpers.adjustDayBoxHeight();
 			}, 200);
 		}
 		return createMode;

@@ -10,13 +10,13 @@ Template.engagementsCalendar.onRendered(function () {
   },10)
 
   setTimeout(function() {
-    mainHelpers.adjustdayBoxHeight();
-  }, 300);
+    mainHelpers.adjustDayBoxHeight();
+  }, 1000);
 
   // register handler on resize boxes in order to fit all bubbles
   // and to resize the calendar and tray 
   $(window).resize(function(evt) {
-    mainHelpers.adjustdayBoxHeight();
+    mainHelpers.adjustDayBoxHeight();
     mainHelpers.resizeTrayAndCalendar();
   });
 

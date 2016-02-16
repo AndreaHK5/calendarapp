@@ -186,7 +186,7 @@ if (Meteor.isClient) {
     TweenLite.to(calendar, slidingTime, {scrollTo:{y:topY}, ease:Power2.easeOut});
   }
 
-   mainHelpers.adjustdayBoxHeight = function() {
+   mainHelpers.adjustDayBoxHeight = function() {
     var standardDayBoxHeight = 98;
     var requiredHeight = lodash.reduce($('.day-box'), 
       function (heightRequired, e) { 
