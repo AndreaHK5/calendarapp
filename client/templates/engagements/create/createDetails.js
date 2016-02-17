@@ -138,8 +138,9 @@ Template.engagementsCreateDetails.events({
     if(!$('.ui.form').form('is valid')) { return };
 
     // in case there is a value in the goals, this needs to be included in the engagement object
-
-    Session.set("formValid", true);
+    mainHelpers.scrollPlaceholderOut().then(function () {
+      Session.set("formValid", true);              
+    });
   }
 });
 

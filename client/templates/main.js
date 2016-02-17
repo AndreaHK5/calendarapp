@@ -144,7 +144,7 @@ if (Meteor.isClient) {
     if (bottomTray.length == 0 ) { 
       return Promise.resolve(); 
     }
-    var deferred = Promise.defer();
+    var deferred = jQuery.Deferred();
     var usableAreaHeight = getUsableHeight();
     TweenMax.to(calendar, slidingTime, { height : usableAreaHeight});
     var legend = $('#engagements-legend');
@@ -156,7 +156,7 @@ if (Meteor.isClient) {
         deferred.resolve();
       }
     });
-    return deferred.promise;
+    return deferred.promise();
   }
 
   mainHelpers.resizeTrayAndCalendar = function () {
@@ -203,7 +203,7 @@ if (Meteor.isClient) {
   }
 
   mainHelpers.scrollPlaceholderOut = function() {
-    var deferred = Promise.defer();
+    var deferred = jQuery.Deferred();
       var myDiv = $("#animationPlaceholder");
       var time = 800; //ms
       TweenLite.to(myDiv,time/1000, {
@@ -212,7 +212,7 @@ if (Meteor.isClient) {
           deferred.resolve();
         }
       });
-     return deferred.promise;
+     return deferred.promise();
   }
 }
 
