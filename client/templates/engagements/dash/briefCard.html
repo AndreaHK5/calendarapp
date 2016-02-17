@@ -17,20 +17,20 @@
 				<i class="right chevron icon"></i>
 			</div>
     	</div>
-	    <div class="header">
+	    <div class="header open-details-modal">
 	    	<div class="meta">
 	    		{{type}}
 	    	</div>
 	    	{{title}} 
 	    </div>
-	    <div class="meta"> 
+	    <div class="meta open-details-modal"> 
 		    <span class="category">{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</span>
 	    </div>
-	    <div class="description card-description">
+	    <div class="description card-description open-details-modal">
 			{{getGameTitleProduct}} ({{getGameTitlecCodename}})  
 	    </div>
 	  </div>
-	  <div class="extra content">
+	  <div class="extra content open-details-modal">
 		{{#each engineersGoing}}
 			{{#with getEngineerData id}}
 				<img class="ui avatar image" src="/images/{{picture}}" data-title="{{name}}" alt="...">
@@ -42,4 +42,16 @@
 		    {{/with}}
 	    </div>
 	  </div>
+
+	<div class="ui basic modal details-modal" id="{{_id}}">
+	  	<i class="close icon"></i>
+		<div class="header">
+	    	Engagement Details
+	  	</div>
+	  	<div class="image content">
+	    	<div class="description details-card-modal" style="background-color: {{getEngagementTypeColor type}};">
+	      		{{> engagementDetailsCard}}
+	    	</div>
+	  	</div>
+	</div>
 </template>

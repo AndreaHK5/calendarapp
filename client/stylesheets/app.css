@@ -240,7 +240,11 @@ body {
 #cards-container {
   padding: 0px 10px;
   margin-top: 0px !important;
-}  
+}
+
+#cards-container .card .content {
+  cursor: pointer; 
+}
 
 /*engagements day style*/
 

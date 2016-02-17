@@ -73,7 +73,7 @@ Template.engagementsDashListPanel.events({
 		var engagement = Engagements.findOne(engagementId);
 		Session.set("engagementToDelete", engagement);
 
-		$('.basic.modal').modal({ 
+		$('.delete-engagement-modal').modal({ 
 			onApprove : removeEngagementCallback,
 			onDeny : function () {
 				return true;

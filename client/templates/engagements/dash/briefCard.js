@@ -44,5 +44,8 @@ Template.engagementBriefCard.helpers({
 Template.engagementBriefCard.events({
 	"click .detail-page" : function () {
 		Router.go('engagementDetailCard', { _id : this._id});
+	},
+	"click .open-details-modal" : function () {
+		$('#' + this._id + '.details-modal').modal('show');
 	}
 })
