@@ -1,6 +1,7 @@
 Template.engagementDetailsCard.onRendered(function () {
 	Meteor.subscribe("engineers");
 	Meteor.subscribe("dams");
+	Meteor.subscribe("gameTitles");
 	this.autorun(function () {
 		Session.get("popupAdded");
 		Tracker.afterFlush(function () {

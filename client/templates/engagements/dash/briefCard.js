@@ -40,3 +40,9 @@ Template.engagementBriefCard.helpers({
 		return Meteor.user() && this.createdBy == Meteor.userId();
 	},
 });
+
+Template.engagementBriefCard.events({
+	"click .detail-page" : function () {
+		Router.go('engagementDetailCard', { _id : this._id});
+	}
+})
