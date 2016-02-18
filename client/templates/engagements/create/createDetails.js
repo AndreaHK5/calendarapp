@@ -132,8 +132,10 @@ Template.engagementsCreateDetails.events({
     event.preventDefault();
     clearValidations();
 	},
-  "click .confirm-details" : function (event) { 
-    addToGoals($('input[name=goals]').val());
+  "click .confirm-details" : function (event) {
+    var inputValue = $('input[name=goals]').val();
+    (inputValue == "" || inputValue == undefined) ? "" : addToGoals(inputValue); 
+
     $('.ui.form').form('validate form');
     if(!$('.ui.form').form('is valid')) { return };
 
