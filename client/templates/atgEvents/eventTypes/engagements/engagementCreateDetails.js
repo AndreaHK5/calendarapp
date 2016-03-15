@@ -43,20 +43,20 @@ Template.engagementsCreateDetails.helpers({
 
         // getting partners that are either pubs of developers for the product
         var activePartners = _.uniq(
-            _.concat(
+            lodash.concat(
                 products.findOne({_id : relationshipIds.productId})["developers"],
                 products.findOne({_id : relationshipIds.productId})["publishers"])
         );
 
         var selectedPartner = Session.get("eventRelationshipIds").partnerId;
-        if ( selectedPartner && !_.includes(activePartners, selectedPartner)) {
+        if ( selectedPartner && !lodash.includes(activePartners, selectedPartner)) {
             $(".ui.dropdown select[name='partner']").dropdown("restore defaults");
         }
 
         return partners.find({ _id : {$in : activePartners}});
     },
     getRoleForPartner : function (optionid) {
-        return _.includes(products.findOne({_id : Session.get("eventRelationshipIds").productId})["developers"], optionid) ? "Developer" : "Publisher";
+        return lodash.includes(products.findOne({_id : Session.get("eventRelationshipIds").productId})["developers"], optionid) ? "Developer" : "Publisher";
     },
     getAllEngineers : function () {
         var engineerType = personTypes.findOne({ title : "Engineer"});

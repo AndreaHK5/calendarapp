@@ -57,8 +57,11 @@
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/import_globals.js" />
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.2.3/web.browser/webapp_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/console.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui/jquery-ui.css" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-sham.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-shim.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/mizzao_build-fetcher/0.2.0/web.browser/packages/mizzao:build-fetcher.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.5.0/web.browser/upstream/css/font-awesome.css" />
         <item url="file://$USER_HOME$/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
         <item url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.11.1/web.browser/moment.js" />
@@ -246,8 +249,11 @@
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/import_globals.js" />
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.2.3/web.browser/webapp_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/console.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui/jquery-ui.css" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-sham.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-shim.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/mizzao_build-fetcher/0.2.0/web.browser/packages/mizzao:build-fetcher.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.5.0/web.browser/upstream/css/font-awesome.css" />
       <root url="file://$USER_HOME$/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
       <root url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.11.1/web.browser/moment.js" />
