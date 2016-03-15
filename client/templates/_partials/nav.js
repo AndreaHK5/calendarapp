@@ -1,10 +1,5 @@
 Template.nav.helpers({
-  inEngagementCreate : function () {
-    return Router.current().route.getName() == "engagementsCreate";
-  },
-  inEngagementsDash : function () {
-    return Router.current().route.getName() == "engagements";
-  }
+
 });
 
 Template.nav.onRendered(function(){

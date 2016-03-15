@@ -1,0 +1,40 @@
+@import "colors";
+
+@chart-size: 212px;
+@chart-gutter: 5px;
+
+.text-center{
+  text-align: center !important;
+}
+
+.pull-left{
+  float: left;
+}
+
+.pull-right{
+  float: right;
+}
+
+.clear-fix{
+  clear: both;
+}
+
+[contenteditable=true]:empty:not(:focus):before{
+  content:attr(data-ph);
+  color:grey;
+  font-style:italic;
+}
+
+[contenteditable=true] {
+  background: #E6E6E6;
+  padding: 0 10px;
+  border-radius: 3px;
+  /*box-shadow: 0 1px 5px rgba(0,0,0,0.15) inset;*/
+  outline: none;
+  border: 2px solid transparent;
+}
+
+[contenteditable=true]:focus {
+  background: #FFF;
+  border-color: @blueTextColor;
+}

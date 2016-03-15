@@ -1,0 +1,26 @@
+<template name="atgEvents">
+    {{#if showCreateModeToggle}}
+        {{#if createModeOn}}
+        {{else}}
+            <div class="circular ui icon big button create-engagement-toggle">
+                <i class="plus icon"> </i>
+            </div>
+        {{/if}}
+    {{/if}}
+
+    {{#if showCalendar}}
+        {{#if createModeOn}}
+            <div id="select-type-container">
+                {{> eventsCreateSelectType}}
+            </div>
+        {{/if}}
+        <div id="select-dates-container">
+            {{> DynamicTemplate template=getCalendarTemplate}}
+        </div>
+    {{/if}}
+    {{#if createModeOn}}
+        {{> eventCreate}}
+    {{else}}
+        {{> engagementsDash}}
+    {{/if}}
+</template>

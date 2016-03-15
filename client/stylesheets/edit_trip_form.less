@@ -1,0 +1,169 @@
+@import "lib/variables";
+@import "lib/lesshat";
+@import "lib/text";
+
+.trip-report-pane {
+  margin-top: 21px;
+}
+
+.trip-detail-edit{
+
+    div.content{
+      margin-top: 17px;
+    }
+}
+
+#trip-list{
+  margin-top: 21px;
+}
+
+.circle-button-label{
+  line-height: 36px;
+}
+
+#detail-report{
+  position: absolute;
+  right: 9px;
+  top: 13px;
+  height: 40px;
+  width: 34px;
+  border-radius: 50%;
+}
+
+#detail-report .setting.icon{
+  margin-left: -16px;
+  margin-top: 4px;
+}
+
+#detail-report .caption{
+  margin-left: -19px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(0,0,0,0.34);
+}
+
+#edit-trip{
+  margin-top: 21px;
+
+  .action-section{
+    .button{
+      position: absolute;
+      top: 22px;
+      right: 32px;
+    }
+  }
+
+  .image-gallery{
+    height: 144px;
+
+  }
+
+  .actions{
+    margin-top: 16px;
+  }
+}
+
+.action-section{
+  min-height: 150px;
+  margin-top: 0;
+}
+#goals .circle-button-label{
+  border-top: 5px solid @blueHeaderColor;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+#followup-items .circle-button-label{
+  border-top: 5px solid @redHeaderColor;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+#wins .circle-button-label{
+  border-top: 5px solid @greenHeaderColor;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.checkbox{
+  display: inline-block;
+}
+
+.delete-button-container{
+  position: relative;
+  display: inline-block;
+
+  .delete {
+    font-weight: bold;
+    background: none;
+    font-size: 1em;
+    border: none;
+  }
+}
+
+.uploads-container{
+  width: 100%;
+  min-height: 150px;
+  max-height: 300px;
+
+  overflow-y: auto;
+  border: 1px solid rgba(33,33,33,0.34);
+}
+
+.uploads-container img{
+  padding-right: 8px;
+}
+
+.uploads-container img:last-child{
+  padding-right: 0;
+}
+
+.panel-body{
+  overflow: hidden;
+}
+
+.jqDropZone {
+  background: lightgrey;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+.jqDropZone.in {
+  width: 600px;
+  height: 200px;
+  line-height: 200px;
+  font-size: larger;
+}
+.jqDropZone.hover {
+  background: lawngreen;
+}
+.jqDropZone.fade {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+}
+
+.image-container{
+  display: inline-block;
+  position: relative;
+
+  .image-delete-button{
+    position: absolute;
+    height: 21px;
+    width: 21px;
+    top: 8px;
+    right: 8px;
+    font-size: 1.5em;
+    line-height: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(33,33,33,0.55);
+    border-radius: 50%;
+    z-index:100;
+  }
+}

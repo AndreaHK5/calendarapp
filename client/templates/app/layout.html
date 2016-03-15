@@ -1,7 +1,9 @@
 <template name="layout">
-  <div class="page-container">
-    {{> nav}}
-    {{> yield "mainPane"}}
-    {{> sAlert}}
-  </div>   
+    <div class="pusher">
+        {{> nav}}
+        <div class="ui grid app">
+            {{> yield }}
+        </div>
+        {{> sAlert}}
+    </div>
 </template>

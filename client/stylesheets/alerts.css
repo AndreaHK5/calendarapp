@@ -5,6 +5,7 @@
 
 .s-alert-info {
     background-color: #F27749;
+    z-index: 999999;
 }
 
 .s-alert-warning {
@@ -13,9 +14,4 @@
 
 .s-alert-error {
   background-color: #D41400;
-}
-
-.s-alert-top {
-	height: 40px;
-	padding-top: 7px;
 }

@@ -1,0 +1,69 @@
+@import "lib/variables";
+
+body {
+  background-color: #fafafa;
+
+  .ui.fixed.menu, .ui[class*="top fixed"].menu{
+    background: #1b1c1d url('img/Logo_Three.png') no-repeat center;
+    height: 72px;
+    color: #fefefe;
+  }
+
+  .pusher {
+      #top-bar {
+        z-index:10000;
+
+        #hamburger {
+          font-size: 21px;
+          color: #fafafa;
+
+          &:hover {
+            color: white;
+          }
+
+          i {
+            line-height: 66px;
+            background-color: transparent;
+          }
+        }
+
+        .dropdown {
+          margin-right: -12px;
+          font-size: 15px;
+        }
+      }
+    }
+}
+
+#iron-router-progress {
+  background-color: @grey;
+  box-shadow: 0 0 5px @grey;
+}
+
+.sidebar{
+  background-color: rgba(0,0,0,0.34);
+}
+
+.fa-error{
+  color: @redTextColor;
+}
+
+.fa-success{
+  color: @greenTextColor;
+}
+
+.loading-message {
+  color: #fefefe;
+  font-size: 25px;
+  font-weight: 300;
+  font-family: sans-serif;
+}
+
+.sk-spinner-rotating-plane.sk-spinner {
+  background-color: #fff;
+}
+
+.pg-loading-screen .pg-loading-html{
+  margin-top: 13px;
+}
+

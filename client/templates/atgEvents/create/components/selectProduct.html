@@ -1,0 +1,22 @@
+<template name="atgEventSelectProduct">
+    <div class="two fields">
+        <div class="field">
+            <label>Product</label>
+            <select class="ui fluid search selection dropdown" name="product">
+                <option value="">Product</option>
+                {{#each getAllProducts}}
+                    <option value="{{_id}}">{{title}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="field">
+            <label>Codename</label>
+            <select class="ui fluid search selection dropdown" name="codename">
+                <option value="">Codename</option>
+                {{#each getAllProducts}}
+                    <option value="{{_id}}">{{codeName}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+</template>

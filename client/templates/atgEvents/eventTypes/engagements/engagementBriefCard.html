@@ -1,0 +1,28 @@
+<template name="engagementBriefCard">
+    <div class="header open-details-modal">
+        {{eventDetails.title}}
+        <div class="meta">
+            {{eventDetails.type}}
+        </div>
+    </div>
+    {{#with getProduct}}
+        <div class="description card-description open-details-modal">
+    	    {{title}} ({{codeName}})
+        </div>
+    {{/with}}
+    <div class="description card-description open-details-modal">
+        {{getPartnerCompanyName}}
+    </div>
+    <div class="extra content open-details-modal">
+        {{#each eventDetails.engineersGoing}}
+			{{#with getPersonData id}}
+				<img class="ui avatar image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}" alt="...">
+			{{/with}}
+		{{/each}} Engs
+		<div class="right floated author">
+			{{#with getPersonData eventDetails.dam.id}}
+				<img class="ui avatar image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}" alt="...">	Dam
+		    {{/with}}
+	    </div>
+    </div>
+</template>

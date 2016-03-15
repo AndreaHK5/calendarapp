@@ -1,0 +1,53 @@
+<template name="eventsCreateNavBar">
+    <div id="create-nav-bar">
+        <div class="message">
+            CREATE MODE
+            {{#if getSelectedType}}
+                <div class="ui labels">
+                    <div class="ui label" style="background-color: {{getEngagementTypeColor getSelectedType }};">
+                        {{getSelectedType}}
+                        {{#if getEndDate}}{{else}}
+                            <i class="icon close reset-selected-type"></i>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+            {{# if twoDatesEvent}}
+                {{#if getStartDate}}
+                    <div class="ui labels">
+                        <div class="ui label " style="background-color: {{getEngagementTypeColor getSelectedType}};">
+                            {{getFormattedDate getStartDate}}
+                            {{#if getEndDate}}
+                                <i class="long arrow right icon"></i>{{getFormattedDate getEndDate}}
+                                {{#if formValid}}{{else}}
+                                    <i class="icon close reset-dates"></i>
+                                {{/if}}
+                            {{else}}
+                                <i class="icon close reset-start-type"></i>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{else}}
+                {{#if getEndDate}}
+                    <div class="ui label " style="background-color: {{getEngagementTypeColor getSelectedType}};">
+                        Q: {{getQuarter getEndDate}} Y : {{getYear getEndDate}}
+                        {{#if formValid}}{{else}}
+                            <i class="icon close reset-dates"></i>
+                        {{/if}}
+                    </div>
+                {{/if}}
+            {{/if}}
+            {{#if formValid}}
+                <div class="ui labels">
+                    <div class="ui label " style="background-color: {{getEngagementTypeColor getSelectedType}};">
+                        Details<i class="icon close reset-details"></i>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        <div class="close-create-mode">
+            TURN OFF
+        </div>
+    </div>
+</template>

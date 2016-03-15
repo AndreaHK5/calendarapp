@@ -1,0 +1,19 @@
+<template name="atgEventsMonth">
+  <h3 class="month-header">
+    {{getMonth date}} {{getYear date}}
+  </h3> 
+  <div class="ui seven column grid day-container">
+    {{#each getDays}}
+      <div class="column">
+    		<div class="one column grid">
+	    		{{#if date}}
+	        		{{> DynamicTemplate template=getDayTemplate}}	    		 	
+				  {{else}}
+				    <!-- if no day is provided -->
+				    <div></div>
+				  {{/if}}
+    		</div>
+    	</div>
+    {{/each}}
+  </div>
+</template>

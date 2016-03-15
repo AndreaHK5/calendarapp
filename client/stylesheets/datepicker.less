@@ -1,0 +1,214 @@
+.datepicker {
+  height: 144px;
+  width: 144px;
+  background-color: #7e8aa2;
+  color: #efefef;
+  text-align: center;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  .day-name-container{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+
+    height: 17%;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .day-container{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: -29.5%;
+
+    height: 46%;
+    width: 163%;
+
+    .previous,
+    .next {
+      width: 20%;
+      height: 55%;
+      margin-top: 2%;
+
+      text-align: center;
+      color: #ff9800;
+      opacity: 0;
+
+      &:hover{
+        cursor: pointer;
+      }
+
+      i{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 2.5em;
+      }
+
+    }
+
+    .next{
+      margin-left: 0;
+
+      i{
+        justify-content: flex-start;
+      }
+    }
+
+    .day{
+      width: 50.5%;
+      font-size: 4.5em;
+      margin-top: -0.36%;
+    }
+  }
+
+  .month-name-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: -29.5%;
+    height: 17%;
+    width: 163%;
+
+    .previous,
+    .next {
+      width: 20%;
+      height: 100%;
+      margin-top: -7.5px;
+
+      text-align: center;
+      color: #ff9800;
+      opacity: 0;
+
+      &:hover{
+        cursor: pointer;
+      }
+
+      i{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 2.5em;
+      }
+
+    }
+
+    .next{
+      margin-left: 0;
+
+      i{
+        justify-content: flex-start;
+      }
+    }
+
+    .month-name{
+      width: 51.5%;
+      font-size: 1.5em;
+      margin-left: -3.5px;
+    }
+
+
+  }
+
+  .year-container{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+
+    height: 20%;
+    width: 163%;
+    margin-left: -29.5%;
+
+    .previous,
+    .next {
+      width: 20%;
+      height: 100%;
+      margin-top: -4.5%;
+
+      text-align: center;
+      color: #ff9800;
+      opacity: 0;
+
+      &:hover{
+        cursor: pointer;
+      }
+
+      i{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 2.5em;
+      }
+
+    }
+
+    .next{
+      margin-left: 0;
+
+      i{
+        justify-content: flex-start;
+      }
+    }
+
+    .year-name{
+      width: 50.5%;
+      margin-top: -2%;
+      font-size: 1.125em;
+    }
+
+  }
+}

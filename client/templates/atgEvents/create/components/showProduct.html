@@ -1,0 +1,15 @@
+<template name="atgEventShowProduct">
+    <h3 class="ui horizontal divider">Game Title</h3>
+    <div class="ui grid">
+        {{#with getProduct}}
+            <div class="eight wide column">
+                <h5>Product</h5>
+                <p>{{title}}</p>
+            </div>
+            <div class="eight wide column">
+                <h5>Codename</h5>
+                <p>{{codeName}}</p>
+            </div>
+        {{/with}}
+    </div>
+</template>

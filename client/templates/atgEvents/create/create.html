@@ -1,0 +1,30 @@
+<template name="eventCreate">
+    {{> eventsCreateNavBar }}
+    {{#if datesPresent}}
+        {{#if detailsMissing}}
+            <div id="event-details-container" class="ui grid sixteen wide column engagement-details-form">
+                <div class="ten wide column centered">
+                    <form class="ui form">
+                        {{> DynamicTemplate template=getCreateTemplate}}
+                        <div class="confirm-jumbo">
+                            <div class="styled-button reset-dates" tabindex="0">CHANGE DATES</div>
+                            <div class="ui styled-button confirm-details" tabindex="0">PROCEED</div>
+                        </div>
+                        <div class="ui error message"></div>
+                    </form>
+                </div>
+            </div>
+        {{else}}
+            <div id="confirm-container">
+                {{> DynamicTemplate template=getConfirmTemplate data=getEventDetails}}
+                <div id="confirm-details" class="confirm-jumbo">
+                    <div class="ui bottom attached">
+                        <div class="styled-button reset-dates" tabindex="0">START OVER</div>
+                        <div class="styled-button reset-details" tabindex="0">BACK</div>
+                        <div class="styled-button save-engagement" tabindex="0">BOOK</div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+</template>

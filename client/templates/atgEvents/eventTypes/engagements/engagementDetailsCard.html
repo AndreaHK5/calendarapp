@@ -1,0 +1,57 @@
+<template name="engagementDetailsCard">
+    <div class="ui grid">
+        <div class="ten wide column centered">
+            <h2 >{{getAtgEventTypeName atgEventTypeId}}</h2>
+            <h3 class="ui horizontal divider">Dates</h3>
+            <p>{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</p>
+            {{> atgEventShowProduct}}
+            <h3 class="ui horizontal divider">Partner</h3>
+                <h5>Developer</h5>
+                <p>{{getPartnerCompanyName}}</p>
+            <h3 class="ui horizontal divider">Engagement</h3>
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <h5>Title</h5>
+                    <p>{{eventDetails.title}}</p>
+                </div>
+                <div class="eight wide column">
+                    <h5>Type</h5>
+                    <p>{{eventDetails.type}}</p>
+                </div>
+                <div class="ten wide column">
+                    <h5>Description</h5>
+                    <p>{{eventDetails.description}}</p>
+                </div>
+                <div class="five wide column">
+                    <h5>Goals</h5>
+                    <div class="ui divided divided list goals-container">
+                        {{#each getGoals}}
+                            <div class="item">{{goal}}</div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            <h3 class="ui horizontal divider">Team</h3>
+            <div class="ui grid">
+                <div class="three wide column">
+                    Engineer
+                </div>
+                <div class="thirteen wide column ui tiny images">
+                    {{#each eventDetails.engineersGoing}}
+                        {{#with getPersonData id}}
+                            <img class="ui tiny circular image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}">
+                        {{/with}}
+                    {{/each}}
+                </div>
+                <div class="three wide column">
+                    Dam
+                </div>
+                <div class="thirteen wide column">
+                    {{#with getPersonData eventDetails.dam.id}}
+                        <img class="ui tiny circular image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}">
+                    {{/with}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

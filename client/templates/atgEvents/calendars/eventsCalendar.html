@@ -1,0 +1,41 @@
+<template name="atgEventsCalendar">
+    <div id="weekday-navbar" class="row">
+        <div class="sixteen wide column">
+            <div class="ui seven column grid">
+                <div class="column">Sun</div>
+                <div class="column">Mon</div>
+                <div class="column">Tue</div>
+                <div class="column">Wed</div>
+                <div class="column">Thu</div>
+                <div class="column">Fri</div>
+                <div class="column">Sat</div>
+            </div>
+
+        </div>
+        <div class="calendar-navigation {{getActiveClass}}">
+            <div class="months-arrows">
+                <span class="scroll-prev-month scroll-arrow {{#if firstMonthHovered}} scroll-arrow-inactive {{/if}}">
+                  <i class="chevron up icon"></i>
+                </span>
+                <span class="scroll-next-month scroll-arrow">
+                  <i class="chevron down icon"></i>
+                </span>
+            </div>
+            <div class="month-helper">
+                <h3>
+                    {{getShortMonth}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div  id="calendar-container" class="{{getActiveClass}} row">
+        {{#each months}}
+            <div class="sixteen wide column hovering" id="{{getUnix date}}">
+                {{> atgEventsMonth date=date}}
+            </div>
+        {{/each}}
+        <div class="sixteen wide column">
+            <div class="add-month">SHOW MORE DATES</div>
+        </div>
+    </div>
+</template>

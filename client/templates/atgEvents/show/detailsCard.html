@@ -1,0 +1,11 @@
+<template name="detailsCard">
+    <div id="event-details-container">
+        {{> DynamicTemplate template=getDetailsCardTemplate}}
+        <div class="confirm-jumbo">
+            <div class="ui bottom attached">
+                <div class="styled-button back-to-calendar" tabindex="0">BACK</div>
+                <div class="styled-button edit-event" tabindex="0">EDIT</div>
+            </div>
+        </div>
+    </div>
+</template>

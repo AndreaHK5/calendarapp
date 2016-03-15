@@ -1,0 +1,34 @@
+<template name="atgQuarterCalendar">
+    <div class="quarter-calendar">
+        <form class="ui form">
+            <h4 class="ui dividing header">Launch Date</h4>
+            <div class="two fields">
+                <div class="field quarter-select">
+                    <label>Quarter</label>
+                    <div class="ui grid">
+                        <i class="icon minus minus-quarter"></i>
+                        <div>
+                            <div class="quarter"></div>
+                        </div>
+                        <i class="icon plus add-quarter"></i>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Year</label>
+                    <div class="ui grid">
+                        <i class="icon minus minus-year"></i>
+                        <div>
+                            <div class="year"></div>
+                        </div>
+                        <i class="icon plus add-year"></i>
+                    </div>
+                </div>
+            </div>
+            {{#if showProceedButton}}
+                <div class="confirm-jumbo">
+                    <div class="ui styled-button confirm-date" tabindex="0">PROCEED</div>
+                </div>
+            {{/if}}
+        </form>
+    </div>
+</template>
