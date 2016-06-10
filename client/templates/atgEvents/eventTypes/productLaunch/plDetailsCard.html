@@ -1,15 +1,11 @@
 <template name="plDetailsCard">
-    <div class="ui grid">
-        <div class="ten wide column centered">
-            <h2>{{getAtgEventTypeName atgEventTypeId}}</h2>
-            <h3 class="ui horizontal divider">Date</h3>
-            <p>Quarter: {{getQuarter startDate}}</p>
-            <p>Year: {{getYear startDate}}</p>
-            {{> atgEventShowProduct}}
-            <h3 class="ui horizontal divider">Message</h3>
-            {{eventDetails.message}}
-        </div>
-    </div>
+    <h2>{{getAtgEventTypeName atgEventTypeId}}</h2>
+    <h3 class="ui horizontal divider">Date</h3>
+    <p>Quarter: {{getQuarter startDate}}</p>
+    <p>Year: {{getYear startDate}}</p>
+    {{> atgEventShowProduct}}
+    <h3 class="ui horizontal divider">Message</h3>
+    {{eventDetails.message}}
 </template>
 
 

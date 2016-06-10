@@ -1,0 +1,12 @@
+<template name="spacesSelector">
+    <div>
+        <span class="filter-title">Select a space</span>
+    </div>
+    <div>
+        <select id="supported-spaces" name="supportedSpaces" multiple="" class="ui fluid search dropdown" onChange="{{this.onChange}}">
+            {{#each spaces}}
+                <option value="{{this.Id}}">{{this.Name}}</option>
+            {{/each}}
+        </select>
+    </div>
+</template>

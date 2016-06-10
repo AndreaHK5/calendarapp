@@ -1,46 +1,25 @@
-<template name="briefCard">
+<template name="atgEventBriefCard">
     <div class="card" style="background-color: {{getEngagementTypeColor atgEventTypeId}};">
         <div class="content">
-            <div class="right floated">
-                <div class="navigation-icon">
-                    {{#if isSelectedEvent _id}}
-                        <i class="remove circle icon unselect-engagement"></i>
-                    {{else}}
-                        <i class="calendar icon select-engagement"></i>
-                    {{/if}}
-                </div>
-                {{#if isCreator}}
-                    <div class="navigation-icon delete delete-engagement">
-                        <i class="trash icon"></i>
+            {{#if onDash}}
+                <div class="right floated">
+                    <div class="navigation-icon">
+                        {{#if isSelectedEvent _id}}
+                            <i class="remove circle icon unselect-engagement"></i>
+                        {{else}}
+                            <i class="calendar icon select-engagement"></i>
+                        {{/if}}
                     </div>
-                    <div class="navigation-icon delete edit-event">
-                        <i class="edit icon"></i>
-                    </div>
-                {{/if}}
-                <div class="navigation-icon detail-page">
-                    <i class="right chevron icon"></i>
                 </div>
-            </div>
-            <div class="header open-details-modal">
+            {{/if}}
+            <div class="header detail-page">
                 {{getAtgEventTypeName atgEventTypeId}}
             </div>
-            <div class="meta open-details-modal">
-                <span class="category">{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</span>
+            <div class="meta detail-page">
+                <span class="category">{{momentFormatter startDate "ddd MMM DD"}} <i class="long arrow right icon"></i> {{momentFormatter endDate "ddd MMM DD"}}</span>
             </div>
-            <div class="open-details-modal">
+            <div class="detail-page">
                 {{> DynamicTemplate template=getBriefCardTemplate}}
-            </div>
-        </div>
-    </div>
-
-    <div class="ui basic modal details-modal" id="{{_id}}">
-        <i class="close icon"></i>
-        <div class="header">
-            Event Details
-        </div>
-        <div class="image content">
-            <div class="description details-card-modal" style="background-color: {{getEngagementTypeColor atgEventTypeId}};">
-                {{> detailsCard}}
             </div>
         </div>
     </div>

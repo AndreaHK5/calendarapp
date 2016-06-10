@@ -1,55 +1,41 @@
-Template.eventsCreateNavBar.helpers({
+Template.atgEventCreateNavBar.helpers({
+    showTeamSelectionStep : function (){
+        // the entry is false if no template is to show
+        if (!Session.get("newAtgEvent")) {return;}
+        return atgEventsTemplateHelpers.getTemplateForType(Session.get("newAtgEvent").atgEventTypeId, "teamSelection");
+    },
     getSelectedType : function () {
-        if (!Session.get("atgEventTypeId")) {
+        if (!Session.get("newAtgEvent")) {
             return false;
         }
-        return atgEventTypes.findOne({ _id : Session.get("atgEventTypeId")}).type;
+        return atgEventTypes.findOne({ _id : Session.get("newAtgEvent").atgEventTypeId}).type;
     },
-    getStartDate : function () {
-        if (!Session.get("startDate")) {
-            return false;
-        }
-        return Session.get("startDate");
+    pastDateStep : function () {
+        return Session.get("currentStep") > atgEventsTemplateHelpers.createSteps.selectDates;
     },
-    getEndDate : function () {
-        if (!Session.get("endDate")) {
-            return false;
-        }
-        return Session.get("endDate");
+    onTeamStep : function () {
+        return Session.get("currentStep") == atgEventsTemplateHelpers.createSteps.selectTeam;
     },
-    formValid : function () {
-        return Session.get("formValid");
+    onDatesStep : function () {
+        return Session.get("currentStep") == atgEventsTemplateHelpers.createSteps.selectDates;
     },
-    twoDatesEvent : function () {
-        return atgEventsHelpers.getTemplateForType(Session.get("atgEventTypeId"), "calendar") == "atgEventsCalendar";
+    onDetailsStep : function () {
+        return Session.get("currentStep") == atgEventsTemplateHelpers.createSteps.details;
+    },
+    onConfirmStep : function () {
+        return Session.get("currentStep") == atgEventsTemplateHelpers.createSteps.confirm;
     }
-})
+});
 
-
-
-Template.eventsCreateNavBar.events({
+Template.atgEventCreateNavBar.events({
     "click .close-create-mode": function () {
         // TODO make these parallel promises in jquery or somethign that IE can take
-        atgEventsHelpers.hideSelectTypeContainer().then( function() {
-            atgEventsHelpers.scrollOutBottom(
-                $("#event-details-container").add($("#confirm-container"))
-            ).then(function () {
+        TweenMax.to($("#crete-nav-bar"), 0.6, {top: -($("#create-nav-bar").outerHeight()) });
+            atgEventsAnimations.slideOutBottom( $("#slidable-container")).then(function () {
                 sAlert.closeAll();
-                Session.set("createEngagementMode", false);
-                atgEventsHelpers.positionTrayAndCalendar();
+                Router.go("atgEvents");
+                Session.set("slideInTop", true);
+                Session.set("newAtgEvent", undefined);
             })
-        })
     },
-    "click .reset-selected-type": function () {
-        atgEventsHelpers.resetSessionForCreate();
-        // TODO remove this and use a promise for when the DOM Tree is updated
-        setTimeout(function () {
-            atgEventsHelpers.showSelectTypeContainer();
-
-        }, 10);
-    },
-    "click .reset-start-type" : function () {
-        Session.set("startDate", false);
-        sAlert.warning("Let's leave on another day then.")
-    }
-})
+});

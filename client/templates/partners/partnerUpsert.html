@@ -1,0 +1,151 @@
+<template name="partnerUpsert">
+    <div id="slidable-container" class="ten wide computer column centered no-padding no-vertical-overflow">
+        <div id="scroll-container" class="ui padded grid sixteen wide column">
+            <form class="ui form">
+                {{#if isEditing}}
+                    <h2>Edit Partner</h2>
+                {{else}}
+                    <h2>Create Partner</h2>
+                {{/if}}
+                <h4 class="ui dividing header">Details</h4>
+                <div class="two fields">
+                    <div class="field title-field ">
+                        <label>Name</label>
+                        <div class="field" >
+                            <input type="text" placeholder="Company Name" name="companyName">
+                        </div>
+                    </div>
+                    <div class="field codeName-field ">
+                        <label>Description</label>
+                        <div class="field" >
+                            <input type="text" placeholder="Description" name="description">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Roles</label>
+                    <div class="ui list partnerTypeIds">
+                        {{#each getAllPartnerTypes}}
+                            <div class="ui checkbox item" name="{{_id}}">
+                                <input type="checkbox">
+                                <label>{{title}}</label>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <h4 class="ui dividing header">Images</h4>
+                <div class="field">
+                    <label>Upload</label>
+                    <div class="field" >
+                        {{> upload_semanticUI  callbacks=associateToPartner}}
+                        {{#if images}}
+                            <div class="ui segment images">
+                                <div class="ui four column stackable grid padded">
+                                    {{#each images}}
+                                        <div class="column">
+                                            <img class="ui small rounded image" src="{{url}}" />
+                                            <div value="{{url}}" class="circular ui mini button remove-image">
+                                                <i class="remove icon"></i>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+                <h4 class="ui dividing header">Locations</h4>
+                <div class="ui two columns stackable grid padded location-fields">
+                    {{#each getLocations}}
+                        <div class="column location-field">
+                            <div class="circular ui mini button location-delete">
+                                <i class="remove icon"></i>
+                            </div>
+                            <div class="ui fluid card">
+                                <div class="content">
+                                    <div class="field">
+                                        <div class="ui input transparent">
+                                            <input type="text" placeholder="Title" name="location-title">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui input transparent">
+                                            <input type="text" placeholder="Address Line 1" name="location-addressOne">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui input transparent">
+                                            <input type="text" placeholder="Address Line 2" name="location-addressTwo">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui input transparent">
+                                            <input type="text" placeholder="Address Line 3" name="location-addressThree">
+                                        </div>
+                                    </div>
+                                    <div class="three fields field">
+                                        <div class="field ui input transparent">
+                                            <input type="text" placeholder="City" name="location-city">
+                                        </div>
+                                        <div class="field ui input transparent">
+                                            <input type="text" placeholder="State" name="location-state">
+                                        </div>
+                                        <div class="field ui input transparent">
+                                            <input type="text" placeholder="ZIP" name="location-postalCode">
+                                        </div>
+                                    </div>
+                                    <div class="fields">
+                                        <div class="ten wide field ui input transparent">
+                                            <input type="text" placeholder="Country" name="location-country">
+                                        </div>
+                                        <div class="six wide field">
+                                            <div class="ui toggle checkbox right floated">
+                                                <span>Primary?</span>
+                                                <input type="checkbox" name="location[isPrimaryLocation]" tabindex="0" class="hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    <div class="field add-location-container">
+                        <div class="right floated ui primary icon button location-add"><i class="ui icon large plus"></i></div>
+                    </div>
+                </div>
+                <div class="ui eight column centered grid vertical-margins">
+                    <div class="ui button cancel" tabindex="0">CANCEL</div>
+                    {{#if isEditing}}
+                        <div class="ui button primary save" tabindex="0">UPDATE</div>
+                    {{else}}
+                        <div class="ui button primary save" tabindex="0">CREATE</div>
+                    {{/if}}
+                </div>
+                <div class="ui error message vertical-margins"></div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="ui small modal remove-image-modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Remove Image?
+        </div>
+        <div class="content">
+            <img class="ui small rounded image" src="{{pictureToRemove}}" />
+        </div>
+        <div class="actions">
+            <div class="">
+                <div class="ui red big deny button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+                <div class="ui green big approve button">
+                    <i class="trash icon"></i>
+                    Yes
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

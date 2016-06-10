@@ -1,9 +1,10 @@
 <template name="atgEventSelectProduct">
+    <h4 class="ui dividing header">Product</h4>
     <div class="two fields">
         <div class="field">
-            <label>Product</label>
+            <label>Title</label>
             <select class="ui fluid search selection dropdown" name="product">
-                <option value="">Product</option>
+                <option value="">Title</option>
                 {{#each getAllProducts}}
                     <option value="{{_id}}">{{title}}</option>
                 {{/each}}

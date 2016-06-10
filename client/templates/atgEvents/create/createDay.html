@@ -1,41 +1,17 @@
-<template name="eventsCreateDay">
-  <div class="day-box
-    {{getActiveClass}}
-<!-- TODO remove this angular 1 style class -->
-      {{#if isStartDateAndHovered}}
-      {{else}}
-        select-day
-      {{/if}}
-      {{#if isSelectedStartDate}}
-        day-box-selected
-      {{else}}
-        {{#if isBeforeStartSate}}day-before-start{{else}}day-box-unselected{{/if}}
-      {{/if}}
-
-      {{#if isDateInTrip}}day-box-unselected-day{{/if}}">
-
-    <div class="engagement-day-top">
-      {{dayNumber date}}
-      <div class="top-message">
-        {{#if isSelectedStartDate}}
-          {{#if isHoveredDate}} 
-            <!-- {{#if hoverResetStartDate}}  -->
-              <div class="reset-date">Reset?</div>
-            <!-- {{/if}} -->
-          {{else}}
-            <div class="start-date">
-              Start Date
+<template name="atgEventCreateDay">
+    <div class="day-box {{#if isHighlighted}} day-box-selected {{/if}}">
+        {{#if isSelected}}
+            <div class="circular ui remove icon mini button reset-starting-date">
+                <i class="remove icon"></i>
             </div>
-          {{/if}}
-        {{/if}} 
-      </div>
-    </div>
-    <div class="engagement-day-bottom same-return-day">
-        {{#if isSelectedStartDate}}
-          {{#if isHoveredDate}}
-            Same Return day?
-          {{/if}}
         {{/if}}
-    </div>      
-  </div> 
+        <div class="day-box-top">
+            {{dayNumber date}}
+        </div>
+        {{#if isSelected}}
+            <div class="day-box-bottom {{#if isHovererd}}highlight{{/if}} same-return-day">
+                Same Return day?
+            </div>
+        {{/if}}
+    </div>
 </template>

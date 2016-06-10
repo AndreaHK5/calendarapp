@@ -1,14 +1,3 @@
-// ***** Users
-Meteor.startup(function() {
-    if (Meteor.users.find().count() === 0) {
-        Accounts.createUser({
-            username: 'claudia',
-            email: 'claudia@onceUponInW.com',
-            password: 'pass123'
-        });
-    }
-});
-
 // ***** partnerType
 if (partnerTypes.find().count() === 0 ) {
     var partnerTypesSeed = [
@@ -26,51 +15,111 @@ if (partnerTypes.find().count() === 0 ) {
 if (partners.find().count() === 0) {
     var developerTypeId = partnerTypes.findOne({ title: "Developer"})["_id"];
     var publisherTypeId = partnerTypes.findOne({ title: "Publisher"})["_id"];
-    var location = {
-        title: "trial location",
-        addressOne: "trial location",
-        city: "trial location",
-        state: "trial location",
-        postalCode: "trial location",
-        country: "trial location",
-        isPrimaryLocation: true
-    }
     var partnersSeed = [
         {
             companyName : "Bethesda",
             partnerTypeIds : [developerTypeId],
             description : "some description here",
-            locations: [location]
+            locations: [{ "title" : "BETHESDA SOFTWORKS LLC",
+                "addressOne" : "1370 Piccard Drive",
+                "city" : "Rockville",
+                "state" : "MD",
+                "postalCode" : "20850",
+                "country" : "USA",
+                "isPrimaryLocation" : true
+            }]
         },
         {
             companyName : "Electronic Arts",
             partnerTypeIds : [developerTypeId],
             description : "some description here",
-            locations: [location]
+            locations: [
+                { "title" : "Electronic Arts",
+                    "addressOne" : "209 Redwood Shores Pkwy",
+                    "city" : "Redwood City",
+                    "state" : "CA",
+                    "postalCode" : "94065",
+                    "country" : "USA",
+                    "isPrimaryLocation" : true
+                },
+                { "title" : "Electronic Arts",
+                    "addressOne" : "2401 4th Ave",
+                    "addressTwo" : "#300",
+                    "city" : "Seattle",
+                    "state" : "WA",
+                    "postalCode" : "98121",
+                    "country" : "USA",
+                    "isPrimaryLocation" : false
+                }
+            ]
         },
         {
             companyName : "Bungie",
             partnerTypeIds : [developerTypeId],
             description : "some description here",
-            locations: [location]
+            locations: [{ "title" : "Bungie, INC",
+                "addressOne" : "550 106th Ave NE # 270",
+                "addressTwo" : "#207",
+                "city" : "Bellevue",
+                "state" : "WA",
+                "postalCode" : "98004",
+                "country" : "USA",
+                "isPrimaryLocation" : true
+            }]
         },
         {
             companyName : "Ubisoft",
             partnerTypeIds : [publisherTypeId],
             description : "some description here",
-            locations: [location]
+            locations: [
+                { "title" : "Ubisoft World Headquarters",
+                    "addressOne" : "Fancy boulevard",
+                    "city" : "Paris",
+                    "state" : "GreaterParis",
+                    "postalCode" : "541452",
+                    "country" : "France",
+                    "isPrimaryLocation" : true
+                },
+                { "title" : "Ubisoft USA",
+                    "addressOne" : "Mission ",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "postalCode" : "96546",
+                    "country" : "USA",
+                    "isPrimaryLocation" : false
+                }
+            ]
         },
         {
             companyName : "Blizzard",
             partnerTypeIds : [publisherTypeId],
             description : "some description here",
-            locations: [location]
+            locations: [
+                { "title" : "Ubisoft World Headquarters",
+                    "addressOne" : "Fancy boulevard",
+                    "city" : "Irvine",
+                    "state" : "CA",
+                    "postalCode" : "97645",
+                    "country" : "USA",
+                    "isPrimaryLocation" : true
+                }
+            ]
         },
         {
-            companyName : "Activision",
+            companyName : "Team17",
             partnerTypeIds : [publisherTypeId],
             description : "some description here",
-            locations: [location]
+            locations: [
+                { "title" : "Team 17 Digital Limited",
+                    "addressOne" : "Castelview House",
+                    "addressTwo" : "Calder Island way",
+                    "city" : "Wakefield",
+                    "state" : "West Yorkshire",
+                    "postalCode" : "WF2 7AW",
+                    "country" : "GB",
+                    "isPrimaryLocation" : true
+                }
+            ]
         }
     ]
 
@@ -107,7 +156,7 @@ if (people.find().count() === 0) {
             lastName: "Bronson",
             description: "plays the harmonica",
             isMsStaff : true,
-           'picture' : "eng_Placeholder.jpeg",
+            'picture' : "eng_Placeholder.jpeg",
         },
         {
             personTypeIds: [engId, damId],
@@ -115,7 +164,7 @@ if (people.find().count() === 0) {
             lastName: "VanCleef",
             description: "He is Bad @$$",
             isMsStaff : true,
-           'picture' : "eng_Placeholder.jpeg",
+            'picture' : "eng_Placeholder.jpeg",
         },
         {
             personTypeIds: [engId, damId],
@@ -123,7 +172,7 @@ if (people.find().count() === 0) {
             lastName: "Cardinale",
             description: "at the end she wins",
             isMsStaff : true,
-           'picture' : "eng_Placeholder.jpeg",
+            'picture' : "eng_Placeholder.jpeg",
         },
         {
             personTypeIds: [engId],
@@ -131,7 +180,7 @@ if (people.find().count() === 0) {
             lastName: "Leone",
             description: "directed the movie",
             isMsStaff : true,
-           'picture' : "eng_Placeholder.jpeg",
+            'picture' : "eng_Placeholder.jpeg",
         },
         {
             personTypeIds: [engId],
@@ -139,7 +188,7 @@ if (people.find().count() === 0) {
             lastName: "Fonda",
             description: "he was the bad guy",
             isMsStaff : true,
-           'picture' : "eng_Placeholder.jpeg",
+            'picture' : "eng_Placeholder.jpeg",
         },
         {
             personTypeIds: [engId],
@@ -147,7 +196,7 @@ if (people.find().count() === 0) {
             lastName: "Eastwood",
             description: "Fistful of dollars",
             isMsStaff : true,
-          'picture' : "eng_Placeholder.jpeg",
+            'picture' : "eng_Placeholder.jpeg",
         }
     ];
 
@@ -175,7 +224,7 @@ if(products.find().count() === 0){
             publishers : [
                 partners.findOne({ companyName : "Ubisoft"})["_id"],
                 partners.findOne({ companyName : "Blizzard"})["_id"],
-                partners.findOne({ companyName : "Activision"})["_id"],
+                partners.findOne({ companyName : "Team17"})["_id"],
             ],
             team : [
                 people.findOne({firstName : 'Peter'})["_id"],
@@ -184,7 +233,7 @@ if(products.find().count() === 0){
             ]
         },
         {
-            title : "Drangon Age 2",
+            title : "Dragon Age 2",
             codeName : "Project B",
             description : "some fancy description here",
             developers: [
@@ -193,7 +242,7 @@ if(products.find().count() === 0){
             ],
             publishers : [
                 partners.findOne({ companyName : "Ubisoft"})["_id"],
-                partners.findOne({ companyName : "Activision"})["_id"],
+                partners.findOne({ companyName : "Team17"})["_id"],
             ],
             team : [
                 people.findOne({firstName : 'Clint'})["_id"],
@@ -211,7 +260,7 @@ if(products.find().count() === 0){
             ],
             publishers : [
                 partners.findOne({ companyName : "Blizzard"})["_id"],
-                partners.findOne({ companyName : "Activision"})["_id"],
+                partners.findOne({ companyName : "Team17"})["_id"],
             ],
             team : [
                 people.findOne({firstName : 'Sergio'})["_id"],
@@ -239,10 +288,10 @@ if(products.find().count() === 0){
         },
     ];
 
-  _.each(productSeeds, function(product){
-    products.insert(product);
-    console.log("product added to db ", product.title);
-  });
+    _.each(productSeeds, function(product){
+        products.insert(product);
+        console.log("product added to db ", product.title);
+    });
 }
 
 
@@ -253,17 +302,20 @@ if (atgEventTypes.find().count() === 0) {
     var atgEventTypeSeeds = [
         {
             "type": "Engagement",
+            icon : "engagement.png",
             "description": "Events are fun",
             "eventSchema": encodeURIComponent(JSON.stringify(atgEventsServerHelpers.getEngagementSchema()))
         },
         {
             "type" : "Out Of Office",
             "description" : "oof is fun!",
+            icon : "oof.png",
             "eventSchema": encodeURIComponent(JSON.stringify(atgEventsServerHelpers.getOofSchema()))
         },
         {
             "type" : "Product Launch",
             "description" : "product launch!",
+            icon : "pl.png",
             "eventSchema": encodeURIComponent(JSON.stringify(atgEventsServerHelpers.getProductLaunchSchema()))
         }
     ]

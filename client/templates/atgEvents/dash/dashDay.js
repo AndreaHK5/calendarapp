@@ -1,9 +1,9 @@
-Template.eventsDashDay.onRendered(function () {
+Template.atgEventDashDay.onRendered(function () {
 	Meteor.subscribe("allProducts");
 })
 
 
-Template.eventsDashDay.helpers({
+Template.atgEventDashDay.helpers({
 	isSelectedDay : function () {
 		return this.date == Session.get("dayForEventsDetail");
 	},
@@ -39,45 +39,50 @@ Template.eventsDashDay.helpers({
 	},
 })
 
-Template.eventsDashDay.events({
+Template.atgEventDashDay.events({
 	"click .day-box": function (event) {
+
+        // if the same day is clicked (unless it is for futher filtering) hide the botton tray
+		if (this.date == Session.get("dayForEventsDetail") &&
+			event.target.getAttribute("value-type") == Session.get("typeFilter")) {
+            atgEventsAnimations.hideEventsContainer();
+		}
 		// TYPE FILTERING
-		// in case the click is on the bubble, filter by that!
-		// remember to skip in case the day has only one type anyway
+		// in case the click is on the bubble, filter by that (and skip in case only one type is present)
 		var type = undefined;
 		var typesPerDay = Object.keys(Session.get("engagementsPerDay")[this.date] || {});
-		if(lodash.includes(event.target.classList, "type-filer") && typesPerDay.length > 1) {
+		if(_.contains(event.target.classList, "type-filer") && typesPerDay.length > 1) {
 			type = Session.set("typeFilter", event.target.getAttribute("value-type"));
 		} else {
 			Session.set("typeFilter", undefined);
-		}	
+		}
 
 		// gate if date has no events
-		if (Session.get("dayForEventsDetail") == this.date) { return; }	
+		if (Session.get("dayForEventsDetail") == this.date) { return; }
 
-		var query = atgEventsHelpers.betweenTwoDatesEngagementsQuery(moment(this.date), moment(this.date).endOf("Day"));
+		var query = atgEventsTemplateHelpers.betweenTwoDatesEngagementsQuery(moment(this.date), moment(this.date).endOf("Day"));
 		if (type) {
 		// gate if this.date has no events
-			query = atgEventsHelpers.betweenDatesAndTypeEngagementsQuery(moment(this.date), moment(this.date).endOf("Day"), type)
+			query = atgEventsTemplateHelpers.betweenDatesAndTypeEngagementsQuery(moment(this.date), moment(this.date).endOf("Day"), type)
 		}
 		Session.set("engagementOnCalendar", undefined);
 		if (atgEvents.find(query).count() == 0) {
-			atgEventsHelpers.hideEventsContainer();
+			atgEventsAnimations.hideEventsContainer();
 			scrollCalendarToDiv();
 			sAlert.info("No engagements up for this day, may I suggest \"007, Try another day?\"");
 			return;
 		}
-		sAlert.closeAll(); 
-			
+		sAlert.closeAll();
+
 		Session.set("dayForEventsDetail", this.date);
 		scrollCalendarToDiv();
 	},
 })
 
 function scrollCalendarToDiv() {
-	var div = $('.day-box-unselected:hover');
+	var div = $('.day-box:hover');
 	if (div.length == 0) {
 		div = $('.day-box-selected');
-	} 
-	atgEventsHelpers.scrollCalendarToDay(div);
+	}
+	atgEventsAnimations.scrollCalendarToDay(div);
 }

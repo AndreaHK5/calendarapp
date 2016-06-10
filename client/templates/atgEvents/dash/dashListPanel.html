@@ -1,44 +1,20 @@
-<template name="engagementsDashListPanel" >
-	<div id="dayengagements-container" >
-		<div id="engagement-list-messages">
-			<i class="remove icon close-day-container"></i>
-			Engagements for 
-			<span class="date">{{getFormattedDate dayShowing}}</span> 
-			{{#if typeFilter}}
-				 showing only: <span class="date">{{typeFilter}}</span>
-				<span class="clear-type-filter"> (show all)</span>
-			{{/if}}
-		</div>
-		<div id="cards-viewport">
-			<div id="cards-container" class="ui four doubling cards">
-				{{#each engagementsOfTheDay}}
-                    {{> briefCard}}
+<template name="atgEventsDashListPanel" >
+    <div id="list-panel-container" class="sixteen wide computer column centered no-padding no-vertical-overflow">
+        <div id="filter-bar">
+            {{#each getTypesPerDay}}
+                <div class="bubble-container type-filter {{#unless isFilter type}} no-border {{/unless}}" style="border-color: {{getEngagementTypeColor type}};">
+                    <div class="engagement-bubble" value="{{type}}" style="background-color: {{getEngagementTypeColor type}};">
+                        {{count}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div id="cards-viewport">
+            <div id="cards-container" class="ui four stackable cards">
+                {{#each engagementsOfTheDay}}
+                    {{> atgEventBriefCard}}
                 {{/each}}
-			</div>
-		</div>
-	</div>
-
-	<div class="ui basic modal delete-engagement-modal confirm-delete-modal">
-	  <i class="close icon"></i>
-	  <div class="header">
-	    Delete Engagement ?
-	  </div>
-	  <div class="image content">
-	    <div class="description details-card-modal" style="background-color: {{getEngagementTypeColor modalCardColor}};">
-	      {{> DynamicTemplate template=getDetailsCardTemplate data=getEventDetails}}
-	    </div>
-	  </div>
-	  <div class="actions">
-	    <div class="">
-	      <div class="ui red big deny button">
-	        <i class="remove icon"></i>
-	        No
-	      </div>
-	      <div class="ui green big approve button">
-	        <i class="trash icon"></i>
-	        Yes
-	      </div>
-	    </div>
-	  </div>
-	</div>
+            </div>
+        </div>
+    </div>
 </template>

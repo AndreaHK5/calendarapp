@@ -1,0 +1,86 @@
+<template name="productShow">
+    <div id="slidable-container" class="sixteen wide computer column centered no-padding no-vertical-overflow ui grid">
+        <div id="scroll-container" class="ui padded grid sixteen wide column">
+            <div class="ten wide computer sixteen-wide-tablet column centered">
+                <h3 class="ui horizontal divider">Details</h3>
+                <div class="ui grid">
+                    <div class="eight wide column">
+                        <h5>Title</h5>
+                        <p>{{title}}</p>
+                    </div>
+                    <div class="eight wide column">
+                        <h5>Code Name</h5>
+                        <div>{{codeName}}</div>
+                    </div>
+                </div>
+                <h5>Description</h5>
+                <p>{{description}}</p>
+                <h3 class="ui horizontal divider">Images</h3>
+                <div class="ui images">
+                    {{#each images}}
+                        <img class="ui small rounded image" src="{{url}}" />
+                    {{else}}
+                        <div class="no-image">...no images yet.</div>
+                    {{/each}}
+                </div>
+
+                <h3 class="ui horizontal divider">Partners</h3>
+                <div class="ui grid">
+                    <div class="eight wide column">
+                        <h5>Developers</h5>
+                        {{#each developers}}
+                            <p> {{getCompanyName this}}</p>
+                        {{/each}}
+                    </div>
+                    <div class="eight wide column">
+                        <h5>Publisher(s)</h5>
+                        {{#each publishers}}
+                            <p>{{getCompanyName this}}</p>
+                        {{/each}}
+                    </div>
+                </div>
+                <h3 class="ui horizontal divider">Team</h3>
+                <div class="ui grid padded">
+                    <div class="row">
+                        {{#each team}}
+                            {{#with getPersonData this}}
+                                <img class="ui avatar image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}">
+                            {{/with}}
+                        {{else}}
+                            <div>... no team members yet.</div>
+                        {{/each}}
+                    </div>
+                </div>
+                {{#if showButtons}}
+                    <div class="ui eight column centered grid vertically padded">
+                        <div class="ui button product-list" tabindex="0">BACK</div>
+                        <div class="ui red button delete-product" tabindex="0">DELETE</div>
+                        <div class="ui primary button edit-product" tabindex="0">EDIT</div>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="ui basic modal delete-modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Delete product?
+        </div>
+        <div class="image content">
+            Are you sure you want to delete {{title}}
+        </div>
+        <div class="actions">
+            <div class="">
+                <div class="ui red big deny button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+                <div class="ui green big approve button">
+                    <i class="trash icon"></i>
+                    Yes
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

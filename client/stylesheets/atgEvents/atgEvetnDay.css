@@ -1,0 +1,135 @@
+/*day */
+
+#calendar-container .month-header {
+    text-align: center;
+    color: #DC3C00;
+}
+
+.add-month {
+    height: 35px;
+    margin: 35px 5px;
+    background-color: #DC3C00;
+    color: white;
+    text-align: center;
+    line-height: 35px;
+}
+
+#calendar-container .ui.grid .column {
+    padding: 0px !important;
+    margin-bottom: 12px;
+}
+
+.day-box.dash-day {
+    margin-bottom: 24px;
+}
+
+.day-box {
+    min-height: 65px;
+    border: 1px solid #D6D5D4;
+    padding: 2px;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.day-box-selected {
+    color: #DC3C00;
+    border-color: #DC3C00;
+    border-width: 3px;
+    padding: 0px;
+}
+
+.day-box .reset-starting-date {
+    display: block;
+    position: absolute;
+    top: -13px;
+    right: -12px;
+    z-index: 120;
+}
+
+.day-box .day-box-top {
+    text-align: left;
+    height: 32px;
+    font-size: 22px;
+    margin: 3px;
+}
+
+.day-box .day-box-bottom {
+    min-height: 32px;
+    margin: 3px;
+    text-align: right;
+}
+
+.day-box .day-box-bottom.same-return-day {
+    text-align: center;
+    font-size: 12px;
+    text-decoration: underline;
+    min-height: 16px;
+    cursor: pointer;
+}
+
+.day-box .day-box-bottom.same-return-day.highlight {
+    font-weight: 700;
+}
+
+#filter-bar .bubble-container,
+.day-box .day-box-bottom .bubble-container {
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    border: 2px solid;
+    border-radius: 15px;
+}
+
+#filter-bar .bubble-container {
+    margin-right: 5px;
+}
+
+#filter-bar  .bubble-container.no-border,
+.day-box .day-box-bottom .bubble-container.no-border {
+    border: 0px solid;
+    padding: 2px;
+}
+
+.engagement-bubble {
+    color: white;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 23px;
+    vertical-align: middle;
+    margin: 2px;
+}
+
+.calendar-engagement-bar {
+    position: absolute;
+    width: 100%;
+    margin-top: 4px;
+    height: 10px;
+}
+
+@media (max-width: 991px) {
+
+    .day-box .day-box-bottom.same-return-day {
+        display: none;
+    }
+    .day-box .day-box-bottom {
+        text-align: center;
+        min-height: 0px;
+    }
+
+    .day-box .day-box-bottom .bubble-container.no-border,
+    .day-box  .day-box-bottom .bubble-container {
+        border: 3px solid;
+        padding: 0px;
+        margin: 2px;
+        width: 3px;
+        height: 3px;
+        border-radius: 3px;
+    }
+
+    .day-box .day-box-bottom .engagement-bubble {
+        display: none;
+    }
+}

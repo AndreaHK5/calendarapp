@@ -13,3 +13,5 @@ Template.atgEventShowProduct.helpers({
         }
     },
 });
+
+

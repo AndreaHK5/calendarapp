@@ -1,0 +1,214 @@
+<template name="atgDash">
+    <div class="sixteen column centered row filter-pane-container">
+        <span class="filter-pane-label">Filters</span><i class="plus icon filter-pane-toggle"></i>
+
+        <div class="ui container filter-pane">
+            <!--<div class="center aligned sixteen wide column"> -->
+                <div class="ui centered grid">
+                    <div class="center aligned three wide column">
+                        {{> datePickerStartDateTemplate }}
+                    </div>
+                    <div class="center aligned eight wide column">
+                        {{>spacesSelector}}
+                    </div>
+                    <div class="center aligned three wide column">
+                        {{> datePickerEndDateTemplate }}
+                    </div>
+
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <div class="sixteen column centered row data-pane">
+        <div class="ui grid container">
+            <div class="sixteen column centered row area-selector-grid">
+                <div class="center aligned nine wide column">
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="dash_section">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Developer Forums</div>
+                        <div class="menu">
+                            {{#each areas}}
+                                <div class="item" data-value={{item}}>{{text}}</div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="date-range">
+                        <span class="date-range-text">{{startDate}} - {{endDate}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row grid-section forums-grid">
+                <div class="sixteen wide column">
+                    <div class="ui two column grid ">
+                        <div class="column grid-item">
+                            {{#if hotTopicsLoaded}}
+                                {{#with forumHotTopics}}
+                                    {{> columnChart}}
+                                {{/with}}
+                            {{else}}
+                                {{> loading}}
+                            {{/if}}
+                        </div>
+                        <div class="column">
+                            <div class="ui two column grid">
+                                {{#with questionAsked}}
+                                <div class="column grid-item">
+                                        {{> sparkLine
+                                        _id=this._id
+                                        widgetId='forumQuestionsAsked'
+                                        chartId='questionAskedChart'
+                                        header='Developer Forums'
+                                        headerClass='header-dev-forums'
+                                        title='Asked'
+                                        numberHelper='questions'
+                                        trendUp=this.trendUp
+                                        showTrend=true
+                                        embeddedLink=embeddedLink
+                                        number=this.number
+                                        sparkLineData=this.sparkLineData
+                                        categories=this.categories
+                                        isHigherBetter=this.isHigherBetter
+                                        lowWarningThreshold=this.lowWarningThreshold
+                                        highWarningThreshold=this.highWarningThreshold
+                                        context='questionsAsked'}}
+                                </div>
+                                {{/with}}
+                                {{#with questionsUnanswered}}
+                                <div class="column grid-item">
+                                        {{> sparkLine
+                                        _id=this._id
+                                        widgetId='forumQuestionsUnanswered'
+                                        chartId='questionsUnansweredChart'
+                                        header='Deveveloper Forums'
+                                        headerClass='header-dev-forums'
+                                        title='Unanswered'
+                                        numberHelper='questions'
+                                        number=this.number
+                                        embeddedLink=embeddedLink
+                                        sparkLineData=this.sparkLineData
+                                        categories=this.categories
+                                        isHigherBetter=this.isHigherBetter
+                                        lowWarningThreshold=this.lowWarningThreshold
+                                        highWarningThreshold=this.highWarningThreshold
+                                        context='questionsUnanswered'}}
+                                </div>
+                                {{/with}}
+                                {{#with questionsUnassigned}}
+                                <div class="column grid-item">
+                                        {{> sparkLine
+                                        _id=this._id
+                                        widgetId='forumQuestionsUnassigned'
+                                        chartId='questionsUnassignedChart'
+                                        header='Developer Forums'
+                                        headerClass='header-dev-forums'
+                                        title='Unassigned'
+                                        numberHelper='questions'
+                                        number=this.number
+                                        embeddedLink=embeddedLink
+                                        sparkLineData=this.sparkLineData
+                                        categories=this.categories
+                                        isHigherBetter=this.isHigherBetter
+                                        lowWarningThreshold=this.lowWarningThreshold
+                                        highWarningThreshold=this.highWarningThreshold
+                                        context='questionsUnassigned'}}
+                                </div>
+                                {{/with}}
+                                {{#with questionsAvgAnswer}}
+                                <div class="column grid-item">
+                                        {{> sparkLine
+                                        _id=this._id
+                                        widgetId='forumQuestionsAvgAnswer'
+                                        chartId='questionsAvgAnswerChart'
+                                        header='Developer Forums'
+                                        headerClass='header-dev-forums'
+                                        title='AVG Answer Time'
+                                        numberHelper='days'
+                                        number=this.number
+                                        embeddedLink=embeddedLink
+                                        sparkLineData=this.sparkLineData
+                                        categories=this.categories
+                                        isHigherBetter=this.isHigherBetter
+                                        lowWarningThreshold=this.lowWarningThreshold
+                                        highWarningThreshold=this.highWarningThreshold
+                                        context='questionsAvgAnswer'}}
+                                </div>
+                                {{/with}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row grid-section vso-grid">
+                <div class="ui four column grid ">
+                    <div class="column">
+                        {{#with vsoInfo}}
+                            {{> pieChart
+                            _id=this._id
+                            widgetId='vsoInfo'
+                            chartId='vsoInfoChart'
+                            header='VSO'
+                            headerClass='header-vso'
+                            title='Sprint 10'
+                            pieName=this.pieName
+                            pieValue=this.pieValue
+                            }}
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row grid-section trips-grid">
+                <div class="ui four column grid ">
+                    <div class="column">
+                        {{#with tripCompletedRange}}
+                            {{> tripItem
+                            header='Trips'
+                            title='Completed'
+                            widgetId='tripCompleted'
+                            type='completed'
+                            numberHelper='trips'
+                            numberOfTrips=this.numberOfTrips
+                            embeddedLink=embeddedLink
+                            }}
+                        {{/with}}
+                    </div>
+                    <div class="column">
+                        {{#with tripInProgress}}
+                            {{> tripItem
+                            header='Trips'
+                            title='In Progress'
+                            widgetId='tripInProgress'
+                            type='inprogress'
+                            numberHelper='trips'
+                            numberOfTrips=this.numberOfTrips
+                            embeddedLink=embeddedLink
+                            }}
+                        {{/with}}
+                    </div>
+                    <div class="column">
+                        {{#with tripScheduled}}
+                            {{> tripItem
+                            header='Trips'
+                            title='Scheduled'
+                            widgetId='tripScheduled'
+                            type='scheduled'
+                            numberHelper='trips'
+                            numberOfTrips=this.numberOfTrips
+                            embeddedLink=embeddedLink
+                            }}
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="sixteen column row data-pane" id="debug-output-container">
+        <div class="sixteen wide column">
+            <h2>Debug output</h2>
+            <div id="debug-output">{{currentRESTQuery}}</div>
+        </div>
+    </div> -->
+</template>

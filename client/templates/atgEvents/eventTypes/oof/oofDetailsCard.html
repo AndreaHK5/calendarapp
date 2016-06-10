@@ -1,22 +1,18 @@
 <template name="oofDetailsCard">
-    <div class="ui grid">
-        <div class="ten wide column centered">
-            <h2 >{{getAtgEventTypeName atgEventTypeId}}</h2>
-            <h3 class="ui horizontal divider">Dates</h3>
-            <p>{{getFormattedDate startDate}} <i class="long arrow right icon"></i> {{getFormattedDate endDate}}</p>
-            <h3 class="ui horizontal divider">Details</h3>
-            <div class="ui grid">
-                <div class="three wide column">
-                    Person
-                    {{#with getPersonData eventDetails.personId}}
-                        <img class="ui tiny circular image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}">
-                    {{/with}}
-                </div>
-                <div class="ten wide column">
-                    <h5>Description</h5>
-                    <p>{{eventDetails.message}}</p>
-                </div>
-            </div>
+    <h2 >{{getAtgEventTypeName atgEventTypeId}}</h2>
+    <h3 class="ui horizontal divider">Dates</h3>
+    <p>{{momentFormatter startDate "ddd MMM DD"}} <i class="long arrow right icon"></i> {{momentFormatter endDate "ddd MMM DD"}}</p>
+    <h3 class="ui horizontal divider">Details</h3>
+    <div class="ui grid vertically padded">
+        <div class="six wide column">
+            Person
+            {{#with getPersonData eventDetails.personId}}
+                <img class="ui avatar image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}">
+            {{/with}}
+        </div>
+        <div class="ten wide column">
+            <h5>Description</h5>
+            <p>{{eventDetails.message}}</p>
         </div>
     </div>
 </template>

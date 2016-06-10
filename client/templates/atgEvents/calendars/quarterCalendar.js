@@ -1,58 +1,52 @@
 Template.atgQuarterCalendar.onRendered(function () {
-    if (!Session.get("startDate")) {
-        Session.set("startDate", atgEventsHelpers.getTodayDate().endOf("Quarter").startOf("Day").toISOString());
+    var event = Session.get("newAtgEvent");
+    var date;
+        if (event && "startDate" in event) {
+        date = moment(event.startDate);
+    } else {
+        date = atgEventsTemplateHelpers.getTodayDate().endOf("Quarter").startOf("Day");
     }
 
-    quarterCounter = $('.quarter').FlipClock(moment(Session.get("startDate")).quarter(), {
+    quarterCounter = $('.quarter').FlipClock(moment(date).quarter(), {
         clockFace: 'Counter'
     });
 
-
-    yearCounter =$('.year').FlipClock(moment(Session.get("startDate")).year(), {
+    yearCounter =$('.year').FlipClock(moment(date).year() - 2000, {
         clockFace: 'Counter'
     });
+
+    atgEventsTemplateHelpers.addValidationsToForm({});
+    updateDates(date);
 });
 
 var  yearCounter;
 var quarterCounter
 
-Template.atgQuarterCalendar.helpers({
-    showProceedButton : function () {
-        return Router.current().route.getName() != "eventEdit"
-    }
-});
-
 Template.atgQuarterCalendar.events({
     "click .add-quarter" : function () {
-        var newDate = moment(Session.get("startDate")).add(1,"Q");
+        // adding quarters may throw off the 'end of quarter', as not all quarters have the same amoutn of months
+        // therefore the day is recalculated.
+        var newDate = moment(Session.get("newAtgEvent").startDate).add(1,"Q").endOf("quarter").startOf("day");
         updateDates(newDate);
     },
     "click .minus-quarter" : function () {
-        var newDate = moment(Session.get("startDate")).add(-1,"Q");
+        var newDate = moment(Session.get("newAtgEvent").startDate).add(-1,"Q").endOf("quarter").startOf("day");
         updateDates(newDate);
 
     },
     "click .add-year" : function () {
-        var newDate = moment(Session.get("startDate")).add(1,"Y");
+        var newDate = moment(Session.get("newAtgEvent").startDate).add(1,"Y").endOf("quarter").startOf("day");
         updateDates(newDate);
     },
     "click .minus-year" : function () {
-        var newDate = moment(Session.get("startDate")).add(-1,"Y");
+        var newDate = moment(Session.get("newAtgEvent").startDate).add(-1,"Y").endOf("quarter").startOf("day");
         updateDates(newDate);
     },
-    "click .confirm-date" : function() {
-        Session.set("endDate", moment(Session.get("startDate")).endOf("Day").toISOString());
-        Session.set("eventDetails", {});
-    }
 });
 
-
 function updateDates(newDate) {
-    Session.set("startDate", newDate.toISOString());
+    atgEventsTemplateHelpers.updateEvent("startDate", newDate.toISOString());
+    atgEventsTemplateHelpers.updateEvent("endDate", newDate.endOf("Day").toISOString());
     quarterCounter.setValue(newDate.quarter());
-    yearCounter.setValue(newDate.year());
-    // means we are in edit mode
-    if (Router.current().params._id) {
-        Session.set("endDate", newDate.endOf("Day").toISOString());
-    }
+    yearCounter.setValue(newDate.year() - 2000);
 }

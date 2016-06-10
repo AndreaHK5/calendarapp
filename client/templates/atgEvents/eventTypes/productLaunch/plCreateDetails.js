@@ -1,22 +1,24 @@
 Template.plCreateDetails.onRendered(function () {
-    Session.set("endDate", moment(Session.get("startDate")).endOf("Day").toISOString());
     formValidations();
-    // pre filled in case of back button
-    reFillForm();
+    Tracker.afterFlush(function () {
+        reFillForm();
+    });
 });
 
 
 Template.plCreateDetails.events({
     "change textarea[name=message]" : function (event) {
-        atgEventsHelpers.updateEventDetails("message", event.target.value);
+        atgEventsTemplateHelpers.updateNewEventDetails("message", event.target.value);
     },
 });
 
 
 function reFillForm () {
-    var engagementDetails = Session.get("eventDetails");
-    if (! ("message" in engagementDetails) ) { return ; }
-    $("textarea[name=message]").val(engagementDetails.message);
+    var newEvent = Session.get("newAtgEvent");
+    if (!newEvent || !("eventDetails" in newEvent) || !newEvent.eventDetails.message){
+        return;
+    }
+    $("textarea[name=message]").val(newEvent.eventDetails.message);
     $("select[name=product]").dropdown("set selected",
         products.findOne({ _id : Session.get("eventRelationshipIds").productId}).title);
 }
@@ -33,7 +35,16 @@ function formValidations () {
                         prompt : 'ANY details you can share?'
                     }
                 ]
-            }
+            },
+            product: {
+                identifier: 'product',
+                rules: [
+                    {
+                        type   : 'empty',
+                        prompt : 'Select a PRODUCT'
+                    }
+                ]
+            },
         }
     });
 }

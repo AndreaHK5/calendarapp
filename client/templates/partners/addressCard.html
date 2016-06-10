@@ -1,0 +1,20 @@
+<template name="addressCard">
+    <div class="card">
+        <div class="content">
+            <div class="header">
+                {{title}}
+            </div>
+            <div class="description">
+                {{addressOne}} <br/>
+                {{#if addressTwo}}
+                    {{addressTwo}} <br/>
+                {{/if}}
+                {{#if addressThree}}
+                    {{addressThree}} <br/>
+                {{/if}}
+                {{city}} {{state}} {{postalCode}} <br/>
+                {{country}}
+            </div>
+        </div>
+    </div>
+</template>

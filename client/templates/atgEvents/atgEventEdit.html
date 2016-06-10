@@ -1,0 +1,25 @@
+<template name="atgEventEdit">
+    <div id="slidable-container" class="ten wide computer column centered no-padding no-vertical-overflow ui grid">
+        <div id="scroll-container" class="ui padded grid sixteen wide column">
+            <form class="ui form">
+                {{#if detailsMissing}}
+                    <h2 >{{getAtgEventTypeName atgEventTypeId}}</h2>
+                    {{> DynamicTemplate template=getCalendarTemplate}}
+                    {{> DynamicTemplate template=getDetailsEditTemplate}}
+                    {{> DynamicTemplate template=getTeamTemplate}}
+                    <div class="ui eight column centered grid vertically padded">
+                        <div class="ui button back-to-dash" tabindex="0">CANCEL</div>
+                        <div class="ui primary button proceed" tabindex="0">PROCEED</div>
+                    </div>
+                    <div class="ui error message"></div>
+                {{else}}
+                    {{> DynamicTemplate template=getConfirmTemplate data=getEventDetails}}
+                    <div class="ui eight column centered grid vertically padded">
+                        <div class="ui button reset-details" tabindex="0">BACK</div>
+                        <div class="ui primary button save-engagement" tabindex="0">SAVE</div>
+                    </div>
+                {{/if}}
+            </form>
+        </div>
+    </div>
+</template>

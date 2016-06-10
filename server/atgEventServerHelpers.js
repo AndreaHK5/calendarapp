@@ -59,7 +59,8 @@
                 "type" : "String"
             },
             "message" : {
-                "type" : "String"
+                "type" : "String",
+                "optional": true
             }
         };
     }

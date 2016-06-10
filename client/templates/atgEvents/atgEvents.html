@@ -1,26 +1,24 @@
 <template name="atgEvents">
-    {{#if showCreateModeToggle}}
-        {{#if createModeOn}}
-        {{else}}
-            <div class="circular ui icon big button create-engagement-toggle">
-                <i class="plus icon"> </i>
-            </div>
+    <div id="slidable-container" class="sixteen wide computer column centered no-padding no-vertical-overflow">
+        {{> atgEventsCalendar}}
+        {{#if showDayEventsDetail}}
+            {{> atgEventsDashListPanel}}
         {{/if}}
-    {{/if}}
-
-    {{#if showCalendar}}
-        {{#if createModeOn}}
-            <div id="select-type-container">
-                {{> eventsCreateSelectType}}
-            </div>
-        {{/if}}
-        <div id="select-dates-container">
-            {{> DynamicTemplate template=getCalendarTemplate}}
+    </div>
+    <div id="types-container">
+        {{#each getAllTypes}}
+            <img class="ui circular tiny button icon select-type shadow"
+                 src="/img/{{icon}}"
+                 data-title="{{type}}"
+                 data-position="top right"
+                 alt="..."
+                 value="{{_id}}"
+                 style="background-color: {{getEngagementTypeColor _id}};">
+        {{/each}}
+    </div>
+    {{#if userLoggedIn}}
+        <div id="create-button" class="circular ui icon huge red button shadow">
+            <i class="plus icon" > </i>
         </div>
-    {{/if}}
-    {{#if createModeOn}}
-        {{> eventCreate}}
-    {{else}}
-        {{> engagementsDash}}
     {{/if}}
 </template>

@@ -1,17 +1,14 @@
-<template name="eventsDashDay">
+<template name="atgEventDashDay">
 	{{#if isInTheEventOnCalendar}}
 		<div class="calendar-engagement-bar" style="background-color: {{getEngagementTypeColor selectedEventType}}; opacity: 0.9"></div>		
 	{{/if}}	
-	<div class="day-box day-box-unselected
-		{{#if isSelectedDay}}
-			day-box-selected
-		{{/if}}">
-		<div class="engagement-day-top">
+	<div class="day-box dash-day {{#if isSelectedDay}} day-box-selected {{/if}}">
+		<div class="day-box-top">
 			{{dayNumber}}
 		</div>
-		<div class="engagement-day-bottom">
+		<div class="day-box-bottom">
 			{{#each dayEvents}}
-				<div class="{{#if isTypeInFilter type ../date}} engagement-bubble-halo {{else}} engagement-bubble-nohalo {{/if}}" style="border-color: {{getEngagementTypeColor type}};">
+				<div class="bubble-container {{#unless isTypeInFilter type ../date}} no-border {{/unless}}" style="border-color: {{getEngagementTypeColor type}};">
 					<div class="engagement-bubble type-filer" value-type="{{type}}" style="background-color: {{getEngagementTypeColor type}};">
 						{{count}} 				
 					</div>

@@ -1,10 +1,7 @@
-Template.eventEdit.onRendered(function () {
+Template.atgEventEdit.onRendered(function () {
 
     // setting session to state.
-    Session.set("eventDetails", this.data.eventDetails);
-    Session.set("startDate", this.data.startDate);
-    Session.set("endDate",this.data.endDate);
-    Session.set("atgEventTypeId",this.data.atgEventTypeId);
+    Session.set("newAtgEvent", this.data);
     var relationshipIds = {};
     var partner = partners.findOne({events : this.data._id});
     relationshipIds.partnerId = partner ? partner._id : undefined;
@@ -13,29 +10,19 @@ Template.eventEdit.onRendered(function () {
     Session.set("eventRelationshipIds", relationshipIds);
     Session.set("formValid", false);
 
-    this.autorun(function () {
-        Session.get("formValid");
-        Tracker.afterFlush(function () {
-            if (Session.get("scrollInBottom")) {
-                atgEventsHelpers.scrollInBottom($("#event-details-container"));
-                Session.set("scrollInBottom", undefined);
-                return;
-            }
-            if (Session.get("formValid")) {
-                atgEventsHelpers.scrollInBottom($("#confirm-container"));
-            } else {
-                atgEventsHelpers.scrollInTop($("#event-details-container"));
-            }
-        })
-    })
+    atgEventsAnimations.sizePageConteiners();
 });
 
-Template.eventEdit.helpers({
+Template.atgEventEdit.helpers({
     getCalendarTemplate : function () {
-        return atgEventsHelpers.getTemplateForType(Session.get("atgEventTypeId"), "editCalendar");
+        return atgEventsTemplateHelpers.getTemplateForType(this.atgEventTypeId, "editCalendar");
     },
     getDetailsEditTemplate : function()  {
-        return atgEventsHelpers.getTemplateForType(Session.get("atgEventTypeId"), "createDetails");
+        return atgEventsTemplateHelpers.getTemplateForType(this.atgEventTypeId, "createDetails");
+    },
+    getTeamTemplate : function () {
+        if (!Session.get("newAtgEvent")) { return; }
+        return atgEventsTemplateHelpers.getTemplateForType(Session.get("newAtgEvent").atgEventTypeId, "teamSelection");
     },
     detailsMissing : function () {
         var detailsMissing = !Session.get("formValid");
@@ -46,20 +33,15 @@ Template.eventEdit.helpers({
         }
     },
     getConfirmTemplate : function () {
-        return atgEventsHelpers.getTemplateForType(Session.get("atgEventTypeId"),"detailsCard");
+        return atgEventsTemplateHelpers.getTemplateForType(this.atgEventTypeId, "detailsCard");
     },
     // TODO delete this and DRY
     getEventDetails : function () {
-        var ev = {};
-        ev.atgEventTypeId = Session.get("atgEventTypeId");
-        ev.eventDetails = Session.get("eventDetails");
-        ev.startDate = Session.get("startDate");
-        ev.endDate = Session.get("endDate");
-        return ev;
+        return Session.get("newAtgEvent");
     },
 });
 
-Template.eventEdit.events({
+Template.atgEventEdit.events({
     "click .reset-details" : function (event) {
         backToDetails();
     },
@@ -76,26 +58,24 @@ Template.eventEdit.events({
             saveEngagementHanlder(event);
         }
     },
-    "click .confirm-details" : function (event) {
+    "click .proceed" : function (event) {
         proceed()
     },
-    "keydown .confirm-details" : function () {
+    "keydown .proceed" : function () {
         if (event.keyCode == 13) {
             proceed();
         }
     },
     "click .back-to-dash" : function () {
-        atgEventsHelpers.scrollOutBottom(
-            $("#event-details-container").add($("#confirm-container"))
-        ).then(function () {
+        atgEventsAnimations.slideOutBottom( $("#slidable-container") ).then(function () {
+            Session.set("slideInBottom", true);
             Router.go("atgEvents")
         });
     },
     "keydown .back-to-dash" : function (event) {
         if (event.keyCode == 13) {
-            atgEventsHelpers.scrollOutBottom(
-                $("#event-details-container").add($("#confirm-container"))
-            ).then(function () {
+            atgEventsAnimations.slideOutBottom( $("#slidable-container") ).then(function () {
+                Session.set("slideInBottom", true);
                 Router.go("atgEvents");
             });
         }
@@ -109,31 +89,29 @@ Template.eventEdit.events({
 
 // TODO  these are shared between create and edit - DRY
 function backToDetails () {
-    atgEventsHelpers.scrollOutBottom($("#confirm-container")).then( function () {
+    sAlert.info("Ok, we can still amend the details.");
+    atgEventsAnimations.slideOutBottom($("#slidable-container")).then( function () {
         Session.set("formValid", false);
-    })
+        atgEventsAnimations.slideInTop($("#slidable-container"));
+    });
 }
 
 
 function proceed() {
-
     $('.ui.form').form('validate form');
     if(!$('.ui.form').form('is valid')) { return; }
 
-    atgEventsHelpers.scrollOutTop($("#event-details-container")).then(function () {
+    sAlert.info("Great, let's review the details and in case confirm.");
+    atgEventsAnimations.slideOutTop($("#slidable-container")).then(function () {
         Session.set("formValid", true);
+        atgEventsAnimations.slideInBottom($("#slidable-container"));
     });
 }
 
 function saveEngagementHanlder(event) {
     event.preventDefault();
     // TODO roll all the evets info into a single session variable?
-    var atgEvent = {};
-    atgEvent._id = Router.current().params._id;
-    atgEvent.startDate = Session.get('startDate');
-    atgEvent.endDate = Session.get('endDate');
-    atgEvent.eventDetails = Session.get("eventDetails");
-    atgEvent.atgEventTypeId = Session.get("atgEventTypeId");
+    var atgEvent = Session.get("newAtgEvent");
 
     upsertAtgEvent(
         atgEvent,
@@ -143,11 +121,11 @@ function saveEngagementHanlder(event) {
                 sAlert.error("Woha, something went wrong" + (err));
             } else {
                 sAlert.closeAll();
-                sAlert.success("Event saved", {onRouteClose: false});
+                sAlert.success("Event updated", {onRouteClose: false});
                 // TODO rethink this arrow when the one in create is redone
-                atgEventsHelpers.scrollOutTop($("#confirm-container")).then(function () {
-                        Session.set("scrollInBottom", true);
-                            Router.go("atgEvents");
+                atgEventsAnimations.slideOutTop($("#slidable-container")).then(function () {
+                        Session.set("slideInBottom", true);
+                        Router.go("atgEvents");
                     }
                 )
             }

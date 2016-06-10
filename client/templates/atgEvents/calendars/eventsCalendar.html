@@ -1,18 +1,21 @@
 <template name="atgEventsCalendar">
     <div id="weekday-navbar" class="row">
         <div class="sixteen wide column">
-            <div class="ui seven column grid">
-                <div class="column">Sun</div>
-                <div class="column">Mon</div>
-                <div class="column">Tue</div>
-                <div class="column">Wed</div>
-                <div class="column">Thu</div>
-                <div class="column">Fri</div>
-                <div class="column">Sat</div>
+            <div class="ui seven column grid padded">
+                <div class="column no-padding">Sun</div>
+                <div class="column no-padding">Mon</div>
+                <div class="column no-padding">Tue</div>
+                <div class="column no-padding">Wed</div>
+                <div class="column no-padding">Thu</div>
+                <div class="column no-padding">Fri</div>
+                <div class="column no-padding">Sat</div>
             </div>
 
         </div>
-        <div class="calendar-navigation {{getActiveClass}}">
+        <div id="calendar-navigation">
+            <div class="month-helper">
+                {{getShortMonth}}
+            </div>
             <div class="months-arrows">
                 <span class="scroll-prev-month scroll-arrow {{#if firstMonthHovered}} scroll-arrow-inactive {{/if}}">
                   <i class="chevron up icon"></i>
@@ -21,16 +24,12 @@
                   <i class="chevron down icon"></i>
                 </span>
             </div>
-            <div class="month-helper">
-                <h3>
-                    {{getShortMonth}}
-                </h3>
-            </div>
         </div>
     </div>
-    <div  id="calendar-container" class="{{getActiveClass}} row">
+
+    <div id="calendar-container">
         {{#each months}}
-            <div class="sixteen wide column hovering" id="{{getUnix date}}">
+            <div class="hovering" id="{{getUnix date}}">
                 {{> atgEventsMonth date=date}}
             </div>
         {{/each}}

@@ -1,0 +1,22 @@
+<template name="partnersList">
+    {{#if userLoggedIn}}
+        <div id="create-button" class="circular ui icon huge red button shadow">
+        <i class="plus icon" > </i>
+    </div>
+    {{/if}}
+    <div id="slidable-container" class="ten wide computer column centered no-padding no-vertical-overflow ui grid">
+        <div id="scroll-container" class="ui padded grid sixteen wide column">
+            <div class="ui divided relaxed list">
+                {{#each getAllPartners}}
+                    <div class="item">
+                        <div class="content partner-card middle align">
+                            <a class="header">
+                                {{companyName}}
+                            </a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>

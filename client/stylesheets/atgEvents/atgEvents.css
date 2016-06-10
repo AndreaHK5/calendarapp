@@ -1,0 +1,226 @@
+.ui.grid.app {
+    padding-top: 72px !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.no-padding {
+    padding : 0 !important;
+}
+
+#slidable-container.no-vertical-overflow {
+    overflow-y: hidden;
+    margin-top: 0px!important;
+}
+
+#slidable-container #scroll-container {
+    overflow-y: scroll;
+}
+
+/*quarter calendar*/
+
+.quarter-calendar .ui.grid .icon {
+    margin-top: 52px;
+    font-size: 200%;
+}
+
+.quarter-calendar {
+    overflow-y: visible;
+}
+
+/*calendar view*/
+
+#calendar-container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+/*calendar navbar*/
+
+#weekday-navbar {
+    z-index: 100;
+    color: black;
+    padding: 0px !important;
+    border-bottom: 1px solid grey ;
+}
+
+@media (max-width: 991px) {
+
+    #calendar-navigation,
+    #calendar-navigation .month-helper{
+        display: none;
+    }
+}
+
+#calendar-navigation {
+    position: fixed;
+    top: 72px;
+    right: 10px;
+    z-index: 100;
+    margin-top: -2px;
+}
+
+#calendar-navigation .month-helper {
+    display: inline-block;
+    color: #DC3C00;
+    text-align: center;
+    padding-right: 6px;
+}
+
+
+#calendar-navigation .months-arrows {
+    color: rgba(220, 76, 61, 0.8);
+    font-size: 170%;
+    display: inline-block;
+}
+
+.scroll-arrow:hover {
+    color: rgba(220,60,0,1);
+}
+
+.scroll-arrow-inactive,
+.scroll-arrow-inactive:hover {
+    color: #D6D5D4;
+}
+
+/* create button and select types*/
+
+#create-button {
+    position: absolute;
+    bottom: 23px;
+    right: 23px;
+    z-index: 200;
+}
+
+.shadow {
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28) !important;
+}
+
+#types-container {
+    display: none;
+    position: absolute;
+    border-radius: 38px;
+    bottom: 13px;
+    top: auto;
+    right: 83px;
+    z-index: 200;
+}
+
+#types-container img {
+    position: relative;
+    vertical-align: sub;
+    margin-right: 12px !important;
+}
+
+#types-container img:last-of-type {
+    margin-right: 0px !important;
+}
+
+/*form */
+
+.add-goal-button {
+    margin-top: 19px !important;
+    padding-left: 2px !important;
+}
+
+.goals-container {
+    margin-left: 0.5em !important;
+}
+
+.quarter-calendar .ui.grid {
+    margin-top : 0px !important;
+}
+
+/*day engagements detail */
+
+.unselect-engagement:hover,
+.select-engagement:hover {
+    cursor: pointer;
+}
+
+.navigation-icon {
+    font-size: 130%;
+    margin-top: 12px;
+}
+
+.card-description {
+    display: inline-block;
+}
+
+/*engagement tray*/
+#list-panel-container {
+    border-top: 2px solid rgba(133, 133, 133,1);
+    left: 0px;
+    background-color: #CCC;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+
+#filter-bar {
+    background-color: rgba(133, 133, 133,0.7);
+    border-bottom: 1px solid rgba(133, 133, 133,.95);
+    padding: 3px;
+    padding-left: 15px;
+}
+
+#filter-bar .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 150%;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+#cards-viewport {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#cards-container.ui.four.stackable.cards {
+    margin: 0px;
+}
+
+.delete-event-modal,
+.delete-event-modal .header {
+    color: black !important;
+}
+
+/*login items*/
+
+#login-dropdown-list {
+    left: -200px !important;
+    right: 15px !important;
+    z-index: 200;
+}
+
+#login-buttons {
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+.vertical-scroll {
+    overflow-y: scroll;
+}
+
+body .pusher #top-bar {
+    z-index: 1000 !important;
+}
+
+@media (max-width: 991px) {
+    .ui.grid .sixteen-wide-tablet {
+        width: 100% !important;
+    }
+
+    .ui.grid .ten.wide.computer.column {
+        width: 100% !important;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+}

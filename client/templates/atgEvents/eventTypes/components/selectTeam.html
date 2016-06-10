@@ -1,0 +1,29 @@
+<template name="atgEventSelectTeam">
+    <h4 class="ui dividing header">Team</h4>
+    <div class="two fields selectTeam">
+        <div class="field">
+            <label>Engineer</label>
+            <select class="ui dropdown" name="engineerGoing" multiple="">
+                <option value="">Engineer</option>
+                {{#each getAllEngineers}}
+                    <option value="{{_id}}">
+                        <img class="ui mini avatar image" src="/img/{{picture}}">
+                        {{firstName}} {{lastName}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="field">
+            <label>Dam</label>
+            <select class="ui dropdown" name="dam">
+                <option value="">Dam</option>
+                {{#each getAllDams}}
+                    <option value="{{_id}}">
+                        <img class="ui mini avatar image" src="/img/{{picture}}">
+                        {{firstName}} {{lastName}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,38 @@
+<template name="atgEventShow">
+    <div id="slidable-container" class="ten wide computer column centered no-padding no-vertical-overflow ui grid">
+        <div id="scroll-container" class="ui padded grid sixteen wide column">
+            <div class="ten wide computer sixteen-wide-tablet column centered">
+                {{> DynamicTemplate template=getDetailsCardTemplate}}
+                <div class="ui eight column centered grid vertically padded">
+                    <div class="ui button back-to-calendar" tabindex="0">BACK</div>
+                    {{#if createdByUser}}
+                        <div class="ui red button delete-event" tabindex="0">DELETE</div>
+                        <div class="ui primary button edit-event" tabindex="0">EDIT</div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui basic modal delete-event-modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Delete event?
+        </div>
+        <div class="image content">
+            Are you sure you want to delete this {{getEventType}}
+        </div>
+        <div class="actions">
+            <div class="">
+                <div class="ui red big deny button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+                <div class="ui green big approve button">
+                    <i class="trash icon"></i>
+                    Yes
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

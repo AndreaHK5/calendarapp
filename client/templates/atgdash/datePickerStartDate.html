@@ -1,0 +1,15 @@
+<template name="datePickerStartDateTemplate">
+    <div class="datepicker-container">
+        <div>
+            <span class="filter-title">Select a start date</span>
+        </div>
+        <div class="control">
+        {{> React
+          component=Datepicker
+          componentType='startDate'
+          startDate=startDate
+          disableStartDate=disableStartDate
+          startDateChange=changeStartDate}}
+        </div>
+    </div>
+</template>

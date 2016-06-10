@@ -1,6 +1,6 @@
 <template name="oofBriefCard">
     {{#with getPersonData eventDetails.personId}}
-        <img class="ui tiny circular image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}" alt="...">
+        <img class="ui avatar image" src="/img/{{picture}}" data-title="{{firstName}} {{lastName}}" alt="...">
     {{/with}}
     {{eventDetails.message}}
 </template>

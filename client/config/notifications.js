@@ -13,8 +13,6 @@ Meteor.startup(function () {
     offset: 0
   });
 
-  _ = underscore;
-
 });
 
 Accounts.ui.config({

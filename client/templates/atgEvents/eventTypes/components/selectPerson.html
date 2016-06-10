@@ -1,0 +1,14 @@
+<template name="atgEventSelectPerson">
+    <div class="field">
+        <label>Who</label>
+        <select class="ui dropdown" name="person">
+            <option value="">Person</option>
+            {{#each getAllPeople}}
+                <option value="{{_id}}">
+                    <img class="ui mini avatar image" src="/img/{{picture}}">
+                    {{firstName}} {{lastName}}
+                </option>
+            {{/each}}
+        </select>
+    </div>
+</template>

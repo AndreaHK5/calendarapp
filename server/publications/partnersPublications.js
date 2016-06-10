@@ -9,3 +9,7 @@ Meteor.publish('publishers', function () {
         partnerTypeIds : partnerTypes.findOne({title : "Publisher"})["_id"]
     });
 });
+
+Meteor.publish('partnerTypes', function () {
+    return partnerTypes.find();
+});

@@ -1,8 +1,8 @@
  Template.atgEventsMonth.helpers({
 	getDayTemplate : function () {
-        return Session.get("createEngagementMode") ?
-            "eventsCreateDay" :
-            "eventsDashDay";
+        return Router.current().route.getName() == "atgEventCreate" ?
+            "atgEventCreateDay" :
+            "atgEventDashDay";
 	},
 	getDays : function () {
 		return getDaysInMonth(this.date);

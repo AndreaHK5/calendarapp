@@ -1,6 +1,9 @@
-Template.briefCard.helpers({
+Template.atgEventBriefCard.helpers({
     getBriefCardTemplate : function () {
-        return atgEventsHelpers.getTemplateForType(this.atgEventTypeId, "briefCard");
+        return atgEventsTemplateHelpers.getTemplateForType(this.atgEventTypeId, "briefCard");
+    },
+    getDetailsCardTemplate : function () {
+        return atgEventsTemplateHelpers.getTemplateForType(this.atgEventTypeId, "detailsCard");
     },
     isSelectedEvent : function (id) {
         if(!Session.get("engagementOnCalendar")) { return }
@@ -9,25 +12,18 @@ Template.briefCard.helpers({
     isCreator : function () {
         return Meteor.user() && this.createdBy == Meteor.userId();
     },
+    onDash : function () {
+        return Router.current().route.getName() == "atgEvents";
+    }
 });
 
-Template.briefCard.events({
+Template.atgEventBriefCard.events({
     "click .detail-page" : function () {
         var id = this._id;
-        atgEventsHelpers.scrollOutTop($("#dayengagements-container").add($("#select-dates-container"))).then(function () {
-            Session.set("scrollInBottom", true);
-            Router.go('eventShow', { _id : id});
+        atgEventsAnimations.slideOutTop($("#slidable-container")).then(function () {
+            Session.set("slideInBottom", true);
+            Session.set('dayForEventsDetail', undefined);
+            Router.go('atgEventShow', { _id : id});
         });
-
-    },
-    "click .edit-event" : function () {
-        var id = this._id;
-        atgEventsHelpers.scrollOutTop($("#dayengagements-container").add($("#select-dates-container"))).then(function () {
-            Session.set("scrollInBottom", true);
-            Router.go('eventEdit', { _id : id});
-        });
-    },
-    "click .open-details-modal" : function () {
-        $('#' + this._id + '.details-modal').modal('show');
     }
-})
+});

@@ -1,50 +1,21 @@
 Template.oofCreateDetails.onRendered(function () {
-    // activate dropdown
-    $('select.dropdown').dropdown();
-    Meteor.subscribe("engineers");
-    Meteor.subscribe("dams");
-
-    formValidations();
-    // pre filled in case of back button
-    reFillForm();
-});
-
-Template.oofCreateDetails.helpers({
-    getAllPeople : function () {
-        return people.find();
-    }
+    Tracker.afterFlush(function () {
+        reFillForm();
+    });
+    // reset the validations
+    atgEventsTemplateHelpers.addValidationsToForm({});
 });
 
 Template.oofCreateDetails.events({
-    "change select[name=person]" : function (event) {
-        atgEventsHelpers.updateEventDetails("personId", event.target.value);
-    },
     "change textarea[name=message]" : function (event) {
-        atgEventsHelpers.updateEventDetails("message", event.target.value);
+        atgEventsTemplateHelpers.updateNewEventDetails("message", event.target.value);
     },
 })
 
 function reFillForm () {
-    var engagementDetails = Session.get("eventDetails");
-    if (! ("personId" in engagementDetails) ) { return ; }
-
-    $("select[name=person]").dropdown("set selected",engagementDetails.personId);
-    $("textarea[name=message]").val(engagementDetails.message);
-}
-
-
-function formValidations () {
-    $('.ui.form').form({
-        fields: {
-            person: {
-                identifier: 'person',
-                rules: [
-                    {
-                        type   : 'empty',
-                        prompt : 'WHO\'s out'
-                    }
-                ]
-            }
-        }
-    });
+    var newEvent = Session.get("newAtgEvent");
+    if (!newEvent || !("eventDetails" in newEvent) || !newEvent.eventDetails.message){
+        return;
+    }
+    $("textarea[name=message]").val(newEvent.eventDetails.message);
 }

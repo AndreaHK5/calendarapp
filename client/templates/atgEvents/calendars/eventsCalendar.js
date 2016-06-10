@@ -1,19 +1,7 @@
 Template.atgEventsCalendar.onRendered(function () {
 
     Session.set("monthsShowing", getMonths());
-    Session.set('hoverMonth', atgEventsHelpers.getTodayDate().toISOString());
-
-    atgEventsHelpers.positionTrayAndCalendar().then(function () {
-        if (Session.get("scrollInBottom") && $("#select-dates-container .month-header").length > 2) {
-            atgEventsHelpers.scrollInBottom($("#select-dates-container"));
-            Session.set("scrollInBottom", false);
-        }
-        Tracker.afterFlush(atgEventsHelpers.adjustDayBoxHeight);
-        if (Session.get("scrollInTop") && $("#select-dates-container .month-header").length > 2) {
-            atgEventsHelpers.scrollInTop($("#select-dates-container"));
-            Session.set("scrollInTop", false);
-        }
-    });
+    Session.set('hoverMonth', atgEventsTemplateHelpers.getTodayDate().toISOString());
 
     // on finish rendered to ensure the daybox is tall enough to cater for all bubbles inside
     this.autorun(function(){
@@ -27,16 +15,17 @@ Template.atgEventsCalendar.onRendered(function () {
             scrollVertical(targetDiv);
             Session.set("hoverMonth", targetMonth);
         });
-    })
+    });
 
+    atgEventsAnimations.positionTrayAndCalendar();
+    $(window).resize(function() {
+        atgEventsAnimations.positionTrayAndCalendar();
+    });
 });
 
 Template.atgEventsCalendar.helpers({
     months : function () {
         return Session.get("monthsShowing");
-    },
-    startDateSelected : function () {
-        return Session.get("startDate");
     },
     getShortMonth : function () {
         return moment(Session.get('hoverMonth')).format("MMM").toUpperCase();
@@ -45,22 +34,16 @@ Template.atgEventsCalendar.helpers({
         return moment(isoDate).unix();
     },
     firstMonthHovered : function () {
-        return Session.get("hoverMonth") == atgEventsHelpers.getTodayDate().toISOString();
-    },
-    getActiveClass : function () {
-        if (!Session.get("createEngagementMode")) {
-            return "active";
-        }
-        return Session.get("atgEventTypeId") ? "active" : "inactive" ;
+        return Session.get("hoverMonth") == atgEventsTemplateHelpers.getTodayDate().toISOString();
     }
 });
 
 Template.atgEventsCalendar.events({
-    "click .active .add-month" : function (event) {
+    "click .add-month" : function (event) {
         event.preventDefault();
         addMonth();
     },
-    "click .active .scroll-next-month" : function () {
+    "click .scroll-next-month" : function () {
         if (!Session.get("hoverMonth")) { return ; }
         var monthAfter = moment(Session.get("hoverMonth")).add(1, 'month').startOf('month');
         var myDiv = $('#' + monthAfter.unix());
@@ -71,18 +54,18 @@ Template.atgEventsCalendar.events({
             Session.set("hoverMonth", monthAfter.toISOString());
         }
     },
-    "click .active .scroll-prev-month" : function () {
+    "click .scroll-prev-month" : function () {
         if (!Session.get("hoverMonth")) { return ; }
         var monthBefore = moment(Session.get("hoverMonth")).add(-1, 'month').startOf('month');
         var myDiv = $('#' + monthBefore.unix());
 
         if (!myDiv.length ) {
             // no more dates unless we are in the month after the now()
-            if (Session.get("hoverMonth") != atgEventsHelpers.getTodayDate().add(1,'month').startOf('month').toISOString()) {
+            if (Session.get("hoverMonth") != atgEventsTemplateHelpers.getTodayDate().add(1,'month').startOf('month').toISOString()) {
                 return;
             }
-            myDiv = $('#' + atgEventsHelpers.getTodayDate().unix());
-            Session.set("hoverMonth", atgEventsHelpers.getTodayDate().toISOString());
+            myDiv = $('#' + atgEventsTemplateHelpers.getTodayDate().unix());
+            Session.set("hoverMonth", atgEventsTemplateHelpers.getTodayDate().toISOString());
         } else {
             Session.set("hoverMonth", monthBefore.toISOString());
         }
@@ -97,7 +80,7 @@ Template.atgEventsCalendar.events({
 // HELPERS 
 
 function addMonth() {
-    var last = atgEventsHelpers.GetLastMonthShowing();
+    var last = atgEventsTemplateHelpers.GetLastMonthShowing();
     var newDate = last.add(1, 'month');
     var months = Session.get("monthsShowing")
     months.push({date : newDate.toISOString() });
@@ -107,7 +90,7 @@ function addMonth() {
 }
 
 function getMonths() {
-    var now = atgEventsHelpers.getTodayDate();
+    var now = atgEventsTemplateHelpers.getTodayDate();
     var result = [];
     result.push({date : now.toISOString()});
     for (var i = 1; i < 3; i++) {
@@ -123,5 +106,5 @@ function getMonths() {
 function scrollVertical(div) {
     var calendar = $('#calendar-container');
     var topY = calendar.scrollTop() + div.offset().top - $('#weekday-navbar').height() - $('#top-bar').height();
-    TweenMax.to(calendar,1, {scrollTo:{y:topY}, ease:Power4.easeOut});
+    TweenMax.to(calendar,1, {scrollTop:topY });
 }

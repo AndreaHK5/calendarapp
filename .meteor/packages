@@ -27,7 +27,6 @@ iron:dynamic-template
 mikowals:find-async
 semantic:ui-css
 semantic:ui-dropdown
-erasaur:meteor-lodash
 aldeed:simple-schema
 aldeed:collection2
 matb33:collection-hooks
@@ -35,3 +34,6 @@ accounts-password
 accounts-ui
 check
 mizzao:jquery-ui
+tomi:upload-server@=1.3.4
+tomi:upload-jquery@=2.2.3
+random

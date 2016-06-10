@@ -1,0 +1,15 @@
+<template name="datePickerEndDateTemplate">
+    <div class="datepicker-container">
+        <div>
+            <span class="filter-title">Select an end date</span>
+        </div>
+        <div class="control">
+            {{> React
+            component=Datepicker
+            componentType='endDate'
+            endDate=endDate
+            disableEndDate=disableEndDate
+            endDateChange=changeEndDate}}
+        </div>
+    </div>
+</template>

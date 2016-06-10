@@ -1,13 +1,11 @@
 <template name="engagementsCreateDetails">
-
-    <h4 class="ui dividing header">Game Title</h4>
     {{> atgEventSelectProduct}}
     <h4 class="ui dividing header">Partner</h4>
     <div class="field">
         <select class="ui fluid search selection dropdown disabled partner-dropdown" name="partner">
-            <option value="">Developer</option>
+            <option value="">Developer/Publisher</option>
             {{#each getPartners}}
-                <option value="{{_id}}">{{companyName}} ({{getRoleForPartner _id}})</option>
+                <option value="{{_id}}">{{companyName}} ({{role}})</option>
             {{/each}}
         </select>
     </div>
@@ -35,46 +33,23 @@
             <label>Description</label>
             <textarea rows="5" name="description" placeholder="Description"></textarea>
         </div>
-        <div class="five wide field">
-            <label>Goals</label>
-            <input name="goals" placeholder="Goal">
-            <div class="ui divided divided list goals-container">
-                {{#each getAllGoals}}
-                    <div class="item">{{goal}} <i value="{{goal}}" class="right floated remove icon remove-goal"></i></div>
-                {{/each}}
+        <div class="six wide field">
+            <div class="ui grid">
+                <div class="thirteen wide column">
+                    <label>Goals</label>
+                    <input name="goals" placeholder="Goal">
+                    <div class="ui divided divided list goals-container">
+                        {{#each getAllGoals}}
+                            <div class="item">{{goal}} <i value="{{goal}}" class="right floated remove icon remove-goal"></i></div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="three wide column add-goal-button right floated">
+                    <div class="circular ui icon button">
+                        <i class="icon plus"></i>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="one wide field add-goal-button">
-            <div class="circular ui icon button">
-                <i class="icon plus"></i>
-            </div>
-        </div>
-    </div>
-    <h4 class="ui dividing header">Team</h4>
-    <div class="two fields">
-        <div class="field">
-            <label>Engineer</label>
-            <select class="ui dropdown" name="engineerGoing" multiple="">
-                <option value="">Engineer</option>
-                {{#each getAllEngineers}}
-                    <option value="{{_id}}">
-                        <img class="ui mini avatar image" src="/img/{{picture}}">
-                        {{firstName}} {{lastName}}
-                    </option>
-                {{/each}}
-            </select>
-        </div>
-        <div class="field">
-            <label>Dam</label>
-            <select class="ui dropdown" name="dam">
-                <option value="">Dam</option>
-                {{#each getAllDams}}
-                    <option value="{{_id}}">
-                        <img class="ui mini avatar image" src="/img/{{picture}}">
-                        {{firstName}} {{lastName}}
-                    </option>
-                {{/each}}
-            </select>
         </div>
     </div>
 </template>

@@ -1,21 +1,7 @@
 <template name="oofCreateDetails">
-    <h4 class="ui dividing header">Details</h4>
-    <div class="two fields">
-        <div class="field">
-            <label>Who</label>
-            <select class="ui dropdown" name="person">
-                <option value="">Person</option>
-                {{#each getAllPeople}}
-                    <option value="{{_id}}">
-                        <img class="ui mini avatar image" src="/img/{{picture}}">
-                        {{firstName}} {{lastName}}
-                    </option>
-                {{/each}}
-            </select>
-        </div>
+    <h4 class="ui dividing header">Person</h4>
         <div class="field">
             <label>Description</label>
             <textarea rows="5" name="message" placeholder="Message"></textarea>
         </div>
-    </div>
 </template>

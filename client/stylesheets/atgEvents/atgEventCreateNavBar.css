@@ -1,0 +1,82 @@
+/*create nav bar navigation*/
+
+#create-nav-bar {
+    display: table;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    height: 72px;
+    width: 100%;
+    z-index: 1010;
+    background: #F27749;
+    color: white;
+    font-size: 130%;
+}
+
+#create-nav-bar .close-create-mode {
+    display: table-cell;
+    position: absolute;
+    right: 20px;
+    top: 28px;
+}
+
+#create-nav-bar .nav-tile {
+    margin-top: 10px;
+    display: inline-block;
+    min-width: 40px;
+    max-width: 180px;
+    width: 18%;
+    height: 60px;
+}
+
+#create-nav-bar .nav-tile .text-container {
+    word-wrap: break-word;
+    display: block;
+    height: 36px;
+    text-align: center;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+#create-nav-bar .nav-tile .progress-container {
+    display: flex;
+    align-items: center;
+    height: 18px;
+}
+
+#create-nav-bar .nav-tile .progress-container div {
+    height: 18px;
+}
+
+#create-nav-bar .nav-tile .progress-container .dot {
+    display: inline-block;
+    width: 15px;
+}
+
+#create-nav-bar .nav-tile .progress-container .dot i {
+    margin-right: 0px !important;
+    margin-left: -3px !important;
+}
+
+#create-nav-bar .nav-tile .progress-container .connector1 {
+    display: inline-block;
+    background-color: white;
+    width: 50%;
+    height: 1px;
+}
+
+#create-nav-bar .nav-tile:first-of-type .connector1:first-of-type,
+#create-nav-bar .nav-tile.confirmation .connector1:last-of-type {
+    background-color: rgba(254,254,254,0);
+}
+
+#create-nav-bar .back-button {
+    display: block;
+    top: 5px;
+    right: 5px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgba(0,0,0,0);
+    color: white;
+}

@@ -8,9 +8,38 @@
 
 .trip-detail-edit{
 
-    div.content{
-      margin-top: 17px;
+  div.content{
+    margin-top: 17px;
+  }
+
+  div.quarter-date-selector {
+    display: table;
+
+    i.ui.icon{
+      display: table-cell;
+      vertical-align: middle;
+      padding-right: 10px;
+      padding-left: 10px;
+      cursor: pointer;
     }
+
+    i.icon.plus.quarter {
+      padding-right : 30px;
+    }
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    input#detail-ship-date-quarter {
+      width: 40px !important;
+    }
+
+    input#detail-ship-date-year {
+      width: 70px !important;
+    }
+  }
 }
 
 #trip-list{

@@ -1,30 +1,44 @@
-<template name="eventCreate">
-    {{> eventsCreateNavBar }}
-    {{#if datesPresent}}
-        {{#if detailsMissing}}
-            <div id="event-details-container" class="ui grid sixteen wide column engagement-details-form">
-                <div class="ten wide column centered">
+<template name="atgEventCreate">
+    {{> atgEventCreateNavBar }}
+    {{#if onDatesSelection}}
+        {{#if fullCalendar}}
+            <div id="slidable-container" class="sixteen wide computer column centered no-padding no-vertical-overflow">
+                <form class="ui form">
+                    {{> DynamicTemplate template=getCalendarTemplate}}
+                </form>
+            </div>
+        {{else}}
+            <div id="slidable-container" class="ten wide computer column centered no-padding no-vertical-overflow ui grid">
+                <div id="scroll-container" class="ui padded grid sixteen wide column">
                     <form class="ui form">
-                        {{> DynamicTemplate template=getCreateTemplate}}
-                        <div class="confirm-jumbo">
-                            <div class="styled-button reset-dates" tabindex="0">CHANGE DATES</div>
-                            <div class="ui styled-button confirm-details" tabindex="0">PROCEED</div>
+                        {{> DynamicTemplate template=getCalendarTemplate}}
+                        <div class="ui eight column centered grid vertically padded">
+                            <div class="ui primary button proceed" tabindex="0">PROCEED</div>
                         </div>
                         <div class="ui error message"></div>
                     </form>
                 </div>
             </div>
-        {{else}}
-            <div id="confirm-container">
-                {{> DynamicTemplate template=getConfirmTemplate data=getEventDetails}}
-                <div id="confirm-details" class="confirm-jumbo">
-                    <div class="ui bottom attached">
-                        <div class="styled-button reset-dates" tabindex="0">START OVER</div>
-                        <div class="styled-button reset-details" tabindex="0">BACK</div>
-                        <div class="styled-button save-engagement" tabindex="0">BOOK</div>
-                    </div>
-                </div>
-            </div>
         {{/if}}
+    {{else}}
+        <div id="slidable-container" class="ten wide computer column centered no-padding no-vertical-overflow ui grid">
+            <div id="scroll-container" class="ui padded grid sixteen wide column">
+                <form class="ui form">
+                    {{#if onTeamSelection}}
+                        {{> DynamicTemplate template=getTeamTemplate}}
+                    {{/if}}
+                    {{#if onDetails}}
+                        {{> DynamicTemplate template=getCreateTemplate}}
+                    {{/if}}
+                    {{#if onConfirm}}
+                        {{> DynamicTemplate template=getConfirmTemplate data=getEventDetails}}
+                    {{/if}}
+                    <div class="ui eight column centered grid vertically padded">
+                        <div class="ui primary button proceed" tabindex="0">PROCEED</div>
+                    </div>
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+        </div>
     {{/if}}
 </template>

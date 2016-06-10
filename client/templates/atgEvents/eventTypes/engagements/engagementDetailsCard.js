@@ -1,6 +1,4 @@
 Template.engagementDetailsCard.onRendered(function () {
-	Meteor.subscribe("developers");
-	Meteor.subscribe("publishers");
 	this.autorun(function () {
 		Session.get("popupAdded");
 		Tracker.afterFlush(function () {

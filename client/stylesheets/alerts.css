@@ -15,3 +15,17 @@
 .s-alert-error {
   background-color: #D41400;
 }
+
+@media (max-width: 991px) {
+    .s-alert-info, .s-alert-success, .s-alert-warning, .s-alert-error {
+        font-size: 14px;
+        padding: 5px !important;
+    }
+    .s-alert-info .s-alert-box-inner p,
+    .s-alert-success .s-alert-box-inner p,
+    .s-alert-warning .s-alert-box-inner p,
+    .s-alert-error .s-alert-box-inner p {
+        padding-left: 5px !important;
+    }
+
+}

@@ -1,4 +1,4 @@
-Meteor.publish("engineers", function (queryStartDate, queryEndDate) {
+Meteor.publish("engineers", function () {
     return people.find({$and : [
             { personTypeIds : personTypes.findOne({title : "Engineer"})["_id"] },
             { isMsStaff : true }
@@ -6,7 +6,7 @@ Meteor.publish("engineers", function (queryStartDate, queryEndDate) {
     });
 });
 
-Meteor.publish("dams", function (queryStartDate, queryEndDate) {
+Meteor.publish("dams", function () {
     return people.find({$and : [
         { personTypeIds : personTypes.findOne({title : "Dam"})["_id"] },
         { isMsStaff : true }
@@ -14,7 +14,7 @@ Meteor.publish("dams", function (queryStartDate, queryEndDate) {
     });
 });
 
-Meteor.publish("personTypes", function (queryStartDate, queryEndDate) {
+Meteor.publish("personTypes", function () {
     return personTypes.find({$or : [
         { title : "Dam" },
         { title : "Engineer" }

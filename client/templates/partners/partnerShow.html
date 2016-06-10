@@ -1,0 +1,81 @@
+<template name="partnerShow">
+    <div id="slidable-container" class="sixteen wide computer column centered no-padding no-vertical-overflow ui grid">
+        <div id="scroll-container" class="ui padded grid sixteen wide column">
+
+        <div class="ten wide computer sixteen-wide-tablet column centered">
+            <h2>{{companyName}}</h2>
+            {{description}}
+            {{#if getPartnerTypes}}
+                <h3 class="ui horizontal divider">Roles</h3>
+                <div class="ui big labels">
+                    {{#each getPartnerTypes}}
+                        <div class="ui orange label">
+                            {{title}}
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+            <h3 class="ui horizontal divider">Images</h3>
+                <div class="ui images">
+                    {{#each images}}
+                        <img class="ui small rounded image" src="{{url}}" />
+                        {{else}}
+                        <div class="no-image">... no images yet.</div>
+                    {{/each}}
+                </div>
+            <h3 class="ui horizontal divider">Locations</h3>
+            {{#if primaryLocations}}
+                <h5>Primary</h5>
+                <div class="ui two stackable cards">
+                    {{#each primaryLocations}}
+                        {{> addressCard}}
+                    {{/each}}
+                </div>
+            {{/if}}
+            {{#if otherLocations}}
+                <h5>Others</h5>
+                <div class="ui two stackable cards">
+                    {{#each otherLocations}}
+                        {{> addressCard}}
+                    {{/each}}
+                </div>
+            {{/if}}
+            {{#if getEvents}}
+                <h3 class="ui horizontal divider">Events</h3>
+                <div class="ui four stackable cards">
+                    {{#each getEvents}}
+                        {{> atgEventBriefCard}}
+                    {{/each}}
+                </div>
+            {{/if}}
+            <div class="ui eight column centered grid vertical-margins">
+                <div class="ui button back" tabindex="0">BACK</div>
+                <div class="ui red button delete" tabindex="0">DELETE</div>
+                <div class="ui primary button edit" tabindex="0">EDIT</div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="ui basic modal delete-modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Delete partner?
+        </div>
+        <div class="image content">
+            Are you sure you want to delete {{companyName}}
+        </div>
+        <div class="actions">
+            <div class="">
+                <div class="ui red big deny button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+                <div class="ui green big approve button">
+                    <i class="trash icon"></i>
+                    Yes
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

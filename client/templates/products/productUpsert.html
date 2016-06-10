@@ -1,0 +1,144 @@
+<template name="productUpsert">
+    <div id="slidable-container" class="ten wide computer column centered no-padding no-vertical-overflow">
+        <div id="scroll-container" class="ui padded grid sixteen wide column">
+            <form class="ui form">
+                {{#if isEditing}}
+                    <h2>Edit Product</h2>
+                {{else}}
+                    <h2>Create Product</h2>
+                {{/if}}
+                <h4 class="ui dividing header">Details</h4>
+                <div class="two fields">
+                    <div class="field title-field ">
+                        <label>Title</label>
+                        <div class="field" >
+                            <input type="text" placeholder="Title" name="title">
+                        </div>
+
+                    </div>
+                    <div class="field codeName-field ">
+                        <label>Code Name</label>
+                        <div class="field" >
+                            <input type="text" placeholder="Code Name" name="codeName">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <div class="field" >
+                        <input type="text" placeholder="Description" name="description">
+                    </div>
+                </div>
+                <h4 class="ui dividing header">Images</h4>
+                <div class="field">
+                    <label>Upload</label>
+                    <div class="field" >
+                        {{> upload_semanticUI  callbacks=associateToProduct}}
+                        {{#if images}}
+                            <div class="ui segment images">
+                                <div class="ui four column grid padded">
+                                    {{#each images}}
+                                        <div class="column">
+                                            <img class="ui small rounded image" src="{{url}}" />
+                                            <div value="{{url}}" class="circular ui mini button remove-image">
+                                                <i class="remove icon"></i>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+                <h4 class="ui dividing header">Partners</h4>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Developers</label>
+                        <select class="ui fluid search selection dropdown partner-dropdown multiple" name="developers" multiple="">
+                            <option value="">Developer</option>
+                            {{#each getDevelopers}}
+                                <option value="{{_id}}">{{companyName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Publishers</label>
+                        <select class="ui fluid search selection dropdown partner-dropdown multiple" name="publishers" multiple="">
+                            <option value="">Publisher</option>
+                            {{#each getPublishers}}
+                                <option value="{{_id}}">{{companyName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <h4 class="ui dividing header">Team</h4>
+                <div class="field">
+                    <select class="ui dropdown" name="team" multiple="">
+                        <option value="">Team</option>
+                        {{#each getAllPeople}}
+                            <option value="{{_id}}">
+                                <img class="ui mini avatar image" src="/img/{{picture}}">
+                                {{firstName}} {{lastName}}
+                            </option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="ui error message"></div>
+                <div class="ui eight column centered grid vertically padded">
+                    <div class="ui button cancel" tabindex="0">CANCEL</div>
+                    {{#if isEditing}}
+                        <div class="ui button primary save-product" tabindex="0">UPDATE</div>
+                    {{else}}
+                        <div class="ui button primary save-product" tabindex="0">CREATE</div>
+                    {{/if}}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--MODALS-->
+    <div class="ui small modal existing-products">
+        <i class="close icon"></i>
+        <div class="header">
+            We have found matches... EDIT EXISTING instead?
+        </div>
+        <div class="image content">
+            <div class="ui relaxed list">
+                {{#each getMatchingProducts}}
+                    <div class="item edit-product header"
+                         data-content="Edit {{title}} instead"
+                         data-position="right center"
+                         data-variation="inverted">
+                        <a value="{{_id}}" class="header">
+                            {{title}} ({{codeName}})
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="ui small modal remove-image-modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Remove Image?
+        </div>
+        <div class="content">
+            <img class="ui small rounded image" src="{{pictureToRemove}}" />
+        </div>
+        <div class="actions">
+            <div class="">
+                <div class="ui red big deny button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+                <div class="ui green big approve button">
+                    <i class="trash icon"></i>
+                    Yes
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
