@@ -1,4 +1,5 @@
 .meteor/local
+.idea/
 node_modules/
 test/coverage/
 coverage/

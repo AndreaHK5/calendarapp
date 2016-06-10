@@ -2,12 +2,15 @@
 
 TODO
 
+- hide the password and username
+- add the scripts to backup the database https://sheharyar.me/blog/regular-mongo-backups-using-cron/
 - write a more comprehensive readme
 - deploy (awaiting Azure to restore my subscription)
 - better top navbar
 - remove hovering from pictures - not mobile friendly
 - animation on engagement create and on change route is off
 - update to 1.3 / ES2016
+- update to mupx
 
 animations
 log in / register to create stuff
@@ -18,3 +21,4 @@ filtering of the events
 go mobile
 type a product that exists
 navigate to a create product that does not exist
+mup deploy in separate folders, not all in the same, to allow staging, UAT, ...

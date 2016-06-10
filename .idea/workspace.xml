@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f51a2d0-5a70-432c-96e1-b288e713e9f4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/stylesheets/atg_dash.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/stylesheets/chart_item.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/stylesheets/nav.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/Logo_Three.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/Logo_Watermarks.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deploy/prod/database_backup.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/stylesheets/layout.less" afterPath="$PROJECT_DIR$/client/stylesheets/layout.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/_partials/nav.html" afterPath="$PROJECT_DIR$/client/templates/_partials/nav.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/_partials/nav.js" afterPath="$PROJECT_DIR$/client/templates/_partials/nav.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/app/notfound.html" afterPath="$PROJECT_DIR$/client/templates/app/notfound.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/atgEvents/atgEvents.js" afterPath="$PROJECT_DIR$/client/templates/atgEvents/atgEvents.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/products/productsList.js" afterPath="$PROJECT_DIR$/client/templates/products/productsList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/controllers/atg_events_controller.js" afterPath="$PROJECT_DIR$/lib/controllers/atg_events_controller.js" />
     </list>
     <ignored path="calendarapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,18 +25,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider editor-type-id="MarkdownFxPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor vertical-scroll-proportion="0.29533678">
-                <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+              <first_editor vertical-scroll-proportion="0.050904978">
+                <caret line="5" column="100" selection-start-line="5" selection-start-column="100" selection-end-line="5" selection-end-column="100" />
                 <folding />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deploy/prod/settings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mup.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/deploy/prod/mup.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20044543">
+              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database_backup.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deploy/prod/database_backup.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,26 +96,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.6666667">
               <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="atgEvents.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/atgEvents/atgEvents.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="partnersList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/partners/partnersList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -117,26 +126,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="10" column="71" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productsList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/products/productsList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/_partials/nav.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -192,6 +181,8 @@
         <option value="$PROJECT_DIR$/client/templates/app/notfound.html" />
         <option value="$PROJECT_DIR$/lib/controllers/atg_events_controller.js" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/deploy/prod/database_backup.sh" />
+        <option value="$PROJECT_DIR$/deploy/prod/mup.json" />
       </list>
     </option>
   </component>
@@ -250,6 +241,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="calendarapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="calendarapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deploy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prod" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -259,7 +268,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
-    <property name="SearchEverywhereHistoryKey" value="router&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/lib/router.js&#10;partnerupser&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/partners/partnerUpsert.html&#10;nav&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/_partials/nav.js&#10;read&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/README.md&#10;productupser&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/products/productUpsert.js&#10;partner&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/lib/models/partner.js&#10;seed&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/server/seeds.js&#10;notifica&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/config/notifications.js&#10;atgme&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/lib/methods/atgEventsMethods.js&#10;atg&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/atgEvents/atgEventsHelpers.js&#10;nav.&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/_partials/nav.html&#10;mup&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/mup.json&#10;month&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/engagements/engagementsMonth.html&#10;app.c&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/stylesheets/app.css&#10;details&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/engagements/create/createDetails.js&#10;listpane&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/engagements/dash/dashListPanel.html" />
+    <property name="SearchEverywhereHistoryKey" value="mup&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/deploy/prod/mup.json&#10;router&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/lib/router.js&#10;partnerupser&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/partners/partnerUpsert.html&#10;nav&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/_partials/nav.js&#10;read&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/README.md&#10;productupser&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/products/productUpsert.js&#10;partner&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/lib/models/partner.js&#10;seed&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/server/seeds.js&#10;notifica&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/config/notifications.js&#10;atgme&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/lib/methods/atgEventsMethods.js&#10;atg&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/atgEvents/atgEventsHelpers.js&#10;nav.&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/_partials/nav.html&#10;month&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/engagements/engagementsMonth.html&#10;app.c&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/stylesheets/app.css&#10;details&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/engagements/create/createDetails.js&#10;listpane&#9;FILE&#9;file:///Users/andreacremese/code/calendarapp/client/templates/engagements/dash/dashListPanel.html" />
     <property name="js.meteor.project" value="true" />
     <property name="js.meteor.library.was.enabled" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -392,7 +401,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26296297" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295516" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295516" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5245303" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284711" sideWeight="0.47546974" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -454,16 +463,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/img/UserProfile.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/img/eng_Placeholder.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/methods/atgEventsMethods.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -824,11 +823,43 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.29533678">
-            <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <first_editor vertical-scroll-proportion="0.050904978">
+            <caret line="5" column="100" selection-start-line="5" selection-start-column="100" selection-end-line="5" selection-end-column="100" />
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/prod/settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/prod/database_backup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/prod/mup.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20044543">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
