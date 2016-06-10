@@ -1,5 +1,7 @@
 Template.productsList.onRendered(function (){
-    Tracker.afterFlush(function () { atgEventsAnimations.sizePageConteiners() });
+    Tracker.afterFlush(function () {
+        atgEventsAnimations.sizePageConteiners();
+    });
 });
 
 Template.productsList.helpers({

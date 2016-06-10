@@ -1,6 +1,5 @@
 Template.atgEvents.onRendered(function () {
     $(".icon.select-type").popup();
-    atgEventsAnimations.sizePageConteiners();
 
     $(window).resize(function() {
         atgEventsAnimations.positionTrayAndCalendar(true);
@@ -26,7 +25,8 @@ Template.atgEvents.onRendered(function () {
                 }
             });
         Session.set("engagementsPerDay", atgEventsPerDay);
-    })
+    });
+    atgEventsAnimations.sizePageConteiners();
 });
 
 Template.atgEvents.helpers({
