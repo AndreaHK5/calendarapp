@@ -2,6 +2,7 @@
 
 TODO
 
+- mup setup and deploy to a new machine
 - hide the password and username
 - add the scripts to backup the database https://sheharyar.me/blog/regular-mongo-backups-using-cron/
 - write a more comprehensive readme
