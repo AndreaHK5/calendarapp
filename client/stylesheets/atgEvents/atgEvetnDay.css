@@ -117,6 +117,8 @@
     .day-box .day-box-bottom {
         text-align: center;
         min-height: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
     }
 
     .day-box .day-box-bottom .bubble-container.no-border,
