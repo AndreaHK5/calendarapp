@@ -1,5 +1,7 @@
 # Meteor Sample app
 
+Visit at this [link](http://demoandrea1.cloudapp.net/)
+
 ## TODO
 
 - write a more verbose readme
@@ -13,9 +15,9 @@
 - move mup outside the project (does not interact with Env Variables)
 - update deployment to mupx and docker
 
-## Some of the features to point the attention at:
+#### Some of the experience's features to point the attention at in the ReadMe:
 
-** on the experience **
+
 * filters
 * animations
 * create experience (backwards actions on the top, forwards)
@@ -34,16 +36,18 @@
 * Meteor 
 * Semantic UI
 * MongoDB
-* Simple Schema with event types injected
+* Simple Schema with event types injected and validations
 * Meteor accounts
-* Azure VM, Classic (why complicate life?=) )
-* Ubuntu 14.04 (15 seems to have some issues with mup deploy, mongo does not start correctly)
+* Azure VM Classic (why complicate life?=) )
+* Ubuntu 14.04 (15 seems to have some issues with mup deploy, Mongo does not re start correctly)
 * Webstorm / Sublime (tried Visual Studio Code but had some issues with Caching of the files in the .meteor folder, and moved away from it)
 
-** on the tech involved **
+##### on the tech involved
+
 * code is Single Responsibility for maintainability (e.g. the helpers, the templates)
 * code is DRY, e.g. the date picker is not copy pasted nut extracted in a template and injected.
 * mup deploy is in separate folders, not all in the same, to allow staging, UAT, ...
 * event types are not hard coded but are read from database
 * the templates are dynamically injected depending on the type of event that is selected (see `eventTypeSettings` object in front end, should be considered to go in the DB?)
 * backend validation on the event types are not in Simple Schema but rather on the schema that is saven in the DB. New event types can be added without changing the code
+* script to backup database on VM included
