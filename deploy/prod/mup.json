@@ -9,8 +9,8 @@
 
 
   // Install MongoDB on the server. Does not destroy the local MongoDB on future setups
-  "setupMongo": true,
-  "setupNode": true,
+  "setupMongo": false,
+  "setupNode": false,
   "nodeVersion": "0.10.40",
 
   // Application name (no spaces).
@@ -34,5 +34,5 @@
 
   // show a progress bar while uploading.
   // Make it false when you deploy using a CI box.
-  "enableUploadProgressBar": true
+  "enableUploadProgressBar": false
 }
