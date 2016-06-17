@@ -40,6 +40,10 @@ Template.atgEventsCalendar.helpers({
 
 Template.atgEventsCalendar.events({
     "click .add-month" : function (event) {
+        if (Session.get("moreMonthsMessage")) {
+            sAlert.info("Make sure to check out the navigation chevrons up and to the right (no space for them on mobile =( )", {timeout: 'none'})
+            Session.set("moreMonthsMessage", undefined);
+        }
         event.preventDefault();
         addMonth();
     },

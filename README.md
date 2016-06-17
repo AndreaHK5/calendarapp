@@ -7,8 +7,8 @@ Visit at this [link](http://demoandrea1.cloudapp.net/)
 - write a more verbose readme
 - improve top navbar on mobile
 - port over the Meteor method tests
-- remove clicking / hovering from pictures - not mobile friendly
-- animation on engagement create and on change route is off
+- remove clicking / hovering from pictures and create event types - not mobile friendly
+- animation on engagement create and on change route is not working properly
 - loading of location for partner is sometimes sluggish
 - update to 1.3 / ES2015 ?
 - use flower router rather than iron router
@@ -29,6 +29,7 @@ Visit at this [link](http://demoandrea1.cloudapp.net/)
 * type a product that already exists on create
 * pictures upload
 * navigate to a create product that does not exist has an error (not only white screen)
+* on the engagement site the goals can be added without needing top touch the mouse =)
 
 
 ## Technologies
@@ -51,3 +52,4 @@ Visit at this [link](http://demoandrea1.cloudapp.net/)
 * the templates are dynamically injected depending on the type of event that is selected (see `eventTypeSettings` object in front end, should be considered to go in the DB?)
 * backend validation on the event types are not in Simple Schema but rather on the schema that is saven in the DB. New event types can be added without changing the code
 * script to backup database on VM included
+* the I_ids are stored in the documents for the reationships, not the full referenced document (e.g. engineers for engagment)

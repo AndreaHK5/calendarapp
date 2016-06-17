@@ -5,6 +5,11 @@ Template.atgEvents.onRendered(function () {
         atgEventsAnimations.positionTrayAndCalendar(true);
     });
 
+    if (Session.get("showWelcome")) {
+        sAlert.info("Welcome to a demo app! Feel free to click around and make sure to sign up order to create events (you can always use a fake email - it's a demo afterall)", {timeout: 'none'});
+        Session.set("showWelcome", undefined);
+    }
+
     this.autorun(function () {
         var queryStartDate = atgEventsTemplateHelpers.getTodayDate();
         var queryEndDate = atgEventsTemplateHelpers.GetLastMonthShowing().endOf('month');

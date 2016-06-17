@@ -23,6 +23,10 @@ Template.atgEventsDashListPanel.onRendered(function () {
 	Session.set("engagementOnCalendar", undefined );
 	Session.set("engagementToDelete", undefined );
 	Session.set("engagementInModal", undefined );
+	if (Session.get("filterMessage")) {
+		sAlert.info("Make sure to check out the filters (for days with more than one colors)", {timeout: 'none'});
+		Session.set("filterMessage", undefined);
+	}
 
 });
 

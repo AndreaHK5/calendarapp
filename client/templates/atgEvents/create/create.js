@@ -116,6 +116,11 @@ Template.atgEventCreate.events({
 
 function goToStep(step) {
 
+    if (Session.get("navigationCreateMessage")) {
+        sAlert.info("Use the top bar to navigate backwards", {timeout: 'none'});
+        Session.set("navigationCreateMessage", undefined);
+    }
+
     $('.ui.form').form('validate form');
     if(!$('.ui.form').form('is valid')) { return };
 
