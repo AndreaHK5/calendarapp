@@ -1,3 +1,5 @@
+
+
 if (Meteor.isClient) {
     // all helpers for use in Templates are encapsulated in an object for reference
     atgEventsAnimations = {};

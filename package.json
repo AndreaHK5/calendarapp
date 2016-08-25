@@ -1,0 +1,23 @@
+{
+  "name": "calendarapp",
+  "version": "1.0.0",
+  "description": "Visit at this [link](http://demoandrea1.cloudapp.net/)",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "0.8.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaHK5/calendarapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreaHK5/calendarapp/issues"
+  },
+  "homepage": "https://github.com/AndreaHK5/calendarapp#readme"
+}
