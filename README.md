@@ -1,8 +1,10 @@
 # Meteor Sample app
 
-Visit the deployed app at this [link](http://demoandrea.cloudapp.net/).
+Visit the deployed app at this [link](http://demoandrea.cloudapp.net/). Check out the [app's video](https://www.youtube.com/watch?v=Qu03mRNWPbE&t=4s)).
 
-Calendar sample app. All code is done by Andrea Cremese. UI/UX concept had one other contributor/reviewer.
+Calendar sample app. All code is done by Andrea Cremese. UI/UX concept had one other contributor/reviewer. 
+
+... and well, yes, the calendar behavior is inspired by [virgin america's booking system](https://www.virginamerica.com/book/rt/a1/sea_bos), even though the rest of the experience is completely different.
 
 Some things to look at:
 
