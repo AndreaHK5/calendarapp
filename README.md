@@ -1,4 +1,4 @@
-# Meteor Sample app
+# Meteor Sample app 
 
 Visit the deployed app at this [link](http://demoandrea.cloudapp.net/). Check out the [app's video](https://www.youtube.com/watch?v=Qu03mRNWPbE&t=4s)).
 
